@@ -10,11 +10,11 @@ module Dashboard
 
     def new
       @inspection = Inspection.new
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependencies = Dependency.where(municipio_id: current_user.municipio_id)
     end
 
     def edit
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependencies = Dependency.where(municipio_id: current_user.municipio_id)
     end
 
     def create
@@ -62,7 +62,7 @@ module Dashboard
     end
 
     def inspection_params
-      params.require(:inspection).permit(:nombre, :materia, :duracion, :norma, :antes, :durante, :despues, :sancion, :dependency_id)
+      params.require(:inspection).permit(:name, :subject, :period, :norm, :before_tips, :during_tips, :after_tips, :sanctions, :dependency_id)
     end
   end
 end

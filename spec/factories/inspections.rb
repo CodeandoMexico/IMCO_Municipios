@@ -1,12 +1,13 @@
 FactoryGirl.define do
   factory :inspection do
-    sequence(:nombre) { |n| "Inspection No. #{n}"}
-    materia "Lorem ipsum dolor sit amet."
-    duracion "Lorem ipsum dolor sit amet."
-    norma "Lorem ipsum dolor sit amet."
-    durante "Lorem ipsum dolor sit amet, consectetur cras amet."
-    despues "Lorem ipsum dolor sit amet, consectetur cras amet."
-    sancion "Lorem ipsum dolor sit amet, consectetur cras amet."
+    sequence(:name) { |n| "Inspection No. #{n}"}
+    subject "Lorem ipsum dolor sit amet."
+    period "Lorem ipsum dolor sit amet."
+    norm "Lorem ipsum dolor sit amet."
+    before_tips "Lorem ipsum dolor sit amet, consectetur cras amet."
+    during_tips "Lorem ipsum dolor sit amet, consectetur cras amet."
+    after_tips "Lorem ipsum dolor sit amet, consectetur cras amet."
+    sanctions "Lorem ipsum dolor sit amet, consectetur cras amet."
     association :dependency
   end
 end

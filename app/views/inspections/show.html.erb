@@ -1,39 +1,36 @@
-<h3 class="title"><%= @inspection.nombre %></h3>
+<h3 class="title"><%= @inspection.name %></h3>
 
 <div style="border: 1px solid white;background-color: white;">
   <table class="table">
     <tbody>
       <tr>
         <td>Materia</td>
-        <td><%= @inspection.materia %></td>
+        <td><%= @inspection.subject %></td>
       </tr>
       <tr>
         <td>Duracion</td>
-        <td><%= @inspection.duracion %></td>
+        <td><%= @inspection.period %></td>
       </tr>
       <tr>
         <td>Norma</td>
-        <td><%= @inspection.norma %></td>
+        <td><%= @inspection.norm %></td>
       </tr>
       <tr>
         <td>Antes</td>
-        <td><%= @inspection.antes %></td>
+        <td><%= @inspection.before_tips %></td>
       </tr>
       <tr>
         <td>Durante</td>
-        <td><%= @inspection.durante %></td>
+        <td><%= @inspection.during_tips %></td>
       </tr>
       <tr>
         <td>Despues</td>
-        <td><%= @inspection.despues %></td>
+        <td><%= @inspection.after_tips %></td>
       </tr>
       <tr>
         <td>Sancion</td>
-        <td><%= @inspection.sancion %></td>
+        <td><%= @inspection.sanctions %></td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<!-- <%#= link_to 'Edit', edit_inspection_path(@inspection) %> | -->
-<%#= link_to 'Back', inspections_path %>

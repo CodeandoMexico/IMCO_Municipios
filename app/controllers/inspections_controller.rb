@@ -20,14 +20,10 @@ class InspectionsController < ApplicationController
     end
 
     def inspection_params
-      params.require(:inspection).permit(:nombre, :materia, :duracion, :norma, :antes, :durante, :despues, :sancion, :dependency_id)
+      params.require(:inspection).permit(:name, :subject, :period, :norm, :before_tips, :during_tips, :after_tips, :sanctions, :dependency_id)
     end
 
     def set_municipio
        @municipio = Municipio.find(params[:municipio_id])
     end
-
-
-  
-
 end

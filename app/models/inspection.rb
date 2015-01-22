@@ -15,6 +15,6 @@ class Inspection < ActiveRecord::Base
   scope :search_by_city,
     -> (city, query) {
       by_city(city).
-      where("inspections.nombre ILIKE ?", "%#{query}%")
+      where("inspections.name ILIKE ?", "%#{query}%")
     }
 end

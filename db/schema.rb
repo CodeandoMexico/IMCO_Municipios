@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120204017) do
+ActiveRecord::Schema.define(version: 20150122190527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 20150120204017) do
   end
 
   create_table "inspections", force: true do |t|
-    t.string   "nombre"
-    t.string   "materia"
-    t.string   "duracion"
-    t.text     "norma"
-    t.text     "antes"
-    t.text     "durante"
-    t.text     "despues"
-    t.text     "sancion"
+    t.string   "name"
+    t.string   "subject"
+    t.string   "period"
+    t.text     "norm"
+    t.text     "before_tips"
+    t.text     "during_tips"
+    t.text     "after_tips"
+    t.text     "sanctions"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dependency_id"

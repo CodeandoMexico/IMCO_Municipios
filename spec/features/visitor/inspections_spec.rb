@@ -35,9 +35,9 @@ feature 'A visitor enters the page' do
     expect(current_path).to eq(municipio_inspection_path(city, last_inspection))
 
     # let's check for 'some' information of the resource
-    expect(page).to have_content last_inspection.nombre
-    expect(page).to have_content last_inspection.materia
-    expect(page).to have_content last_inspection.duracion
+    expect(page).to have_content last_inspection.name
+    expect(page).to have_content last_inspection.subject
+    expect(page).to have_content last_inspection.period
 
     # save_and_open_page # uncomment to view webpage output snapshot
   end
@@ -49,7 +49,7 @@ feature 'A visitor enters the page' do
     search_for(last_inspection)
 
     # let's verify the site 'only' gave us the last inspection
-    expect(page).to have_content last_inspection.nombre
+    expect(page).to have_content last_inspection.name
 
     all_inspections_make_an_appereance_except_for last_inspection
 
@@ -66,7 +66,7 @@ feature 'A visitor enters the page' do
 
   def all_inspections_make_an_appereance
     inspections.each do |inspection|
-      expect(page).to have_content inspection.nombre
+      expect(page).to have_content inspection.name
     end
   end
 
@@ -74,17 +74,17 @@ feature 'A visitor enters the page' do
     inspections.each do |inspection|
       if inspection != inspection_that_should_be_absent
         # use of to_not, should be used only sporadically
-        expect(page).to_not have_content inspection.nombre
+        expect(page).to_not have_content inspection.name
       end
     end
   end
 
   def search_for(inspection)
     # Name format is like this 'Inspection No. 5'
-    inspection_num = inspection.nombre
+    inspection_id = inspection.name[inspection.name.length - 1]
 
     # fill the search bar
-    fill_in 'q', with: inspection.nombre[inspection_num.length - 1]
+    fill_in 'q', with: inspection_id
     click_on 'Buscar'
   end
 
@@ -96,7 +96,7 @@ feature 'A visitor enters the page' do
   end
 
   def visit_last_inspection_detail
-    click_on last_inspection.nombre
+    click_on last_inspection.name
   end
 
   def last_inspection
