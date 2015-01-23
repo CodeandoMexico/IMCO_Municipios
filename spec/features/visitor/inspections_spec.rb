@@ -6,7 +6,7 @@ feature 'A visitor enters the page' do
   before(:all) do
     @city = create :municipio
     @city_with_no_inspections = create :municipio
-    dependency = create :dependency, municipio: city
+    dependency = create :dependency, municipio: @city
     @inspections = []
     3.times { @inspections << create(:inspection, dependency: dependency) }
   end

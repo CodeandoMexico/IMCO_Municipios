@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "user_#{n}@website.com" }
-    password "som_secure_password"
+    password "some_secure_password"
     admin false
 
     association :municipio
