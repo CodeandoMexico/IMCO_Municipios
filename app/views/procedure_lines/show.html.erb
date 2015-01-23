@@ -8,7 +8,7 @@
       <% @procedure_requirement.each_with_index do |procedure, k| %>
       <% @requirements.where(id: procedure.requirement_id).each do |tramite| %>
       <tr>
-        <td>Tramite <%= k+1%>:</td>
+        <td>Paso <%= k+1%>:</td>
         <td><%= tramite.nombre %></td>
         <td><a target="_blank" href="<%=tramite.path%>">Tramita aqui</a></td>
       </tr>

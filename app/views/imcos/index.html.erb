@@ -1,21 +1,32 @@
-<%= form_for :post, :url => { :action => :quiere , :controller => :pages } do |f| %>
-<p>
-			<%= collection_select(:municipio, :municipio_id, Municipio.all, :id, :nombre, {:prompt => false})%>
-</p>
+<%= form_for :post, :url => { :controller => :municipios, :action => :search } do |f| %>
 
-<% @municipios.each_with_index do |municipio, i| %>
-	<%=municipio.nombre%>|
-<%end%>
-
-<p>
-	<aside class="call-to-action bg-primary">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<%= f.submit 'Continuar', :class => 'btn btn-lg btn-light' %>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<H3><%=f.label 'Ingresa tu municipio' %></H3>
+						<BR>
+						<%= f.select :municipio, Municipio.all.map { |u| [u.nombre, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
+						</br>
+					</div>
 				</div>
+				<br>
+				<%= f.submit 'Continuar', :class => 'btn btn-lg btn-light' %>
 			</div>
 		</div>
-	</aside>
-</p>
+	</div>
 <% end %>
+<script >
+$(document).ready(function(){ 
+    $('.chosen-select').chosen({
+       allow_single_deselect: true,
+       no_results_text: 'No hay resultados',
+       placeholder_text: 'Selecciona una opción',
+       width: '500px'
+    });
+})
+</script>
+
+
+

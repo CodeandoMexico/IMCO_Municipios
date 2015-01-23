@@ -1,0 +1,24 @@
+<h2> <%= t('titles.inspectors') %></h2>
+<%= link_to t('.new_inspector'), new_dashboard_inspector_path, class: 'btn btn-default pull-right' %>
+
+<table class="table">
+  <thead>
+    <th>#</th>
+    <th><%= t('.name') %></th>
+    <th><%= t('.dependency') %></th>
+    <th><%= t('.actions') %></th>
+  </thead>
+  <tbody>
+    <% @inspectors.each_with_index do |inspector, idx| %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, idx + 1 %>
+        <%= content_tag :td, inspector.nombre %>
+        <%= content_tag :td, inspector.dependency.nombre %>
+        <%= content_tag :td do %>
+          <%= link_to t('form.actions.edit'), edit_dashboard_inspector_path(inspector) %> |
+          <%= link_to t('form.actions.destroy'), dashboard_inspector_path(inspector), method: :delete, data: { confirm: t('form.confirmations.delete_inspector') } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

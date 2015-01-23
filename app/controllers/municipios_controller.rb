@@ -1,29 +1,68 @@
 class MunicipiosController < ApplicationController
-  layout 'blanco'
-  before_action :set_municipio, only: [:show, :edit, :update, :destroy]
+  layout 'menu'
+  before_action :set_municipio, only: [:edit, :update, :destroy]
 
-  # GET /municipios
-  # GET /municipios.json
   def index
     @municipios = Municipio.all
   end
 
-  # GET /municipios/1
-  # GET /municipios/1.json
   def show
+    set_municipio(:id)
+  end
+  
+  def search
+    @municipio = Municipio.find(params[:post][:municipio])
+    redirect_to municipio_path(@municipio)
   end
 
-  # GET /municipios/new
   def new
     @municipio = Municipio.new
   end
 
-  # GET /municipios/1/edit
   def edit
   end
+  
 
-  # POST /municipios
-  # POST /municipios.json
+
+  def tramite
+    set_municipio(:municipio_id)
+    @procedure = Procedure.all
+
+    @id_del_giro = "0"
+    @tipo  = 'A'
+    
+    unless params[:lines].nil?
+      @param_paso = params[:lines]
+      @id_del_giro = @param_paso[:line_id]
+      @tramites_del_giro = Line.find(@id_del_giro).procedures.includes(:procedure_lines).where("line_id = #{@id_del_giro}") 
+      @tipo = params[:rating]
+    end
+  end
+
+
+  def inspeccion
+        set_municipio(:municipio_id)
+  @inspections = Inspection.all
+
+  if params[:q]
+    @inspectors = Inspector.search(params[:q]).order("created_at DESC")
+  else
+    @inspectors = Inspector.all
+  end
+
+  @dependency = Dependency.all
+
+
+  if params[:q]
+    @inspections = Inspection.search(params[:q]).order("created_at DESC")
+  else
+    @inspections = Inspection.all
+  end
+
+
+end 
+
+
   def create
     @municipio = Municipio.new(municipio_params)
 
@@ -38,8 +77,6 @@ class MunicipiosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /municipios/1
-  # PATCH/PUT /municipios/1.json
   def update
     respond_to do |format|
       if @municipio.update(municipio_params)
@@ -52,8 +89,6 @@ class MunicipiosController < ApplicationController
     end
   end
 
-  # DELETE /municipios/1
-  # DELETE /municipios/1.json
   def destroy
     @municipio.destroy
     respond_to do |format|
@@ -64,12 +99,12 @@ class MunicipiosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_municipio
-      @municipio = Municipio.find(params[:id])
+    def set_municipio(val)
+      @municipio = Municipio.find(params[val])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def municipio_params
       params.require(:municipio).permit(:nombre)
     end
-end
+  end

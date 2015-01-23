@@ -1,8 +1,15 @@
 class Inspector < ActiveRecord::Base
+  belongs_to :dependency
 
-belongs_to :dependency
+  scope :by_city,
+    -> (city) {
+      includes(:dependency).
+      where(dependencies: { municipio_id: city.id })
+    }
 
-  def self.search(query)
-    where("nombre ILIKE ?", "%#{query}%")
-  end
+  scope :search_by_city,
+    -> (city, query) {
+       by_city(city).
+       where("inspectors.nombre ILIKE ?", "%#{query}%")
+     }
 end

@@ -2,28 +2,20 @@ class RequirementsController < ApplicationController
     layout 'blanco'
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
 
-  # GET /requirements
-  # GET /requirements.json
   def index
     @requirements = Requirement.all
   end
 
-  # GET /requirements/1
-  # GET /requirements/1.json
   def show
   end
 
-  # GET /requirements/new
   def new
     @requirement = Requirement.new
   end
 
-  # GET /requirements/1/edit
   def edit
   end
 
-  # POST /requirements
-  # POST /requirements.json
   def create
     @requirement = Requirement.new(requirement_params)
 
@@ -38,8 +30,6 @@ class RequirementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /requirements/1
-  # PATCH/PUT /requirements/1.json
   def update
     respond_to do |format|
       if @requirement.update(requirement_params)
@@ -51,9 +41,7 @@ class RequirementsController < ApplicationController
       end
     end
   end
-
-  # DELETE /requirements/1
-  # DELETE /requirements/1.json
+  
   def destroy
     @requirement.destroy
     respond_to do |format|

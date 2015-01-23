@@ -1,79 +1,67 @@
-class DependenciesController < ApplicationController
-   layout 'blanco'
-  before_action :set_dependency, only: [:show, :edit, :update, :destroy]
+  class DependenciesController < ApplicationController
+     layout 'blanco'
+    before_action :set_dependency, only: [:show, :edit, :update, :destroy]
 
-  # GET /dependencies
-  # GET /dependencies.json
-  def index
-    @dependencies = Dependency.all
-  end
+    def index
+      @dependencies = Dependency.all
+    end
 
-  # GET /dependencies/1
-  # GET /dependencies/1.json
-  def show
-        @municipio = Municipio.all 
-  end
+    def show
+          @municipio = Municipio.all 
+    end
 
-  # GET /dependencies/new
-  def new
-    @dependency = Dependency.new
-    @municipio = Municipio.all 
-  end
+    def new
+      @dependency = Dependency.new
+      @municipio = Municipio.all 
+    end
 
-  # GET /dependencies/1/edit
-  def edit
-        @municipio = Municipio.all 
-  end
+    def edit
+          @municipio = Municipio.all 
+    end
 
-  # POST /dependencies
-  # POST /dependencies.json
-  def create
-    @dependency = Dependency.new(dependency_params)
+    def create
+      @dependency = Dependency.new(dependency_params)
 
-    respond_to do |format|
-      if @dependency.save
-        format.html { redirect_to @dependency, notice: 'Dependency was successfully created.' }
-        format.json { render :show, status: :created, location: @dependency }
-      else
-        format.html { render :new }
-        format.json { render json: @dependency.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @dependency.save
+          format.html { redirect_to @dependency, notice: 'Dependency was successfully created.' }
+          format.json { render :show, status: :created, location: @dependency }
+        else
+          format.html { render :new }
+          format.json { render json: @dependency.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
-  # PATCH/PUT /dependencies/1
-  # PATCH/PUT /dependencies/1.json
-  def update
-    respond_to do |format|
-      if @dependency.update(dependency_params)
-        format.html { redirect_to @dependency, notice: 'Dependency was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dependency }
-      else
-        format.html { render :edit }
-        format.json { render json: @dependency.errors, status: :unprocessable_entity }
+    def update
+      respond_to do |format|
+        if @dependency.update(dependency_params)
+          format.html { redirect_to @dependency, notice: 'Dependency was successfully updated.' }
+          format.json { render :show, status: :ok, location: @dependency }
+        else
+          format.html { render :edit }
+          format.json { render json: @dependency.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
-  # DELETE /dependencies/1
-  # DELETE /dependencies/1.json
-  def destroy
-    @dependency.destroy
-    respond_to do |format|
-      format.html { redirect_to dependencies_url, notice: 'Dependency was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dependency
-      @dependency = Dependency.find(params[:id])
-
+    def destroy
+      @dependency.destroy
+      respond_to do |format|
+        format.html { redirect_to dependencies_url, notice: 'Dependency was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def dependency_params
-      params.require(:dependency).permit(:nombre, :municipio_id)
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_dependency
+        @dependency = Dependency.find(params[:id])
+
+      end
+
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def dependency_params
+        params.require(:dependency).permit(:nombre, :municipio_id)
+      end
     end
-end

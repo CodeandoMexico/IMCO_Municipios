@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MiNegocio</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="info">
+    <div class="container">
+      <% if alert %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+      <% end %>
+
+      <% if notice %>
+      <div class="alert alert-success">
+        <%= notice %>
+      </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

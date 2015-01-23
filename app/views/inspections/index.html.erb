@@ -1,14 +1,18 @@
-<h3 class="title"><%= t('.title') %></h3>
+<div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <%= content_tag :h1, t('.title'), class: 'text-center' %>
+                <hr class="small">
+            </div>
+</div>
 
-<%= render "shared/search", custom_path: inspections_path, search_placeholder: t('.search_inspections') %>
-
+<%= render "shared/search", custom_path: municipio_inspections_path(@municipio), search_placeholder: t('.search_inspections') %>
 
 <div class="deck">
   <% if @inspections.any? %>
     <div class="table__card">
       <ul>
         <% @inspections.each do |inspection| %>
-          <%= link_to inspection_path(inspection) do %>
+          <%= link_to municipio_inspection_path(@municipio, inspection) do %>
           <li class="table--row">
             <div class="row--title"><%= inspection.nombre %></div>
             <div class="row--subtitle"><%= inspection.materia %></div>
@@ -19,8 +23,6 @@
       </ul>
     </div>
   <% else %>
-    <div class="alert alert-info">
-      <%= t('.no-inspections') %>
-    </div>
+    <%= render "shared/empty_resource", message: t('.no_inspections_available') %>
   <% end %>
 </div>

@@ -2,17 +2,18 @@ module Dashboard
   class InspectorsController < ApplicationController
     before_action :set_inspector, only: [:edit, :update, :destroy]
     before_action :authenticate_user!
-    layout 'user'
+    layout 'dashboard'
+
+    def index
+      @inspectors = policy_scope(Inspector)
+    end
 
     def new
       @inspector = Inspector.new
-      # authorize @inspector
-
       @dependency = Dependency.where(municipio_id: current_user.municipio_id)
     end
 
     def edit
-      # authorize @inspector
     end
 
     def create
@@ -21,7 +22,7 @@ module Dashboard
 
       respond_to do |format|
         if @inspector.save
-          format.html { redirect_to @inspector, notice: 'Inspector was successfully created.' }
+          format.html { redirect_to edit_dashboard_inspector_url(@inspector), notice: 'El inspector fue creado satisfactoriamente.' }
           format.json { render :show, status: :created, location: @inspector }
         else
           format.html { render :new }
@@ -35,7 +36,7 @@ module Dashboard
 
       respond_to do |format|
         if @inspector.update(inspector_params)
-          format.html { redirect_to @inspector, notice: 'Inspector was successfully updated.' }
+          format.html { redirect_to edit_dashboard_inspector_url(@inspector), notice: 'El inspector fue actualizado satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @inspector }
         else
           format.html { render :edit }
@@ -49,7 +50,7 @@ module Dashboard
 
       @inspector.destroy
       respond_to do |format|
-        format.html { redirect_to inspectors_url, notice: 'Inspector was successfully destroyed.' }
+        format.html { redirect_to dashboard_inspectors_url, notice: 'El inspector fue borrado satisfactoriamente.' }
         format.json { head :no_content }
       end
     end

@@ -10,9 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require font-awesome
+ *= require_tree .
  *= require_self
+ *= require chosen
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -21,9 +22,18 @@
  @import "cards";
 
 
-
+// colors
 $grey-200: #EEEEEE;
+$grey-400: #BDBDBD;
+$grey-500: #9E9E9E;
+
 $teal-500: #009688;
+
+$user_default_color: #009688;
+$admin_default_color: #3B3C3C;
+$default_text_color: #fff;
+
+// styles
 
 body.info {
  min-height: 2000px;
@@ -32,11 +42,45 @@ body.info {
 }
 
 .navbar-default {
-  background-color: #009688;
+  background-color: $user_default_color;
 }
 
+.navbar-admin {
+  background-color: $admin_default_color;
+}
+
+nav {
+  color: $default_text_color;
+}
+
+.navbar-nav > li > a {
+  &:link {
+    color: $default_text_color;
+  }
+
+  /* visited link */
+  &:visited {
+    color: $default_text_color;
+  }
+
+  /* mouse over link */
+  &:hover {
+    color: $admin_default_color;
+  }
+
+  /* selected link */
+  &:active {
+    color: $admin_default_color;
+  }
+}
 .navbar-default .navbar-brand {
-  color: #fff;
+    color: #ffffff;
+}
+
+.link_image {
+  background-color: white;
+  border: 1px white solid;
+  margin: 15px;
 }
 
 .col-md-3 {
@@ -56,4 +100,35 @@ body.info {
 min-height: 100%;
 padding-top: 70px;
 // background-color: #3F9B63;
+}
+
+.input-group-addon {
+padding: 6px 12px;
+font-size: 14px;
+font-weight: normal;
+line-height: 1;
+color: #fff;
+text-align: center;
+background-color: rgba(0,0,0,0);
+border: 0px solid #00B26E;
+border-radius: 4px;
+}
+
+
+
+.input-group-addon {
+padding: 6px 12px;
+font-size: 14px;
+font-weight: normal;
+line-height: 1;
+color: #fff;
+text-align: center;
+background-color: rgba(0,0,0,0);
+border: 0px solid #00B26E;
+border-radius: 4px;
+}
+
+.empty-resource {
+  text-align: center;
+  color: $grey-500;
 }

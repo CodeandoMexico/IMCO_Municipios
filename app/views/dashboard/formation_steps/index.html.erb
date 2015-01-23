@@ -1,0 +1,24 @@
+<h2> <%= t('titles.formation_steps') %></h2>
+<%= link_to t('.new_formation_step'), new_dashboard_formation_step_path, class: 'btn btn-default pull-right' %>
+
+<table class="table">
+   <thead>
+     <th>#</th>
+     <th><%= t('.name') %></th>
+     <th><%= t('.dependency') %></th>
+     <th><%= t('.actions') %></th>
+   </thead>
+   <tbody>
+     <% @formation_steps.all.each_with_index do |formation, idx| %>
+       <%= content_tag :tr do %>
+            <%= content_tag :td, idx + 1 %>
+            <%= content_tag :td, formation.name %>
+            <%= content_tag :td, formation.municipio.nombre %>
+            <%= content_tag :td do %>
+              <%= link_to t('form.actions.edit'), edit_dashboard_formation_step_path(formation) %> |
+              <%= link_to t('form.actions.destroy'), dashboard_formation_step_path(formation), method: :delete, data: { confirm: t('form.confirmations.delete_formation_step') } %>
+            <% end %>
+       <% end %>
+     <% end %>
+   </tbody>
+</table>

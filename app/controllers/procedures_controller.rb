@@ -2,30 +2,22 @@ class ProceduresController < ApplicationController
     layout 'blanco'
   before_action :set_procedure, only: [:show, :edit, :update, :destroy]
 
-  # GET /procedures
-  # GET /procedures.json
   def index
     @procedures = Procedure.all
   end
 
-  # GET /procedures/1
-  # GET /procedures/1.json
   def show
   end
 
-  # GET /procedures/new
   def new
     @procedure = Procedure.new
     @dependency = Dependency.all
   end
 
-  # GET /procedures/1/edit
   def edit
     @dependency = Dependency.all
   end
 
-  # POST /procedures
-  # POST /procedures.json
   def create
     @procedure = Procedure.new(procedure_params)
 
@@ -40,8 +32,6 @@ class ProceduresController < ApplicationController
     end
   end
 
-  # PATCH/PUT /procedures/1
-  # PATCH/PUT /procedures/1.json
   def update
     respond_to do |format|
       if @procedure.update(procedure_params)
@@ -54,8 +44,6 @@ class ProceduresController < ApplicationController
     end
   end
 
-  # DELETE /procedures/1
-  # DELETE /procedures/1.json
   def destroy
     @procedure.destroy
     respond_to do |format|

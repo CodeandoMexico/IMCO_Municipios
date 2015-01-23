@@ -1,27 +1,62 @@
-<h1>Listing procedure_requirements</h1>
+<div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <%= content_tag :h1,"Tramites", class: 'text-center' %>
+                <hr class="small">
+            </div>
+</div>
+<%= form_for :get, :html => {:method => :get}, :url => { :controller => :procedure_lines, :action => :index }  do |f| %>
+<p>
+  ¿Cual es el giro de tu negocio?
+  <%= f.select :lines, Line.where(municipio_id: @municipio).map { |u| [u.nombre, u.id] },{ include_blank: true ,:selected =>@line  }, 
+  { class: 'chosen-select' }%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @procedure_lines.each do |procedure_line| %>
-      <tr>
-        <td>id: <%= procedure_line.id %></td>
-        <td><%= Procedure.find(procedure_line.procedure_id).nombre %></td>
-        <td><%= Line.find(procedure_line.line_id).nombre %></td>
-        <td><%= link_to 'Show', procedure_line %></td>
-        <td><%= link_to 'Edit', edit_procedure_line_path(procedure_line) %></td>
-        <td><%= link_to 'Destroy', procedure_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class= "field">
+    <%tipos = {'Físico' => 'TF', 'Moral' => 'TM', 'Ambos' => 'A'}%>
+    Mostrar para personas:
+    <%=  radio_button_tag :rating, 'TF', @tipo=='TF' %>Fisica
+    <%=  radio_button_tag :rating, 'TM', @tipo=='TM'%>Moral
+    <%=  radio_button_tag :rating, 'A', @tipo=='A' %>Ambas
+  </div>
+  <br>
+      <div class="actions">
+      <%= f.submit 'Aceptar' %>
+    </div>
+  <div class="deck">
+    <% unless @tramites_del_giro.nil? || @tramites_del_giro.empty?%>
+    <div class="table__card">
+      <ul>
+        <% dialogo_sin_tramites = 'false'%>
+        <% @tramites_del_giro.each do |tramite_de_giro| %>
+          <%if tramite_de_giro.tipo == @tipo || @tipo == 'A' %>
+              <%= link_to municipio_procedure_line_path(@municipio,tramite_de_giro) do %>
+              <li class="table--row">
+                <div class="row--"><%= tramite_de_giro.nombre %></div>
+                <% dialogo_sin_tramites = 'true'%>
+              </li>
+            <%end%>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <% else %>
+      <% dialogo_sin_tramites = 'false'%>
     <% end %>
-  </tbody>
-</table>
+    <% if dialogo_sin_tramites == 'false'%>
+      <div class="alert alert-info">
+        <%= t('.ningun-tramites') %>
+      </div>
+    <%end%>
 
-<br>
+    <%end%>
+  </div>
 
-<%= link_to 'New Dependency', new_procedure_line_path %>
+  <script>
+  $(document).ready(function(){ 
+    $('.chosen-select').chosen({
+     allow_single_deselect: true,
+     no_results_text: 'No hay resultados',
+     placeholder_text: 'Selecciona una opción',
+     width: '500px'
+   });
+  })	
+  </script>

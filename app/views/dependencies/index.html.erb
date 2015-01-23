@@ -20,6 +20,8 @@
   </tbody>
 </table>
 <br>
-          
-
-<%= link_to 'New Dependency', new_dependency_path %>
+<% else %>
+    <div class="alert alert-info">
+      <%= t('.no-inspections') %>
+    </div>
+<% end %>

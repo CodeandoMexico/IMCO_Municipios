@@ -36,3 +36,6 @@ build/
 
 config/database.yml
 .DS_Store
+
+# Cloud 9
+/.c9/

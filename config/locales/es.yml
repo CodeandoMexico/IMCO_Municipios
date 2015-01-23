@@ -1,4 +1,53 @@
 es:
+  titles:
+    inspections: Inspecciones
+    inspectors: Inspectores
+    formation_steps: Tramites de Apertura
+  form:
+    actions:
+      edit: Editar
+      destroy: Borrar
+    confirmations:
+      delete_inspection: ¿Estás seguro que deseas borrar esta inspección?
+      delete_inspector: ¿Estás seguro que deseas borrar a este inspector?
+      delete_formation_step: ¿Estás seguro que deseas borrar a este trámite?
+  dashboard:
+    inspections:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_inspection: Nueva Inspección
+      new:
+        title: Nueva inspección
+      edit:
+        title: Editar inspección
+      form:
+        create_inspection: Guardar cambios
+    inspectors:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_inspector: Nuevo Inspector
+      new:
+        title: Nuevo inspector
+      edit:
+        title: Editar inspector
+      form:
+        create_inspector: Guardar cambios
+    formation_steps:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_formation_step: Nuevo Tramite Apertura
+      new:
+        title: Nuevo Tramite de Apertura
+      edit:
+        title: Editar Tramite de Apertura
+      form:
+        create_formation_steps: Guardar cambios
   devise:
     sessions:
       user:
@@ -19,11 +68,25 @@ es:
     index:
       title: Inspecciones
       search_inspections: Buscar inspecciones...
+      no_inspections_available: No encontramos inspecciones en este municipio
   inspectors:
     index:
       title: Inspectores
       search_inspectors: Buscar inspectores...
+      no_inspectors_available: No encontramos inspectores en este municipio
+  formation_steps:
+    index:
+      title: Nuevo negocio
   pages:
     inspec:
       title: Inspecciones
       search_inspections: Buscar inspecciones...
+  municipios:
+    index:
+      title: Selecciona una opción
+  layouts:
+    blanco:
+      new: NUEVO NEGOCIO
+      tramite: TRAMITES
+      inspections: INSPECCIONES
+      inspectors: INSPECTORES

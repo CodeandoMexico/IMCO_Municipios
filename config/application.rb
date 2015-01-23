@@ -22,11 +22,11 @@ module PruebaDB
 
     # devise layout settings
     config.to_prepare do
-      Devise::SessionsController.layout "user.html.erb"
-      Devise::RegistrationsController.layout "user.html.erb"
-      Devise::ConfirmationsController.layout "user.html.erb"
-      Devise::UnlocksController.layout "user.html.erb"
-      Devise::PasswordsController.layout "user.html.erb"
+      Devise::SessionsController.layout "session.html.erb"
+      Devise::RegistrationsController.layout "session.html.erb"
+      Devise::ConfirmationsController.layout "session.html.erb"
+      Devise::UnlocksController.layout "session.html.erb"
+      Devise::PasswordsController.layout "session.html.erb"
     end
 
     config.serve_static_assets = true

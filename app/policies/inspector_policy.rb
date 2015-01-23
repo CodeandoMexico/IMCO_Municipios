@@ -1,6 +1,6 @@
 class InspectorPolicy < ApplicationPolicy
   def create?
-    record.dependency.municipio_id == user.municipio_id
+    record.dependency.municipio_id == user.municipio_id && user.admin?
   end
 
   # def new?
@@ -21,7 +21,13 @@ class InspectorPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope
+      if user.admin?
+        scope.
+          includes(:dependency).
+          where(dependencies: { municipio_id: user.municipio_id })
+      else
+        scope
+      end
     end
   end
 end

@@ -3,23 +3,42 @@ class ProcedureLinesController < ApplicationController
   before_action :set_line, only: [:show, :edit, :update, :destroy]
 
  def index
-   @procedure_lines =  ProcedureLine.all
+     set_municipio(:municipio_id)
+     @procedure = Procedure.all
+     @id_del_giro = "0"
+     @tipo  = 'A'
+     valores  if params[:get]
+
  end
+ 
+  def valores
+     @line = params[:get][:lines]
+     @tipo = params[:rating]
+     @tramites_del_giro = Line.find(@line).procedures.includes(:procedure_lines).where("line_id = #{@line}") 
+
+  end
 
  def show
-  @procedure_requirements = ProcedureRequirement.all
-  @procedure_lines=  ProcedureLine.all
-@requirements = Requirement.all
-@line = Line.find(@procedure_line.line_id).nombre
-@procedure = Procedure.find(@procedure_line.procedure_id).nombre 
-@procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id ) 
+     set_municipio(:municipio_id)
+     
+    @procedure_requirements = ProcedureRequirement.all
+    @procedure_lines=  ProcedureLine.all
+    @requirements = Requirement.all
+    @line = Line.find(@procedure_line.line_id).nombre
+    @procedure = Procedure.find(@procedure_line.procedure_id).nombre 
+    @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id) 
+
 
  end
+ 
+
 
  def new
   @procedure_line = ProcedureLine.new
   @procedure = Procedure.all
   @Line = Line.all
+
+  
 end
 
 def edit
@@ -63,5 +82,16 @@ private
     def line_params
       params.require(:procedure_line).permit(:id, :procedure_id, :line_id)
     end
+    
 
+    # Use callbacks to share common setup or constraints between actions.
+    def set_municipio(val)
+      @municipio = Municipio.find(params[val])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def municipio_params
+      params.require(:municipio).permit(:nombre)
+    end
   end
+

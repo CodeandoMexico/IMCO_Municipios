@@ -1,0 +1,56 @@
+<div id="form-container">
+  <%= form_for [:dashboard, @formation_step], html: { class: 'form-horizontal' } do |f| %>
+    <% if @formation_step.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@formation_step.errors.count, "error") %> prohibited this formation_step from being saved:</h2>
+
+        <ul>
+        <% @formation_step.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :path, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :path, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :type, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :type, class: 'form-control' %>
+      </div>
+    </div>
+
+   
+
+    <div class="form-group">
+      <%#= f.label :dependencia, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%#= collection_select(:inspection, :dependency_id, Dependency.all, :id, :nombre, {:prompt => false}, class: 'form-control') %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t('.create_formation_steps'), class: 'btn btn-default pull-right' %>
+    </div>
+  <% end %>
+</div>

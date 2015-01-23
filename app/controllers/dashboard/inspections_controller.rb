@@ -2,7 +2,11 @@ module Dashboard
   class InspectionsController < ApplicationController
     before_action :set_inspection, only: [:edit, :update, :destroy]
     before_action :authenticate_user!
-    layout 'user'
+    layout 'dashboard'
+
+    def index
+      @inspections = policy_scope(Inspection)
+    end
 
     def new
       @inspection = Inspection.new
@@ -19,7 +23,7 @@ module Dashboard
 
       respond_to do |format|
         if @inspection.save
-          format.html { redirect_to @inspection, notice: 'Inspection was successfully created.' }
+          format.html { redirect_to edit_dashboard_inspection_url(@inspection), notice: 'La inspección fue creada satisfactoriamente.' }
           format.json { render :show, status: :created, location: @inspection }
         else
           format.html { render :new }
@@ -33,7 +37,7 @@ module Dashboard
 
       respond_to do |format|
         if @inspection.update(inspection_params)
-          format.html { redirect_to @inspection, notice: 'Inspection was successfully updated.' }
+          format.html { redirect_to edit_dashboard_inspection_url(@inspection), notice: 'La inspección fue actualizada satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @inspection }
         else
           format.html { render :edit }
@@ -44,10 +48,10 @@ module Dashboard
 
     def destroy
       authorize @inspection
-      
+
       @inspection.destroy
       respond_to do |format|
-        format.html { redirect_to inspections_url, notice: 'Inspection was successfully destroyed.' }
+        format.html { redirect_to dashboard_inspections_url, notice: 'La inspección fue borrada satisfactoriamente.' }
         format.json { head :no_content }
       end
     end

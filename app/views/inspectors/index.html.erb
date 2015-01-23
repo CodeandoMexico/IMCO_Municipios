@@ -1,20 +1,22 @@
-<!-- <td><%#= inspector.dependency.nombre %></td> -->
 <h3 class="title"><%= t('.title') %></h3>
 
 <div class="row">
-  <%= render "shared/search", custom_path: inspectors_path, search_placeholder: t('.search_inspectors') %>
+  <%= render "shared/search", custom_path: municipio_inspectors_path(@municipio), search_placeholder: t('.search_inspectors') %>
 
-
-  <% @inspectors.each do |inspector| %>
-    <%= link_to inspector_path(inspector) do %>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <%= image_tag "missing-image.gif" %>
-        <div class="caption">
-          <h4 class="title"><%= inspector.nombre %></h4>
+  <% if @inspectors.any? %>
+    <% @inspectors.each do |inspector| %>
+      <%= link_to municipio_inspector_path(@municipio,inspector) do %>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <%= image_tag "missing-image.gif" %>
+          <div class="caption">
+            <h4 class="title"><%= inspector.nombre %></h4>
+          </div>
         </div>
       </div>
-    </div>
+      <% end %>
     <% end %>
+  <% else %>
+    <%= render "shared/empty_resource", message: t('.no_inspectors_available') %>
   <% end %>
 </div>
