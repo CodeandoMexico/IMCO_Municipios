@@ -37,7 +37,7 @@ module Dashboard
 
       respond_to do |format|
         if @inspection.update(inspection_params)
-          format.html { redirect_to edit_dashboard_inspection_url(@inspection), notice: 'La inspección fue actualizada satisfactoriamente.' }
+          format.html { redirect_to dashboard_inspections_url, notice: 'La inspección fue actualizada satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @inspection }
         else
           format.html { render :edit }

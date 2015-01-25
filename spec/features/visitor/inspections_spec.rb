@@ -51,7 +51,7 @@ feature 'A visitor enters the page' do
     # let's verify the site 'only' gave us the last inspection
     expect(page).to have_content last_inspection.name
 
-    all_inspections_make_an_appereance_except_for last_inspection
+    all_inspections_should_not_make_an_appereance_except_for last_inspection
 
     # save_and_open_page # uncomment to view webpage output snapshot
   end
@@ -70,9 +70,9 @@ feature 'A visitor enters the page' do
     end
   end
 
-  def all_inspections_make_an_appereance_except_for(inspection_that_should_be_absent)
+  def all_inspections_should_not_make_an_appereance_except_for(inspection_that_should_be_present)
     inspections.each do |inspection|
-      if inspection != inspection_that_should_be_absent
+      if inspection != inspection_that_should_be_present
         # use of to_not, should be used only sporadically
         expect(page).to_not have_content inspection.name
       end

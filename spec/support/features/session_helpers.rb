@@ -1,5 +1,6 @@
 module SessionHelpers
-  def sign_in(admin)
+  # user based helpers
+  def sign_in_admin(admin)
     visit dashboard_path
     fill_in 'user_email', with: admin.email
     fill_in 'user_password', with: admin.password
@@ -9,4 +10,6 @@ module SessionHelpers
   def sign_out
     #
   end
+
+  # inspection based helpers
 end
