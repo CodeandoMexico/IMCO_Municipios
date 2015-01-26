@@ -10,6 +10,4 @@ module SessionHelpers
   def sign_out
     #
   end
-
-  # inspection based helpers
 end
