@@ -136,12 +136,14 @@ es:
       after_tips: Tips (después)
       sanctions_tips: Sanciones
       more_info: Más información
-
   inspectors:
     index:
       title: Inspectores
       search_inspectors: Buscar inspectores...
       no_inspectors_available: No encontramos inspectores en este municipio
+      previous: "&lt; Previous"
+      next: "Next &gt;"
+      truncate: "..."
   formation_steps:
     index:
       title: Nuevo negocio

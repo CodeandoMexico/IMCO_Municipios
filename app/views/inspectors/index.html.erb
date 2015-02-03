@@ -16,6 +16,7 @@
       </div>
       <% end %>
     <% end %>
+      <%= paginate @inspectors, :outer_window => 3 %>
   <% else %>
     <%= render "shared/empty_resource", message: t('.no_inspectors_available') %>
   <% end %>

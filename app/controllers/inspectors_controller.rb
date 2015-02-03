@@ -5,9 +5,12 @@ class InspectorsController < ApplicationController
 
   def index
     if params[:q]
-      @inspectors = Inspector.search_by_city(@municipio, params[:q])
+      @busqueda =Inspector.search_by_city(@municipio, params[:q])
+      @busqueda.count
+      @inspectors = @busqueda.page(params[:page]).per(6)
     else
-      @inspectors = Inspector.by_city(@municipio)
+      @busqueda =Inspector.by_city(@municipio)
+      @inspectors = @busqueda.page(params[:page]).per(6)
     end
   end
 

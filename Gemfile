@@ -39,6 +39,8 @@ gem 'pundit'
 gem 'chosen-rails' #autocompletar
 gem 'bootstrap-switch-rails', '~> 3.0.0' 
 
+gem 'kaminari' #para paginar
+
 group :development do
   # Thin server
   gem 'thin'
