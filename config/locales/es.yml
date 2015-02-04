@@ -1,4 +1,11 @@
 es:
+  views:
+      pagination:
+        first: "&laquo; Primero"
+        last: "último &raquo;"
+        previous: "&lsaquo; Anterior"
+        next: "Siguiente &rsaquo;"
+        truncate: "&hellip;"
   titles:
     inspections: Inspecciones
     inspectors: Inspectores
@@ -141,9 +148,6 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspectores...
       no_inspectors_available: No encontramos inspectores en este municipio
-      previous: "&lt; Previous"
-      next: "Next &gt;"
-      truncate: "..."
   formation_steps:
     index:
       title: Nuevo negocio
