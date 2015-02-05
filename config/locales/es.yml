@@ -1,4 +1,11 @@
 es:
+  views:
+      pagination:
+        first: "&laquo; Primero"
+        last: "último &raquo;"
+        previous: "&lsaquo; Anterior"
+        next: "Siguiente &rsaquo;"
+        truncate: "&hellip;"
   titles:
     inspections: Inspecciones
     inspectors: Inspectores
@@ -136,7 +143,6 @@ es:
       after_tips: Tips (después)
       sanctions_tips: Sanciones
       more_info: Más información
-
   inspectors:
     index:
       title: Inspectores
