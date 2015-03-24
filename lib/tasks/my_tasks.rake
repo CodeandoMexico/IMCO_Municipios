@@ -13,7 +13,7 @@ namespace :my_tasks do
   desc "Load lines to the db"
   task :load_lines  => :environment do |t, args| 
 
-     cities_files = ['lib/datasets/giros_chalco.csv', 'lib/datasets/giros_metepec.csv']
+     cities_files = ['lib/datasets/giros_chalco.csv', 'lib/datasets/giros_metepec.csv','lib/datasets/giros_lerma.csv']
 
      clean_db(UserFormationStep)#al perder las referencias se debe eliminar las relaciones
     clean_db(Line) 
@@ -47,7 +47,7 @@ namespace :my_tasks do
 
     #clean_db(Dependency) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/dependencias_chalco.csv', 'lib/datasets/dependencias_metepec.csv']
+    cities_files = ['lib/datasets/dependencias_chalco.csv', 'lib/datasets/dependencias_metepec.csv','lib/datasets/dependencias_lerma.csv']
 
     cities_files.each do |city_file|
       CSV.foreach(city_file, :headers => true) do |row|
@@ -64,7 +64,7 @@ namespace :my_tasks do
   desc "Load inspectors to the db"
   task :load_inspectors  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspectores_chalco.csv', 'lib/datasets/inspectores_metepec.csv']
+    cities_files = ['lib/datasets/inspectores_chalco.csv', 'lib/datasets/inspectores_metepec.csv','lib/datasets/inspecciones_lerma.csv']
 
     #clean_db(Inspector) # let's erase everyone from the db
 
@@ -110,7 +110,7 @@ namespace :my_tasks do
 
     #clean_db(Requirement) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/requisitos_chalco.csv', 'lib/datasets/requisitos_metepec.csv']
+    cities_files = ['lib/datasets/requisitos_chalco.csv', 'lib/datasets/requisitos_metepec.csv','lib/datasets/requisitos_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
@@ -136,7 +136,7 @@ namespace :my_tasks do
   desc "Load inspections to the db"
   task :load_inspections  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspecciones_chalco.csv', 'lib/datasets/inspecciones_metepec.csv']
+    cities_files = ['lib/datasets/inspecciones_chalco.csv', 'lib/datasets/inspecciones_metepec.csv','lib/datasets/inspecciones_lerma.csv']
     #clean_db(Inspection) # let's erase everyone from the db
     cities_files.each do |city_file|
       # init variables
@@ -202,7 +202,7 @@ namespace :my_tasks do
 
   #  clean_db(FormationStep) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/apertura_chalco.csv', 'lib/datasets/apertura_metepec.csv']
+    cities_files = ['lib/datasets/apertura_chalco.csv', 'lib/datasets/apertura_metepec.csv','lib/datasets/apertura_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
@@ -230,7 +230,7 @@ namespace :my_tasks do
    desc "Load procedures to the db"
   task :load_procedures  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/tramites_chalco.csv', 'lib/datasets/tramites_metepec.csv']
+    cities_files = ['lib/datasets/tramites_chalco.csv', 'lib/datasets/tramites_metepec.csv',,'lib/datasets/tramites_lerma.csv']
 
     #clean_db(Procedure) # let's erase everyone from the db
     #clean_db(ProcedureLine)
