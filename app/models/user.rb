@@ -12,7 +12,14 @@ class User < ActiveRecord::Base
   mount_uploader :land_permission_file, PdfUploader
 
 
-def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def profile_complete?
+    self.address.present? &&
+    self.operation_license_file.present? &&
+    self.land_permission_file.present? &&
+    self.operation_license.present?
+  end
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user
@@ -32,7 +39,7 @@ def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
        end
   end
 
-def self.connect_to_linkedin(auth, signed_in_resource=nil)
+  def self.connect_to_linkedin(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user

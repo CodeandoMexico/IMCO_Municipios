@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-<!--Header-->
-<head>
-    <%if @municipio.nil? %>
-	 <title>Mi Negocio México</title>
-  <%else%>
-    <title>Mi Negocio México | <%=@municipio.nombre%></title>
-  <%end%>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= favicon_link_tag 'favicon.ico' %>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <%= csrf_meta_tags %>
-</head>
-<!--Termina Header-->
-<!--Body-->
- <body class="info">
-  <%= render "shared/navbar_menu" %>
-  <%= yield %>
-	<%= render "shared/footer" %>
-</body>
+  <!--Header-->
+  <head>
+      <% if @municipio.nil? %>
+  	   <title>Mi Negocio México</title>
+      <% else %>
+        <title>Mi Negocio México | <%= @municipio.nombre %></title>
+      <% end %>
+
+      <!-- Load resources -->
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%= javascript_include_tag 'application' %>
+      <%= favicon_link_tag 'favicon.ico' %>
+      <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <%= csrf_meta_tags %>
+  </head>
+
+  <body class="info">
+    <%= render "shared/navbar_menu" %>
+    <%= yield %>
+  	<%= render "shared/footer" %>
+  </body>
 </html>

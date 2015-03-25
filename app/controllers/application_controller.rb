@@ -36,7 +36,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
-    root_path
+    return root_path if resource.profile_complete?
+    edit_user_path(resource)
   end
 
   protected
