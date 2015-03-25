@@ -26,8 +26,6 @@ def valores
         end
       end 
    @formation_steps = FormationStep.by_city(@municipio)
-   # @heading = view_context.heading_search(Line.find(@line).nombre.downcase)
-   # @subheading = view_context.subheading_search(@tipo)
  end
 end
 
