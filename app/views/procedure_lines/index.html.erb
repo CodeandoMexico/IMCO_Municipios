@@ -50,15 +50,39 @@
                     </div>
                   </div>
                   <br>
-                  <div class="row text-left">
-                    <div class="col-xs-6 col-sm-3"></div>
-                    <div class="clearfix visible-xs-block"></div>
-                    <div class="actions col-md-offset-3">
-                      <%= f.submit t('buttons.ok'),:class => 'btn btn-success btn-lg outlineverde'%>
-                    </div>
-                  </div>
+
                 </div>
               </div>
+              <div class="row text-center">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-7 five-three">
+                      <div class="row">
+                        <div class="col-sm-4 margin-bottom-button">
+                          <%= f.submit t('buttons.crea'),:class => 'btn btn-success btn-lg outlineverde btn-block'%>
+                        </div>
+                        <div class="col-sm-4 margin-bottom-button">
+                          <%= f.submit t('buttons.administra'),:class => 'btn btn-success btn-lg outlineverde btn-block'%>
+                        </div>
+                        <div class="col-sm-4 margin-bottom-button">
+                          <%= f.submit t('buttons.crece'),:class => 'btn btn-success btn-lg outlineverde btn-block'%>
+                        </div><!-- end inner row -->
+                      </div>
+                    </div>
+                    <div class="col-sm-5 five-two">
+                      <div class="row">
+                        <div class="col-sm-6 margin-bottom-button">
+                          <%= f.submit t('buttons.construye'),:class => 'btn btn-success btn-lg outlineverde btn-block'%>
+                        </div>
+                        <div class="col-sm-6 margin-bottom-button">
+                          <%= f.submit t('buttons.cierra'),:class => 'btn btn-success btn-lg outlineverde btn-block'%>
+                        </div>
+                      </div><!-- end inner row -->
+                    </div>
+                  </div>​<!-- end outer row -->
+                </div>
+              </div>   
+
               <div class="row text-center">
                 <div class="col-lg-12">
                   <%= render "shared/procedure_lines_result" %>
@@ -72,10 +96,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
 

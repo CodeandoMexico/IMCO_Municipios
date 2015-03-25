@@ -20,6 +20,11 @@ es:
     procedures: Requerimientos
   buttons:
     ok: Aceptar
+    crea: Crear
+    administra: Administrar
+    crece: Crecer
+    construye: Construir
+    cierra: Cerrar
   navbar:
     new: Nuevo negocio
     tramite: Trámites
