@@ -25,7 +25,10 @@ max-height: auto; /* or to whatever you want here */
 }
 
 .btn-lg-social {
-   width: 100%;
+   min-width: 480px;
+   max-width: 480px;
+   display: block !important;
+   margin-bottom: 15px !important;
 }
 
 .modal-dialog-center {
@@ -43,6 +46,3 @@ max-height: auto; /* or to whatever you want here */
 }
 
 .row-padding-bottom{padding-bottom: 150px;}
-
-
-

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   post "municipios/search"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
+  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :municipios, only: [:show] do
     get 'about'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
   end
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:new, :create, :edit, :update]
 
   root 'imcos#index'
 end

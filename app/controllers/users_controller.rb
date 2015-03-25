@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_filter :set_user
   layout 'session'
 
+  def new
+  end
+
+  def create
+  end
+
   def edit
     redirect_to root_path if current_user.nil?
     @user = current_user

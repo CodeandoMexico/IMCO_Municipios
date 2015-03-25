@@ -140,6 +140,9 @@ es:
       form:
         create_dependency: Guardar cambios
   devise:
+    omniauth_callbacks:
+      user:
+        success: Has iniciado sesión.
     sessions:
       user:
         signed_in: Has iniciado sesión.
