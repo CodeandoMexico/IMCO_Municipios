@@ -271,6 +271,8 @@ namespace :my_tasks do
         tipo = row.to_hash['tipo']
         giros = row.to_hash['giros']
         tramites = row.to_hash['tramites']
+        categoria = row.to_hash['categoria']
+        sare = row.to_hash['sare']
 
         if dependency.present? && row_does_not_exist_in_the_db(Procedure, {
             nombre: name,
@@ -284,7 +286,9 @@ namespace :my_tasks do
              costo: cost,
              vigencia: supervisor,
              contacto: contact,
-             tipo: getTipo(tipo)
+             tipo: getTipo(tipo),
+             categoria: categoria,
+             sare: sare
           )
 
           giros.split('; ').each do |v|

@@ -55,6 +55,20 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :categoria, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :categoria, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :sare, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :sare, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= f.label :dependency, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.select :dependency_id, @dependencies.map { |u| [u.nombre, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>

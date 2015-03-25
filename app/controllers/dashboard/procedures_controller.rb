@@ -78,7 +78,7 @@ module Dashboard
     end
 
     def procedure_params
-      params.require(:procedure).permit(:nombre, :duracion, :costo, :vigencia, :contacto, :tipo, :dependency_id, :procedure=>{:requirement_ids => []}, :procedure=>{:line_ids => []})
+      params.require(:procedure).permit(:nombre, :duracion, :costo, :vigencia, :contacto, :tipo, :dependency_id, :categoria, :sare, :procedure=>{:requirement_ids => []}, :procedure=>{:line_ids => []})
     end
 
     def create_relation_procedure_requirements
