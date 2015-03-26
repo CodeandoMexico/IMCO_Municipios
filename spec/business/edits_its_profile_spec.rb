@@ -9,6 +9,7 @@ feature 'A business logs in' do
 
   scenario 'and edits his profile' do
     new_user_info = {
+      business_name: 'ACME Inc.',
       address: 'Fraccionamiento de los Olivos #1, Nuevo León, México',
       operation_license: 'AN49FN40865J',
       operation_license_file: operation_license_file_path,
@@ -23,6 +24,7 @@ feature 'A business logs in' do
 
     # let's validate the information uploaded
     expect(page).to have_content I18n.t('flash.users.updated')
+    expect(page).to have_selector ("input[value=\'#{new_user_info.fetch(:business_name)}\']")
     expect(page).to have_content new_user_info.fetch(:address)
     expect(page).to have_selector ("input[value=\'#{new_user_info.fetch(:operation_license)}\']")
     expect(page).to have_content user.operation_license_file_identifier
@@ -30,6 +32,7 @@ feature 'A business logs in' do
   end
 
   def update_user_profile_with(args)
+    fill_in 'user[business_name]', with: args.fetch(:business_name)
     fill_in 'user[address]', with: args.fetch(:address)
     fill_in 'user[operation_license]', with: args.fetch(:operation_license)
     attach_file 'user[operation_license_file]', args.fetch(:operation_license_file)
