@@ -264,6 +264,17 @@ es:
       no_municipio: ¿No encuentras tu municipio? haz
       click: clic aquí
       Aceptar: Aceptar
+      iniciar_sesion: Iniciar sesión
+  users:
+    index:
+      iniciar_sesion: Iniciar sesión
+    edit:
+      editar_perfil: Editar perfil
+      adress: derección
+      operation_license: Licencia de operación (Folio)
+      operation_license_file: Licencia de operación (Archivo)
+      land_permission_file: Permiso de uso de suelo (Archivo)
+      guardar: Guardar
   layouts:
     blanco:
       new: NUEVO NEGOCIO
