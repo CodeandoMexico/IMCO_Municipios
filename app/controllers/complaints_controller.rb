@@ -8,8 +8,13 @@ class ComplaintsController < ApplicationController
   end
 
   def create
-    @complaint = Complaint.new
-    if @complaint.validate_and_save(@municipio, complaint_params)
+    @complaint = Complaint.new(
+                  municipio: @municipio,
+                  reason: complaint_params[:reason],
+                  custom_reason: complaint_params[:custom_reason],
+                  description: complaint_params[:description]
+                 )
+    if @complaint.save
       redirect_to municipio_inspections_path(@municipio),
         notice: I18n.t('complaints.created_successfully')
     else

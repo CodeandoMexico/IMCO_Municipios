@@ -7,7 +7,7 @@ $negro: #000000;
 	Name:		Push - Bootstrap Button Pack
 	Author:		BootstrapBay - (http://www.bootstrapbay.com/)
 	Version:	1.0
-	
+
 *********************************************************************/
 
 /******************************************************
@@ -121,17 +121,17 @@ $negro: #000000;
 .btn.outlineverde {
 	background: none;
 	padding: 12px 22px;
-		outline: none;
+	outline: none;
 }
 .btn-primary.outline {
 	border: 2px solid $blanco;
 	color: $blanco;
-		outline: none;
+	outline: none;
 }
 .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
 	color: $blanco;
 	border-color: $blanco;
-		outline: none;
+	outline: none;
 }
 .btn-primary.outline:active, .btn-primary.outline.active {
 	border-color: $blanco;
@@ -141,7 +141,7 @@ $negro: #000000;
 .btn-success.outline {
 	border: 2px solid $blanco;
 	color: $blanco;
-		outline: none;
+	outline: none;
 }
 .btn-success.outline:hover, .btn-success.outline:focus, .btn-success.outline:active, .btn-success.outline.active, .open > .dropdown-toggle.btn-success {
 	border-color: $blanco;
@@ -445,7 +445,7 @@ $negro: #000000;
 }
 
 .btn-search{
-	
+
 margin: 0px 0px;
 	padding: 0px 0px;
 	border-radius: 4px;
