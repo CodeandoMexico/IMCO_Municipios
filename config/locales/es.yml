@@ -9,15 +9,34 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  correos:
+    empresa:
+      subject: Denuncia enviada correctamente
+      body: |
+            Hola,
+            La denuncia de tu empresa ha sido enviada al municipio  %{municipio} correctamente.
+            El folio de la denuncia es %{folio}.
+            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+            
+            Gacias por utilizar Mi Negocio México.
+    municipio:
+      subject: Denuncia de inspección recibida
+      body: | 
+            Hola, 
+            Tu municipio ha recibido una denuncia de inspección por la razón %{razon} en el domicilio %{domicilio}.
+            Puedes ver la información completa en tu dashboard.
+              
+            Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
     inspections: Inspecciones
     inspectors: Inspectores
-    formation_steps: Tramites de Apertura
+    formation_steps: Trámites de Apertura
     lines: Giros
     dependencies: Dependencias
     requirements: Requerimientos
     procedures: Requerimientos
+    reports: Reportes
   buttons:
     ok: Aceptar
     crea: Crear
@@ -35,6 +54,7 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
+    denuncia: Denuncia
   dashboard:
     dependencias: Dependencias
     giros: Giros
@@ -57,21 +77,33 @@ es:
     actions:
       edit: Editar
       destroy: Borrar
+      show: Ver
     confirmations:
       delete_inspection: ¿Estás seguro que deseas borrar esta inspección?
       delete_inspector: ¿Estás seguro que deseas borrar a este inspector?
       delete_formation_step: ¿Estás seguro que deseas borrar este trámite?
-      delete_line: ¿Estás seguro que deseas borrar a este giro?
+      delete_line: ¿Estás seguro que deseas borrar este giro?
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
   dashboard:
+    reports:
+    index:
+      negocio: Negocio
+      fecha: Fecha
+      colonia: Domicilio
+    show:
+      negocio: Negocio
+      fecha: Fecha
+      colonia: Domicilio
+      razon: Razón
+      descripcion: Descripción
     inspections:
       index:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_inspection: Nueva Inspección
+        new_inspection: Nueva inspección
       new:
         title: Nueva inspección
       edit:
@@ -83,7 +115,7 @@ es:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_inspector: Nuevo Inspector
+        new_inspector: Nuevo inspector
       new:
         title: Nuevo inspector
       edit:
@@ -95,11 +127,11 @@ es:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_formation_step: Nuevo Tramite Apertura
+        new_formation_step: Nuevo trámite apertura
       new:
-        title: Nuevo Tramite de Apertura
+        title: Nuevo trámite de apertura
       edit:
-        title: Editar Tramite de Apertura
+        title: Editar trámite de apertura
       form:
         create_formation_steps: Guardar cambios
     lines:
@@ -107,7 +139,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_line: Nuevo Tramite Apertura
+        new_line: Nuevo trámite apertura
       new:
         title: Nuevo Giro
       edit:
@@ -183,7 +215,7 @@ es:
       nombre: Nombre
       Descripcion: Descripción
       subject: Materia
-      period: Duracion
+      period: Duración
       norm: Norma
       before_tips: Tips (antes)
       during_tips: Tips (durante)
@@ -205,7 +237,7 @@ es:
     index:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
-      no_formation_steps_selected: Selecciona las opciones de busqueda
+      no_formation_steps_selected: Selecciona las opciones de búsqueda
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
@@ -218,8 +250,8 @@ es:
   procedure_lines:
     index:
       title: Trámites
-      no_procedure_lines_available: No encontramos trámites  con estos parámetros
-      no_procedure_lines_selected: Selecciona las opciones de busqueda
+      no_procedure_lines_available: No encontramos trámites con estos parámetros
+      no_procedure_lines_selected: Selecciona las opciones de búsqueda
       radio_fisica: Física
       radio_moral: Moral
       radio_ambas: Ambos
@@ -250,17 +282,27 @@ es:
   imcos:
     index:
       titulo_modal: Mi Negocio México
-      contenido_modal: Estamos trabajando con diversos municipios para poder darle más información de como puede abrir y mentener al día un negocio. Si tiene alguna duda porfavor escribanos a contacto@minegociomexico.mx
-      iniciar_sesion: Iniciar sesión
+      contenido_modal: 'Estamos trabajando con diversos municipios para poder darle más información de cómo puede abrir y mantener al día un negocio. Si tiene alguna duda, por favor escríbanos a contacto@minegociomexico.mx'
       subtitulo: Elige tu municipio
       salir: Salir
-      no_municipio: ¿No encuentras tu municipio? da
+      no_municipio: ¿No encuentras tu municipio? haz
       click: clic aquí
       Aceptar: Aceptar
+      iniciar_sesion: Iniciar sesión
+  users:
+    index:
+      iniciar_sesion: Iniciar sesión
+    edit:
+      editar_perfil: Editar perfil
+      adress: derección
+      operation_license: Licencia de operación (Folio)
+      operation_license_file: Licencia de operación (Archivo)
+      land_permission_file: Permiso de uso de suelo (Archivo)
+      guardar: Guardar
   layouts:
     blanco:
       new: NUEVO NEGOCIO
-      tramite: TRAMITES
+      tramite: TRÁMITES
       inspections: INSPECCIONES
       inspectors: INSPECTORES
   activerecord:

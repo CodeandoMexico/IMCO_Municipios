@@ -3,5 +3,7 @@ class DashboardController < ApplicationController
   layout 'dashboard'
 
   def show
+  @denuncias = " "
   end
+
 end
