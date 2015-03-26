@@ -4,32 +4,48 @@
       <div class="span12">
         <section id="services ">
           <div class="center-block-margin">
+              <div class="row text-right">
+                <%= link_to t('.atras'), dashboard_reports_path, :class => 'btn btn-success btn-xs outlineverde'   %>
+              </div>
             <div class="container">
-              <h4 class="texto-verde"><%= @report.negocio %></h4>
+              <h4 class="texto-verde"><%= User.find(@report.user_id).business_name %></h4>
               <div style="border: 1px solid white;background-color:white;">
                 <table class="table bg-primary-nergro">
                   <tbody>
                     <tr>
+                      <td class="texto-verde-wrap"><%= t('.correo') %></td>
+                      <td><%= User.find(@report.user_id).email %></td>
+                    </tr>
+                    <tr>
                       <td class="texto-verde-wrap"><%= t('.fecha') %></td>
-                      <td><%= @report.fecha %></td>
+                      <td><%= @report.created_at %></td>
                     </tr>
                     <tr>
                       <td class="texto-verde-wrap"><%= t('.colonia') %></td>
-                      <td><%= @report.domicilio %></td>
+                      <td><%= User.find(@report.user_id).address %></td>
                     </tr>
                     <tr>
                       <td class="texto-verde-wrap"><%= t('.razon') %></td>
-                      <td><%= @inspereportction.razon %></td>
+                      <td><%= @report.description %></td>
                     </tr>
+                    <%unless @report.custom_reason.empty?%>
+                      <tr>
+                        <td class="texto-verde-wrap"><%= t('.coemntario') %></td>
+                        <td><%= @report.custom_reason %></td>
+                      </tr>
+                    <%end%>
                     <tr>
                       <td class="texto-verde-wrap"><%= t('.descripcion') %></td>
-                      <td><%= @report.descripcion %></td>
+                      <td><%= User.find(@report.user_id).operation_license %></td>
                     </tr>
+
                   </tbody>
                 </table>
               </div>
               <br>
               <br>
+              <%= link_to t('.licencia_de_operacion'), User.find(@report.user_id).operation_license_file.to_s,  {:class => "themed_text btn btn-success btn-xs outlineverde", :target => '_blank'} %>
+              <%= link_to t('.licencia_uso_de_suelo'), User.find(@report.user_id).land_permission_file.to_s,  {:class => "themed_text btn btn-success btn-xs outlineverde", :target => '_blank'} %>
             </div>
           </div>
         </div>
