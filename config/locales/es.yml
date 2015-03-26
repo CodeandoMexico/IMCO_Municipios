@@ -156,6 +156,7 @@ es:
         success: Has iniciado sesión.
     sessions:
       user:
+        session_needed_to_continue: Necesitas iniciar sesión para poder continuar.
         signed_in: Has iniciado sesión.
         signed_out: Has terminado tu sesión.
       new:
@@ -177,6 +178,7 @@ es:
       nombre: Nombre
       materia: Materia
       duracion: Duración
+      complaint: Denuncia
     show:
       nombre: Nombre
       Descripcion: Descripción

@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     edit_user_path(resource)
   end
 
+  def authenticate_business!
+    if !user_signed_in? || !current_user.business?
+      return redirect_to new_user_path, alert: I18n.t('devise.sessions.user.session_needed_to_continue')
+    end
+  end
+
   protected
 
   def layout_by_resource
