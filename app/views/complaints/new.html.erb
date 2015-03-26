@@ -1,2 +1,46 @@
-<h1>Complaints#new</h1>
-<p>Find me in app/views/complaints/new.html.erb</p>
+<div id="wrap">
+  <div id="main" class="container clear-top">
+    <div class="row row-padding-bottom">
+      <div class="span12">
+        <section id="services ">
+          <div class="center-block-margin">
+              <div class="container">
+                <%= content_tag :h1, t('.new_complaint') %>
+                <%= form_for @complaint, url: municipio_complaints_path do |f| %>
+                    <div class="form-group">
+                      <%= f.radio_button :reason, "regulation_violation" %>
+                      <%= f.label :reason_regulation_violation, COMPLAINTS["regulation_violation"] %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.radio_button :reason, "bribe" %>
+                      <%= f.label :reason_bribe, COMPLAINTS["bribe"] %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.radio_button :reason, "no_documentation" %>
+                      <%= f.label :reason_no_documentation, COMPLAINTS["no_documentation"] %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.radio_button :reason, "invalid_seals" %>
+                      <%= f.label :reason_invalid_seals, COMPLAINTS["invalid_seals"] %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.radio_button :reason, "other" %>
+                      <%= f.label :reason_other, "Otro: " %>
+                      <%= f.text_field :custom_reason, class: 'form-control', style: 'margin-left: 15px;width: 300px;display:inline;' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.submit "Update", class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
