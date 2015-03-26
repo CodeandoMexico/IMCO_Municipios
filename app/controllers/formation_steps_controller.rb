@@ -25,9 +25,15 @@ def valores
           a.save
         end
       end 
-   @formation_steps = FormationStep.by_city(@municipio)
-   # @heading = view_context.heading_search(Line.find(@line).nombre.downcase)
-   # @subheading = view_context.subheading_search(@tipo)
+
+      if params[:commit] == 'Federales'
+          @formation_steps = FormationStep.by_city(@municipio)
+      elsif params[:commit] == 'Municipales'
+        @procedure_requirements = ProcedureRequirement.all
+            @requirements = Requirement.all
+          @procedure_lines = ProcedureLine.where(line_id: @line)
+
+      end
  end
 end
 

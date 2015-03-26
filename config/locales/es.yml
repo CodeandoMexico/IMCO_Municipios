@@ -20,6 +20,13 @@ es:
     procedures: Requerimientos
   buttons:
     ok: Aceptar
+    crea: Crear
+    administra: Administrar
+    crece: Crecer
+    construye: Construir
+    cierra: Cerrar
+    federal: Federales
+    municipal: Municipales
   navbar:
     new: Nuevo negocio
     tramite: Trámites

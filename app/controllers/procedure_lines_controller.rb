@@ -14,6 +14,7 @@ class ProcedureLinesController < ApplicationController
   def valores
      @line = params[:get][:lines]
      @tipo = params[:rating]
+     @categoria = get_categoria(params[:commit])
      @tramites_del_giro =  ProcedureLine.where(line_id: @line)
   end
 
@@ -27,10 +28,23 @@ class ProcedureLinesController < ApplicationController
     @line = Line.find(@procedure_line.line_id).nombre
     @procedure = Procedure.find(@procedure_line.procedure_id).nombre 
     @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id) 
-
-
  end
  
+
+
+def get_categoria(tipo)
+  if tipo == 'Crear'
+    'Constituye tu empresa'
+  elsif tipo == 'Administrar'
+    'Administra tu empresa'
+  elsif tipo == 'Crecer'
+      'Crece y financia tu empresa'
+  elsif tipo == 'Construir'
+      'Construcción'
+  elsif tipo == 'Cerrar'
+    'Cierre de giro de tu empresa'
+  end
+end
 
 
  def new

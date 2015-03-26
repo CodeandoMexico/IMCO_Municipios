@@ -4,7 +4,7 @@
       <div class="span12">
         <section id="services ">
 <div class="bs-example">
-    <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+    <div id=<%="myCarousel#{@llave}"%> class="carousel slide" data-interval="false" data-ride="carousel">
       <!-- Carousel indicators -->
               <!-- Carousel indicators -->
               <%= render "shared/cargar_bolitas_formation_step" %>
@@ -32,16 +32,15 @@
                     <%end%>
                   </div>
                   <!-- Carousel nav -->
-                  <a-verde class="carousel-control left" href="#myCarousel" data-slide="prev">
+                  <a-verde class="carousel-control left" href=<%="#myCarousel#{@llave}"%> data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left" ></span>
                 </a-verde>
-                <a-verde class="carousel-control right" href="#myCarousel" data-slide="next">
+                <a-verde class="carousel-control right" href=<%="#myCarousel#{@llave}"%> data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a-verde>
             </div>
           </div>
-
-                </section>
+        </section>
     </div>
   </div>
 </div>
