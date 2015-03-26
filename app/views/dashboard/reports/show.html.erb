@@ -1,0 +1,40 @@
+<div id="wrap">
+  <div id="main" class="container clear-top">
+    <div class="row row-padding-bottom">
+      <div class="span12">
+        <section id="services ">
+          <div class="center-block-margin">
+            <div class="container">
+              <h4 class="texto-verde"><%= @report.negocio %></h4>
+              <div style="border: 1px solid white;background-color:white;">
+                <table class="table bg-primary-nergro">
+                  <tbody>
+                    <tr>
+                      <td class="texto-verde-wrap"><%= t('.fecha') %></td>
+                      <td><%= @report.fecha %></td>
+                    </tr>
+                    <tr>
+                      <td class="texto-verde-wrap"><%= t('.colonia') %></td>
+                      <td><%= @report.domicilio %></td>
+                    </tr>
+                    <tr>
+                      <td class="texto-verde-wrap"><%= t('.razon') %></td>
+                      <td><%= @inspereportction.razon %></td>
+                    </tr>
+                    <tr>
+                      <td class="texto-verde-wrap"><%= t('.descripcion') %></td>
+                      <td><%= @report.descripcion %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</div>

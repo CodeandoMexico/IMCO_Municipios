@@ -1,0 +1,37 @@
+<div id="main" class="container clear-top">
+  <div class="row">
+    <div class="span12">
+      <section id="services">
+        <div class="center-block-margin">
+          <div class="container">
+            <h2> <%= t('titles.reports') %></h2>
+            <table class="table">
+             <thead>
+               <th>#</th>
+               <th><%= t('.negocio') %></th>
+               <th><%= t('.fecha') %></th>
+               <th><%= t('.colonia') %></th>
+             </thead>
+             <tbody>
+               <% @reports.each_with_index do |denuncia, idx| %>
+               <%= content_tag :tr do %>
+               <%= content_tag :td, idx + 1 %>
+               <%= content_tag :td, truncate(denuncia.nombre, :length => 70)%>
+               <%= content_tag :td, denuncia.fecha %>
+               <%= content_tag :td, denuncia.colonia %>
+               <%= content_tag :td do %>
+               <%= link_to t('form.actions.show'), dashboard_report_path(denuncia) , :class => 'btn btn-success btn-xs outlineverde'%> |
+               <% end %>
+               <% end %>
+               <% end %>
+             </tbody>
+           </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</div>
+</div>
+
+

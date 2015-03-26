@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/dependencies'
     resources :requirements, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/requirements'
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
+    resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
   end
 
   resources :users, only: [:new, :create, :edit, :update]

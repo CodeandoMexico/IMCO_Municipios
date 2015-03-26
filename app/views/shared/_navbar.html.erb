@@ -17,8 +17,8 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <%unless @denuncia.nil?%>
-            <li class="texto-rojo"><%=link_to t('navbar.denuncia'), dashboard_path , :class => "texto-rojo"%></li>
+        <%unless @denuncias.nil?%>
+            <li class="texto-rojo"><%=link_to t('navbar.denuncia'), dashboard_reports_path , :class => "texto-rojo"%></li>
           <%end%>
         <li class="texto-blanco "><%=link_to t('navbar.dashboard'), dashboard_path %></li>
         <li class="dropdown texto-padding-top">
