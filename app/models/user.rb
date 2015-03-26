@@ -7,10 +7,15 @@ class User < ActiveRecord::Base
 
   has_many :user_formation_step
   has_many :formation_steps, through: :user_formation_step
+  has_many :complaints
 
   mount_uploader :operation_license_file, PdfUploader
   mount_uploader :land_permission_file, PdfUploader
 
+
+  def business?
+    !self.admin?
+  end
 
   def profile_complete?
     self.address.present? &&

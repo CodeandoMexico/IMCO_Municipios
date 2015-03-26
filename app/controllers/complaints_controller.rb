@@ -1,19 +1,23 @@
 class ComplaintsController < ApplicationController
   layout 'blanco'
-  before_filter :set_municipios
-  before_filter :complaint_params, only: [:create, :update]
+  before_action :authenticate_business!
+  before_action :set_municipios
+  before_action :complaint_params, only: [:create, :update]
 
   def new
     @complaint = Complaint.new
+    authorize @complaint
   end
 
   def create
     @complaint = Complaint.new(
+                  user: current_user,
                   municipio: @municipio,
                   reason: complaint_params[:reason],
                   custom_reason: complaint_params[:custom_reason],
                   description: complaint_params[:description]
                  )
+    authorize @complaint
     if @complaint.save
       redirect_to municipio_inspections_path(@municipio),
         notice: I18n.t('complaints.created_successfully')
