@@ -17,7 +17,10 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li class="texto-blanco "><%= link_to t('navbar.dashboard'), dashboard_path %></li>
+        <%unless @denuncia.nil?%>
+            <li class="texto-rojo"><%=link_to t('navbar.denuncia'), dashboard_path , :class => "texto-rojo"%></li>
+          <%end%>
+        <li class="texto-blanco "><%=link_to t('navbar.dashboard'), dashboard_path %></li>
         <li class="dropdown texto-padding-top">
           <a-verde href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> | <%= current_user.email %> <span class="caret"></span></a-verde>
           <ul class="dropdown-menu" role="menu">

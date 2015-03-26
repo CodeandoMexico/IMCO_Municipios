@@ -35,6 +35,7 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
+    denuncia: Denuncia
   dashboard:
     dependencias: Dependencias
     giros: Giros
