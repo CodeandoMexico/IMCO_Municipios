@@ -43,6 +43,10 @@ es:
     tramites: Trámites
     inspecciones: Inspecciones
     inspectores: Inspectores
+  complaints:
+    new:
+      new_complaint: Crear denuncia
+      save_button: Guardar denuncia
   footer:
     municipio: Municipios
     acerca_de: Acerca de

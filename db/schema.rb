@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325175433) do
+ActiveRecord::Schema.define(version: 20150326194037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "complaints", force: true do |t|
+    t.string   "reason"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "municipio_id"
+    t.string   "custom_reason"
+    t.integer  "user_id"
+  end
 
   create_table "dependencies", force: true do |t|
     t.text     "nombre"
@@ -163,7 +173,7 @@ ActiveRecord::Schema.define(version: 20150325175433) do
     t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.string   "business_name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.text     "address"

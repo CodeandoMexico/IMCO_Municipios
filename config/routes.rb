@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :inspectors, only: [:index, :show]
     resources :procedure_lines, only: [:index,:show]
     resources :formation_steps, only: [:index]
+    resources :complaints, only: [:new, :create, :edit, :update]
   end
 
   resource :dashboard, only: :show, controller: :dashboard do
