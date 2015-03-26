@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @reports = policy_scope(Report).where(municipio_id: current_user.municipio).order(:fecha)
+      @reports = policy_scope(Complaint).where(municipio_id: current_user.municipio).order(:created_at)
     end
 
     def show
@@ -14,7 +14,7 @@ module Dashboard
 
     private
     def set_report
-      @report = Report.find(params[:id])
+      @report = Complaint.find(params[:id])
     end
 
     def report_params
