@@ -31,13 +31,33 @@ feature 'A business enters the inspections view' do
   end
 
   scenario 'and creates a new complaint with a user logged in WITH a complete profile' do
+    expect(ActionMailer::Base.deliveries.count).to eq 0
     # sign in user
     sign_in(user_with_complete_profile)
 
     # go to the city new complaint section
     visit new_municipio_complaint_path(municipio)
 
+    # choose an option for the complaint
     choose(COMPLAINTS['regulation_violation'])
+    # create a new complaint
     click_on I18n.t('complaints.new.save_button')
+
+    # check for deliveries to eq
+    expect(ActionMailer::Base.deliveries.count).to eq 2
+
+    # get both emails to validate for correctness
+    business_email = ActionMailer::Base.deliveries.first
+    city_email = ActionMailer::Base.deliveries.second
+
+    # verify content for the business email
+    expect(business_email.from).to eq ["notificaciones@minegocio.mx"]
+    expect(business_email.subject).to eq I18n.t('correos.empresa.subject')
+    expect(business_email.body).to have_content "La denuncia de tu empresa ha sido enviada al municipio #{municipio.nombre}"
+
+    # verify content for the city email
+    expect(city_email.from).to eq ["notificaciones@minegocio.mx"]
+    expect(city_email.subject).to eq I18n.t('correos.municipio.subject')
+    expect(city_email.body).to have_content "Tu municipio ha recibido una denuncia de inspección por la razón #{COMPLAINTS['regulation_violation']}"
   end
 end
