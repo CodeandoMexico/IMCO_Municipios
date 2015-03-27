@@ -1,6 +1,7 @@
 class ComplaintsController < ApplicationController
   layout 'blanco'
   before_action :authenticate_business!
+  before_action :business_profile_complete!
   before_action :set_municipios
   before_action :complaint_params, only: [:create, :update]
 
