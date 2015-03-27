@@ -295,12 +295,13 @@ es:
     index:
       iniciar_sesion: Iniciar sesión
     edit:
-      editar_perfil: Editar perfil
-      adress: derección
+      edit_profile: Editar perfil
+      name: Nombre
+      address: Dirección
       operation_license: Licencia de operación (Folio)
       operation_license_file: Licencia de operación (Archivo)
       land_permission_file: Permiso de uso de suelo (Archivo)
-      guardar: Guardar
+      save: Guardar
   layouts:
     blanco:
       new: NUEVO NEGOCIO
