@@ -46,6 +46,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def business_profile_complete!
+    if !current_user.profile_complete?
+      return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+    end
+  end
+
   protected
 
   def layout_by_resource
