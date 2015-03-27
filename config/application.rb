@@ -21,6 +21,9 @@ module PruebaDB
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
+    # configure mailer
+    config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
+
     # devise layout settings
     config.to_prepare do
       # Devise::SessionsController.layout "session.html.erb"
