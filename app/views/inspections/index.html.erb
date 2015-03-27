@@ -5,9 +5,11 @@
       <div class="span12">
         <section id="services ">
           <div class="center-block-margin">
+                         <%= link_to t('.complaint'), new_municipio_complaint_path(@municipio), class: 'btn btn-lg btn-red-outline' %>
             <div class="row text-center">
               <div class="col-lg-10 col-lg-offset-1">
                 <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
+
                 <hr class="small">
                 <br>
               </div>
@@ -30,7 +32,7 @@
                   <div class="clearfix visible-xs-block"></div>
                   <div class="actions col-md-offset-3">
                    <%= f.submit t('buttons.ok'),:class => 'btn btn-success btn-lg outlineverde' %>
-                   <%= link_to t('.complaint'), new_municipio_complaint_path(@municipio), class: 'btn btn-lg btn-red-outline' %>
+      
                            <br>
                 <br>
                  </div>
