@@ -90,16 +90,22 @@ es:
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
   dashboard:
     reports:
-    index:
-      negocio: Negocio
-      fecha: Fecha
-      colonia: Domicilio
-    show:
-      negocio: Negocio
-      fecha: Fecha
-      colonia: Domicilio
-      razon: Razón
-      descripcion: Descripción
+      index:
+        negocio: Negocio
+        fecha: Fecha
+        colonia: Domicilio
+      show:
+        negocio: Negocio
+        fecha: Fecha
+        colonia: Domicilio
+        razon: Razón
+        descripcion: Descripción
+        correo: Correo
+        comentario: Comentario
+        licencia_operacion: Licencia de operación
+        descargar: 'Descargar:'
+        licencia_de_operacion: Licencia de operación
+        licencia_uso_de_suelo: Licencia de uso de suelo
     inspections:
       index:
         name: Nombre
