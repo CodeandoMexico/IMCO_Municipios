@@ -20,10 +20,6 @@ class ComplaintsController < ApplicationController
                  )
     authorize @complaint
     if @complaint.save
-      # Send mails
-       ComplaintMailer.send_to_business(current_user, @complaint).deliver
-       ComplaintMailer.send_to_municipio(current_user, @complaint).deliver
-
       redirect_to municipio_inspections_path(@municipio),
         notice: I18n.t('complaints.created_successfully')
     else

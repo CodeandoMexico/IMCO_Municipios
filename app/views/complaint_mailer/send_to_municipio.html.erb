@@ -7,7 +7,7 @@
     <p><%=t('correos.municipio.saludo')%></p>
     <p>
     </br>
-	<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @user.address)%>
+	<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @complaint.user.address)%>
 		<%= link_to t('correos.municipio.liga_a_la_denuncia'), dashboard_report_url(@complaint.id) %>.
 	</br>
 	</br>
