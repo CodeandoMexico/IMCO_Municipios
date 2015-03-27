@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%=t('correos.municipio.saludo')%></h1>
+    <p>
+    </br>
+	<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @user.address)%>
+		<%= link_to 'aquí', "http://localhost:3000#{dashboard_report_path(@complaint.id)}"%>.
+	</br>
+	</br>
+	<%=t('correos.municipio.gracias')%>
+    </p>
+  </body>
+</html>
