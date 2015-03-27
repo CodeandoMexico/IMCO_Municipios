@@ -4,12 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-        <h1><%=t('correos.empresa.saludo')%></h1>
+      <p><%=t('correos.empresa.saludo')%></p>
     <p>
-		<%=t('correos.empresa.body', municipio: Municipio.find(@complaint.municipio).nombre, folio: @complaint.id)%>
+		<%= t('correos.empresa.body', municipio: Municipio.find(@complaint.municipio).nombre, folio: @complaint.id)%>
 	</br>
 	</br>
-		<%=t('correos.empresa.gracias')%>
+		<%= t('correos.empresa.gracias')%>
     </p>
   </body>
 </html>

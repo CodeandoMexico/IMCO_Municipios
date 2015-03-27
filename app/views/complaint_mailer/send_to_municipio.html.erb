@@ -4,11 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%=t('correos.municipio.saludo')%></h1>
+    <p><%=t('correos.municipio.saludo')%></p>
     <p>
     </br>
 	<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @user.address)%>
-		<%= link_to 'aquí', "http://localhost:3000#{dashboard_report_path(@complaint.id)}"%>.
+		<%= link_to t('correos.municipio.liga_a_la_denuncia'), dashboard_report_url(@complaint.id) %>.
 	</br>
 	</br>
 	<%=t('correos.municipio.gracias')%>

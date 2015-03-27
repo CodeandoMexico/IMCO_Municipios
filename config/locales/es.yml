@@ -4,6 +4,10 @@ es:
       updated: La información del usuario ha sido guardada satisfactoriamente.
     complaints:
       you_need_to_complete_your_profile: Necesitas completar tu perfil antes de hacer una denuncia.
+  mailers:
+    complaints:
+      send_to_business_subject: Denuncia enviada correctamente
+      send_to_city_subject: Denuncia de inspección recibida
   views:
     pagination:
       first: "&laquo; Primero"
@@ -16,9 +20,7 @@ es:
       subject: Denuncia enviada correctamente
       saludo: Hola,
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio  %{municipio} correctamente.
-
-            El folio de la denuncia es %{folio}.
+            La denuncia de tu empresa ha sido enviada al municipio  %{municipio} correctamente. El folio de la denuncia es %{folio}.
 
             El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
       gracias: Gracias por utilizar Mi Negocio México.
@@ -29,6 +31,7 @@ es:
             Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
 
             Puedes ver la información completa.
+      liga_a_la_denuncia: 'aquí'
       gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
