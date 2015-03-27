@@ -21,6 +21,19 @@ module PruebaDB
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
+    # configure mailer
+    config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['SMTP_CONFIG_USERNAME'],
+      :password => ENV['SMTP_CONFIG_PASSWORD'],
+      :domain => ENV['SMTP_CONFIG_DOMAIN'],
+      :address => ENV['SMTP_CONFIG_ADDRESS'],
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+
+
     # devise layout settings
     config.to_prepare do
       # Devise::SessionsController.layout "session.html.erb"

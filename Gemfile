@@ -51,6 +51,16 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 
+group :development, :test do
+  # Load env variables
+  gem 'figaro'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
 group :development do
   # Thin server
   gem 'thin'
@@ -61,16 +71,8 @@ group :development do
   gem 'binding_of_caller'
   # Seeds
   gem 'seed_dump'
-end
-
-group :development, :test do
-  # Load env variables
-  gem 'figaro'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
+  # Email debugging
+  gem 'letter_opener'
 end
 
 group :production do

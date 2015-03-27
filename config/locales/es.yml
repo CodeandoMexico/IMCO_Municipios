@@ -14,21 +14,22 @@ es:
   correos:
     empresa:
       subject: Denuncia enviada correctamente
+      saludo: Hola,
       body: |
-            Hola,
             La denuncia de tu empresa ha sido enviada al municipio  %{municipio} correctamente.
-            El folio de la denuncia es %{folio}.
-            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
 
-            Gacias por utilizar Mi Negocio México.
+            El folio de la denuncia es %{folio}.
+
+            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+      gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
+      saludo: Hola,
       body: |
-            Hola,
-            Tu municipio ha recibido una denuncia de inspección por la razón %{razon} en el domicilio %{domicilio}.
-            Puedes ver la información completa en tu dashboard.
+            Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
 
-            Gracias por utilizar Mi Negocio México.
+            Puedes ver la información completa.
+      gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
     inspections: Inspecciones
@@ -303,6 +304,7 @@ es:
     edit:
       edit_profile: Editar perfil
       name: Nombre
+      business_name: Nombre del negocio
       address: Dirección
       operation_license: Licencia de operación (Folio)
       operation_license_file: Licencia de operación (Archivo)
