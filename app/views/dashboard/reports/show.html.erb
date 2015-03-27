@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                       <td class="texto-verde-wrap"><%= t('.razon') %></td>
-                      <td><%= @report.description %></td>
+                      <td><%= COMPLAINTS[@report.reason] %></td>
                     </tr>
                     <%unless @report.custom_reason.empty?%>
                       <tr>
@@ -36,6 +36,10 @@
                     <%end%>
                     <tr>
                       <td class="texto-verde-wrap"><%= t('.descripcion') %></td>
+                      <td><%= @report.description %></td>
+                    </tr>
+                    <tr>
+                      <td class="texto-verde-wrap"><%= t('.licencia_operacion') %></td>
                       <td><%= User.find(@report.user_id).operation_license %></td>
                     </tr>
 

@@ -14,15 +14,15 @@
              </thead>
              <tbody>
                <% @reports.each_with_index do |denuncia, idx| %>
-               <%= content_tag :tr do %>
-               <%= content_tag :td, idx + 1 %>
-               <%= content_tag :td, User.find(denuncia.user_id).business_name %>
-               <%= content_tag :td, truncate(denuncia.reason, :length => 70)%>
-               <%= content_tag :td, denuncia.updated_at %>
-               <%= content_tag :td do %>
-               <%= link_to t('form.actions.show'), dashboard_report_path(denuncia) , :class => 'btn btn-success btn-xs outlineverde'%>
-               <% end %>
-               <% end %>
+                 <%= content_tag :tr do %>
+                 <%= content_tag :td, idx + 1 %>
+                 <%= content_tag :td, User.find(denuncia.user_id).business_name %>
+                 <%= content_tag :td, COMPLAINTS[denuncia.reason]%>
+                 <%= content_tag :td, denuncia.updated_at %>
+                 <%= content_tag :td do %>
+                 <%= link_to t('form.actions.show'), dashboard_report_path(denuncia) , :class => 'btn btn-success btn-xs outlineverde'%>
+                 <% end %>
+                 <% end %>
                <% end %>
              </tbody>
            </table>

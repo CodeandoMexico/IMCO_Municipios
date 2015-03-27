@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   layout 'dashboard'
 
   def show
-  @denuncias = Complaint.last
+  @denuncias = policy_scope(Complaint).where(municipio_id: current_user.municipio).last
   end
 
 end
