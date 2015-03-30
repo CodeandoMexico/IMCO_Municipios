@@ -69,10 +69,6 @@ es:
     tramites: Trámites
     inspecciones: Inspecciones
     inspectores: Inspectores
-  complaints:
-    new:
-      new_complaint: Crear denuncia
-      save_button: Guardar denuncia
   footer:
     municipio: Municipios
     acerca_de: Acerca de
@@ -214,6 +210,13 @@ es:
         already_authenticated: Ya has sido autentificado.
         not_found_in_database: Revisa que el correo y contraseña sean correctos.
         unauthenticated: Necesitas iniciar sesión primero.
+  complaints:
+      new:
+        razon_denuncia: ¿Cuál es la razón de la denuncia?
+        new_complaint: Crear denuncia
+        save_button: Guardar denuncia
+        razon_denuncia: ¿Cuál fue la razón?
+        descripcion_denuncia: Explica la situación.
   inspections:
     index:
       title: Inspecciones
@@ -274,6 +277,7 @@ es:
       costo: Costo
       vigencia: Vigencia
       procedure_lines_select_name: 'Giro del negocio:'
+      procedure_lines_radio_estados: 'Etapa de tu negocio:'
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia

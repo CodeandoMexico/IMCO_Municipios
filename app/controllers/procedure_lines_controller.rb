@@ -14,7 +14,8 @@ class ProcedureLinesController < ApplicationController
   def valores
      @line = params[:get][:lines]
      @tipo = params[:rating]
-     @categoria = get_categoria(params[:commit])
+     @etapa = params[:etapa]
+     @categoria = get_categoria(params[:etapa])
      @tramites_del_giro =  ProcedureLine.where(line_id: @line)
   end
 
