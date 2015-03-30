@@ -42,12 +42,13 @@
               <%= f.label :reason_other, "Otro: " %>
               <%= f.text_field :custom_reason, class: 'form-control', style: 'margin-left: 15px;width: 300px;display:inline;',:placeholder => t('.razon_denuncia') %>
             </div>
-
+              
+              <br>
             <div class="form-group">
               <%= f.label :description, "Descripción" %>
               <%= f.text_area :description, class: 'form-control',:placeholder => t('.descripcion_denuncia') %>
             </div>
-
+<br>
             <div class="form-group">
               <%= f.submit t('.save_button'), class: 'btn btn-primary' %>
             </div>
