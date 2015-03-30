@@ -13,7 +13,7 @@
            </div>
            <div class="container">
 
-            <%=t('.razon_denuncia')%>
+           <H2> <%=t('.razon_denuncia')%></H2>
             <espacio>
             
             <%= form_for @complaint, url: municipio_complaints_path do |f| %>
@@ -40,7 +40,7 @@
             <div class="form-group">
               <%= f.radio_button :reason, "other" %>
               <%= f.label :reason_other, "Otro: " %>
-              <%= f.text_field :custom_reason, class: 'form-control', style: 'margin-left: 15px;width: 300px;display:inline;',:placeholder => t('.razon_denuncia') %>
+              <%= f.text_field :custom_reason, class: 'form-control', style: 'margin-left: 15px;width: 300px;display:inline;',:placeholder => t('.razon_denuncia_texto') %>
             </div>
               
               <br>

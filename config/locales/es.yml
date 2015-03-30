@@ -215,7 +215,7 @@ es:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
         new_complaint: Crear denuncia
         save_button: Guardar denuncia
-        razon_denuncia: ¿Cuál fue la razón?
+        razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
   inspections:
     index:
