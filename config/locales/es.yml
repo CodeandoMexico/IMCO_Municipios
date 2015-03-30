@@ -60,15 +60,8 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
-    denuncia: Denuncia
-  dashboard:
-    dependencias: Dependencias
-    giros: Giros
-    apertura: Apertura
-    requerimientos: Requerimientos
-    tramites: Trámites
-    inspecciones: Inspecciones
-    inspectores: Inspectores
+    editar_perfil: Editar perfil
+    cerrar_sesion: Cerrar sesón
   footer:
     municipio: Municipios
     acerca_de: Acerca de
@@ -89,6 +82,15 @@ es:
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
   dashboard:
+    show:
+      dependencias: Dependencias
+      giros: Giros
+      apertura: Apertura
+      requerimientos: Requerimientos
+      tramites: Trámites
+      inspecciones: Inspecciones
+      inspectores: Inspectores
+      denuncia: Denuncias
     reports:
       index:
         negocio: Negocio
