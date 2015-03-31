@@ -71,6 +71,6 @@ class MunicipiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def municipio_params
-      params.require(:municipio).permit(:nombre)
+      params.require(:municipio).permit(:nombre, :contact_email)
     end
   end

@@ -91,6 +91,18 @@ es:
       inspecciones: Inspecciones
       inspectores: Inspectores
       denuncia: Denuncias
+    contacts:
+      index:
+        all_profile: Editar contactos
+        correo_admin: Correo de administradores
+        correo_municipio: Correo del Municipio
+        save: Guardar
+        admins: Administradores
+      edit:
+        title: Editar datos
+        correo: 'Correo:'
+        password: 'Contraseña:'
+        ok: Actualizar
     reports:
       index:
         negocio: Negocio

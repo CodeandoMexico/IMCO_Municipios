@@ -15,7 +15,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
+      unless @user.admin?
       redirect_to edit_user_path, notice: t('flash.users.updated')
+    else
+       redirect_to dashboard_municipio_contacts_path(current_user.municipio), notice: t('flash.users.updated')
+    end
     else
       render :edit
     end
