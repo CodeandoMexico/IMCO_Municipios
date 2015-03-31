@@ -94,11 +94,15 @@ es:
       denuncia: Denuncias
     contacts:
       index:
-        all_profile: Editar contactos
+        all_profile: Contacto municipio %{municipio}
         correo_admin: Correo de administradores
         correo_municipio: Correo del Municipio
         save: Guardar
-        admins: Administradores
+        admins: Administrador
+        email: Correo
+        edit: Editar
+        correo_municipio: 'Correo municipal:'
+        actualizar: Actualizar
       edit:
         title: Editar datos
         correo: 'Correo:'
