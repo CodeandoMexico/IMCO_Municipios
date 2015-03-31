@@ -15,6 +15,12 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  tooltips:
+    cierra: Los trámites que necesitas para cerrar un negocio
+    construye: Todos los relativos a construcción
+    crece: Son apoyos ofrecidos por el municipio a empresas. Los apoyos pueden ser de distintos tipos, desde orientación y capacitación hasta apoyos monetarios o en especie.
+    administra: Los relativos a los movimientos que puedan realizarse con la licencia de funcionamiento y los trámites necesarios para publicitar el negocio y trámites que las empresas requieran con regularidad (como constancias de pago o impuestos)
+    crea: Trámites necesarios para abrir un nuevo negocio
   correos:
     empresa:
       subject: Denuncia enviada correctamente
