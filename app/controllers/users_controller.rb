@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   layout 'session'
 
   def new
+     @user = current_user
   end
 
   def create
@@ -13,17 +14,44 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def update
-    if @user.update_attributes(user_params)
-      unless @user.admin?
-      redirect_to edit_user_path, notice: t('flash.users.updated')
+
+def update
+ if current_user .admin?
+        @user.update_attributes(update_attributes_admin)
+         redirect_to dashboard_path, notice: t('flash.users.updated')
     else
-       redirect_to dashboard_municipio_contacts_path(current_user.municipio), notice: t('flash.users.updated')
-    end
+    if @user.update_attributes(user_params)
+       redirect_to edit_user_path, notice: t('flash.users.updated')
     else
       render :edit
     end
   end
+
+
+  end
+
+
+  def create
+      @user = User.create(email: :email, password: :password, municipio_id: current_user.municipio, admin: true)
+      if @user.save? 
+        redirect_to edit_user_path, notice: t('flash.users.updated')
+      else
+         redirect_to edit_user_path, notice: t('FALLA')
+      end
+
+    end
+
+
+   def destroy
+      authorize User.find(params[:id])
+
+      User.find(params[:id]).destroy
+      respond_to do |format|
+        format.html { redirect_to dashboard_dependencies_path notice: 'La dependencia fue borrada satisfactoriamente.' }
+        format.json { head :no_content }
+      end
+       redirect_to edit_user_path, notice: t('flash.users.updated')
+    end
 
   private
 
@@ -37,6 +65,16 @@ class UsersController < ApplicationController
       :land_permission_file
     )
   end
+
+
+
+  def update_attributes_admin
+  params.require(:user).permit(
+    :email,
+    :password
+    )
+end
+
 
   def set_user
     @user ||= current_user

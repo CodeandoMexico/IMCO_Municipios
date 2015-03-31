@@ -81,6 +81,7 @@ es:
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
+      delete_admin: ¿Estás seguro que deseas borrar este administrador?
   dashboard:
     show:
       dependencias: Dependencias

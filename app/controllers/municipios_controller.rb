@@ -1,6 +1,6 @@
 class MunicipiosController < ApplicationController
   layout 'menu'
-  before_action :set_municipio, only: [:edit, :update, :destroy]
+#  before_action :set_municipio, only: [:edit, :update, :destroy]
 
   
   def show
@@ -27,6 +27,10 @@ class MunicipiosController < ApplicationController
         render layout: 'blanco'
   end
 
+def edit
+
+end
+
 
 
   def create
@@ -44,10 +48,10 @@ class MunicipiosController < ApplicationController
   end
 
   def update
+     @municipio = Municipio.find(params[:id])
     respond_to do |format|
       if @municipio.update(municipio_params)
-        format.html { redirect_to @municipio, notice: 'Municipio was successfully updated.' }
-        format.json { render :show, status: :ok, location: @municipio }
+        format.html { redirect_to  dashboard_municipio_contacts_path(@municipio), notice: t('flash.users.updated') }
       else
         format.html { render :edit }
         format.json { render json: @municipio.errors, status: :unprocessable_entity }
@@ -66,7 +70,11 @@ class MunicipiosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_municipio(val)
+      unless params[val].nil?
       @municipio = Municipio.find(params[val])
+    else
+      @municipio = Municipio.find(params[:id])
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

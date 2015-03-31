@@ -25,11 +25,11 @@ Rails.application.routes.draw do
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
     resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :municipios, only: [:show], controller: 'dashboard/municipios' do
-         resources :contacts, only: [:index, :edit], controller: 'dashboard/contacts'
+         resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
     end
   end
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update,:destroy]
 
   root 'imcos#index'
 end

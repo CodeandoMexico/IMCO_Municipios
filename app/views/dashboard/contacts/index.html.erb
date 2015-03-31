@@ -1,16 +1,30 @@
 <h1 class="title text-center texto-verde"><%=t('.all_profile')%></h1>
 <hr class="small">
 <div id="authentication">
-	 <%= form_for  @municipio, html: { class: 'form-horizontal' } do |f| %>
-	<div class="form-group">
-		<%= f.label t('.correo_municipio') %>
-		<%= f.text_field :contact_email, class: 'form-control' %>
-		<div class="actions bg-primary-nergro">
-			<br>
-			<%= f.submit t('.save'), :class => 'btn btn-success btn-sm outlineverde' %>
-		</div>
-	</div>
-	<% end %>
+<%= form_for(@municipio) do |f| %>
+  <% if @municipio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@municipio.errors.count, "error") %> prohibited this municipio from being saved:</h2>
+
+      <ul>
+      <% @municipio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br>
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 </div>
 
 <div id="main" class="container clear-top">
@@ -22,18 +36,13 @@
 						<h2> <%= t('.admins') %></h2>
 						<table class="table">
 							<thead>
-								<th>#</th>
 								<th><%= t('.email') %></th>
 							</thead>
 							<tbody>
-								<% @users.each_with_index do |usuario, idx| %>
 								<%= content_tag :tr do %>
-								<%= content_tag :td, idx + 1 %>
-								<%= content_tag :td, usuario.email %>
+								<%= content_tag :td, @user.email %>
 								<%= content_tag :td, :class => 'text-right'  do %>
-								<%= link_to t('form.actions.edit'), edit_dashboard_municipio_contact_path(@municipio,usuario) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
-								<%= link_to t('form.actions.destroy'), dashboard_dependency_path(usuario), method: :delete, data: { confirm: t('form.confirmations.delete_line')  }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
-								<% end %>
+								<%= link_to t('form.actions.edit'), edit_dashboard_municipio_contact_path(@municipio,@user) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
 								<% end %>
 								<% end %>
 							</tbody>
