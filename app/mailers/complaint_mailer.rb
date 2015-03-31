@@ -8,6 +8,6 @@ class ComplaintMailer < ActionMailer::Base
 
    def send_to_municipio(complaint)
     @complaint = complaint
-    mail to: @complaint.user.email, subject: I18n.t('mailers.complaints.send_to_city_subject')
+    mail to: @complaint.municipio.contact_email, subject: I18n.t('mailers.complaints.send_to_city_subject')
   end
 end
