@@ -337,6 +337,7 @@ es:
     edit:
       edit_profile: Editar perfil
       name: Nombre
+      correo: Correo
       business_name: Nombre del negocio
       address: Dirección
       operation_license: Licencia de operación (Folio)

@@ -50,6 +50,8 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'client_side_validations'#validar
+
 
 group :development, :test do
   # Load env variables

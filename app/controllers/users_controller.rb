@@ -21,7 +21,7 @@ def update
          redirect_to dashboard_path, notice: t('flash.users.updated')
     else
     if @user.update_attributes(user_params)
-       redirect_to edit_user_path, notice: t('flash.users.updated')
+       redirect_to root_path, notice: t('flash.users.updated')
     else
       render :edit
     end
@@ -58,6 +58,7 @@ def update
   def user_params
     params.require(:user).permit(
       :name,
+      :email,
       :business_name,
       :address,
       :operation_license,

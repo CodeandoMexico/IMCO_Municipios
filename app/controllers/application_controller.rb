@@ -36,8 +36,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
-    return root_path if resource.profile_complete?
-    edit_user_path(resource)
+    return  edit_user_path(resource)#root_path if resource.profile_complete?
+    #edit_user_path(resource)
   end
 
   def authenticate_business!
