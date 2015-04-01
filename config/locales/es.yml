@@ -15,6 +15,12 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  tooltips:
+    cierra: Los trámites que necesitas para cerrar un negocio
+    construye: Todos los relativos a construcción
+    crece: Son apoyos ofrecidos por el municipio a empresas. Los apoyos pueden ser de distintos tipos, desde orientación y capacitación hasta apoyos monetarios o en especie.
+    administra: Los relativos a los movimientos que puedan realizarse con la licencia de funcionamiento y los trámites necesarios para publicitar el negocio y trámites que las empresas requieran con regularidad (como constancias de pago o impuestos)
+    crea: Trámites necesarios para abrir un nuevo negocio
   correos:
     empresa:
       subject: Denuncia enviada correctamente
@@ -60,19 +66,8 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
-    denuncia: Denuncia
-  dashboard:
-    dependencias: Dependencias
-    giros: Giros
-    apertura: Apertura
-    requerimientos: Requerimientos
-    tramites: Trámites
-    inspecciones: Inspecciones
-    inspectores: Inspectores
-  complaints:
-    new:
-      new_complaint: Crear denuncia
-      save_button: Guardar denuncia
+    editar_perfil: Editar perfil
+    cerrar_sesion: Cerrar sesón
   footer:
     municipio: Municipios
     acerca_de: Acerca de
@@ -92,7 +87,33 @@ es:
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
+      delete_admin: ¿Estás seguro que deseas borrar este administrador?
   dashboard:
+    show:
+      dependencias: Dependencias
+      giros: Giros
+      apertura: Apertura
+      requerimientos: Requerimientos
+      tramites: Trámites
+      inspecciones: Inspecciones
+      inspectores: Inspectores
+      denuncia: Denuncias
+    contacts:
+      index:
+        all_profile: Contacto municipio %{municipio}
+        correo_admin: Correo de administradores
+        correo_municipio: Correo del Municipio
+        save: Guardar
+        admins: Administrador
+        email: Correo
+        edit: Editar
+        correo_municipio: 'Correo municipal:'
+        actualizar: Actualizar
+      edit:
+        title: Editar datos
+        correo: 'Correo:'
+        password: 'Contraseña:'
+        ok: Actualizar
     reports:
       index:
         negocio: Negocio
@@ -196,6 +217,7 @@ es:
         create_dependency: Guardar cambios
   devise:
     omniauth_callbacks:
+      success: Inicio de sesión exitoso, completa tu perfil.
       user:
         success: Has iniciado sesión.
     sessions:
@@ -214,6 +236,13 @@ es:
         already_authenticated: Ya has sido autentificado.
         not_found_in_database: Revisa que el correo y contraseña sean correctos.
         unauthenticated: Necesitas iniciar sesión primero.
+  complaints:
+      new:
+        razon_denuncia: ¿Cuál es la razón de la denuncia?
+        new_complaint: Crear denuncia
+        save_button: Guardar denuncia
+        razon_denuncia_texto: ¿Cuál fue la razón?
+        descripcion_denuncia: Explica la situación.
   inspections:
     index:
       title: Inspecciones
@@ -274,6 +303,7 @@ es:
       costo: Costo
       vigencia: Vigencia
       procedure_lines_select_name: 'Giro del negocio:'
+      procedure_lines_radio_estados: 'Etapa de tu negocio:'
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
@@ -307,6 +337,7 @@ es:
     edit:
       edit_profile: Editar perfil
       name: Nombre
+      correo: Correo
       business_name: Nombre del negocio
       address: Dirección
       operation_license: Licencia de operación (Folio)
