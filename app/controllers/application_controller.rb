@@ -36,20 +36,30 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
-    return  edit_user_path(resource)#root_path if resource.profile_complete?
+    if validaDatos(resource)
+    return  root_path
+    else
+    return  edit_user_path(resource)
+    end
+    #return  root_path if resource.profile_complete?
     #edit_user_path(resource)
   end
 
   def authenticate_business!
-    if !user_signed_in? || !current_user.business?
+    if !user_signed_in? #|| !current_user.business?
       return redirect_to new_user_path, alert: I18n.t('devise.sessions.user.session_needed_to_continue')
     end
   end
 
   def business_profile_complete!
-    if !current_user.profile_complete?
-      return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+   unless validaDatos(current_user)
+     return redirect_to  edit_user_path(current_user) , alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
     end
+   
+
+  #  if !current_user.profile_complete?
+    #  return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+  #  end
   end
 
   protected
@@ -69,4 +79,9 @@ class ApplicationController < ActionController::Base
   def admin_is_logged_in?
     authenticate_user! && current_user.admin?
   end
+
+
+  def validaDatos(resource)
+    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?  
+   end
 end
