@@ -7,81 +7,86 @@
 				<p class="navbar-text pull-right navbar-custom"><texto-blanco><%="#{current_user.email}\t"%> |</texto-blanco> <%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%>
 				</p>
 				<% else %>
-				 <%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
+				<%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
 				<% end %>
 			</div>
+		</div>
+	</div>
+	<div class="row text-center ">
+		<div class="col-md-6 col-md-offset-3">
+			<%flash.each do |key, value| %>
+			<div class="alert alert-success"><%=value%></div>
+			<% end %>
 		</div>
 	</div>
 	<%= image_tag "logo.png", class: "img-responsive center-block"%>
 	<div class="navbar-text-blanco">
 		<H3><%=t('.subtitulo')%></H3>
+
 		<%#= f.select :municipio, Municipio.all.map { |u| [u.nombre, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
-</div>
-<!--Seccion Temporal!-->
-<div class="row text-center ">
-	<div class="col-md-8 col-md-offset-2">
-		<div class="row">
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Chalco', municipio_path('1'),  :class => 'btn btn-success btn-lg outline full-width ' %>
+	</div>
+
+	<!--Seccion Temporal!-->
+	<div class="row text-center ">
+		<div class="col-md-8 col-md-offset-2">
+			<%@municipios.each_with_index do |municipio, index|%>
+			<%if index==0 || index==3%>
+			<div class="row">
+				<%end%>
+				<div class="col-md-4 margin-bottom-button"><%= link_to municipio.nombre, municipio_path(municipio.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
+				</div>
+				<%if index==2 || index==5%>
 			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Huxquilucan', municipio_path('2'),  :class => 'btn btn-success btn-lg outline full-width ' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Lerma', municipio_path('3'),  :class => 'btn btn-success btn-lg outline full-width ' %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Metepec', municipio_path('4'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Tenango', municipio_path('5'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Toluca', municipio_path('6'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
+			<%end%>
+			<%end%>
+			
+
 		</div>
 	</div>
-</div>
 
-<div class="navbar-text-blanco">
-	<%=t('.no_municipio')%> <a-verde class = "m" href="" data-toggle="modal" data-target="#myModalDialog"> <%=t('.click')%></a-verde>
-</div>
-<% end %>
-
+	<div class="navbar-text-blanco">
+		<%=t('.no_municipio')%> <a-verde class = "m" href="" data-toggle="modal" data-target="#myModalDialog"> <%=t('.click')%></a-verde>
+	</div>
+	<% end %>
 
 
 
-<!-- Modal para las redes sociales -->
-<div class="modal fade" id="mySocialModal" tabindex="-1" role="dialog" aria-labelledby="mySocialModalLabel" aria-hidden="true">
-	<div class="modal-dialog-center">
-		<div class="modal-content ">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title texto-verde" id="myModalLabel">Puedes iniciar sesión con:</h4>
-			</div>
-			<div class="modal-body center-text">
-				<%= link_to " | Facebook", user_omniauth_authorize_path(:facebook) ,class: "btn btn-facebook fa fa-facebook btn-lg-social"%>
-				<BR>
+
+	<!-- Modal para las redes sociales -->
+	<div class="modal fade" id="mySocialModal" tabindex="-1" role="dialog" aria-labelledby="mySocialModalLabel" aria-hidden="true">
+		<div class="modal-dialog-center">
+			<div class="modal-content ">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title texto-verde" id="myModalLabel">Puedes iniciar sesión con:</h4>
+				</div>
+				<div class="modal-body center-text">
+					<%= link_to " | Facebook", user_omniauth_authorize_path(:facebook) ,class: "btn btn-facebook fa fa-facebook btn-lg-social"%>
 					<BR>
-						<%= link_to " | Linkedin",user_omniauth_authorize_path(:linkedin) ,class: "btn btn-linkedin fa fa-linkedin btn-lg-social"%>
+						<BR>
+							<%= link_to " | Linkedin",user_omniauth_authorize_path(:linkedin) ,class: "btn btn-linkedin fa fa-linkedin btn-lg-social"%>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!--Modal para explicar porque no hay más municipios-->
-<!-- Button trigger modal -->
-<div class="modal fade" id="myModalDialog" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
-	<div class="modal-dialog-center">
-		<div class="modal-content" >
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%=t('.titulo_modal')%></h4>
-			</div>
-			<div class="modal-body">
-				<%=t('.contenido_modal')%>
+	<!--Modal para explicar porque no hay más municipios-->
+	<!-- Button trigger modal -->
+	<div class="modal fade" id="myModalDialog" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
+		<div class="modal-dialog-center">
+			<div class="modal-content" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%=t('.titulo_modal')%></h4>
+				</div>
+				<div class="modal-body">
+					<%=t('.contenido_modal')%>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<div id="fb-root"></div>
+	<div id="fb-root"></div>
 
 </div>
 
