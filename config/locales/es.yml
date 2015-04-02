@@ -172,7 +172,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_line: Nuevo trámite apertura
+        new_lines: Nuevo Giro
       new:
         title: Nuevo Giro
       edit:
@@ -243,6 +243,7 @@ es:
         save_button: Guardar denuncia
         razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
+      created_successfully: Denuncia enviada correctamente, porfavor revise su correo.
   inspections:
     index:
       title: Inspecciones
