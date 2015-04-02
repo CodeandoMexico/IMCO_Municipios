@@ -217,7 +217,7 @@ es:
         create_dependency: Guardar cambios
   devise:
     omniauth_callbacks:
-      success: Inicio de sesión exitoso, completa tu perfil.
+      success: Inicio de sesión exitoso.
       user:
         success: Has iniciado sesión.
     sessions:

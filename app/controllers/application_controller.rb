@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
     if validaDatos(resource)
-    return  root_path
+    return   root_path 
     else
     return  edit_user_path(resource)
     end
