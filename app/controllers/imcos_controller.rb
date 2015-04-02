@@ -1,5 +1,5 @@
 class ImcosController < ApplicationController
-  
+  after_filter :save_my_previous_url!
 
 #before_filter :authenticate_user! 
 
@@ -13,4 +13,6 @@ class ImcosController < ApplicationController
    # end
 
   end
+
+
 end

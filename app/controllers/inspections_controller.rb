@@ -1,6 +1,7 @@
 class InspectionsController < ApplicationController
   before_action :set_inspection, only: :show
   before_action :set_municipio, only: [:index, :show]
+  after_filter :save_my_previous_url!
   layout 'blanco'
 
   def index
