@@ -21,7 +21,7 @@ def update
          redirect_to dashboard_path, notice: t('flash.users.updated')
     else
     if @user.update_attributes(user_params)
-       redirect_to root_path, notice: t('flash.users.updated')
+       redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
     else
       render :edit
     end
