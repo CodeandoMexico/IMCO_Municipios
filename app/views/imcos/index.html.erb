@@ -20,22 +20,18 @@
 <!--Seccion Temporal!-->
 <div class="row text-center ">
 	<div class="col-md-8 col-md-offset-2">
-		<div class="row">
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Chalco', municipio_path('1'),  :class => 'btn btn-success btn-lg outline full-width ' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Huxquilucan', municipio_path('2'),  :class => 'btn btn-success btn-lg outline full-width ' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Lerma', municipio_path('3'),  :class => 'btn btn-success btn-lg outline full-width ' %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Metepec', municipio_path('4'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Tenango', municipio_path('5'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
-			<div class="col-md-4 margin-bottom-button"><%= link_to 'Toluca', municipio_path('6'),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-			</div>
-		</div>
+		<%@municipios.each_with_index do |municipio, index|%>
+			<%if index==0 || index==3%>
+				<div class="row">
+			<%end%>
+				<div class="col-md-4 margin-bottom-button"><%= link_to municipio.nombre, municipio_path(municipio.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
+				</div>
+			<%if index==2 || index==5%>
+				</div>
+			<%end%>
+		<%end%>
+			
+
 	</div>
 </div>
 
