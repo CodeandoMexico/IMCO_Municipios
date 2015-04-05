@@ -9,6 +9,6 @@ class Complaint < ActiveRecord::Base
   def send_emails
     # Send mails
      ComplaintMailer.send_to_business(self).deliver
-     ComplaintMailer.send_to_municipio(self).deliver
+     ComplaintMailer.send_to_city(self).deliver
   end
 end

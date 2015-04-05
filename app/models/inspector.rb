@@ -1,6 +1,6 @@
 class Inspector < ActiveRecord::Base
   belongs_to :dependency
-  mount_uploader :foto, InspectorUploader
+  mount_uploader :photo, InspectorUploader
 
   scope :by_city,
     -> (city) {

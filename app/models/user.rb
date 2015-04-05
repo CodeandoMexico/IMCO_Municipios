@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
                             uid:auth.uid,
                             email:auth.info.email,
                             password:Devise.friendly_token[0,20],
-                            municipio_id:'1'
+                            city_id:'1'
                           )
       end
        end
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
                             uid:auth.uid,
                             email:auth.info.email,
                             password:Devise.friendly_token[0,20],
-                             municipio_id:'1'
+                             city_id:'1'
                           )
       end
 
