@@ -15,16 +15,16 @@ module Dashboard
 
     def new
       @procedure = Procedure.new
-     @dependencies= Dependency.where(municipio_id: current_user.municipio_id)
-     @requirements = Requirement.where(municipio_id: current_user.municipio_id)
-     @lines = Line.where(municipio_id: current_user.municipio_id)
+     @dependencies= Dependency.where(city_id: current_user.city_id)
+     @requirements = Requirement.where(city_id: current_user.city_id)
+     @lines = Line.where(city_id: current_user.city_id)
     end
 
     def edit
-      @dependencies= Dependency.where(municipio_id: current_user.municipio_id)
+      @dependencies= Dependency.where(city_id: current_user.city_id)
       @procedure_requirement= ProcedureRequirement.where(procedure_id: @procedure)
-      @requirements = Requirement.where(municipio_id: current_user.municipio_id)
-      @lines = Line.where(municipio_id: current_user.municipio_id)
+      @requirements = Requirement.where(city_id: current_user.city_id)
+      @lines = Line.where(city_id: current_user.city_id)
       @procedure_line= ProcedureLine.where(procedure_id: @procedure)
     end
 
@@ -78,7 +78,7 @@ module Dashboard
     end
 
     def procedure_params
-      params.require(:procedure).permit(:nombre, :duracion, :costo, :vigencia, :contacto, :tipo, :dependency_id, :categoria, :sare, :procedure=>{:requirement_ids => []}, :procedure=>{:line_ids => []})
+      params.require(:procedure).permit(:name, :long, :cost, :validity, :contact, :type_procedure, :dependency_id, :category, :sare, :procedure=>{:requirement_ids => []}, :procedure=>{:line_ids => []})
     end
 
     def create_relation_procedure_requirements

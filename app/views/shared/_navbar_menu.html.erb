@@ -12,12 +12,12 @@
                     <li >
                     <div class="dropdown nav navbar-nav navbar-left">
                         <%unless @municipio.nil?%>
-                        <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@municipio.nombre %><span class="caret a" ></span></a>
+                        <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@municipio.name %><span class="caret a" ></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <%@municipios.each do |municipio|%>
                                     <%unless municipio == @municipio%>
                                          <li role="presentation">
-                                            <%=link_to municipio.nombre,municipio_path(municipio), :role => "menuitem", :tabindex => "-1"%>
+                                            <%=link_to municipio.name,municipio_path(municipio), :role => "menuitem", :tabindex => "-1"%>
                                          </li>
                                     <%end%>
                                 <%end%>
