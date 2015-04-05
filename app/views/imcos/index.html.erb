@@ -1,5 +1,5 @@
 <div class="col-lg-12 text-center">
-	<%= form_for :post, :url => { :controller => :municipios, :action => :search } do |f| %>
+	<%= form_for :post, :url => { :controller => :cities, :action => :search } do |f| %>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -29,11 +29,11 @@
 	<!--Seccion Temporal!-->
 	<div class="row text-center ">
 		<div class="col-md-8 col-md-offset-2">
-			<%@municipios.each_with_index do |municipio, index|%>
+			<%@cities.each_with_index do |city, index|%>
 			<%if index==0 || index==3%>
 			<div class="row">
 				<%end%>
-				<div class="col-md-4 margin-bottom-button"><%= link_to municipio.name, municipio_path(municipio.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
+				<div class="col-md-4 margin-bottom-button"><%= link_to city.name, city_path(city.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
 				</div>
 				<%if index==2 || index==5%>
 			</div>

@@ -11,14 +11,14 @@
                                     <%= image_tag "abrir.png", class: "img-responsive center-block" %>
                                 </h4>
                                 <p class="bg-primary-nergro"><%=t('.texto_no_tengo')%><br><%=t('.texto_nuevo')%></p>
-                                <%= link_to t('.nuevo'),municipio_formation_steps_path(@municipio), :class => 'btn btn-success btn-lg outlineverde half-width'%>  
+                                <%= link_to t('.nuevo'),city_formation_steps_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>  
                             </div>
                             <div class="col-md-4">
                                 <h4>
                                     <%= image_tag "tramites.png", class: "img-responsive center-block" %>
                                 </h4>
                                 <p class="bg-primary-nergro"><%=t('.texto_ya_tengo')%><br><%=t('.texto_tramite')%> </p>
-                                <%= link_to t('.tramite'),municipio_procedure_lines_path(@municipio), :class => 'btn btn-success btn-lg outlineverde half-width'%>
+                                <%= link_to t('.tramite'),city_procedure_lines_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
                             </div>
                             <div class="col-md-4">
                                 <h4>
@@ -31,9 +31,9 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu half-width" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation"><%= link_to t('.inspeccion'), municipio_inspections_path(@municipio) %></li>
+                                        <li role="presentation"><%= link_to t('.inspeccion'), city_inspections_path(@city) %></li>
                                         <hr class="divider">
-                                        <li role="presentation"><%= link_to t('.inspector'), municipio_inspectors_path(@municipio) %></li>
+                                        <li role="presentation"><%= link_to t('.inspector'), city_inspectors_path(@city) %></li>
                                     </ul>
                                 </div>
                             </div>

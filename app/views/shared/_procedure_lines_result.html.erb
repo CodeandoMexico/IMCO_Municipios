@@ -4,7 +4,7 @@
       <ul>
         <% count = 0 %>
         <% @tramites_del_giro.each do |tramite_de_giro| %>
-          <%if Procedure.find(tramite_de_giro.procedure_id).tipo == @tipo || @tipo == 'A' %>
+          <%if Procedure.find(tramite_de_giro.procedure_id).type_procedure == @tipo || @tipo == 'A' %>
             <% count +=1 %>
             <%if count == 1%>
               <br>
@@ -15,15 +15,15 @@
               <div class="col-xs-6 col-sm-2"><p class="text-center texto-verde-wrap"><%= t('.vigencia')%></p></div>
               <div class="col-xs-6 col-sm-2"><p class="text-center texto-verde-wrap"><%= t('.duracion')%></p></div>
             <%end%>
-            <%= link_to municipio_procedure_line_path(@municipio,tramite_de_giro) do %>
+            <%= link_to city_procedure_line_path(@city,tramite_de_giro) do %>
             <%if Procedure.find(tramite_de_giro.procedure_id).categoria == @categoria%>
               <li class="table--row">
                <div class="row--">
-                <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= Procedure.find(tramite_de_giro.procedure_id).nombre %></p></div>
-                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= tipo(Procedure.find(tramite_de_giro.procedure_id).tipo) %></p></div>
-                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).costo %></p></div>
-                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).vigencia %></p></div>
-                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).duracion %></p></div>
+                <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= Procedure.find(tramite_de_giro.procedure_id).name %></p></div>
+                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= tipo(Procedure.find(tramite_de_giro.procedure_id).type_procedure) %></p></div>
+                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).cost %></p></div>
+                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).validity %></p></div>
+                <div class="col-xs-6 col-sm-2"><p class="text-center texto-negro"><%= Procedure.find(tramite_de_giro.procedure_id).long %></p></div>
                 </div> 
                 <% dialogo_sin_tramites = 'true'%>
               </li>
