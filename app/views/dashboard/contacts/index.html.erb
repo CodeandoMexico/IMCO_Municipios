@@ -4,10 +4,10 @@
 			<section id="services">
 				<div class="center-block-margin">
 					<div class="container">
-						<h1 class="title text-center texto-verde"><%=t('.all_profile',:municipio => @municipio.nombre)%></h1>
+						<h1 class="title text-center texto-verde"><%=t('.all_profile',:city => @city.name)%></h1>
 						<hr class="small">
 						<div class="col-md-6 col-md-offset-3">	
-							<%= form_for @municipio , html: { class: 'form-horizontal' } do |f| %>
+							<%= form_for @city , html: { class: 'form-horizontal' } do |f| %>
 							<div class="row">
 								<%= f.label t('.correo_municipio'), class: 'col-sm-3 control-label' %>
 								<div class="col-sm-9">
@@ -44,7 +44,7 @@
 								<%= content_tag :tr do %>
 								<%= content_tag :td, @user.email %>
 								<%= content_tag :td, :class => 'text-right'  do %>
-								<%= link_to t('.edit'), edit_dashboard_municipio_contact_path(@municipio,@user) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
+								<%= link_to t('.edit'), edit_dashboard_city_contact_path(@city,@user) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
 								<% end %>
 								<% end %>
 							</tbody>

@@ -19,8 +19,8 @@
                <% @procedures.each_with_index do |procedure, idx| %>
                <%= content_tag :tr do %>
                <%= content_tag :td, idx + 1 %>
-               <%= content_tag :td, truncate(procedure.nombre, :length => 70)%>
-               <%= content_tag :td, Dependency.find(procedure.dependency_id).nombre%>
+               <%= content_tag :td, truncate(procedure.name, :length => 70)%>
+               <%= content_tag :td, Dependency.find(procedure.dependency_id).name%>
                <%= content_tag :td do %>
                <%= link_to t('form.actions.edit'), edit_dashboard_procedure_path(procedure) , :class => 'btn btn-success btn-xs outlineverde'%> 
                <%= link_to t('form.actions.destroy'), dashboard_procedure_path(procedure), method: :delete, data: { confirm: t('form.confirmations.delete_procedure') }, :class => 'btn btn-success btn-xs outlineverde' %>

@@ -19,8 +19,8 @@
                 <% @inspectors.each_with_index do |inspector, idx| %>
                 <%= content_tag :tr do %>
                 <%= content_tag :td, idx + 1 %>
-                <%= content_tag :td, inspector.nombre %>
-                <%= content_tag :td, inspector.dependency.nombre %>
+                <%= content_tag :td, inspector.name %>
+                <%= content_tag :td, inspector.dependency.name %>
                 <%= content_tag :td do %>
                 <%= link_to t('form.actions.edit'), edit_dashboard_inspector_path(inspector), :class => 'btn btn-success btn-xs outlineverde' %> 
                 <%= link_to t('form.actions.destroy'), dashboard_inspector_path(inspector), method: :delete, data: { confirm: t('form.confirmations.delete_inspector') } , :class => 'btn btn-success btn-xs outlineverde'%>

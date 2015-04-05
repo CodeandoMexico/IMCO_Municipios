@@ -16,7 +16,7 @@
            <H2> <%=t('.razon_denuncia')%></H2>
             <espacio>
             
-            <%= form_for @complaint, url: municipio_complaints_path do |f| %>
+            <%= form_for @complaint, url: city_complaints_path do |f| %>
             <div class="form-group">
               <%= f.radio_button :reason, "regulation_violation" %>
               <%= f.label :reason_regulation_violation, COMPLAINTS["regulation_violation"] %>
