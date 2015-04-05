@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @lines = policy_scope(Line).where(city_id: current_user.city).order(:nombre)
+      @lines = policy_scope(Line).where(city_id: current_user.city).order(:name)
       respond_to do |format|
         format.html
         format.csv { send_data @lines.to_csv }

@@ -100,7 +100,7 @@ es:
       denuncia: Denuncias
     contacts:
       index:
-        all_profile: Contacto municipio %{municipio}
+        all_profile: Contacto municipio %{city}
         correo_admin: Correo de administradores
         correo_municipio: Correo del Municipio
         save: Guardar
@@ -308,7 +308,7 @@ es:
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
-  municipios:
+  cities:
     index:
       title: Selecciona una opción
     show:

@@ -6,7 +6,7 @@ module Dashboard
     def index
       redirect_to root_path if current_user.nil?
       @user = current_user
-      @municipio = City.find(current_user.city_id)
+      @city = City.find(current_user.city_id)
     end
 
     def edit
