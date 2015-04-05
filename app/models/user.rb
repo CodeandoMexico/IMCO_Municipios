@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
-  validates :municipio_id, presence: true
-  belongs_to :municipio
+  validates :city_id, presence: true
+  belongs_to :city
 
   has_many :user_formation_step
   has_many :formation_steps, through: :user_formation_step

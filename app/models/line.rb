@@ -6,15 +6,15 @@ class Line < ActiveRecord::Base
   has_many :inspection_lines
   has_many :inspections, through: :inspection_lines
 
- belongs_to :municipio
+ belongs_to :city
 
 
 
  def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ["nombre", "descripcion","municipio_id"]#column_names
+      csv << ["name", "description","city_id"]#column_names
       all.each do |product|
-        csv << [product.nombre,product.descripcion, Municipio.find(product.municipio_id).nombre] 
+        csv << [product.name,product.description, City.find(product.city_id).name] 
       end
     end
   end
