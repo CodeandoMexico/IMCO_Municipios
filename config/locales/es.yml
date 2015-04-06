@@ -119,6 +119,7 @@ es:
         negocio: Negocio
         fecha: Fecha
         colonia: Domicilio
+        usuario_eliminado: Usuario eliminado
       show:
         negocio: Negocio
         fecha: Fecha

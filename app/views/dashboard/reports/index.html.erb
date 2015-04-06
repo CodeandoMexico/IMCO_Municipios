@@ -16,21 +16,27 @@
                <% @reports.each_with_index do |denuncia, idx| %>
                  <%= content_tag :tr do %>
                  <%= content_tag :td, idx + 1 %>
-                 <%= content_tag :td, User.find(denuncia.user_id).business_name %>
-                 <%= content_tag :td, COMPLAINTS[denuncia.reason]%>
-                 <%= content_tag :td, denuncia.updated_at %>
-                 <%= content_tag :td do %>
-                 <%= link_to t('form.actions.show'), dashboard_report_path(denuncia) , :class => 'btn btn-success btn-xs outlineverde'%>
-                 <% end %>
-                 <% end %>
+                 <%unless User.where(id: denuncia.user_id ).empty?%>
+                  <%= content_tag :td, User.find(denuncia.user_id).business_name %>
+                 <%else%>
+                  <%= content_tag :td, t('.usuario_eliminado')  %>
+                 <%end%>
+                  <%= content_tag :td, COMPLAINTS[denuncia.reason]%>
+                  <%= content_tag :td, denuncia.updated_at %>
+                 <%unless User.where(id: denuncia.user_id ).empty?%>
+                  <%= content_tag :td do %>
+                  <%= link_to t('form.actions.show'), dashboard_report_path(denuncia) , :class => 'btn btn-success btn-xs outlineverde'%>
+                   <% end %>
+                <% end %>
+               <% end %>
                <% end %>
              </tbody>
            </table>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
+         </div>
+       </div>
+     </section>
+   </div>
+ </div>
 </div>
 </div>
 
