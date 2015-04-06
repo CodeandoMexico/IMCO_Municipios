@@ -73,13 +73,13 @@ namespace :my_tasks do
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
 
-        if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '4')
-        elsif index == 2
+        #if index == 0
+          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '3')
-        end
+        #end
 
         name = row.to_hash['nombre']
         valid_through = row.to_hash['vigencia']
@@ -150,13 +150,13 @@ namespace :my_tasks do
       # init variables
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
-        if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
-        elsif index == 2
+        #if index == 0
+         # dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '3')
-        end
+        #end
 
         name = row.to_hash['nombre']
         subject = row.to_hash['materia']
@@ -222,7 +222,7 @@ namespace :my_tasks do
       # init variables
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
-        city = Municipio.find_by(name: row.to_hash['municipio_id'])
+        city = City.find_by(name: row.to_hash['municipio_id'])
         name = row.to_hash['nombre']
         description = row.to_hash['descripcion']
         path = row.to_hash['path']
@@ -256,13 +256,13 @@ namespace :my_tasks do
       CSV.foreach(city_file, :headers => true) do |row|
 
 
-         if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
-        elsif index == 2
+        # if index == 0
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '3')
-        end
+       # end
         name = row.to_hash['nombre']
         time = row.to_hash['duracion']
         cost = row.to_hash['costo']
@@ -282,7 +282,7 @@ namespace :my_tasks do
          a =  Procedure.create(
              dependency: dependency,
              name: name,
-             duration: time,
+             long: time,
              cost: cost,
              validity: supervisor,
              contact: contact,
