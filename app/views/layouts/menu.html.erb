@@ -2,10 +2,10 @@
 <html>
   <!--Header-->
   <head>
-      <% if @municipio.nil? %>
+      <% if @city.nil? %>
   	   <title>Mi Negocio México</title>
       <% else %>
-        <title>Mi Negocio México | <%= @municipio.nombre %></title>
+        <title>Mi Negocio México | <%= @city.name %></title>
       <% end %>
 
       <!-- Load resources -->

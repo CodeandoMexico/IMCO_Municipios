@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
-  validates :municipio_id, presence: true
-  belongs_to :municipio
+  validates :city_id, presence: true
+  belongs_to :city
 
   has_many :user_formation_step
   has_many :formation_steps, through: :user_formation_step
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
                             uid:auth.uid,
                             email:auth.info.email,
                             password:Devise.friendly_token[0,20],
-                            municipio_id:'1'
+                            city_id:'1'
                           )
       end
        end
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
                             uid:auth.uid,
                             email:auth.info.email,
                             password:Devise.friendly_token[0,20],
-                             municipio_id:'1'
+                             city_id:'1'
                           )
       end
 

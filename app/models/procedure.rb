@@ -9,10 +9,10 @@ class Procedure < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ["nombre","duracion","costo", "vigencia","contacto","dependencia_id","tipo","giros","tramites"]#column_names
+      csv << ["name","long","cost", "validity","contact","dependencia_id","type_procedure","giros","tramites"]#column_names
       all.each do |product|
-        csv << [product.nombre, product.duracion, product.costo,product.vigencia, product.contacto, Dependency.find(product.dependency_id).nombre,
-          tipo_tramite(product.tipo),  procedure_lines(product.id), procedure_requirements(product.id)] 
+        csv << [product.name, product.long, product.cost,product.validity, product.contact, Dependency.find(product.dependency_id).nombre,
+          tipo_tramite(product.type_procedure),  procedure_lines(product.id), procedure_requirements(product.id)] 
         end
       end
     end
@@ -24,7 +24,7 @@ class Procedure < ActiveRecord::Base
   def procedure_lines(id_procedure)
     aux = []
     ProcedureLine.where(procedure_id: id_procedure).each_with_index do |line, index|
-      aux[index] = Line.find(line.line_id).nombre
+      aux[index] = Line.find(line.line_id).name
     end
     if aux.blank?
       'N/A' 
@@ -37,7 +37,7 @@ class Procedure < ActiveRecord::Base
 def procedure_requirements(id_procedure)
   aux = []
   ProcedureRequirement.where(procedure_id: id_procedure).each_with_index do |requirement, index|
-    aux[index] = Requirement.find(requirement.requirement_id).nombre
+    aux[index] = Requirement.find(requirement.requirement_id).name
   end
   if aux.blank?
     'N/A' 

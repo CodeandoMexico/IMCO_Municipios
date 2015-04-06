@@ -1,4 +1,4 @@
-class Municipio < ActiveRecord::Base
+class City < ActiveRecord::Base
   has_many :dependencies
   has_many :ilines
   has_many :users

@@ -1,7 +1,7 @@
 class LinePolicy < ApplicationPolicy
   def create?
    #raise record.inspect
-    record.municipio_id == user.municipio_id && user.admin?
+    record.city_id == user.city_id && user.admin?
   end
 
   # def new?

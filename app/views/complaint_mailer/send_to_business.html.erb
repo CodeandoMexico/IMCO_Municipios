@@ -6,7 +6,7 @@
   <body>
       <p><%=t('correos.empresa.saludo')%></p>
     <p>
-		<%= t('correos.empresa.body', municipio: Municipio.find(@complaint.municipio).nombre, folio: @complaint.id)%>
+		<%= t('correos.empresa.body', city: City.find(@complaint.city).name, folio: @complaint.id)%>
 	</br>
 	</br>
 		<%= t('correos.empresa.gracias')%>

@@ -1,17 +1,16 @@
 module Dashboard
   class ContactsController < ApplicationController
-    before_filter :set_user, :set_municipio
+    before_filter :set_user, :set_city
         layout 'dashboard'
 
     def index
       redirect_to root_path if current_user.nil?
       @user = current_user
-      @municipio = Municipio.find(current_user.municipio_id)
-   #   @users = User.where(:municipio_id => current_user.municipio_id, :admin =>true)
+      @city = City.find(current_user.city_id)
     end
 
     def edit
-        @municipio = Municipio.find(current_user.municipio_id)
+        @city = City.find(current_user.city_id)
     end
 
 
@@ -21,8 +20,8 @@ module Dashboard
       @user ||= current_user
     end
 
-    def set_municipio
-      @municipio ||= Municipio.find(current_user.municipio_id)
+    def set_city
+      @city ||= City.find(current_user.city_id)
     end
 
 

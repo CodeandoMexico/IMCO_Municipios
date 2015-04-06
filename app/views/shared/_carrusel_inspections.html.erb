@@ -20,8 +20,8 @@
                   <%end %>
                   <div class="carousel-content">
                     <div class ="texto-padding-center">
-                      <h4 class="texto-verde-wrap top-carrusel"><%=requirement.nombre%></h4>
-                      <p class="texto-negro texto-padding-bottom"><%=requirement.descripcion[0..350] %>
+                      <h4 class="texto-verde-wrap top-carrusel"><%=requirement.name%></h4>
+                      <p class="texto-negro texto-padding-bottom"><%=requirement.description[0..350] %>
                         <br>
                         <%=link_to t('.obtener_aqui'), requirement.path , {:style => 'color: #418F61', :target => '_blank'} %></p>
                       </div>

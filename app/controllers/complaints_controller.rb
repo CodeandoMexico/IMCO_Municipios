@@ -2,7 +2,7 @@ class ComplaintsController < ApplicationController
   layout 'blanco'
   before_action :authenticate_business!
   before_action :business_profile_complete!
-  before_action :set_municipios
+  before_action :set_cities
   before_action :complaint_params, only: [:create, :update]
 
   def new
@@ -13,14 +13,14 @@ class ComplaintsController < ApplicationController
   def create
    @complaint = Complaint.new(
                   user: current_user,
-                  municipio: @municipio,
+                  city: @city,
                   reason: complaint_params[:reason],
                   custom_reason: complaint_params[:custom_reason],
                   description: complaint_params[:description]
                  )
     authorize @complaint
     if @complaint.save
-      redirect_to municipio_inspections_path(@municipio),
+      redirect_to city_inspections_path(@city),
         notice: I18n.t('complaints.created_successfully')
     else
       render :new
@@ -35,9 +35,9 @@ class ComplaintsController < ApplicationController
 
   private
 
-  def set_municipios
-    @municipio = Municipio.find(params[:municipio_id])
-    @municipios = Municipio.all
+  def set_cities
+    @city = City.find(params[:city_id])
+    @cities = City.all
   end
 
   def complaint_params

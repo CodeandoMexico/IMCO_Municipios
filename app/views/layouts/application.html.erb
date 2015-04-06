@@ -9,10 +9,10 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
  
-  <%if @municipio.nil? %>
+  <%if @city.nil? %>
 	 <title>Mi Negocio México</title>
   <%else%>
-    <title>Mi Negocio México | <%=@municipio.nombre%></title>
+    <title>Mi Negocio México | <%=@city.name%></title>
   <%end%>
 
   <%= stylesheet_link_tag 'application', media: 'all' %>

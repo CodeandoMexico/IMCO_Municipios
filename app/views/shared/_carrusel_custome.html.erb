@@ -13,7 +13,7 @@
         <div class="carousel-inner ">
             <% count = 0 %>
             <% @formation_steps.each_with_index do |formation,index| %>
-              <% if formation.type == @tipo %>
+              <% if formation.type_formation_step == @tipo %>
                 <% count += 1 %>
                 <%if count == 1 %>
                   <div class="active item">
@@ -33,7 +33,7 @@
                         <%else%>
                           <%@ruta = "#{request.original_url}&guardado=#{formation.id}" %>
                         <%end%>
-                        <%if @tramites_realizados.where(formation_step_id: formation.id, line_id: @line, tipo: @tipo).first.nil?%>
+                        <%if @tramites_realizados.where(formation_step_id: formation.id, line_id: @line, type_user_formation_step: @tipo).first.nil?%>
                           <div class="col-md-6"><p class="text-right"> <%=link_to t('.tengo_tramite'), @ruta,{:style => 'color: #f00'}  %> </p></div>
                         <%else%>
                           <div class="col-md-6"><p class="text-right texto-verde-wrap"><%=t('.terminado')%></p></div>

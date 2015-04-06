@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @reports = policy_scope(Complaint).where(municipio_id: current_user.municipio).order(:created_at)
+      @reports = policy_scope(Complaint).where(city_id: current_user.city).order(:created_at)
     end
 
     def show
@@ -18,7 +18,7 @@ module Dashboard
     end
 
     def report_params
-      params.require(:report).permit(:nombre, :municipio_id)
+      params.require(:report).permit(:name, :city_id)
     end
   end
 end

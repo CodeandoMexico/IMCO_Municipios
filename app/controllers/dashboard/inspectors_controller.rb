@@ -14,7 +14,7 @@ module Dashboard
 
     def new
       @inspector = Inspector.new
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
     end
 
     def edit
@@ -65,7 +65,7 @@ module Dashboard
     end
 
     def inspector_params
-      params.require(:inspector).permit(:nombre, :vigencia, :materia, :supervisor, :contacto, :foto, :dependency_id)
+      params.require(:inspector).permit(:name, :validity, :matter, :supervisor, :contact, :photo, :dependency_id)
     end
   end
 end

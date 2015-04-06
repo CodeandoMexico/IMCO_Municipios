@@ -11,13 +11,13 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li >
                     <div class="dropdown nav navbar-nav navbar-left">
-                        <%unless @municipio.nil?%>
-                        <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@municipio.nombre %><span class="caret a" ></span></a>
+                        <%unless @city.nil?%>
+                        <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@city.name %><span class="caret a" ></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <%@municipios.each do |municipio|%>
-                                    <%unless municipio == @municipio%>
+                                <%@cities.each do |city|%>
+                                    <%unless city == @city%>
                                          <li role="presentation">
-                                            <%=link_to municipio.nombre,municipio_path(municipio), :role => "menuitem", :tabindex => "-1"%>
+                                            <%=link_to city.name,city_path(city), :role => "menuitem", :tabindex => "-1"%>
                                          </li>
                                     <%end%>
                                 <%end%>

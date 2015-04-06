@@ -11,38 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330214559) do
+ActiveRecord::Schema.define(version: 20150405234011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "contact_email"
+  end
 
   create_table "complaints", force: true do |t|
     t.string   "reason"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "municipio_id"
+    t.integer  "city_id"
     t.string   "custom_reason"
     t.integer  "user_id"
   end
 
   create_table "dependencies", force: true do |t|
-    t.text     "nombre"
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "municipio_id"
+    t.integer  "city_id"
   end
 
-  add_index "dependencies", ["municipio_id"], name: "index_dependencies_on_municipio_id", using: :btree
+  add_index "dependencies", ["city_id"], name: "index_dependencies_on_city_id", using: :btree
 
   create_table "formation_steps", force: true do |t|
     t.text     "name"
     t.text     "description"
-    t.string   "type"
+    t.string   "type_formation_step"
     t.text     "path"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "municipio_id"
+    t.integer  "city_id"
   end
 
   create_table "identities", force: true do |t|
@@ -70,14 +77,14 @@ ActiveRecord::Schema.define(version: 20150330214559) do
   end
 
   create_table "inspections", force: true do |t|
-    t.text     "nombre"
-    t.text     "materia"
-    t.text     "duracion"
-    t.text     "norma"
-    t.text     "antes"
-    t.text     "durante"
-    t.text     "despues"
-    t.text     "sancion"
+    t.text     "name"
+    t.text     "matter"
+    t.text     "duration"
+    t.text     "rule"
+    t.text     "before"
+    t.text     "during"
+    t.text     "after"
+    t.text     "sanction"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dependency_id"
@@ -85,30 +92,23 @@ ActiveRecord::Schema.define(version: 20150330214559) do
   end
 
   create_table "inspectors", force: true do |t|
-    t.text     "nombre"
-    t.text     "vigencia"
-    t.text     "materia"
+    t.text     "name"
+    t.text     "validity"
+    t.text     "matter"
     t.text     "supervisor"
-    t.text     "contacto"
-    t.text     "foto"
+    t.text     "contact"
+    t.text     "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dependency_id"
   end
 
   create_table "lines", force: true do |t|
-    t.text     "nombre"
-    t.text     "descripcion"
+    t.text     "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "municipio_id"
-  end
-
-  create_table "municipios", force: true do |t|
-    t.string   "nombre"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "contact_email"
+    t.integer  "city_id"
   end
 
   create_table "procedure_lines", force: true do |t|
@@ -126,26 +126,26 @@ ActiveRecord::Schema.define(version: 20150330214559) do
   end
 
   create_table "procedures", force: true do |t|
-    t.text     "nombre"
-    t.text     "duracion"
-    t.text     "costo"
-    t.text     "vigencia"
-    t.text     "contacto"
+    t.text     "name"
+    t.text     "long"
+    t.text     "cost"
+    t.text     "validity"
+    t.text     "contact"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dependency_id"
-    t.text     "tipo"
-    t.text     "categoria"
+    t.text     "type_procedure"
+    t.text     "category"
     t.text     "sare"
   end
 
   create_table "requirements", force: true do |t|
-    t.text     "nombre"
-    t.text     "descripcion"
+    t.text     "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "path"
-    t.integer  "municipio_id"
+    t.integer  "city_id"
   end
 
   create_table "user_formation_steps", force: true do |t|
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20150330214559) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "line_id"
-    t.string   "tipo"
+    t.string   "type_user_formation_step"
   end
 
   create_table "users", force: true do |t|
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20150330214559) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "municipio_id"
+    t.integer  "city_id"
     t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
@@ -184,8 +184,8 @@ ActiveRecord::Schema.define(version: 20150330214559) do
     t.string   "name"
   end
 
+  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["municipio_id"], name: "index_users_on_municipio_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

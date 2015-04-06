@@ -24,13 +24,13 @@
       <div class="clearfix visible-xs-block"></div>
       <div class=".col-md-4 text-right"><ul class="list-inline">
         <li class="text-center">
-          <% if @municipio.present? %>
-            <a href="#" ><%= link_to t('footer.acerca_de'), municipio_about_path(@municipio) %></a>
+          <% if @city.present? %>
+            <a href="#" ><%= link_to t('footer.acerca_de'), city_about_path(@city) %></a>
           <% end %>
         </li>
         <li class="text-center">
-          <% if @municipio.present? %>
-            <a href="#" ><%= link_to t('footer.aviso'), municipio_aviso_path(@municipio) %></li></a>
+          <% if @city.present? %>
+            <a href="#" ><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li></a>
           <% end %>
         </li>
       </ul></div>

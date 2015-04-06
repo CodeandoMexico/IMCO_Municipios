@@ -3,12 +3,12 @@ class ProcedureLinesController < ApplicationController
   before_action :set_line, only: [:show, :edit, :update, :destroy]
 
  def index
-     set_municipio(:municipio_id)
+     set_city(:city_id)
      @procedure = Procedure.all.order('nombre DESC')
      @id_del_giro = "0"
      @tipo  = 'A'
      valores  if params[:get]
-         @municipios = Municipio.all
+         @cities = City.all
  end
  
   def valores
@@ -21,13 +21,13 @@ class ProcedureLinesController < ApplicationController
 
  def show
 
-     @municipios = Municipio.all
-     set_municipio(:municipio_id)
+     @cities = City.all
+     set_city(:city_id)
     @procedure_requirements = ProcedureRequirement.all
     @procedure_lines=  ProcedureLine.all
     @requirements = Requirement.all
-    @line = Line.find(@procedure_line.line_id).nombre
-    @procedure = Procedure.find(@procedure_line.procedure_id).nombre 
+    @line = Line.find(@procedure_line.line_id).name
+    @procedure = Procedure.find(@procedure_line.procedure_id).name 
     @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id) 
  end
  
@@ -102,13 +102,13 @@ private
     
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_municipio(val)
-      @municipio = Municipio.find(params[val])
+    def set_city(val)
+      @city = City.find(params[val])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def municipio_params
-      params.require(:municipio).permit(:nombre)
+    def city_params
+      params.require(:city).permit(:name)
     end
   end
 
