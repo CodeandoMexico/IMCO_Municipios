@@ -37,7 +37,7 @@ class ComplaintsController < ApplicationController
 
   def set_cities
     @city = City.find(params[:city_id])
-    @city = City.all
+    @cities = City.all
   end
 
   def complaint_params

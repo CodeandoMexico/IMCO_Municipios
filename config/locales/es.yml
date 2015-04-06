@@ -26,7 +26,7 @@ es:
       subject: Denuncia enviada correctamente
       saludo: Hola,
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio  %{municipio} correctamente. El folio de la denuncia es %{folio}.
+            La denuncia de tu empresa ha sido enviada al municipio  %{city} correctamente. El folio de la denuncia es %{folio}.
 
             El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
       gracias: Gracias por utilizar Mi Negocio México.

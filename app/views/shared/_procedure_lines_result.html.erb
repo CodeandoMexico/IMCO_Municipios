@@ -16,7 +16,7 @@
               <div class="col-xs-6 col-sm-2"><p class="text-center texto-verde-wrap"><%= t('.duracion')%></p></div>
             <%end%>
             <%= link_to city_procedure_line_path(@city,tramite_de_giro) do %>
-            <%if Procedure.find(tramite_de_giro.procedure_id).categoria == @categoria%>
+            <%if Procedure.find(tramite_de_giro.procedure_id).category == @categoria%>
               <li class="table--row">
                <div class="row--">
                 <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= Procedure.find(tramite_de_giro.procedure_id).name %></p></div>

@@ -3,9 +3,9 @@
     <% @inspection.requirements.each_with_index do |requirement, k| %>
       <% count += 1 %>
         <%if count==1%>
-          <li data-target="#myCarousel" data-slide-to=<%=count-1%> class="active" data-toggle="tooltip" data-placement="bottom" data-original-title='<%=requirement.nombre%>'></li>
+          <li data-target="#myCarousel" data-slide-to=<%=count-1%> class="active" data-toggle="tooltip" data-placement="bottom" data-original-title='<%=requirement.name%>'></li>
         <%else%>
-          <li data-target="#myCarousel" data-slide-to=<%=count-1%> data-toggle="tooltip" data-placement="bottom" data-original-title='<%=requirement.nombre%>'></li>
+          <li data-target="#myCarousel" data-slide-to=<%=count-1%> data-toggle="tooltip" data-placement="bottom" data-original-title='<%=requirement.name%>'></li>
         <%end%>
   <%end%>
 </ol>

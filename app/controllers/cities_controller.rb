@@ -23,7 +23,7 @@ class CitiesController < ApplicationController
   def aviso
 
     @cities = City.all
-    set_municipio(:city_id)
+    set_city(:city_id)
         render layout: 'blanco'
   end
 
