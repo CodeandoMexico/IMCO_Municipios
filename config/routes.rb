@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :procedure_lines, only: [:index,:show]
     resources :formation_steps, only: [:index]
     resources :complaints, only: [:new, :create, :edit, :update]
+    resources :reminders, only: [:new,:index,:destroy, :edit, :update]
+    Reminders
   end
 
   resource :dashboard, only: :show, controller: :dashboard do
