@@ -697,3 +697,50 @@ espacio{
   padding-left: 0px;
   padding-right: 5px;
 }
+
+
+
+/***********************calendar****************************/
+
+.ui-datepicker {
+   background: $verde-claro;
+}
+
+.ui-datepicker-header {
+    background: $verde-claro;
+   
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    background-image:  url(image_path('abrir.png'));
+    background-repeat: no-repeat;
+    line-height: 600%;
+    overflow: hidden;
+}
+
+
+.ui-datepicker thead {
+    background-color: #f7f7f7;
+    background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
+    background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    background-image: linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+    border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+    text-transform: uppercase;
+    font-size: 6pt;
+    padding: 5px 0;
+    color: #666666;
+    text-shadow: 1px 0px 0px #fff;
+    filter: dropshadow(color=#fff, offx=1, offy=0);
+}
