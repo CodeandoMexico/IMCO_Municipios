@@ -1,11 +1,11 @@
 ## In this order the tasks should be run
-# rake my_tasks:load_lines
-# rake my_tasks:load_dependencies
-# rake my_tasks:load_inspectors
-# rake my_tasks:load_requirements
-# rake my_tasks:load_inspections
-# rake my_tasks:load_formation_steps
-# rake my_tasks:load_procedures
+# heroku run rake my_tasks:load_lines
+# heroku run rake my_tasks:load_dependencies
+# heroku run rake my_tasks:load_inspectors
+# heroku run rake my_tasks:load_requirements
+# heroku run rake my_tasks:load_inspections
+# heroku run rake my_tasks:load_formation_steps
+# heroku run rake my_tasks:load_procedures
 
 namespace :my_tasks do
  require 'csv'
