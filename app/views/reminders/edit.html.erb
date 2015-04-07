@@ -1,0 +1,57 @@
+<div id="wrap">
+  <div id="main" class="container clear-top">
+    <div class="row row-padding-bottom">
+      <div class="span12">
+        <section id="services ">
+          <div class="center-block-margin">
+            <div class="container">
+               <h2> <%= t('titles.edit_reminder') %></h2>
+              <table class="table">
+               <thead>
+                 <th>#</th>
+                 <th><%= t('.name') %></th>
+                 <th><%= t('.license') %></th>
+                 <th><%= t('.until') %></th>
+                 <th class="text-right"><%= t('.acciones') %></th>
+               </thead>
+               <tbody>
+                 
+               </tbody>
+             </table>
+              <div id="form-container">
+                <%= form_for  @reminder, url: city_reminder_path(@city,@reminder) do |f| %>
+             <div class="form-group row">
+              <div class="col-sm-3">
+                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del documento...' %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.text_field :license, class: 'form-control', placeholder: 'Número o fólio del documento...' %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.text_field :until_to, class: 'form-control' , placeholder: 'Fecha de vencimiento...'%>
+              </div>
+              <div class="col-sm-3 text-right">
+                <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
+              </div>
+            </div>
+
+            <% end %>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+$(function() {
+  $( "#reminders_until_to" ).datepicker({
+       format: 'yyyy-dd-mm',
+        startDate: '-3d'
+ });
+
+});
+</script>

@@ -24,6 +24,7 @@
                  <th><%= t('.name') %></th>
                  <th><%= t('.license') %></th>
                  <th><%= t('.until') %></th>
+                 <th class="text-right"><%= t('.acciones') %></th>
                </thead>
                <tbody>
                  <% @reminders.each_with_index do |reminder, idx| %>
@@ -32,17 +33,19 @@
                  <%= content_tag :td, reminder.name %>
                  <%= content_tag :td, reminder.license %>
                  <%= content_tag :td, reminder.until_to %>
-                 <%= content_tag :td do %>
-                 <%#= link_to t('.edit'), city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde'%> 
-                 <%= link_to t('.eliminar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+                 <%= content_tag :td, :class => 'text-right' do %>
+                 <%= link_to t('.edit'), edit_city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
+                 <%= link_to t('.borrar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
 
                  <% end %>
                  <% end %>
                  <% end %>
                </tbody>
              </table>
-
-
+              <%if @reminders.count > 0%>
+                  <hr class="small">
+              <%end%>
+              
              <%= form_for  @reminder, url: city_reminders_path do |f| %>
              <div class="form-group row">
               <div class="col-sm-3">

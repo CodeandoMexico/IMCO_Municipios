@@ -3,10 +3,10 @@ class RemindersController < ApplicationController
   before_action :authenticate_business!
   before_action :business_profile_complete!
   before_action :set_cities
-  before_action :complaint_params, only: [:create, :update]
+   before_action :set_reminder, only: [:edit, :update, :destroy]
+   before_action :complaint_params, only: [:create, :update]
 
-  def new
-    @reminder = Reminders.new
+  def edit
   end
 
   def index
@@ -31,16 +31,25 @@ class RemindersController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def update
-  end
+      #authorize @dependency
+
+      respond_to do |format|
+        if @reminder.update(complaint_params)
+          format.html { redirect_to city_reminders_path(@city), notice: 'El recordatorio fue actualizado satisfactoriamente.' }
+          format.json { render :show, status: :ok, location: @reminder }
+        else
+          format.html { render :edit }
+          format.json { render json: @reminder.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
    def destroy
       #authorize @inspector
 
-      Reminders.find(params[:id]).destroy
+      @reminder.destroy
       respond_to do |format|
         format.html { redirect_to city_reminders_path(@city), notice: 'El recordatorio fue borrado satisfactoriamente.' }
         format.json { head :no_content }
@@ -57,6 +66,10 @@ class RemindersController < ApplicationController
   def set_cities
     @city = City.find(params[:city_id])
     @cities = City.all
+  end
+
+  def set_reminder
+    @reminder = Reminders.find(params[:id])
   end
 
   def complaint_params
