@@ -5,6 +5,13 @@
         <section id="services ">
           <div class="center-block-margin">
             <div class="container">
+              <div class="row text-center ">
+                <div class="col-md-6 col-md-offset-3">
+                  <%flash.each do |key, value| %>
+                  <div class="alert alert-success"><%=value%></div>
+                  <% end %>
+                </div>
+              </div>
               <h2> <%= t('titles.reminder') %></h2>
               <div class="row text-right">
                 <%#= link_to t('.new_reminder'), new_city_reminder_path, :class => 'btn btn-success btn-xs outlineverde' %>
@@ -26,6 +33,7 @@
                  <%= content_tag :td do %>
                  <%#= link_to t('.edit'), city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde'%> 
                  <%= link_to t('.eliminar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+
                  <% end %>
                  <% end %>
                  <% end %>
@@ -36,22 +44,18 @@
              <%= form_for  @reminder, url: city_reminders_path do |f| %>
              <div class="form-group row">
               <div class="col-sm-3">
-                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del Documento...' %>
+                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del documento...' %>
               </div>
               <div class="col-sm-3">
-                <%= f.text_field :license, class: 'form-control', placeholder: 'Número del Documento...' %>
+                <%= f.text_field :license, class: 'form-control', placeholder: 'Número o fólio del documento...' %>
               </div>
               <div class="col-sm-3">
                 <%= f.text_field :until_to, class: 'form-control' , placeholder: 'Fecha de vencimiento...'%>
               </div>
-               <div class="col-sm-3 text-right">
+              <div class="col-sm-3 text-right">
                 <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
               </div>
             </div>
-
-             
-
-
 
             <% end %>
           </div>
@@ -66,7 +70,8 @@
 <script>
 $(function() {
   $( "#reminders_until_to" ).datepicker({
-   format: "dd/mm/yyyy"
+       format: 'yyyy-dd-mm',
+        startDate: '-3d'
  });
 
 });

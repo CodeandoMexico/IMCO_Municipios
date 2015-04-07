@@ -15,17 +15,17 @@ class RemindersController < ApplicationController
   end
 
   def create
+    puts complaint_params[:until_to]
    @reminder = Reminders.new(
                   user: current_user,
                   name: complaint_params[:name],
                   license: complaint_params[:license],
-                  until_to: complaint_params[:until_to],
-
+                  until_to: ordenate_date(complaint_params[:until_to])
                  )
   #  authorize @reminder
     if @reminder.save
       redirect_to  city_reminders_path(@city),
-        notice: I18n.t('complaints.created_successfully')
+        notice: 'El recordatorio fue creado satisfactoriamente.' 
     else
       render :new
     end
@@ -47,6 +47,11 @@ class RemindersController < ApplicationController
       end
     end
 
+    def ordenate_date(date)
+      fecha = date.split('/')
+      return (fecha[2]+"/"+fecha[0]+"/"+fecha[1]).to_date
+    end
+
   private
 
   def set_cities
@@ -59,7 +64,7 @@ class RemindersController < ApplicationController
       :name,
       :license,
       :until_to,
-      :user_id
+      :user
     )
   end
 end
