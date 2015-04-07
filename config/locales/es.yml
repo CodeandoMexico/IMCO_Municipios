@@ -248,6 +248,11 @@ es:
       edit: Editar
       eliminar: Eliminar
       create_reminder: Guardar
+      no_reminders_available: |+
+        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que venzan.
+      no_reminders_available_examples: |+
+        Algunos documentos pueden ser (Licencia de funcionamiento, Permiso de uso de suelo, Cédula de zonificación, etc).
+
     new:
       name: Nombre
       license: Licencia

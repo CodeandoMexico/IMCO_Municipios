@@ -13,6 +13,8 @@
                 </div>
               </div>
               <h2> <%= t('titles.reminder') %></h2>
+
+
               <div class="row text-right">
                 <%#= link_to t('.new_reminder'), new_city_reminder_path, :class => 'btn btn-success btn-xs outlineverde' %>
               </div>
@@ -58,6 +60,10 @@
             </div>
 
             <% end %>
+
+              <%if @reminders.count <= 0%>
+                   <%= render "shared/empty_resource", message: t('.no_reminders_available'), message2: t('.no_reminders_available_examples') %>
+              <%end%>
           </div>
         </div>
       </section>
