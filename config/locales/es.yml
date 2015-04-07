@@ -247,6 +247,7 @@ es:
       until: Valida hasta
       edit: Editar
       eliminar: Eliminar
+      create_reminder: Guardar
     new:
       name: Nombre
       license: Licencia

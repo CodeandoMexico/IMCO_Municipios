@@ -5,36 +5,69 @@
         <section id="services ">
           <div class="center-block-margin">
             <div class="container">
-            <h2> <%= t('titles.reminder') %></h2>
-            <div class="row text-right">
-              <%= link_to t('.new_reminder'), new_city_reminder_path, :class => 'btn btn-success btn-xs outlineverde' %>
-            </div>
-            <table class="table">
-             <thead>
-               <th>#</th>
-               <th><%= t('.name') %></th>
-               <th><%= t('.license') %></th>
-               <th><%= t('.until') %></th>
-             </thead>
-             <tbody>
-               <% @reminders.each_with_index do |reminder, idx| %>
-                <%= content_tag :tr do %>
+              <h2> <%= t('titles.reminder') %></h2>
+              <div class="row text-right">
+                <%#= link_to t('.new_reminder'), new_city_reminder_path, :class => 'btn btn-success btn-xs outlineverde' %>
+              </div>
+              <table class="table">
+               <thead>
+                 <th>#</th>
+                 <th><%= t('.name') %></th>
+                 <th><%= t('.license') %></th>
+                 <th><%= t('.until') %></th>
+               </thead>
+               <tbody>
+                 <% @reminders.each_with_index do |reminder, idx| %>
+                 <%= content_tag :tr do %>
                  <%= content_tag :td, idx + 1 %>
                  <%= content_tag :td, reminder.name %>
                  <%= content_tag :td, reminder.license %>
-                 <%= content_tag :td, reminder.until %>
+                 <%= content_tag :td, reminder.until_to %>
                  <%= content_tag :td do %>
-                   <%= link_to t('.edit'), city_reminder_path(reminder) , :class => 'btn btn-success btn-xs outlineverde'%> 
-                   <%= link_to t('.eliminar'), city_reminder_path(reminder), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde' %>
-                  <% end %>
-                <% end %>
-               <% end %>
-             </tbody>
-           </table>
-         </div>
-       </div>
-     </section>
-   </div>
- </div>
+                 <%#= link_to t('.edit'), city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde'%> 
+                 <%= link_to t('.eliminar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+                 <% end %>
+                 <% end %>
+                 <% end %>
+               </tbody>
+             </table>
+
+
+             <%= form_for  @reminder, url: city_reminders_path do |f| %>
+             <div class="form-group row">
+              <div class="col-sm-3">
+                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del Documento...' %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.text_field :license, class: 'form-control', placeholder: 'Número del Documento...' %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.text_field :until_to, class: 'form-control' , placeholder: 'Fecha de vencimiento...'%>
+              </div>
+               <div class="col-sm-3 text-right">
+                <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
+              </div>
+            </div>
+
+             
+
+
+
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
 </div>
+
+
+<script>
+$(function() {
+  $( "#reminders_until_to" ).datepicker({
+   format: "dd/mm/yyyy"
+ });
+
+});
+</script>

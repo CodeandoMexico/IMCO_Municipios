@@ -10,20 +10,21 @@ class RemindersController < ApplicationController
   end
 
   def index
-    @reminders= Reminders.where(user_id: current_user)
+    @reminders = Reminders.where(user_id: current_user)
+     @reminder = Reminders.new
   end
 
   def create
-   @reminder = Reminder.new(
+   @reminder = Reminders.new(
                   user: current_user,
-                  city: @city,
-                  reason: complaint_params[:reason],
-                  custom_reason: complaint_params[:custom_reason],
-                  description: complaint_params[:description]
+                  name: complaint_params[:name],
+                  license: complaint_params[:license],
+                  until_to: complaint_params[:until_to],
+
                  )
-    authorize @reminder
+  #  authorize @reminder
     if @reminder.save
-      redirect_to city_inspections_path(@city),
+      redirect_to  city_reminders_path(@city),
         notice: I18n.t('complaints.created_successfully')
     else
       render :new
@@ -36,6 +37,16 @@ class RemindersController < ApplicationController
   def update
   end
 
+   def destroy
+      #authorize @inspector
+
+      Reminders.find(params[:id]).destroy
+      respond_to do |format|
+        format.html { redirect_to city_reminders_path(@city), notice: 'El recordatorio fue borrado satisfactoriamente.' }
+        format.json { head :no_content }
+      end
+    end
+
   private
 
   def set_cities
@@ -44,10 +55,11 @@ class RemindersController < ApplicationController
   end
 
   def complaint_params
-    params.require(:reminder).permit(
-      :reason,
-      :custom_reason,
-      :description
+    params.require(:reminders).permit(
+      :name,
+      :license,
+      :until_to,
+      :user_id
     )
   end
 end
