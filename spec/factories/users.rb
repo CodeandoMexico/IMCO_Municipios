@@ -4,8 +4,7 @@ FactoryGirl.define do
     password 'some_secure_password'
     admin false
     sequence(:name) { |n| "User #{n}"}
-
-    association :municipio
+    association :city
 
     trait :with_profile do
       address 'This is a fake address'
@@ -16,9 +15,12 @@ FactoryGirl.define do
     end
   end
 
+
   factory :admin, parent: :user do
     sequence(:email) { |n| "admin_#{n}@website.com"}
     password "some_secure_password"
     admin true
   end
+
+
 end

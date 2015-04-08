@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :dependency do
-    sequence(:nombre) { |n| "Dependency No. #{n}" }
-    association :municipio
+    sequence(:name) { |n| "Dependency No. #{n}" }
+    association :city
   end
 end

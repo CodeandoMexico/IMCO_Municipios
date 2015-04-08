@@ -257,7 +257,7 @@ es:
       license: Licencia
       until: Valida hasta
       edit: Editar
-      eliminar: Eliminar
+      borrar: Borrar
       create_reminder: Guardar
       name_hint: Nombre del documento...
       license_hint: Número de fólio...
