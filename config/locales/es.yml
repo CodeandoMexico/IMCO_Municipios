@@ -49,7 +49,9 @@ es:
     requirements: Requerimientos
     procedures: Requerimientos
     reports: Reportes
-    reminder: Recordatorios
+    reminder: Tus recordatorios
+    new_reminder: Nuevo recordatorio
+    edit_reminder: Editar recordatorio
   buttons:
     ok: Aceptar
     crea: Crear
@@ -248,15 +250,20 @@ es:
       edit: Editar
       eliminar: Eliminar
       create_reminder: Guardar
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
       no_reminders_available: |+
-        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que venzan.
+        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
       no_reminders_available_examples: |+
         Algunos documentos pueden ser (Licencia de funcionamiento, Permiso de uso de suelo, Cédula de zonificación, etc).
-
-    new:
+    edit:
       name: Nombre
       license: Licencia
       until: Valido hasta
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
   complaints:
       new:

@@ -12,9 +12,29 @@
                   <% end %>
                 </div>
               </div>
+              <h2> <%= t('titles.new_reminder') %></h2>
+
+              <%= form_for  @reminder, url: city_reminders_path do |f| %>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <%= f.text_field :name, class: 'form-control', placeholder: t('.name_hint') %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.text_field :license, class: 'form-control', placeholder: t('.license_hint')  %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.text_field :until_to, class: 'form-control' , placeholder: t('.until_to_hint') %>
+                </div>
+                <div class="col-sm-3 text-right">
+                  <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
+                </div>
+              </div>
+              <% end %>
+
+              <hr class="small">
+              <%if @reminders.count > 0%>
+
               <h2> <%= t('titles.reminder') %></h2>
-
-
               <div class="row text-right">
                 <%#= link_to t('.new_reminder'), new_city_reminder_path, :class => 'btn btn-success btn-xs outlineverde' %>
               </div>
@@ -24,7 +44,7 @@
                  <th><%= t('.name') %></th>
                  <th><%= t('.license') %></th>
                  <th><%= t('.until') %></th>
-                 <th class="text-right"><%= t('.acciones') %></th>
+                 <th class="text-right"></th>
                </thead>
                <tbody>
                  <% @reminders.each_with_index do |reminder, idx| %>
@@ -42,45 +62,28 @@
                  <% end %>
                </tbody>
              </table>
-              <%if @reminders.count > 0%>
-                  <hr class="small">
-              <%end%>
-              
-             <%= form_for  @reminder, url: city_reminders_path do |f| %>
-             <div class="form-group row">
-              <div class="col-sm-3">
-                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del documento...' %>
-              </div>
-              <div class="col-sm-3">
-                <%= f.text_field :license, class: 'form-control', placeholder: 'Número o fólio del documento...' %>
-              </div>
-              <div class="col-sm-3">
-                <%= f.text_field :until_to, class: 'form-control' , placeholder: 'Fecha de vencimiento...'%>
-              </div>
-              <div class="col-sm-3 text-right">
-                <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
-              </div>
-            </div>
 
-            <% end %>
 
-              <%if @reminders.count <= 0%>
-                   <%= render "shared/empty_resource", message: t('.no_reminders_available'), message2: t('.no_reminders_available_examples') %>
-              <%end%>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-</div>
+
+
+             
+             <%else%>
+             <%= render "shared/empty_resource", message: t('.no_reminders_available'), message2: t('.no_reminders_available_examples') %>
+             <%end%>
+           </div>
+         </div>
+       </section>
+     </div>
+   </div>
+ </div>
 </div>
 
 
 <script>
 $(function() {
   $( "#reminders_until_to" ).datepicker({
-       format: 'yyyy-dd-mm',
-        startDate: '-3d'
+   format: 'yyyy-dd-mm',
+   startDate: '-3d'
  });
 
 });

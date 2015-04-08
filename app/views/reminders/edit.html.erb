@@ -8,11 +8,11 @@
                <h2> <%= t('titles.edit_reminder') %></h2>
               <table class="table">
                <thead>
-                 <th>#</th>
+                 <th></th>
                  <th><%= t('.name') %></th>
                  <th><%= t('.license') %></th>
                  <th><%= t('.until') %></th>
-                 <th class="text-right"><%= t('.acciones') %></th>
+                 <th class="text-right"></th>
                </thead>
                <tbody>
                  
@@ -21,17 +21,18 @@
               <div id="form-container">
                 <%= form_for  @reminder, url: city_reminder_path(@city,@reminder) do |f| %>
              <div class="form-group row">
-              <div class="col-sm-3">
-                <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre del documento...' %>
-              </div>
-              <div class="col-sm-3">
-                <%= f.text_field :license, class: 'form-control', placeholder: 'Número o fólio del documento...' %>
-              </div>
-              <div class="col-sm-3">
-                <%= f.text_field :until_to, class: 'form-control' , placeholder: 'Fecha de vencimiento...'%>
-              </div>
-              <div class="col-sm-3 text-right">
-                <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
+                <div class="col-sm-3">
+                  <%= f.text_field :name, class: 'form-control', placeholder: t('.name_hint') %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.text_field :license, class: 'form-control', placeholder: t('.license_hint')  %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.text_field :until_to, class: 'form-control' , placeholder: t('.until_to_hint') %>
+                </div>
+                <div class="col-sm-3 text-right">
+                  <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
+                </div>
               </div>
             </div>
 
