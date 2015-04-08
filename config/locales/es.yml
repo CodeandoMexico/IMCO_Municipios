@@ -8,6 +8,7 @@ es:
     complaints:
       send_to_business_subject: Denuncia enviada correctamente
       send_to_city_subject: Denuncia de inspección recibida
+      send_to_bussines_reminder_subject: Recordatorio enviado correctamente
   views:
     pagination:
       first: "&laquo; Primero"
@@ -38,6 +39,14 @@ es:
 
             Puedes ver la información completa.
       liga_a_la_denuncia: 'aquí'
+      gracias: Gracias por utilizar Mi Negocio México.
+    recordatorio:
+      subject: Notificación de MiNegocioMx
+      saludo: Hola,
+      body: |
+            Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
+
+            Puedes ver la información completa en tus recordatorios.
       gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
@@ -265,6 +274,7 @@ es:
       license_hint: Número de fólio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
+      atras: Atras
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
