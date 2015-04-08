@@ -1,7 +1,6 @@
 class InspectorsController < ApplicationController
   before_action :set_inspector, only: :show
   before_action :set_city, only: [:index, :show]
-  layout 'blanco'
 
   def index
      @cities = City.all

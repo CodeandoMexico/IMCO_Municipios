@@ -1,7 +1,6 @@
 class FormationStepsController < ApplicationController
- layout 'blanco'
- before_action :set_formation_steps, only: [:show]
-helper :formation_steps
+  before_action :set_formation_steps, only: [:show]
+  helper :formation_steps
 
  def index
   set_city(:city_id)
@@ -11,7 +10,7 @@ helper :formation_steps
     if user_signed_in?
       @tramites_realizados =  UserFormationStep.where(user_id: current_user.id, line_id: @line , type_user_formation_step: @tipo).all
     end
-    
+
 end
 
 def valores
@@ -24,7 +23,7 @@ def valores
           a = UserFormationStep.create(user_id: current_user.id, formation_step_id: @id_formation_step, line_id: @line , type_user_formation_step: @tipo)
           a.save
         end
-      end 
+      end
 
       if params[:commit] == 'Federales'
           @formation_steps = FormationStep.by_city(@city)

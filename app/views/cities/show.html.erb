@@ -1,48 +1,35 @@
-<div id="wrap">
-    <div id="main" class="container clear-top">
-        <div class="row row-padding-bottom">
-            <div class="span12">
-                <section id="services">
-                    <div class="center-block-margin">
-                    <div class="container">
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <h4>
-                                    <%= image_tag "abrir.png", class: "img-responsive center-block" %>
-                                </h4>
-                                <p class="bg-primary-nergro"><%=t('.texto_no_tengo')%><br><%=t('.texto_nuevo')%></p>
-                                <%= link_to t('.nuevo'),city_formation_steps_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>  
-                            </div>
-                            <div class="col-md-4">
-                                <h4>
-                                    <%= image_tag "tramites.png", class: "img-responsive center-block" %>
-                                </h4>
-                                <p class="bg-primary-nergro"><%=t('.texto_ya_tengo')%><br><%=t('.texto_tramite')%> </p>
-                                <%= link_to t('.tramite'),city_procedure_lines_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
-                            </div>
-                            <div class="col-md-4">
-                                <h4>
-                                    <%= image_tag "inspecciones.png", class: "img-responsive center-block" %>
-                                </h4>
-                                <p class="bg-primary-nergro"><%=t('.texto_ya_tengo')%><br><%=t('.texto_inspeccion')%></p>
-                                <div class="dropdown">
-                                    <button class="btn btn-success btn-lg outlineverde half-width" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                        <%=t('.inspecciones')%>
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu half-width" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation"><%= link_to t('.inspeccion'), city_inspections_path(@city) %></li>
-                                        <hr class="divider">
-                                        <li role="presentation"><%= link_to t('.inspector'), city_inspectors_path(@city) %></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-4">
+        <h4>
+            <%= image_tag "abrir.png", class: "img-responsive center-block" %>
+        </h4>
+        <p class="bg-primary-nergro"><%=t('.texto_no_tengo')%><br><%=t('.texto_nuevo')%></p>
+        <%= link_to t('.nuevo'),city_formation_steps_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
     </div>
+    <div class="col-md-4">
+        <h4>
+            <%= image_tag "tramites.png", class: "img-responsive center-block" %>
+        </h4>
+        <p class="bg-primary-nergro"><%=t('.texto_ya_tengo')%><br><%=t('.texto_tramite')%> </p>
+        <%= link_to t('.tramite'),city_procedure_lines_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
+    </div>
+    <div class="col-md-4">
+      <h4>
+          <%= image_tag "inspecciones.png", class: "img-responsive center-block" %>
+      </h4>
+      <p class="bg-primary-nergro"><%=t('.texto_ya_tengo')%><br><%=t('.texto_inspeccion')%></p>
+      <div class="dropdown">
+        <button class="btn btn-success btn-lg outlineverde half-width" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <%=t('.inspecciones')%>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu half-width" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><%= link_to t('.inspeccion'), city_inspections_path(@city) %></li>
+            <hr class="divider">
+            <li role="presentation"><%= link_to t('.inspector'), city_inspectors_path(@city) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-

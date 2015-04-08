@@ -1,5 +1,4 @@
 class ProcedureLinesController < ApplicationController
-    layout 'blanco'
   before_action :set_line, only: [:show, :edit, :update, :destroy]
 
  def index
@@ -10,7 +9,7 @@ class ProcedureLinesController < ApplicationController
      valores  if params[:get]
          @cities = City.all
  end
- 
+
   def valores
      @line = params[:get][:lines]
      @tipo = params[:rating]
@@ -27,10 +26,10 @@ class ProcedureLinesController < ApplicationController
     @procedure_lines=  ProcedureLine.all
     @requirements = Requirement.all
     @line = Line.find(@procedure_line.line_id).name
-    @procedure = Procedure.find(@procedure_line.procedure_id).name 
-    @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id) 
+    @procedure = Procedure.find(@procedure_line.procedure_id).name
+    @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id)
  end
- 
+
 
 
 def get_categoria(tipo)
@@ -53,7 +52,7 @@ end
   @procedure = Procedure.all
   @Line = Line.all
 
-  
+
 end
 
 def edit
@@ -99,7 +98,7 @@ private
     def line_params
       params.require(:procedure_line).permit(:id, :procedure_id, :line_id)
     end
-    
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_city(val)
@@ -111,4 +110,3 @@ private
       params.require(:city).permit(:name)
     end
   end
-

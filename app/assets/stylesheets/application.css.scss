@@ -12,70 +12,51 @@
  *
  *= require font-awesome
  *= require bootstrap3-switch
+ *= require chosen
  *= require_tree .
  *= require_self
- *= require chosen
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
 
  // custom stylesheeets
+ @import "colors";
  @import "cards";
 
 
-// colors
-$grey-200: #EEEEEE;
-$grey-400: #BDBDBD;
-$grey-500: #9E9E9E;
-$verde-claro: #4EB976;
-$verde-obscuro: #46aa6c;
-$teal-500: #009688;
-$blanco: #ffffff;
-$negro: #000000;
-$rojo: #ff0000;
-
-$user_default_color: #46aa6c;
-$admin_default_color: #3B3C3C;
-$default_text_color: #ffffff;
-
-// styles
-
-html,body
-{
-height:100%;
-font-family: Montserrat, sans-serif;
+html,
+body {
+  height:100%;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
   color: #777777
 }
 
-#wrap
-{
-min-height: 100%;
+#wrap {
+  min-height: 100%;
 }
 
-#main
-{
-overflow:auto;
-padding-bottom: 0px; /* this needs to be bigger than footer height*/
+#main {
+  overflow:auto;
+  padding-bottom: 0px; /* this needs to be bigger than footer height*/
 }
 
 
-.footer
-{
-position: relative;
-margin-top: -80px; /* negative value of footer height */
-height: 150px;
-clear:both;
-padding-top:10px;
-color:#fff;
-background-color: #46aa6c !important;
-text-align: center;
-padding: 10px 17% 10px 12%;
+.footer {
+  position: relative;
+  margin-top: -80px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:10px;
+  color:#fff;
+  background-color: #46aa6c !important;
+  text-align: center;
+  padding: 10px 17% 10px 12%;
 }
 
-.padding-left-center{
+.padding-left-center {
   padding-left: 20%;
 }
 
@@ -87,11 +68,6 @@ padding: 10px 17% 10px 12%;
 }
 .text-right {
   text-align: right;
-}
-
-body.info {
- padding-top: 70px;
- background-color: #f9f9f9;
 }
 
 .navbar-default {
@@ -140,7 +116,7 @@ nav {
 }
 
 .col-md-3 {
-width: 33%;
+  width: 33%;
 }
 
 .bg-primary {
@@ -148,26 +124,26 @@ width: 33%;
 }
 
 .container {
-width: 100%;
+  width: 100%;
 }
 
 body.info {
-min-height: 100%;
-padding-top: 70px;
- background-color: #fff;
+  min-height: 100%;
+  padding-top: 70px;
+  background-color: $blanco;
 }
 
 .input-group-addon {
-padding: 6px 12px;
-font-size: 11px;
-height: 45px !important;
-font-weight: normal;
-line-height: 1;
-color: #fff;
-text-align: center;
-background-color: rgba(0,0,0,0);
-border: 0px solid #00B26E;
-border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 11px;
+  height: 45px !important;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0,0,0,0);
+  border: 0px solid #00B26E;
+  border-radius: 4px;
 }
 
 .form-controler {
@@ -186,9 +162,6 @@ border-radius: 4px;
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-
-
-
 
 .form-control {
   display: block;

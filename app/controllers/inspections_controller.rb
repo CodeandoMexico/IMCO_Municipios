@@ -2,13 +2,12 @@ class InspectionsController < ApplicationController
   before_action :set_inspection, only: :show
   before_action :set_cities, only: [:index, :show]
   after_filter :save_my_previous_url!
-  layout 'blanco'
 
   def index
      valores  if params[:get]
          @cities = City.all
  end
- 
+
   def valores
      @line = params[:get][:lines]
      @first_time = true
@@ -19,7 +18,7 @@ class InspectionsController < ApplicationController
         @inspections =  Inspection.by_city(@city)
          @inspection_line = InspectionLine.where(line_id: @line)
       end
- end 
+ end
 
   def show
         @cities = City.all

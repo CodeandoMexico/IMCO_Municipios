@@ -52,7 +52,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
+    
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
@@ -71,7 +71,7 @@ h6 {
 
 .btn-primary {
     border-color: $verde-obscuro;
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
@@ -122,7 +122,7 @@ fieldset[disabled] .btn-primary.active {
     padding: 20px 40px;
     border-color: $verde-obscuro;
     border-radius: 3px;
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -206,7 +206,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .nav li a {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
@@ -641,28 +641,28 @@ section#contact .form-control:focus {
 }
 
 section#contact::-webkit-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact::-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-ms-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
@@ -847,6 +847,3 @@ body {
 .btn-danger.btn-outline:hover {
     color: $blanco;
 }
-
-
-
