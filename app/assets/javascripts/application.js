@@ -34,4 +34,4 @@ var loadChosen = function(){
 };
 
 $(document).ready(loadComponents);
-$(document).on('page:load',loadChosen);
+$(document).on('page:load', loadComponents);
