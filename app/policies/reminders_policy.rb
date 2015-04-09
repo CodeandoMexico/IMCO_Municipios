@@ -4,18 +4,22 @@ class RemindersPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && user.business?
+    index?
   end
 
   def new?
-    create?
-  end
-
-  def update?
-    create?
+    index?
   end
 
   def edit?
-    update?
+    user.id  == record.user.id
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    edit?
   end
 end
