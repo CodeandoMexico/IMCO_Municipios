@@ -11,25 +11,15 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="info">
+  <body>
     <% if current_page? city_path(@city) %>
       <%= render "shared/navbar_menu" %>
     <% else %>
       <%= render "shared/navbar_all_menus" %>
     <% end %>
 
-    <div id="wrap">
-      <div id="main" class="container clear-top">
-        <div class="row row-padding-bottom">
-          <div class="span12">
-            <section id="services">
-              <div class="center-block-margin">
-                <%= yield %>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
+    <div id="main" class="container clear-top">
+      <%= yield %>
     </div>
     <%= render "shared/footer" %>
   </body>

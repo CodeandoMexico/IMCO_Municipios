@@ -19,11 +19,6 @@
 //= require chosen-jquery
 //= require_tree .
 
-var loadComponents = function () {
-  loadChosen();
-  loadProcedureLinesTooltips();
-};
-
 var loadChosen = function(){
     $('.chosen-select').chosen({
        allow_single_deselect: true,
@@ -31,6 +26,11 @@ var loadChosen = function(){
        placeholder_text: 'Selecciona una opción',
        width: '500px'
     });
+};
+
+var loadComponents = function () {
+  loadChosen();
+  loadProcedureLinesTooltips();
 };
 
 $(document).ready(loadComponents);

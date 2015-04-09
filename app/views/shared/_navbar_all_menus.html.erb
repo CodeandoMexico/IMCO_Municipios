@@ -1,40 +1,37 @@
- <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <ul class="nav navbar-nav navbar-left">
-                    <li >
-                    <div class="dropdown nav navbar-nav navbar-left">
-                        <%unless @city.nil?%>
-                            <%=t('titles.titulo')%>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@city.name %><span class="caret a" ></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <%@cities.each do |city|%>
-                                    <%unless city == @city%>
-                                         <li role="presentation">
-                                            <%=link_to city.name,city_path(city), :role => "menuitem", :tabindex => "-1"%>
-                                         </li>
-                                    <%end%>
-                                <%end%>
-                            </ul>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <ul class="nav navbar-nav navbar-left">
+            <li >
+            <div class="dropdown nav navbar-nav navbar-left">
+                <%unless @city.nil?%>
+                    <%=t('titles.titulo')%>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@city.name %><span class="caret a" ></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <%@cities.each do |city|%>
+                            <%unless city == @city%>
+                                 <li role="presentation">
+                                    <%=link_to city.name,city_path(city), :role => "menuitem", :tabindex => "-1"%>
+                                 </li>
+                            <%end%>
                         <%end%>
-                    </div>
-                    </li>
-               </ul>
+                    </ul>
+                <%end%>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class= "texto-padding-top"> <m><%= link_to t('navbar.new'),city_formation_steps_path(@city)%></m></li>
-                    <li class= "texto-padding-left"> <m> <%= link_to t('navbar.tramite'),city_procedure_lines_path(@city)%></m></li>
-                    <li class= "texto-padding-left"> <m> <%= link_to t('navbar.inspections'),city_inspections_path(@city)%></m></li> 
-                    <li  class= "texto-padding-left"> <m> <%= link_to t('navbar.inspectors'),city_inspectors_path(@city)%></m></li>
-                   <li class= "texto-padding-left"> | <m><%=link_to t('navbar.menu'),city_path(@city), class: "m" %></m></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+            </li>
+       </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li class= "texto-padding-top"> <m><%= link_to t('navbar.new'),city_formation_steps_path(@city)%></m></li>
+            <li class= "texto-padding-left"> <m> <%= link_to t('navbar.tramite'),city_procedure_lines_path(@city)%></m></li>
+            <li class= "texto-padding-left"> <m> <%= link_to t('navbar.inspections'),city_inspections_path(@city)%></m></li>
+            <li  class= "texto-padding-left"> <m> <%= link_to t('navbar.inspectors'),city_inspectors_path(@city)%></m></li>
+           <li class= "texto-padding-left"> | <m><%=link_to t('navbar.menu'),city_path(@city), class: "m" %></m></li>
+        </ul>
+    </div>
+</nav>

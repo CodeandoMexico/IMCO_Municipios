@@ -12,13 +12,11 @@ class CitiesController < ApplicationController
   def about
     @cities = City.all
     set_city(:city_id)
-    render layout: 'blanco'
   end
 
   def aviso
     @cities = City.all
     set_city(:city_id)
-    render layout: 'blanco'
   end
 
   def edit

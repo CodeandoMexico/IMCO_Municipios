@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 	<meta charset="utf-8">
@@ -9,53 +8,17 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-  <%if @city.nil? %>
-	 <title>Mi Negocio México</title>
-  <%else%>
-    <title>Mi Negocio México | <%=@city.name%></title>
-  <%end%>
+	<title>Mi Negocio México</title>
 
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag "application" %>
-   <%= favicon_link_tag 'favicon.ico' %>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
+	<%= stylesheet_link_tag 'application', media: 'all' %>
+	<%= javascript_include_tag "application" %>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <!-- Header -->
-  <header id="top" class="header">
+  <div id="header">
     <%= yield %>
-  </header>
-      <!-- Custom Theme JavaScript -->
-      <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-    	e.preventDefault();
-    	$("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-    	e.preventDefault();
-    	$("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Scrolls to the selected menu item on the page
-    $(function() {
-    	$('a[href*=#]:not([href=#])').click(function() {
-    		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
-    			var target = $(this.hash);
-    			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    			if (target.length) {
-    				$('html,body').animate({
-    					scrollTop: target.offset().top
-    				}, 1000);
-    				return false;
-    			}
-    		}
-    	});
-    });
-  </script>
+  </div>
   </body>
   </html>

@@ -10,6 +10,18 @@ $blanco: #ffffff;
 $verde-obscuro: #46aa6c;
 $verde-claro: #4EB976;
 
+#header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(image_path('bg.png')) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .text-muted {
     color: #777;
 }
@@ -44,17 +56,6 @@ a:focus,
 a:active,
 a.active {
     color: #fec503;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
 }
 
 .img-centered {
@@ -263,18 +264,6 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 
-
-.header {
-    /*display: table;*/
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: url(image_path('bg.png')) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
 
 section {
     padding: 0px 0;

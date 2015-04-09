@@ -1,39 +1,37 @@
-<div class="footer">
-  <div class="span12">
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <%= image_tag "Logoblanco.png", class: "img-responsive-footer text-center" %>
-      </div>
-      <div class="clearfix visible-xs-block"></div>
-      <div class="col-md-4 text-center">
-        <ul class="list-inline padding-left-center">
-          <li>
-            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-          </li>
-          <li>
-            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-          </li>
-        </ul>
-      </div>
-      <div class="clearfix visible-xs-block"></div>
-      <div class=".col-md-4 text-right"><ul class="list-inline">
-        <li class="text-center">
-          <% if @city.present? %>
-            <a href="#" ><%= link_to t('footer.acerca_de'), city_about_path(@city) %></a>
-          <% end %>
-        </li>
-        <li class="text-center">
-          <% if @city.present? %>
-            <a href="#" ><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li></a>
-          <% end %>
-        </li>
-      </ul></div>
+<div id="footer">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <%= image_tag "Logoblanco.png", class: "img-responsive-footer text-center" %>
     </div>
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-md-4 text-center">
+      <ul class="list-inline padding-left-center">
+        <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+        </li>
+        <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix visible-xs-block"></div>
+    <div class=".col-md-4 text-right"><ul class="list-inline">
+      <li class="text-center">
+        <% if @city.present? %>
+          <a href="#" ><%= link_to t('footer.acerca_de'), city_about_path(@city) %></a>
+        <% end %>
+      </li>
+      <li class="text-center">
+        <% if @city.present? %>
+          <a href="#" ><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li></a>
+        <% end %>
+      </li>
+    </ul></div>
   </div>
 </div>
