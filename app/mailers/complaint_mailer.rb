@@ -5,9 +5,7 @@ class ComplaintMailer < ActionMailer::Base
     @complaint = complaint
     mail to: @complaint.user.email, subject: I18n.t('mailers.complaints.send_to_business_subject')
   end
-
-
-
+  
   def send_to_business_reminder(reminder)
     @reminder = reminder
     mail to: User.find(@reminder.user_id).email, subject: I18n.t('mailers.complaints.send_to_business_subject')

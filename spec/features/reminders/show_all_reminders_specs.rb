@@ -8,117 +8,82 @@ feature 'show all reminders' do
   end
 
   scenario 'and create a new reminder' do
-     
-    sign_in user
 
-    update_user(fill_new_user)
+   create_reminder
 
-    visit city_inspections_path(user.city)
-    
-    click_on I18n.t('inspections.index.recordatorios')
-    
-#fill all text_fields
-    expect(page).to have_content I18n.t('reminders.index.new_reminder')
-    fill_in 'reminders[name]', with: 'Licencia de uso de suelo'
-    fill_in 'reminders[license]', with: '234567sdfghj'
-    fill_in 'reminders[until_to]', with: '04/16/2015'
+ end
 
-    click_on I18n.t('reminders.index.create_reminder')
+ scenario 'and   we show you all  reminders' do
 
-  end
+  create_reminder
 
+  expect(page).to have_content I18n.t('titles.reminder')
 
+  expect(page).to have_content 'Licencia de uso de suelo'
+  expect(page).to have_content '234567sdfghj'
+  expect(page).to have_content '2015-04-16'
+  expect(page).to have_content I18n.t('reminders.index.edit')
+  expect(page).to have_content I18n.t('reminders.index.borrar')
 
-  scenario 'and   we show you all  reminders' do
-     
-    sign_in user
-
-    update_user(fill_new_user)
-
-    visit city_inspections_path(user.city)
-    
-    click_on I18n.t('inspections.index.recordatorios')
-    
-#fill all text_fields
-    expect(page).to have_content I18n.t('reminders.index.new_reminder')
-    fill_in 'reminders[name]', with: 'Licencia de uso de suelo'
-    fill_in 'reminders[license]', with: '234567sdfghj'
-    fill_in 'reminders[until_to]', with: '04/16/2015'
-
-    click_on I18n.t('reminders.index.create_reminder')
-
-     expect(page).to have_content I18n.t('titles.reminder')
-
-    expect(page).to have_content 'Licencia de uso de suelo'
-    expect(page).to have_content '234567sdfghj'
-    expect(page).to have_content '2015-04-16'
-    expect(page).to have_content I18n.t('reminders.index.edit')
-    expect(page).to have_content I18n.t('reminders.index.borrar')
-
-    save_and_open_page
-
-  end
+end
 
 
-  scenario 'and   edit a  reminder' do
-     
-    sign_in user
+scenario 'and   edit a  reminder' do
 
-    update_user(fill_new_user)
+  create_reminder
 
-    visit city_inspections_path(user.city)
-    
-    click_on I18n.t('inspections.index.recordatorios')
-    
-#fill all text_fields
-    expect(page).to have_content I18n.t('reminders.index.new_reminder')
-    fill_in 'reminders[name]', with: 'Licencia de uso de suelo'
-    fill_in 'reminders[license]', with: '234567sdfghj'
-    fill_in 'reminders[until_to]', with: '04/16/2015'
+  expect(page).to have_content I18n.t('titles.reminder')
 
-    click_on I18n.t('reminders.index.create_reminder')
-
-     expect(page).to have_content I18n.t('titles.reminder')
-
-    expect(page).to have_content 'Licencia de uso de suelo'
-    expect(page).to have_content '234567sdfghj'
-    expect(page).to have_content '2015-04-16'
-    expect(page).to have_content I18n.t('reminders.index.edit')
-    expect(page).to have_content I18n.t('reminders.index.borrar')
+  expect(page).to have_content 'Licencia de uso de suelo'
+  expect(page).to have_content '234567sdfghj'
+  expect(page).to have_content '2015-04-16'
+  expect(page).to have_content I18n.t('reminders.index.edit')
+  expect(page).to have_content I18n.t('reminders.index.borrar')
 
 
-    click_on I18n.t('reminders.index.edit')
+  click_on I18n.t('reminders.index.edit')
 
-    expect(page).to have_content I18n.t('titles.edit_reminder')
-    fill_in 'reminders[name]', with: 'Documento importante'
-    click_on I18n.t('reminders.index.create_reminder')
-
-
-    expect(page).to have_content 'Documento importante'
-
-    save_and_open_page
-
-  end
+  expect(page).to have_content I18n.t('titles.edit_reminder')
+  fill_in 'reminders[name]', with: 'Documento importante'
+  click_on I18n.t('reminders.index.create_reminder')
 
 
- 
-  def fill_new_user
-    new_user_info = {
+  expect(page).to have_content 'Documento importante'
+
+end
+
+def fill_new_user
+  new_user_info = {
     address: 'This is a fake address',
     business_name: 'This is a business name',
     operation_license: 'AN49FN40865J'
-      }
-  end
+  }
+end
 
-  def update_user(args)
-                user.update(
-                    :address => args.fetch(:address),
-                    :business_name => args.fetch(:business_name),
-                    :operation_license => args.fetch(:operation_license)
-                   )
-  end
+def update_user(args)
+  user.update(
+    :address => args.fetch(:address),
+    :business_name => args.fetch(:business_name),
+    :operation_license => args.fetch(:operation_license)
+    )
+end
 
+def create_reminder
+  sign_in user
 
+  update_user(fill_new_user)
 
- 
+  visit city_inspections_path(user.city)
+
+  click_on I18n.t('inspections.index.recordatorios')
+
+  #fill all text_fields
+  expect(page).to have_content I18n.t('reminders.index.new_reminder')
+  fill_in 'reminders[name]', with: 'Licencia de uso de suelo'
+  fill_in 'reminders[license]', with: '234567sdfghj'
+  fill_in 'reminders[until_to]', with: '04/16/2015'
+  
+  click_on I18n.t('reminders.index.create_reminder')
+end
+
 end
