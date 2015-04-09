@@ -8,6 +8,7 @@ es:
     complaints:
       send_to_business_subject: Denuncia enviada correctamente
       send_to_city_subject: Denuncia de inspección recibida
+      send_to_bussines_reminder_subject: Recordatorio enviado correctamente
   views:
     pagination:
       first: "&laquo; Primero"
@@ -39,6 +40,14 @@ es:
             Puedes ver la información completa.
       liga_a_la_denuncia: 'aquí'
       gracias: Gracias por utilizar Mi Negocio México.
+    recordatorio:
+      subject: Notificación de MiNegocioMx
+      saludo: Hola,
+      body: |
+            Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
+
+            Puedes ver la información completa en tus recordatorios.
+      gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
     inspections: Inspecciones
@@ -49,6 +58,9 @@ es:
     requirements: Requerimientos
     procedures: Requerimientos
     reports: Reportes
+    reminder: Tus recordatorios
+    new_reminder: Nuevo recordatorio
+    edit_reminder: Editar recordatorio
   buttons:
     ok: Aceptar
     crea: Crear
@@ -88,6 +100,7 @@ es:
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
+      delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
   dashboard:
     show:
       dependencias: Dependencias
@@ -237,6 +250,31 @@ es:
         already_authenticated: Ya has sido autentificado.
         not_found_in_database: Revisa que el correo y contraseña sean correctos.
         unauthenticated: Necesitas iniciar sesión primero.
+  reminders:
+    index:
+      new_reminder: Nuevo recordatorio
+      name: Nombre
+      license: Licencia
+      until: Valida hasta
+      edit: Editar
+      borrar: Borrar
+      create_reminder: Guardar
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
+      no_reminders_available: |+
+        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
+      no_reminders_available_examples: |+
+        Algunos documentos pueden ser (Licencia de funcionamiento, Permiso de uso de suelo, Cédula de zonificación, etc).
+    edit:
+      name: Nombre
+      license: Licencia
+      until: Valido hasta
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
+      create_reminder: Crear recordatorio
+      atras: Atras
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
@@ -253,7 +291,8 @@ es:
       nombre: Nombre
       materia: Materia
       duracion: Duración
-      complaint: Denuncia
+      complaint: Crear denuncia
+      recordatorios: Recordatorios
     show:
       nombre: Nombre
       Descripcion: Descripción

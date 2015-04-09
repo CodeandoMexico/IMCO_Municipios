@@ -5,11 +5,10 @@
 </head>
 <body>
 	<p class ="texto-margin-bottom">
-		<%=t('correos.municipio.saludo')%>
+		<%=t('correos.recordatorio.saludo')%>
 	</p>
 	<p class ="texto-margin-bottom">
-		<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @complaint.user.address)%>
-		<%= link_to t('correos.municipio.liga_a_la_denuncia'), dashboard_report_url(@complaint.id) %>.
+		<%= t('correos.recordatorio.body',nombre: @reminder.name, folio: @reminder.license, fecha: @reminder.until_to)%>
 	</p>
 	<p class ="texto-margin-bottom">
 		<%=t('correos.municipio.gracias')%>

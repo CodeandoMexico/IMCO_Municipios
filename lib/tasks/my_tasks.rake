@@ -1,11 +1,11 @@
 ## In this order the tasks should be run
-# rake my_tasks:load_lines
-# rake my_tasks:load_dependencies
-# rake my_tasks:load_inspectors
-# rake my_tasks:load_requirements
-# rake my_tasks:load_inspections
-# rake my_tasks:load_formation_steps
-# rake my_tasks:load_procedures
+# heroku run rake my_tasks:load_lines
+# heroku run rake my_tasks:load_dependencies
+# heroku run rake my_tasks:load_inspectors
+# heroku run rake my_tasks:load_requirements
+# heroku run rake my_tasks:load_inspections
+# heroku run rake my_tasks:load_formation_steps
+# heroku run rake my_tasks:load_procedures
 
 namespace :my_tasks do
  require 'csv'
@@ -13,7 +13,7 @@ namespace :my_tasks do
   desc "Load lines to the db"
   task :load_lines  => :environment do |t, args| 
 
-     cities_files = ['lib/datasets/giros_chalco.csv', 'lib/datasets/giros_metepec.csv', 'lib/datasets/giros_lerma.csv']
+     cities_files = ['lib/datasets/giros_lerma.csv']
 
     clean_db(UserFormationStep)#al perder las referencias se debe eliminar las relaciones
     clean_db(Line) 
@@ -47,7 +47,7 @@ namespace :my_tasks do
 
     #clean_db(Dependency) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/dependencias_chalco.csv', 'lib/datasets/dependencias_metepec.csv','lib/datasets/dependencias_lerma.csv']
+    cities_files = ['lib/datasets/dependencias_lerma.csv']
 
     cities_files.each do |city_file|
       CSV.foreach(city_file, :headers => true) do |row|
@@ -65,7 +65,7 @@ namespace :my_tasks do
   
   task :load_inspectors  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspectores_chalco.csv', 'lib/datasets/inspectores_metepec.csv','lib/datasets/inspectores_lerma.csv']
+    cities_files = ['lib/datasets/inspectores_lerma.csv']
 
    # clean_db(Inspector) # let's erase everyone from the db
     cities_files.each_with_index do |city_file, index|
@@ -73,13 +73,13 @@ namespace :my_tasks do
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
 
-        if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '4')
-        elsif index == 2
+        #if index == 0
+          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '3')
-        end
+        #end
 
         name = row.to_hash['nombre']
         valid_through = row.to_hash['vigencia']
@@ -118,7 +118,7 @@ namespace :my_tasks do
 
     #clean_db(Requirement) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/requisitos_chalco.csv', 'lib/datasets/requisitos_metepec.csv','lib/datasets/requisitos_lerma.csv']
+    cities_files = ['lib/datasets/requisitos_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
@@ -144,19 +144,19 @@ namespace :my_tasks do
   desc "Load inspections to the db"
   task :load_inspections  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspecciones_chalco.csv', 'lib/datasets/inspecciones_metepec.csv','lib/datasets/inspecciones_lerma.csv']
+    cities_files = ['lib/datasets/inspecciones_lerma.csv']
     #clean_db(Inspection) # let's erase everyone from the db
     cities_files.each_with_index do |city_file, index|
       # init variables
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
-        if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
-        elsif index == 2
+        #if index == 0
+         # dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '3')
-        end
+        #end
 
         name = row.to_hash['nombre']
         subject = row.to_hash['materia']
@@ -216,13 +216,13 @@ namespace :my_tasks do
 
   #  clean_db(FormationStep) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/apertura_chalco.csv', 'lib/datasets/apertura_metepec.csv','lib/datasets/apertura_lerma.csv']
+    cities_files = ['lib/datasets/apertura_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
-        city = Municipio.find_by(name: row.to_hash['municipio_id'])
+        city = City.find_by(name: row.to_hash['municipio_id'])
         name = row.to_hash['nombre']
         description = row.to_hash['descripcion']
         path = row.to_hash['path']
@@ -244,7 +244,7 @@ namespace :my_tasks do
    desc "Load procedures to the db"
   task :load_procedures  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/tramites_chalco.csv', 'lib/datasets/tramites_metepec.csv','lib/datasets/tramites_lerma.csv']
+    cities_files = ['lib/datasets/tramites_lerma.csv']
 
     #clean_db(Procedure) # let's erase everyone from the db
     #clean_db(ProcedureLine)
@@ -256,13 +256,13 @@ namespace :my_tasks do
       CSV.foreach(city_file, :headers => true) do |row|
 
 
-         if index == 0
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
-        elsif index == 1
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
-        elsif index == 2
+        # if index == 0
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
+        #elsif index == 1
+          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
+        #elsif index == 2
           dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '3')
-        end
+       # end
         name = row.to_hash['nombre']
         time = row.to_hash['duracion']
         cost = row.to_hash['costo']
@@ -282,7 +282,7 @@ namespace :my_tasks do
          a =  Procedure.create(
              dependency: dependency,
              name: name,
-             duration: time,
+             long: time,
              cost: cost,
              validity: supervisor,
              contact: contact,
