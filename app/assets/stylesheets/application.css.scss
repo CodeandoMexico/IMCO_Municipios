@@ -21,12 +21,18 @@
 
 
  // custom stylesheeets
+ @import "variables";
  @import "colors";
  @import "cards";
 
 
-html,
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
+  margin-bottom: $footer_height;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
@@ -45,8 +51,12 @@ body {
 
 
 #footer {
-  height: 120px;
-  clear:both;
+  position: absolute;
+  bottom: 0;
+  height: $footer_height;
+  width: 100%;
+
+  // clear:both;
   color:#fff;
   background-color: #46aa6c !important;
   text-align: center;
