@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'show all components' do
-  attr_reader :admin, :complaint
+  attr_reader :admin
 
   before do
     @admin = create :admin
@@ -27,9 +27,7 @@ feature 'show all components' do
     visit dashboard_path(admin)
     click_on I18n.t('dashboard.show.giros')
     
-    create_line
-
-    
+    create_line    
   end
 
   scenario 'and edit line' do
@@ -39,9 +37,8 @@ feature 'show all components' do
     click_on I18n.t('dashboard.show.giros')
     
     create_line
-    
-    edit_line
 
+    edit_line
   end
 
 
@@ -67,5 +64,4 @@ feature 'show all components' do
     expect(page).to have_content 'Name of line'
     expect(page).to have_content admin.city_id
   end
-
 end
