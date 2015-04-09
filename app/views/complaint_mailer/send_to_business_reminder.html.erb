@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <p><%=t('correos.recordatorio.saludo')%></p>
-  <p>
-    <%= t('correos.recordatorio.body',nombre: @reminder.name, folio: @reminder.license, fecha: @reminder.until_to)%>
-  </br>
-</br>
-<%= t('correos.recordatorio.gracias')%>
-</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.recordatorio.saludo')%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%= t('correos.recordatorio.body',nombre: @reminder.name, folio: @reminder.license, fecha: @reminder.until_to)%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.gracias')%>
+	</p>
 </body>
 </html>

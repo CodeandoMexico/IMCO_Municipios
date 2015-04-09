@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <p><%=t('correos.empresa.saludo')%></p>
-  <p>
-    <%= t('correos.empresa.body', city: City.find(@complaint.city).name, folio: @complaint.id)%>
-  </br>
-</br>
-<%= t('correos.empresa.gracias')%>
-</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.empresa.saludo')%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%= t('correos.empresa.body', city: City.find(@complaint.city).name, folio: @complaint.id)%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.gracias')%>
+	</p>
 </body>
 </html>
