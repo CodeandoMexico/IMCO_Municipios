@@ -1,10 +1,10 @@
 <div id="footer">
   <div class="row">
-    <div class="col-md-4 text-center">
+    <div class="col-xs-12 col-md-4">
       <%= image_tag "Logoblanco.png", class: "img-responsive-footer text-center" %>
     </div>
     <div class="clearfix visible-xs-block"></div>
-    <div class="col-md-4 text-center">
+    <div class="col-xs-12 col-md-4">
       <ul class="list-inline padding-left-center">
         <li>
           <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -21,17 +21,13 @@
       </ul>
     </div>
     <div class="clearfix visible-xs-block"></div>
-    <div class=".col-md-4 text-right"><ul class="list-inline">
-      <li class="text-center">
+    <div class="col-xs-12 col-md-4">
+      <ul class="list-inline">
         <% if @city.present? %>
-          <a href="#" ><%= link_to t('footer.acerca_de'), city_about_path(@city) %></a>
+          <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li>
+          <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li>
         <% end %>
-      </li>
-      <li class="text-center">
-        <% if @city.present? %>
-          <a href="#" ><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li></a>
-        <% end %>
-      </li>
-    </ul></div>
+      </ul>
+    </div>
   </div>
 </div>
