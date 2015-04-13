@@ -7,23 +7,10 @@
             <span class="icon-bar"></span>
         </button>
         <ul class="nav navbar-nav navbar-left">
-            <li >
-            <div class="dropdown nav navbar-nav navbar-left">
-                <%unless @city.nil?%>
-                    <%=t('titles.titulo')%>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@city.name %><span class="caret a" ></span></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <%@cities.each do |city|%>
-                            <%unless city == @city%>
-                                 <li role="presentation">
-                                    <%=link_to city.name,city_path(city), :role => "menuitem", :tabindex => "-1"%>
-                                 </li>
-                            <%end%>
-                        <%end%>
-                    </ul>
-                <%end%>
-            </div>
-            </li>
-       </ul>
+          <li class ="texto-padding-top">
+            <span class="texto-blanco">Mi Negocio <%= "| #{@city.name}" if @city %></span>
+          </li>
+        </ul>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">

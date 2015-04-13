@@ -8,32 +8,25 @@
           <span class="icon-bar"></span>
       </button>
       <ul class="nav navbar-nav navbar-left">
-          <li >
-          <div class="dropdown nav navbar-nav navbar-left">
-              <%unless @city.nil?%>
-              <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@city.name %><span class="caret a" ></span></a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                      <%@cities.each do |city|%>
-                          <%unless city == @city%>
-                               <li role="presentation">
-                                  <%=link_to city.name,city_path(city), :role => "menuitem", :tabindex => "-1"%>
-                               </li>
-                          <%end%>
-                      <%end%>
-                  </ul>
-
-              <%else%>
-              <%=t('titles.titulo') %>
-              <%end%>
-          </div>
-          </li>
-     </ul>
+        <li class ="texto-padding-top">
+          <span class="texto-blanco">Mi Negocio <%= "| #{@city.name}" if @city %></span>
+        </li>
+      </ul>
   </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-          <li>
-              <%=link_to t('navbar.inicio'),root_path , :class => 'a-verde'%>
-          </li>
-      </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%=link_to t('navbar.inicio'),root_path , :class => 'a-verde'%>
+      </li>
+      <% if user_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user %><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to t('navbar.edit_profile'), edit_user_path(current_user) %></li>
+            <li><%= link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :edit, :update,:destroy]
+  resources :users, only: [:new, :create, :edit, :update]
 
   root 'imcos#index'
 end

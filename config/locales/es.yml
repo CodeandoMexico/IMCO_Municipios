@@ -47,7 +47,7 @@ es:
       body: |
             Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
 
-            Puedes ver la información completa en tus recordatorios en 
+            Puedes ver la información completa en tus recordatorios en
       liga_a_la_denuncia: 'MiNegocioMx'
       gracias: Gracias por utilizar Mi Negocio México.
   titles:
@@ -80,8 +80,8 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
-    editar_perfil: Editar perfil
-    cerrar_sesion: Cerrar sesón
+    edit_profile: Editar perfil
+    sign_out: Cerrar sesión
   footer:
     municipio: Municipios
     acerca_de: Acerca de
