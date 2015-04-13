@@ -8,7 +8,8 @@ es:
     complaints:
       send_to_business_subject: Denuncia enviada correctamente
       send_to_city_subject: Denuncia de inspección recibida
-      send_to_bussines_reminder_subject: Recordatorio enviado correctamente
+    reminders:
+      send_to_bussines_reminder_subject: Un documento de tu negocio está por vencer
   views:
     pagination:
       first: "&laquo; Primero"
@@ -46,7 +47,8 @@ es:
       body: |
             Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
 
-            Puedes ver la información completa en tus recordatorios.
+            Puedes ver la información completa en tus recordatorios en 
+      liga_a_la_denuncia: 'MiNegocioMx'
       gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
@@ -198,7 +200,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_requirement: Nuevo requerimiento
+        new_requirements: Nuevo requerimiento
       new:
         title: Nuevo requerimiento
       edit:
