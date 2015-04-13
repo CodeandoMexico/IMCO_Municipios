@@ -8,7 +8,7 @@ feature 'validate Formation_Steps' do
   end
 
 
-  scenario 'and validate the insert of formation step' do
+  scenario 'and validate the insert of formation steps' do
     sign_in admin
 
     visit dashboard_path(admin)

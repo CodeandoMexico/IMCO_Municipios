@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'validate Procedures' do
+feature 'validate Inspections' do
   attr_reader :admin
 
   before do
@@ -8,7 +8,7 @@ feature 'validate Procedures' do
   end
 
 
-  scenario 'and validate the insert of Procedures' do
+  scenario 'and validate the insert of Inspections' do
     sign_in admin
 
 
@@ -19,10 +19,10 @@ feature 'validate Procedures' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.tramites')
+    click_on I18n.t('dashboard.show.inspecciones')
 
    
-    create_procedure
+    create_inspections
   end
 
   scenario 'and edit Procedure' do
@@ -35,57 +35,48 @@ feature 'validate Procedures' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.tramites')
+    click_on I18n.t('dashboard.show.inspecciones')
 
    
-    create_procedure
+    create_inspections
     
-    edit_procedure
+    edit_inspection
   end
 
 
-  def edit_procedure
+  def edit_inspection
     click_on I18n.t('form.actions.edit')
 
-    fill_in 'procedure[name]', with: 'new name of procedure'
-    fill_in 'procedure[long]', with: '3 hours'
-    fill_in 'procedure[cost]', with: '1000'
-    fill_in 'procedure[validity]', with: 'one year'
-    fill_in 'procedure[contact]', with: 'name of contact'
-    fill_in 'procedure[type_procedure]', with: 'TM'
-    fill_in 'procedure[category]', with: 'openinig'
-    fill_in 'procedure[sare]', with: '1'
-
-        select "Name of dependency", :from => "procedure[dependency_id]"
+    fill_in 'inspection[name]', with: 'new name of inspection'
     
-    click_on I18n.t('dashboard.procedures.form.create_procedures')
+    click_on I18n.t('dashboard.inspections.form.create_inspection')
 
-    visit dashboard_procedures_path
-    expect(page).to have_content 'new name of procedure'
+    visit dashboard_inspections_path
+    expect(page).to have_content 'new name of inspection'
   end
 
-  def create_procedure
+  def create_inspections
 
-    click_on I18n.t('dashboard.procedures.index.new_procedures')
+    click_on I18n.t('dashboard.inspections.index.new_inspection')
     
-    fill_in 'procedure[name]', with: 'name of procedure'
-    fill_in 'procedure[long]', with: '3 hours'
-    fill_in 'procedure[cost]', with: '1000'
-    fill_in 'procedure[validity]', with: 'one year'
-    fill_in 'procedure[contact]', with: 'name of contact'
-    fill_in 'procedure[type_procedure]', with: 'TM'
-    fill_in 'procedure[category]', with: 'openinig'
-    fill_in 'procedure[sare]', with: '1'
+    fill_in 'inspection[name]', with: 'name of inspection'
+    fill_in 'inspection[matter]', with: 'example of matter'
+    fill_in 'inspection[duration]', with: '1 day'
+    fill_in 'inspection[rule]', with: 'example of rule'
+    fill_in 'inspection[before]', with: 'do it ...'
+    fill_in 'inspection[during]', with: 'do it ...'
+    fill_in 'inspection[after]', with: 'do it'
+    fill_in 'inspection[sanction]', with: 'you need ..'
 
      expect(page).to have_content 'name of line'
      expect(page).to have_content 'name of requirement'
 
-    select "Name of dependency", :from => "procedure[dependency_id]"
+    select "Name of dependency", :from => "inspection[dependency_id]"
     
-    click_on I18n.t('dashboard.procedures.form.create_procedures')
+    click_on I18n.t('dashboard.inspections.form.create_inspection')
    
-    visit dashboard_procedures_path
-    expect(page).to have_content 'name of procedure'
+    visit dashboard_inspections_path
+    expect(page).to have_content 'name of inspection'
   end
 
 

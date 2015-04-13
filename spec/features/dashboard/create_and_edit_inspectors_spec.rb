@@ -8,7 +8,7 @@ feature 'validate Inspectors' do
   end
 
 
-  scenario 'and validate the insert of Inspector' do
+  scenario 'and validate the insert of Inspectors' do
     sign_in admin
 
 

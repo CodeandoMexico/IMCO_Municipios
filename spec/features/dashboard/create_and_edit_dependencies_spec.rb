@@ -8,7 +8,7 @@ feature 'validate Dependency' do
   end
 
 
-  scenario 'and validate the insert of dependency' do
+  scenario 'and validate the insert of dependencies' do
     sign_in admin
 
     visit dashboard_path(admin)
