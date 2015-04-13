@@ -1,141 +1,111 @@
-<div id="wrap">
-  <div id="main" class="container clear-top">
-    <div class="row row-padding-bottom">
-      <div class="span12">
-        <section id="services ">
-          <div class="center-block-margin">
-            <div class="container">
-              <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                  <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
-                  <hr class="small">
-                  <br>
-                </div>
-              </div>
-              <%= form_for :get, :html => {:method => :get}, :url => { :controller => :procedure_lines, :action => :index }  do |f| %>
-              <div class="col-md-8 col-md-offset-2 text-center texto-verde-wrap">
-                <div class="row text-left">
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                      <%=t('.procedure_lines_select_name')%>
-                    </div>
-                    <div class="clearfix visible-xs-block">
-                    </div>
-                    <div class="col-md-offset-3">
-                      <%= f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line }, { class: 'chosen-select' }%>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                      <%= t('.procedure_lines_radio_name')%>
-                    </div>
-                    <div class="clearfix visible-xs-block"></div>
-                    <div class="col-md-offset-3">
-                      <div class="btn-group btn-toggle" data-toggle="buttons">
-                        <%if @tipo == 'TF'%>
-                        <label class= "btn btn-default active"><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF',true%></label>
-                        <label class= "btn btn-default"><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM'%></label>
-                        <label class= "btn btn-default"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A'%></label>
-                        <%elsif @tipo == 'TM'%>
-                        <label class= "btn btn-default "><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF'%></label>
-                        <label class= "btn btn-default active"><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM',true%></label>
-                        <label class= "btn btn-default"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A'%></label>
-                        <%else%>
-                        <label class= "btn btn-default "><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF'%></label>
-                        <label class= "btn btn-default "><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM'%></label>
-                        <label class= "btn btn-default active"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A',true%></label>
-                        <%end%>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                      <%= t('.procedure_lines_radio_estados')%>
-                    </div>
-                    <div class="clearfix visible-xs-block"></div>
-                    <div class="col-md-offset-3">
-                      <div class="btn-group btn-toggle" data-toggle="buttons">
-                        <%if @etapa == t('buttons.crea')%>
-                          <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea'), true%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
-                        <%elsif @etapa == t('buttons.administra')%>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
-                          <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra'), true%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
-                          <label  class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
-                        <%elsif @etapa == t('buttons.crece')%>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
-                          <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa, t('buttons.crece'), true%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label> 
-                        <%elsif @etapa == t('buttons.construye')%>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
-                          <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye'), true%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
-                        <%elsif @etapa == t('buttons.cierra')%>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
-                          <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra'), true%></label>
-                        <%else%>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
-                          <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
-                          <label  class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
-                        <%end%>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row text-left">
-                    <div class="col-xs-6 col-sm-3"></div>
-                    <div class="clearfix visible-xs-block"></div>
-                    <div class="actions col-md-offset-3">
-                     <%= f.submit t('buttons.ok'),:class => 'btn btn-success btn-lg outlineverde' %>
-                     <br>
-                     <br>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <div class="row text-center">
-              <div class="col-lg-12">
-                <%= render "shared/procedure_lines_result" %>
-              </div>
-            </div>
-            <%end%>
-          </div>
-        </div>
-      </section>
-    </div>
+<div class="row text-center">
+  <div class="col-lg-10 col-lg-offset-1">
+    <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
+    <hr class="small">
+    <br>
   </div>
 </div>
+<%= form_for :get, :html => {:method => :get}, :url => { :controller => :procedure_lines, :action => :index }  do |f| %>
+<div class="col-md-8 col-md-offset-2 text-center texto-verde-wrap">
+  <div class="row text-left">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <%=t('.procedure_lines_select_name')%>
+      </div>
+      <div class="clearfix visible-xs-block">
+      </div>
+      <div class="col-md-offset-3">
+        <%= f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line }, { class: 'chosen-select' }%>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <%= t('.procedure_lines_radio_name')%>
+      </div>
+      <div class="clearfix visible-xs-block"></div>
+      <div class="col-md-offset-3">
+        <div class="btn-group btn-toggle" data-toggle="buttons">
+          <%if @tipo == 'TF'%>
+          <label class= "btn btn-default active"><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF',true%></label>
+          <label class= "btn btn-default"><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM'%></label>
+          <label class= "btn btn-default"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A'%></label>
+          <%elsif @tipo == 'TM'%>
+          <label class= "btn btn-default "><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF'%></label>
+          <label class= "btn btn-default active"><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM',true%></label>
+          <label class= "btn btn-default"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A'%></label>
+          <%else%>
+          <label class= "btn btn-default "><%= t('.radio_fisica')%> <%= radio_button_tag :rating, 'TF'%></label>
+          <label class= "btn btn-default "><%= t('.radio_moral')%> <%= radio_button_tag :rating, 'TM'%></label>
+          <label class= "btn btn-default active"><%= t('.radio_ambas')%> <%= radio_button_tag :rating, 'A',true%></label>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">
+        <%= t('.procedure_lines_radio_estados')%>
+      </div>
+      <div class="clearfix visible-xs-block"></div>
+      <div class="col-md-offset-3">
+        <div class="btn-group btn-toggle" data-toggle="buttons">
+          <%if @etapa == t('buttons.crea')%>
+            <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea'), true%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
+          <%elsif @etapa == t('buttons.administra')%>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
+            <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra'), true%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
+            <label  class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
+          <%elsif @etapa == t('buttons.crece')%>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
+            <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa, t('buttons.crece'), true%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
+          <%elsif @etapa == t('buttons.construye')%>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
+            <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye'), true%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
+          <%elsif @etapa == t('buttons.cierra')%>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
+            <label class="btn btn-default active" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra'), true%></label>
+          <%else%>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.administra')%>"><%= t('buttons.administra')%> <%= radio_button_tag :etapa, t('buttons.administra')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.crece')%>"><%= t('buttons.crece')%> <%= radio_button_tag :etapa,  t('buttons.crece')%></label>
+            <label class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.construye')%>"><%= t('buttons.construye')%> <%= radio_button_tag :etapa, t('buttons.construye')%></label>
+            <label  class="btn btn-default" data-toggle="tooltip" data-placement="top" title="<%=t('tooltips.cierra')%>"><%= t('buttons.cierra')%> <%= radio_button_tag :etapa, t('buttons.cierra')%></label>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row text-left">
+      <div class="col-xs-6 col-sm-3"></div>
+      <div class="clearfix visible-xs-block"></div>
+      <div class="actions col-md-offset-3">
+       <%= f.submit t('buttons.ok'),:class => 'btn btn-success btn-lg outlineverde' %>
+       <br>
+       <br>
+     </div>
+   </div>
+ </div>
 </div>
 
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $(".tip-top").tooltip({placement : 'top'});
-  $(".tip-right").tooltip({placement : 'right'});
-  $(".tip-bottom").tooltip({placement : 'bottom'});
-  $(".tip-left").tooltip({ placement : 'left'});
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
-
+<div class="row text-center">
+  <div class="col-lg-12">
+    <%= render "shared/procedure_lines_result" %>
+  </div>
+</div>
+<% end %>

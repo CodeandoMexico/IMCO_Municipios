@@ -1,37 +1,26 @@
 class CitiesController < ApplicationController
-  layout 'menu'
-#  before_action :set_municipio, only: [:edit, :update, :destroy]
-
-  
   def show
     @cities = City.all
     set_city(:id)
   end
-  
+
   def search
     @city = City.find(params[:post][:city])
     redirect_to city_path(@city)
   end
 
   def about
-
     @cities = City.all
-          set_city(:city_id)
-          render layout: 'blanco'
+    set_city(:city_id)
   end
 
   def aviso
-
     @cities = City.all
     set_city(:city_id)
-        render layout: 'blanco'
   end
 
-def edit
-
-end
-
-
+  def edit
+  end
 
   def create
     @city = City.new(city_params)

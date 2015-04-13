@@ -12,86 +12,66 @@
  *
  *= require font-awesome
  *= require bootstrap3-switch
+ *= require chosen
  *= require_tree .
  *= require_self
- *= require chosen
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
 
  // custom stylesheeets
+ @import "variables";
+ @import "colors";
  @import "cards";
 
 
-// colors
-$grey-200: #EEEEEE;
-$grey-400: #BDBDBD;
-$grey-500: #9E9E9E;
-$verde-claro: #4EB976;
-$verde-obscuro: #46aa6c;
-$teal-500: #009688;
-$blanco: #ffffff;
-$negro: #000000;
-$rojo: #ff0000;
+html {
+  position: relative;
+  min-height: 100%;
+}
 
-$user_default_color: #46aa6c;
-$admin_default_color: #3B3C3C;
-$default_text_color: #ffffff;
-
-// styles
-
-html,body
-{
-height:100%;
-font-family: Montserrat, sans-serif;
+body {
+  margin-bottom: $footer_height;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
-  color: #777777
+  color: #777777;
 }
 
-#wrap
-{
-min-height: 100%;
+#wrap {
+  min-height: 100%;
 }
 
-#main
-{
-overflow:auto;
-padding-bottom: 0px; /* this needs to be bigger than footer height*/
+#main {
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: $footer_height;
+  width: 100%;
 
-.footer
-{
-position: relative;
-margin-top: -80px; /* negative value of footer height */
-height: 150px;
-clear:both;
-padding-top:10px;
-color:#fff;
-background-color: #46aa6c !important;
-text-align: center;
-padding: 10px 17% 10px 12%;
+  // clear:both;
+  color:#fff;
+  background-color: #46aa6c !important;
+  text-align: center;
+  padding: 10px 17% 10px 12%;
 }
 
-.padding-left-center{
+.padding-left-center {
   padding-left: 20%;
 }
 
 .img-responsive-footer {
   display: block;
   max-width: 65%;
-  height: auto;
-   margin: 0 auto;
+  margin: 0 auto;
 }
 .text-right {
   text-align: right;
-}
-
-body.info {
- padding-top: 70px;
- background-color: #f9f9f9;
 }
 
 .navbar-default {
@@ -140,7 +120,7 @@ nav {
 }
 
 .col-md-3 {
-width: 33%;
+  width: 33%;
 }
 
 .bg-primary {
@@ -148,26 +128,20 @@ width: 33%;
 }
 
 .container {
-width: 100%;
-}
-
-body.info {
-min-height: 100%;
-padding-top: 70px;
- background-color: #fff;
+  width: 80%;
 }
 
 .input-group-addon {
-padding: 6px 12px;
-font-size: 11px;
-height: 45px !important;
-font-weight: normal;
-line-height: 1;
-color: #fff;
-text-align: center;
-background-color: rgba(0,0,0,0);
-border: 0px solid #00B26E;
-border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 11px;
+  height: 45px !important;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0,0,0,0);
+  border: 0px solid #00B26E;
+  border-radius: 4px;
 }
 
 .form-controler {
@@ -187,15 +161,12 @@ border-radius: 4px;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-
-
-
 .form-control {
   display: block;
   width: 100%;
   height: 34px;
   padding: 6px 12px;
-    margin-left: 10px;
+  margin-left: 10px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555555;
@@ -218,10 +189,10 @@ border-radius: 4px;
 
 /*************************a-verde******************/
 a-verde{
-   color: $verde-claro;
-   cursor: pointer;
-    width:100%;
-    font-family: Montserrat, sans-serif;
+  color: $verde-claro;
+  cursor: pointer;
+  width:100%;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
 }
@@ -248,9 +219,9 @@ a-verde:active {
 
 /*************************a******************/
 a{
-   color: $blanco;
-   cursor: pointer;
-   font-family: Montserrat, sans-serif;
+  color: $blanco;
+  cursor: pointer;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
 }
@@ -285,33 +256,33 @@ texto-blanco{
 }
 
 .texto-rojo{
-   color: $rojo !important;
+  color: $rojo !important;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
 }
 
 .texto-verde{
-   color: $verde-obscuro !important;
-    width:100%;
+  color: $verde-obscuro !important;
+  width:100%;
 }
 
 .texto-negro{
-   color: $negro !important;
-    width:100%;
+  color: $negro !important;
+  width:100%;
 }
 
 .texto-negro-wrap{
-   color: $negro !important;
+  color: $negro !important;
 }
 
 .texto-verde-wrap{
-   color: $verde-obscuro !important;
+  color: $verde-obscuro !important;
 }
 
 .texto-padding-left{
-padding-left: 10px;
-padding-top: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
 
 }
 
@@ -324,7 +295,7 @@ padding-top: 10px;
   }
 
 .texto-padding-bottom{
-padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .texto-margin-bottom{
@@ -334,7 +305,7 @@ margin-bottom: 15px;
 
 
 .texto-padding-top{
-padding-top: 10px;
+  padding-top: 10px;
 }
 
 .navbar-nav {
@@ -420,7 +391,6 @@ section{
   margin-top: 3%;
   margin-left: 10%;
   margin-right: 10%;
-
 }
 
 .center-block-margin-login {
@@ -429,8 +399,8 @@ section{
   margin-top: 3%;
   margin-left: 25%;
   margin-right: 25%;
-   border:2px solid #46aa6c;
-    outline-color:#46aa6c;
+  border:2px solid #46aa6c;
+  outline-color:#46aa6c;
 
 }
 
@@ -439,10 +409,10 @@ section{
 }
 
 .full-width{
-width: 100%;
+  width: 100%;
 }
 .half-width{
-width: 80%;
+  width: 80%;
 }
 
 
@@ -451,7 +421,7 @@ width: 80%;
   .navbar-nav {
     float: left;
     margin: 0;
-       padding-top: 10px;
+    padding-top: 10px;
     padding-bottom: 10px;
   }
   /* line 271, /Users/mikesaurio/.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_navbar.scss */
@@ -646,42 +616,31 @@ width: 80%;
 
 
 /*********************************tipografia***********************/
-h1 {
+@mixin base_tipography($color, $font_size) {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-  font-size: 24pt;
-  color: #62B372;
+  color: $color;
+  font-size: $font_size;
+}
+
+h1 {
+  @include base_tipography(#62B372, 24pt);
 }
 h2 {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
-  font-size: 18pt;
-  color: #62B372;
+  @include base_tipography(#62B372, 18pt);
 }
 h3 {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
-  font-size: 16pt;
-  color: #62B372;
+  @include base_tipography(#62B372, 16pt);
 }
 h3 {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
-  font-size: 11pt;
-  color: #62B372;
+  @include base_tipography(#62B372, 11pt);
 }
 p {
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 11pt;
-  color: #777777
+  @include base_tipography(#777777, 11pt);
 }
 
 p-blanco {
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 11pt;
-  color: $blanco;
+  @include base_tipography($blanco, 11pt);
 }
 
 

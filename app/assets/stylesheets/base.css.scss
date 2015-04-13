@@ -10,6 +10,18 @@ $blanco: #ffffff;
 $verde-obscuro: #46aa6c;
 $verde-claro: #4EB976;
 
+#landing {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(image_path('bg.png')) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .text-muted {
     color: #777;
 }
@@ -46,17 +58,6 @@ a.active {
     color: #fec503;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-}
-
 .img-centered {
     margin: 0 auto;
 }
@@ -71,7 +72,7 @@ h6 {
 
 .btn-primary {
     border-color: $verde-obscuro;
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
@@ -122,7 +123,7 @@ fieldset[disabled] .btn-primary.active {
     padding: 20px 40px;
     border-color: $verde-obscuro;
     border-radius: 3px;
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -206,10 +207,9 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .nav li a {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
-    letter-spacing: 1px;
     color: $blanco;
 }
 
@@ -263,18 +263,6 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 
-
-.header {
-    /*display: table;*/
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: url(image_path('bg.png')) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
 
 section {
     padding: 0px 0;
@@ -641,28 +629,28 @@ section#contact .form-control:focus {
 }
 
 section#contact::-webkit-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact::-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-ms-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
@@ -847,6 +835,3 @@ body {
 .btn-danger.btn-outline:hover {
     color: $blanco;
 }
-
-
-

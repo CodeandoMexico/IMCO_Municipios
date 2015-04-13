@@ -1,61 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <%= page_title "Mi Negocio México", @city.name %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag 'favicon.ico' %>
 
-<head>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <%= csrf_meta_tags %>
+  </head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
- 
-  <%if @city.nil? %>
-	 <title>Mi Negocio México</title>
-  <%else%>
-    <title>Mi Negocio México | <%=@city.name%></title>
-  <%end%>
+  <body>
+    <% if current_page? city_path(@city) %>
+      <%= render "shared/navbar_menu" %>
+    <% else %>
+      <%= render "shared/navbar_all_menus" %>
+    <% end %>
 
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag "application" %>
-   <%= favicon_link_tag 'favicon.ico' %>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
-</head>
-<body>
-  <!-- Header -->
-  <header id="top" class="header">
-    <%= yield %>
-  </header>
-      <!-- Custom Theme JavaScript -->
-      <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-    	e.preventDefault();
-    	$("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-    	e.preventDefault();
-    	$("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Scrolls to the selected menu item on the page
-    $(function() {
-    	$('a[href*=#]:not([href=#])').click(function() {
-    		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
-    			var target = $(this.hash);
-    			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    			if (target.length) {
-    				$('html,body').animate({
-    					scrollTop: target.offset().top
-    				}, 1000);
-    				return false;
-    			}
-    		}
-    	});
-    });
-  </script>
+    <div id="main" class="container clear-top">
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
   </body>
-  </html>
+</html>
