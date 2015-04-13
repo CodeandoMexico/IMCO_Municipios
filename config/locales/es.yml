@@ -198,7 +198,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_requirement: Nuevo requerimiento
+        new_requirements: Nuevo requerimiento
       new:
         title: Nuevo requerimiento
       edit:
