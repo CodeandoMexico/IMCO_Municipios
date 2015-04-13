@@ -12,4 +12,9 @@ module SessionHelpers
     fill_in 'user_password', with: user.password
     click_on 'Entrar'
   end
+
+  def sign_out(user)
+    visit root_path
+    click_on 'Salir'
+  end
 end
