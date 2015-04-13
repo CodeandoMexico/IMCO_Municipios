@@ -7,7 +7,6 @@ feature 'validate Formation_Steps' do
     @admin = create :admin
   end
 
-
   scenario 'and validate the insert of formation steps' do
     sign_in admin
 

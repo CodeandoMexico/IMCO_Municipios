@@ -8,7 +8,6 @@ feature 'validate Reports' do
     @user = create :user
   end
 
-
   scenario 'and show all reports' do
     sign_in user
     create_report
@@ -20,8 +19,7 @@ feature 'validate Reports' do
     click_on I18n.t('dashboard.show.denuncia')
    #  expect(page).to have_content user.business_name
   #  expect(page).to have_content 'Sellos de clausura improcedentes'
-
-  end
+end
 
 def fill_new_user
   new_user_info = {
@@ -39,8 +37,8 @@ def update_user(args)
     )
 end
 
-  def create_report
-    update_user(fill_new_user)
+def create_report
+  update_user(fill_new_user)
 
   visit city_inspections_path(user.city)
 
@@ -50,6 +48,5 @@ end
   fill_in 'complaint[description]', with: 'money'
   
  # click_on I18n.t('complaints.new.save_button')
-  end
-
+end
 end

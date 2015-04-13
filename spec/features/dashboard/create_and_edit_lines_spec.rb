@@ -41,7 +41,6 @@ feature 'show all components' do
     edit_line
   end
 
-
   def edit_line
     visit dashboard_lines_path
     click_on I18n.t('form.actions.edit')

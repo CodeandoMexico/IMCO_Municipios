@@ -7,7 +7,6 @@ feature 'validate Dependency' do
     @admin = create :admin
   end
 
-
   scenario 'and validate the insert of dependencies' do
     sign_in admin
 
@@ -24,7 +23,6 @@ feature 'validate Dependency' do
     click_on I18n.t('dashboard.show.dependencias')
     
     create_dependency
-    
     edit_dependency
   end
 

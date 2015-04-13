@@ -10,7 +10,6 @@ feature 'show all reminders' do
   scenario 'and create a new reminder' do
 
    create_reminder
-
  end
 
  scenario 'and   we show you all  reminders' do
@@ -24,9 +23,7 @@ feature 'show all reminders' do
   expect(page).to have_content '2015-04-16'
   expect(page).to have_content I18n.t('reminders.index.edit')
   expect(page).to have_content I18n.t('reminders.index.borrar')
-
 end
-
 
 scenario 'and   edit a  reminder' do
 
@@ -40,16 +37,13 @@ scenario 'and   edit a  reminder' do
   expect(page).to have_content I18n.t('reminders.index.edit')
   expect(page).to have_content I18n.t('reminders.index.borrar')
 
-
   click_on I18n.t('reminders.index.edit')
 
   expect(page).to have_content I18n.t('titles.edit_reminder')
   fill_in 'reminders[name]', with: 'Documento importante'
   click_on I18n.t('reminders.index.create_reminder')
 
-
   expect(page).to have_content 'Documento importante'
-
 end
 
 def fill_new_user
@@ -85,5 +79,4 @@ def create_reminder
   
   click_on I18n.t('reminders.index.create_reminder')
 end
-
 end

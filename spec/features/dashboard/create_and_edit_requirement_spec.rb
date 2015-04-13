@@ -7,7 +7,6 @@ feature 'validate Formation_Steps' do
     @admin = create :admin
   end
 
-
   scenario 'and validate the insert of requirements' do
     sign_in admin
 
@@ -27,7 +26,6 @@ feature 'validate Formation_Steps' do
     
     edit_requirement
   end
-
 
   def edit_requirement
     visit dashboard_requirements_path

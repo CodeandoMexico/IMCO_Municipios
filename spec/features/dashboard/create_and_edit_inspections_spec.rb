@@ -7,21 +7,17 @@ feature 'validate Inspections' do
     @admin = create :admin
   end
 
-
   scenario 'and validate the insert of Inspections' do
     sign_in admin
-
 
     create_dependency
     create_line
     create_requirement
 
-
     visit dashboard_path(admin)
 
     click_on I18n.t('dashboard.show.inspecciones')
 
-   
     create_inspections
   end
 
@@ -32,12 +28,10 @@ feature 'validate Inspections' do
     create_line
     create_requirement
 
-
     visit dashboard_path(admin)
 
     click_on I18n.t('dashboard.show.inspecciones')
-
-   
+    
     create_inspections
     
     edit_inspection
@@ -68,19 +62,19 @@ feature 'validate Inspections' do
     fill_in 'inspection[after]', with: 'do it'
     fill_in 'inspection[sanction]', with: 'you need ..'
 
-     expect(page).to have_content 'name of line'
-     expect(page).to have_content 'name of requirement'
+    expect(page).to have_content 'name of line'
+    expect(page).to have_content 'name of requirement'
 
     select "Name of dependency", :from => "inspection[dependency_id]"
     
     click_on I18n.t('dashboard.inspections.form.create_inspection')
-   
+    
     visit dashboard_inspections_path
     expect(page).to have_content 'name of inspection'
   end
 
 
-   def create_dependency
+  def create_dependency
     visit dashboard_dependencies_path
     click_on I18n.t('dashboard.dependencies.index.new_dependency')
     
@@ -93,7 +87,7 @@ feature 'validate Inspections' do
 
   def create_line
     visit dashboard_lines_path
-   click_on I18n.t('dashboard.lines.index.new_lines')
+    click_on I18n.t('dashboard.lines.index.new_lines')
 
     fill_in 'line[name]', with: 'name of line'
     fill_in 'line[description]', with: 'This is a description'
@@ -108,7 +102,7 @@ feature 'validate Inspections' do
 
   def create_requirement
     visit dashboard_requirements_path
-     click_on I18n.t('dashboard.requirements.index.new_requirements')
+    click_on I18n.t('dashboard.requirements.index.new_requirements')
     
     fill_in 'requirement[name]', with: 'name of requirement'
     fill_in 'requirement[description]', with: 'description of requirement'

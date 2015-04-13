@@ -7,27 +7,22 @@ feature 'validate Inspectors' do
     @admin = create :admin
   end
 
-
   scenario 'and validate the insert of Inspectors' do
     sign_in admin
 
-
     create_dependency
-
 
     visit dashboard_path(admin)
     click_on I18n.t('dashboard.show.inspectores')
-
-   
+    
     create_inspector
   end
 
   scenario 'and edit Inspector' do
     sign_in admin
 
-
     create_dependency
-   
+    
     visit dashboard_path(admin)
     click_on I18n.t('dashboard.show.inspectores')
     
@@ -68,7 +63,7 @@ feature 'validate Inspectors' do
     expect(page).to have_content 'name of inspector'
   end
 
-   def create_dependency
+  def create_dependency
     visit dashboard_dependencies_path
     click_on I18n.t('dashboard.dependencies.index.new_dependency')
     
