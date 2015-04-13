@@ -55,3 +55,11 @@
 <%else%>
 <%= render "shared/empty_resource", message: t('.no_reminders_available'), message2: t('.no_reminders_available_examples') %>
 <%end%>
+<script>
+$(function() {
+  $( "#reminders_until_to" ).datepicker({
+   format: 'yyyy-dd-mm',
+   startDate: '-3d'
+ });
+});
+</script>
