@@ -1,5 +1,4 @@
 class RemindersController < ApplicationController
-  layout 'blanco'
   before_action :authenticate_business!
   before_action :business_profile_complete!
   before_action :set_cities

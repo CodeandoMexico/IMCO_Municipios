@@ -4,6 +4,7 @@
   <% end %>
 </div>
 <%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-red-outline text-right' %>
+<%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
 <div class="text-center">
   <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
   <hr>
