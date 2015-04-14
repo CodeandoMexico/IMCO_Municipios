@@ -1,10 +1,13 @@
+<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
 <div class="row text-center ">
   <% flash.each do |key, value| %>
     <div class="alert alert-success"><%=value%></div>
   <% end %>
 </div>
-<%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-red-outline text-right' %>
-<%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
+<div class="row text-right ">
+  <%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-red-outline text-right' %>
+  <%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
+</div>
 <div class="text-center">
   <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
   <hr>
