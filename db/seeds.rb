@@ -1,10 +1,10 @@
-Municipio.create!([
-  {nombre: "Chalco"},
-  {nombre: "Huixquilucan"},
-  {nombre: "Lerma"},
-  {nombre: "Metepec"},
-  {nombre: "Tenango del Valle"},
-  {nombre: "Toluca"}
+City.create!([
+  { name: "Chalco" },
+  { name: "Huixquilucan" },
+  { name: "Lerma" },
+  { name: "Metepec" },
+  { name: "Tenango del Valle" },
+  { name: "Toluca" }
   ])
 # Dependency.create!([
 #   {nombre: "Centro Municipal de Atencion Empresarial", municipio_id: 1},

@@ -11,12 +11,12 @@ namespace :my_tasks do
  require 'csv'
 
   desc "Load lines to the db"
-  task :load_lines  => :environment do |t, args| 
+  task :load_lines  => :environment do |t, args|
 
      cities_files = ['lib/datasets/giros_lerma.csv']
 
     clean_db(UserFormationStep)#al perder las referencias se debe eliminar las relaciones
-    clean_db(Line) 
+    clean_db(Line)
     clean_db(Dependency)# let's erase everyone from the db
     clean_db(Inspector)
     clean_db(Requirement)
@@ -25,9 +25,9 @@ namespace :my_tasks do
     clean_db(Procedure)
     clean_db(ProcedureLine)
     clean_db(ProcedureRequirement)
-    clean_db(InspectionLine) 
-    clean_db(InspectionRequirement) 
-    
+    clean_db(InspectionLine)
+    clean_db(InspectionRequirement)
+
     cities_files.each do |city_file|
       CSV.foreach(city_file, :headers => true) do |row|
         city = City.find_by(name: row.to_hash['municipio_id'])
@@ -62,7 +62,7 @@ namespace :my_tasks do
   end
 
   desc "Load inspectors to the db"
-  
+
   task :load_inspectors  => :environment do |t, args|
 
     cities_files = ['lib/datasets/inspectores_lerma.csv']
@@ -87,7 +87,7 @@ namespace :my_tasks do
         supervisor = row.to_hash['supervisor']
         contact = row.to_hash['contacto']
         photo = row.to_hash['foto']
-    
+
         if  row_does_not_exist_in_the_db(Inspector, {
             name: name,
             dependency: dependency,
@@ -241,7 +241,7 @@ namespace :my_tasks do
   end
 
 
-   desc "Load procedures to the db"
+  desc "Load procedures to the db"
   task :load_procedures  => :environment do |t, args|
 
     cities_files = ['lib/datasets/tramites_lerma.csv']
@@ -305,12 +305,17 @@ namespace :my_tasks do
 
           number_of_successfully_created_rows = number_of_successfully_created_rows + 1
         else
-            puts "#{name} | #{time} | #{cost} | #{dependency.nombre} | #{contact} | #{supervisor} | #{}"
+            puts "#{name} | #{time} | #{cost} | #{dependency.name} | #{contact} | #{supervisor} | #{}"
         end
 
       end
       puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
+  end
+
+  desc "Load all data to the db"
+  task :load_all_data => [:load_lines, :load_dependencies, :load_inspectors, :load_requirements, :load_inspections, :load_formation_steps, :load_procedures] do
+    puts "Done running all the tasks.."
   end
 
     def getTipo(tipo)
