@@ -1,14 +1,23 @@
 class User < ActiveRecord::Base
 
-validates_presence_of :name, :message => 'Debes escribir tu nombre.'
-validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por lo menos 4 caracteres.'
- validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras"
+  validates_presence_of :name, :message => 'Debes escribir tu nombre.'
+  validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por lo menos 3 caracteres.'
+  validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras"
 
- validates_presence_of :email, :message => 'Debes escribir tu correo.'
- validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido"
+  validates_presence_of :email, :message => 'Debes escribir tu correo.'
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido"
+
+  validates_presence_of :business_name, :message => 'Debes escribir el nombre de tu negocio.'
+  validates_length_of :business_name, :minimum => 3, :message => 'El nombre debe tener por lo menos 3 caracteres.'
+
+  validates_presence_of :address, :message => 'Debes escribir la dirección de tu negocio. (puede ser solo la colonia)'
+  validates_length_of :address, :minimum => 10, :message => 'la dirección debe tener por lo menos 10 caracteres.'
+
+  validates_presence_of :operation_license, :message => 'Debes escribir la licencia de operacón de tu negocio'
+   validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones"
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
+  :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
   validates :city_id, presence: true
   belongs_to :city
@@ -42,14 +51,14 @@ validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por 
         return registered_user
       else
         user = User.create(name:auth.extra.raw_info.name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20],
-                            city_id:'1'
-                          )
+          provider:auth.provider,
+          uid:auth.uid,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          city_id:'1'
+          )
       end
-       end
+    end
   end
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
@@ -63,12 +72,12 @@ validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por 
       else
 
         user = User.create(name:auth.info.first_name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20],
-                             city_id:'1'
-                          )
+          provider:auth.provider,
+          uid:auth.uid,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          city_id:'1'
+          )
       end
 
     end
