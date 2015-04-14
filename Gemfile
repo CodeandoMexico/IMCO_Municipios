@@ -50,6 +50,8 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "breadcrumbs_on_rails" #breadcrumbs
+
 
 group :development, :test do
   # Load env variables

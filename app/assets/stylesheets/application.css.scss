@@ -189,31 +189,32 @@ nav {
 
 /*************************a-verde******************/
 a-verde{
-  color: $verde-claro;
+  color: $verde-claro !important;
   cursor: pointer;
   width:100%;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
+  a{color: $verde-claro !important;}
 }
 
 a-verde:link {
-    color: $verde-claro;
+    color: $verde-claro !important;
 }
 
 /* visited link */
 a-verde:visited {
-    color: $verde-claro;
+    color: $verde-claro !important;
 }
 
 /* mouse over link */
 a-verde:hover {
-    color: $verde-claro;
+    color: $verde-claro !important;
 }
 
 /* selected link */
 a-verde:active {
-    color: $verde-claro;
+    color: $verde-claro !important;
 }
 
 

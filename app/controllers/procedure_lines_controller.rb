@@ -1,8 +1,16 @@
 class ProcedureLinesController < ApplicationController
   before_action :set_line, only: [:show, :edit, :update, :destroy]
 
+    add_breadcrumb "Home", :root_path
+ 
+
  def index
-     set_city(:city_id)
+    set_city(:city_id)
+   
+    add_breadcrumb "Menu", city_path(@city)
+    add_breadcrumb "Procedures", city_procedure_lines_path(@city)
+
+   
      @procedure = Procedure.all.order('nombre DESC')
      @id_del_giro = "0"
      @tipo  = 'A'
@@ -19,9 +27,14 @@ class ProcedureLinesController < ApplicationController
   end
 
  def show
+      set_city(:city_id)
+
+      add_breadcrumb "Menu", city_path(@city)
+      add_breadcrumb "Procedures", city_procedure_lines_path(@city)
+      add_breadcrumb "Show" 
 
      @cities = City.all
-     set_city(:city_id)
+   
     @procedure_requirements = ProcedureRequirement.all
     @procedure_lines=  ProcedureLine.all
     @requirements = Requirement.all
