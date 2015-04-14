@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+validates_presence_of :name, :message => 'Debes poner un nombre'
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 

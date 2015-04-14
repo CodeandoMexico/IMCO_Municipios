@@ -1,7 +1,7 @@
 #authentication {
-  width: 320px;
-  margin-left: auto;
-  margin-right: auto;
+  /*width: 320px;*/
+  margin-left: 20%;
+  margin-right: 20%;
 
   .field {
     margin-bottom: 15px;
@@ -10,4 +10,8 @@
 
 .dropdown-toggle {
   color: #fff !important;
+}
+
+.message{
+	color: #ff0000;
 }
