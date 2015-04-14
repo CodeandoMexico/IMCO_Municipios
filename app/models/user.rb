@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
-validates_presence_of :name, :message => 'Debes poner un nombre'
 
+validates_presence_of :name, :message => 'Debes escribir tu nombre.'
+validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por lo menos 4 caracteres.'
+ validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras"
+
+ validates_presence_of :email, :message => 'Debes escribir tu correo.'
+ validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]

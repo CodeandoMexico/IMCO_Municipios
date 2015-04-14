@@ -1,5 +1,6 @@
 <% if target.errors.any? %>  
 <div id="errorExplanation">  
-	<h2><%= pluralize(target.errors.count, "error") %> encontrado.</h2>  
+	<h2><%#= pluralize(target.errors.count, "error") %> Errores encontrados.</h2>  
+	<p>Debes llenar correctamente los campos para poder continuar.</p>
 </div>  
 <% end %>
