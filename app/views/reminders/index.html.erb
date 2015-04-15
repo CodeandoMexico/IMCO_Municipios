@@ -10,13 +10,13 @@
       <%= form_for  @reminder, url: city_reminders_path do |f| %>
       <div class="form-group row">
         <div class="col-sm-3">
-          <%= f.text_field :name, class: 'form-control', placeholder: t('.name_hint') %>
+          <%= f.text_field :name, class: 'form-controler', placeholder: t('.name_hint') %>
         </div>
         <div class="col-sm-3">
-          <%= f.text_field :license, class: 'form-control', placeholder: t('.license_hint')  %>
+          <%= f.text_field :license, class: 'form-controler', placeholder: t('.license_hint')  %>
         </div>
         <div class="col-sm-3">
-          <%= f.text_field :until_to, class: 'form-control' , placeholder: t('.until_to_hint') %>
+          <%= f.text_field :until_to, class: 'form-controler' , placeholder: t('.until_to_hint') %>
         </div>
         <div class="col-sm-3 text-right">
           <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-xs outlineverde' %>
