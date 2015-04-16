@@ -9,15 +9,26 @@
       </button>
       <ul class="nav navbar-nav navbar-left">
         <li class ="texto-padding-top">
-          <span class="texto-blanco">Mi Negocio <%= "| #{@city.name}" if @city %></span>
+          <span class="texto-blanco">
+            <%= link_to "Mi Negocio", root_path %> |
+            <%= link_to("#{@city.name}", city_path(@city)) if @city %>
+          </span>
         </li>
       </ul>
   </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <%=link_to t('navbar.inicio'),root_path , :class => 'a-verde'%>
-      </li>
+      <!-- Depending on the action show different options -->
+      <% if current_page? city_path(@city) %>
+        <%#= content_tag :li, link_to(t('navbar.inicio'), root_path, class: 'a-verde') %>
+      <% else %>
+        <li class="texto-padding-top"> <m><%= link_to t('navbar.new'),city_formation_steps_path(@city)%></m></li>
+        <li class="texto-padding-left"> <m> <%= link_to t('navbar.tramite'),city_procedure_lines_path(@city)%></m></li>
+        <li class="texto-padding-left"> <m> <%= link_to t('navbar.inspections'),city_inspections_path(@city)%></m></li>
+        <li class="texto-padding-left"> <m> <%= link_to t('navbar.inspectors'),city_inspectors_path(@city)%></m></li>
+      <% end %>
+
+      <!-- Let's check for a signed in user, if there is one, show an option dropdown -->
       <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user %><span class="caret"></span></a>
