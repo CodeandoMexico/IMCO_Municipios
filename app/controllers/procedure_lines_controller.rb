@@ -18,8 +18,10 @@ class ProcedureLinesController < ApplicationController
 
   def valores
    @line = params[:get][:lines]
+    valida_giro
    @tipo = params[:rating]
    @etapa = params[:etapa]
+   valida_categoria
    @categoria = get_categoria(params[:etapa])
    @tramites_del_giro =  ProcedureLine.where(line_id: @line)
  end
@@ -99,6 +101,17 @@ def update
   end
 end
 
+def valida_giro
+    if @line.nil? || @line.empty?
+      redirect_to city_procedure_lines_path(@city), notice: 'Debes seleccionar un giro.' 
+    end
+end
+
+def valida_categoria
+    if @etapa.nil? || @etapa.empty?
+      redirect_to city_procedure_lines_path(@city), notice: 'Debes seleccionar una categoría.' 
+    end
+end
 
 
 

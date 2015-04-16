@@ -31,16 +31,14 @@
             <%end%>
           <% end %>
         <% end %>
-        <%if count == 0 %>
-          <br>
-           <br>
-          <%= render "shared/empty_resource", message: t('procedure_lines.index.no_procedure_lines_available') %>
-        <%end%>
+        <%#if count == 0 %>
+        
+          <%#= render "shared/empty_resource", message: t('procedure_lines.index.no_procedure_lines_available') %>
+        <%#end%>
       </ul>
     </div>
-  <% else %>
-    <br>
-     <br>
-    <%= render "shared/empty_resource", message: t('procedure_lines.index.no_procedure_lines_selected') %>
+  <% #else %>
+    
+    <%#= render "shared/empty_resource", message: t('procedure_lines.index.no_procedure_lines_selected') %>
   <% end %>
 </div>

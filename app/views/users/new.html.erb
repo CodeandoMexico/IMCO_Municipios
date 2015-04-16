@@ -1,7 +1,8 @@
 <div id="wrap">
 	<div id="main" class="clear-top ">
-		<h2 class="text-left"><%=t('.iniciar_sesion')%></h2>
-		<p> <%=t('.iniciar_sesion_explicacion')%> </p>
+		<h2 class="text-center"><%=t('.iniciar_sesion')%></h2>
+		<p class="text-center"> <%=t('.iniciar_sesion_explicacion')%> </p>
+			<hr class="small">
 		<div id="social-sign-in" class="row  ">	
 			<div class="col-md-6 col-md-offset-3 contorno">
 				<%= link_to " | Facebook", user_omniauth_authorize_path(:facebook) , class: "btn-ln btn-block btn-facebook fa fa-facebook" %>

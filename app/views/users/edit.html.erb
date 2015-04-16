@@ -3,8 +3,9 @@
     <% end %>
     <div id="wrap">
       <div id="main" class="clear-top">
-        <h1 class="title text-left texto-verde"><%=t('.edit_profile')%></h1>
-        <p> <%=t('.edit_profile_explicacion')%> </p>
+        <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
+        <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
+        <hr class="small">
         <div id="authentication">
           <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
           <div class="form-group">
