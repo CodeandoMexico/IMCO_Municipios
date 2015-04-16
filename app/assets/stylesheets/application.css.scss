@@ -41,7 +41,7 @@ body {
 }
 
 nav {
-  height: 64px;
+  height: $navbar_height;
   color: $blanco;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -49,7 +49,11 @@ nav {
 }
 
 .nav-wrapper {
-  margin-top: 5px;
+  padding-top: 7px;
+}
+
+.navbar-collapse.collapse {
+  height: $navbar_height !important;
 }
 
 .container {
