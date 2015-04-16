@@ -31,11 +31,12 @@ class FormationStepsController < ApplicationController
 
     if params[:commit] == 'Federales'
       @formation_steps = FormationStep.by_city(@city)
+      @tramite = 'federales'
     elsif params[:commit] == 'Municipales'
+      @tramite = 'municipales'
       @procedure_requirements = ProcedureRequirement.all
       @requirements = Requirement.all
       @procedure_lines = ProcedureLine.where(line_id: @line)
-
     end
   end
 end
