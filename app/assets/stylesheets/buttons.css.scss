@@ -1,5 +1,5 @@
-$verde-claro: #4EB976;
-$verde-obscuro: #46aa6c;
+$light-green: #4EB976;
+$dark-green: #46aa6c;
 $blanco: #ffffff;
 $negro: #000000;
 /*********************************************************************
@@ -30,7 +30,7 @@ $negro: #000000;
 ******************************************************/
 
 .btn-default {
-	border: 2px solid $verde-obscuro;
+	border: 2px solid $dark-green;
 	color: $blanco;
 	padding: 12px 22px;
 }
@@ -153,15 +153,15 @@ $negro: #000000;
 }
 
 .btn-success.outlineverde {
-	border: 2px solid $verde-claro;
-	color: $verde-obscuro;
+	border: 2px solid $light-green;
+	color: $dark-green;
 }
 .btn-success.outlineverde:hover, .btn-success.outlineverde:focus, .btn-success.outlineverde:active, .btn-success.outlineverde.active, .open > .dropdown-toggle.btn-success {
-	border-color: $verde-obscuro;
+	border-color: $dark-green;
 	color: $blanco;
 }
 .btn-success.outlineverde:active, .btn-success.outlineverde.active {
-	border-color: $verde-obscuro;
+	border-color: $dark-green;
 	color: $blanco;
 	box-shadow: none;
 }
