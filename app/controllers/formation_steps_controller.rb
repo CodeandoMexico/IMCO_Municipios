@@ -21,6 +21,7 @@ class FormationStepsController < ApplicationController
      @line = params[:get][:lines]
      @tipo = params[:rating]
      @id_formation_step = params[:guardado]
+     valida_parametros
      unless @id_formation_step.nil?
       if UserFormationStep.where(user_id: current_user.id, formation_step_id: @id_formation_step , line_id: @line , type_user_formation_step: @tipo).first.nil?
         a = UserFormationStep.create(user_id: current_user.id, formation_step_id: @id_formation_step, line_id: @line , type_user_formation_step: @tipo)
@@ -37,6 +38,13 @@ class FormationStepsController < ApplicationController
 
     end
   end
+end
+
+
+def valida_parametros
+    if @line.nil? || @line.empty?
+      redirect_to city_formation_steps_path(@city), notice: 'Debes seleccionar un giro.' 
+    end
 end
 
 def show

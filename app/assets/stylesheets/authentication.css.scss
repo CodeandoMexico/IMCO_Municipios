@@ -1,3 +1,5 @@
+$verde-obscuro: #46aa6c;
+
 #authentication {
   /*width: 320px;*/
   margin-left: 20%;
@@ -14,4 +16,15 @@
 
 .message{
 	color: #ff0000;
+}
+
+.contorno{
+  text-align: center; 
+  background-image: none !important;
+  border: 3px solid $verde-obscuro;
+  padding: 12px 12px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
 }

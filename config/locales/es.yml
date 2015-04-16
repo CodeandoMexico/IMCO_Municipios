@@ -321,7 +321,8 @@ es:
     index:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
-      no_formation_steps_selected: Selecciona las opciones de búsqueda
+      no_formation_steps_selected: Apertura de un nuevo negocio
+      no_formation_steps_selected_subtitle: Podras ver todas los tramites FEDERALES y MUNICIPALES que debes cumplir para poder abrir tu empresa. Por favor selecciona el giro y el tipo de persona.
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
@@ -375,8 +376,9 @@ es:
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
   users:
-    index:
+    new:
       iniciar_sesion: Iniciar sesión
+      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
     edit:
       edit_profile: Editar perfil
       name: Nombre

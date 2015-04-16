@@ -1,5 +1,9 @@
 <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-
+<div class="row text-center ">
+			<%flash.each do |key, value| %>
+			<div class="alert alert-success"><%=value%></div>
+			<% end %>
+	</div>
 <div class="row text-center">
 	<div class="col-lg-10 col-lg-offset-1">
 		<%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
@@ -7,6 +11,8 @@
 		<br>
 	</div>
 </div>
+
+<%= render "shared/empty_resource", message: t('.no_formation_steps_selected'), message2: t('.no_formation_steps_selected_subtitle')  %>
 <%= form_for :get, :html => {:method => :get}, :url => { :controller => :formation_steps, :action => :index }  do |f| %>
 <div class="col-md-12">
 	<div class="col-md-6 col-md-offset-3 text-center texto-verde-wrap">
@@ -52,44 +58,40 @@
 </div>
 <div class="col-lg-12">
 	<% unless @line.nil? %>
-	<%if !@formation_steps.nil?%>
-	<%= render "shared/carrusel_custome" %>
-	<%elsif !@procedure_lines.nil?%>
-	<% @procedure_lines.each_with_index do |procedure_line, index|%>
-	<%if Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa'%>
-	<%@procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(procedure_line.procedure_id).id)%>
-	<div class="row text-center">
-		<div class="col-lg-12">
-			<div id="main" class="container clear-top">
-				<div class="row ">
-					<div class="span12">
-						<section id="services ">
-							<div class="bs-example">
-								<p class="text-center texto-verde" >
-									<hr class="small">
-									<%=Procedure.find(procedure_line.procedure_id).name%>
-								</p>
-							</div>
+		<%if !@formation_steps.nil?%>
+			<%= render "shared/carrusel_custome" %>
+		<%elsif !@procedure_lines.nil?%>
+		<% @procedure_lines.each_with_index do |procedure_line, index|%>
+		<%if Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa'%>
+		<%@procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(procedure_line.procedure_id).id)%>
+		<div class="row text-center">
+			<div class="col-lg-12">
+				<div id="main" class="container clear-top">
+					<div class="row ">
+						<div class="span12">
+							<section id="services ">
+								<div class="bs-example">
+									<p class="text-center texto-verde" >
+										<hr class="small">
+										<%=Procedure.find(procedure_line.procedure_id).name%>
+									</p>
+								</div>
 
-						</section>
+							</section>
+						</div>
 					</div>
 				</div>
+				<%@llave = index%>
+				<%= render "shared/carrusel_procedure_line" %>
 			</div>
-			<%@llave = index%>
-			<%= render "shared/carrusel_procedure_line" %>
 		</div>
-	</div>
-	<%end%>
-	<%end%>
-	<%else%>
-	<br>
-	<br>
-	<%= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
-	<%end%>
-	<% else %>
-	<br>
-	<br>
-	<%= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
+		<%end%>
+		<%end%>
+		<%#else%>
+		<%#= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
+		<%end%>
+	<%# else %>
+		<%#= render "shared/empty_resource", message: t('.no_formation_steps_selected'), message2: t('.no_formation_steps_selected_subtitle')  %>
 	<% end %>
 </div>
 <% end %>

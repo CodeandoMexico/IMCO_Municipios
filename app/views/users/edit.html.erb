@@ -1,30 +1,32 @@
 <div id="wrap">
   <div id="main" class="clear-top">
-    <%= render "shared/error_messages", :target => @user %> 
     <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
+     <%flash.each do |key, value| %>
+    <div class="alert alert-success"><%=value%></div>
+  <% end %>
     <div id="authentication">
-      <%= form_for(@user, html: { multipart: true }) do |f| %>
+      <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
       <div class="form-group">
         <%= f.label t('.name') %><br />
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.text_field :name , :validate => true, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label t('.correo') %><br />
-        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.text_field :email , :validate => true, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label t('.business_name') %><br />
-        <%= f.text_field :business_name, class: 'form-control' %>
+        <%= f.text_field :business_name , :validate => true, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <%= f.label t('.address') %><br />
-        <%= f.text_area :address, class: 'form-control' %>
+        <%= f.text_area :address , :validate => true, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <%= f.label t('.operation_license') %><br />
-        <%= f.text_field :operation_license, class:'form-control' %>
+        <%= f.text_field :operation_license , :validate => true, class:'form-control' %>
       </div>
 
       <div class="form-group">

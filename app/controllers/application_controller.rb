@@ -37,10 +37,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
     if validaDatos(resource)
-    return   session[:my_previous_url]  
-    else
-    return  edit_user_path(resource)
-    end
+          return   session[:my_previous_url]  
+        else
+          return  edit_user_path(resource)
+      end
     #return  root_path if resource.profile_complete?
     #edit_user_path(resource)
   end

@@ -5,12 +5,22 @@ class RemindersController < ApplicationController
   before_action :set_reminder, only: [:edit, :update, :destroy]
   before_action :reminder_params, only: [:create, :update]
 
+  add_breadcrumb "Inicio", :root_path
+
   def index
     @reminders = Reminders.where(user: current_user)
     @reminder = Reminders.new
+
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb "Recordatorios"
   end
 
   def edit
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb "Recordatorios" , city_reminders_path(@city)
+     add_breadcrumb "Editar recordatorio"
   end
 
   def create
@@ -27,7 +37,7 @@ class RemindersController < ApplicationController
       notice: 'El recordatorio fue creado satisfactoriamente.' 
     else
       @reminders = Reminders.where(user: current_user)
-      render :index
+      redirect_to city_reminders_path(@city), notice: 'El recordatorio NO fue guardado.' 
     end
   end
 
