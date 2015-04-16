@@ -32,11 +32,28 @@ html {
 }
 
 body {
+  min-height: 600px;
   margin-bottom: $footer_height;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
   color: #777777;
+}
+
+nav {
+  height: 64px;
+  color: $blanco;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.nav-wrapper {
+  margin-top: 5px;
+}
+
+.container {
+  // width: 80%;
 }
 
 .z-depth-1, nav, .dropdown-content, .collapsible, .side-nav {
@@ -92,13 +109,6 @@ body {
   background-color: $admin_default_color;
 }
 
-nav {
-  color: $blanco;
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 11pt;
-}
-
 .navbar-nav > li > a {
   &:link {
     color: $blanco;
@@ -135,10 +145,6 @@ nav {
 
 .bg-primary {
   background-color: #fff;
-}
-
-.container {
-  width: 80%;
 }
 
 .input-group-addon {
@@ -290,12 +296,6 @@ texto-blanco{
   color: $verde-obscuro !important;
 }
 
-.texto-padding-left{
-  padding-left: 10px;
-  padding-top: 10px;
-
-}
-
 .texto-padding-center{
   padding-left: 15%;
   padding-right: 15%;
@@ -309,17 +309,13 @@ texto-blanco{
 }
 
 .texto-margin-bottom{
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 
 
 .texto-padding-top{
   padding-top: 10px;
-}
-
-.navbar-nav {
-  margin: 10px 5px;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -424,27 +420,6 @@ section{
 .half-width{
   width: 80%;
 }
-
-
-@media (min-width: 768px) {
-  /* line 233, /Users/mikesaurio/.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_navbar.scss */
-  .navbar-nav {
-    float: left;
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  /* line 271, /Users/mikesaurio/.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_navbar.scss */
-  .navbar-nav > li {
-    float: left;
-  }
-  /* line 273, /Users/mikesaurio/.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_navbar.scss */
-  .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-}
-
 
 
 .chosen-container ul.chosen-results li.highlighted {
@@ -619,11 +594,6 @@ section{
         border: none;
     }
 }
-
-
-
-
-
 
 /*********************************tipografia***********************/
 @mixin base_tipography($color, $font_size) {
