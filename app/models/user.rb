@@ -1,19 +1,19 @@
 class User < ActiveRecord::Base
   validates_presence_of :name, :message => 'Debes escribir tu nombre.'
   validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por lo menos 3 caracteres.'
-  validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras"
+  validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras."
 
   validates_presence_of :email, :message => 'Debes escribir tu correo.'
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido"
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido."
 
-  #validates_presence_of :business_name, :message => 'Debes escribir el nombre de tu negocio.'
+  validates_presence_of :business_name, :message => 'Debes escribir el nombre de tu negocio.'
   validates_length_of :business_name, :minimum => 3, :message => 'El nombre debe tener por lo menos 3 caracteres.'
 
-  #validates_presence_of :address, :message => 'Debes escribir la dirección de tu negocio. (puede ser solo la colonia)'
+  validates_presence_of :address, :message => 'Debes escribir la dirección de tu negocio (puede ser solo la colonia).'
   validates_length_of :address, :minimum => 10, :message => 'la dirección debe tener por lo menos 10 caracteres.'
 
-  #validates_presence_of :operation_license, :message => 'Debes escribir la licencia de operacón de tu negocio'
-   validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones"
+  validates_presence_of :operation_license, :message => "La licencia de operación no puede estar en blanco."
+   validates_format_of :operation_license, :with => /\A[a-zA-Z0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones."
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]

@@ -381,6 +381,7 @@ es:
       iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
     edit:
       edit_profile: Editar perfil
+      edit_profile_explicacion: Lena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
       name: Nombre
       correo: Correo
       business_name: Nombre del negocio
