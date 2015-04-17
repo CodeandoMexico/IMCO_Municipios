@@ -6,6 +6,16 @@ class ComplaintsController < ApplicationController
 
   add_breadcrumb "Inicio", :root_path
 
+def index
+  @complaint = Complaint.new
+    authorize @complaint
+
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb "Denuncias"
+  
+end
+
   def new
     @complaint = Complaint.new
     authorize @complaint
