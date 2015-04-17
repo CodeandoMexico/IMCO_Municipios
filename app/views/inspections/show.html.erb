@@ -1,66 +1,64 @@
+  
+<div class="row text-left texto-verde texto-margin-top">
+  <div class="col-sm-9 text-left">
 <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-<div id="wrap">
-  <div id="main" class="container clear-top">
-    <div class="row row-padding-bottom">
-      <div class="span12">
-        <section id="services ">
-          <div class="center-block-margin">
-            <div class="container">
-              <h4 class="texto-verde"><%= @inspection.name %></h4>
-              <div style="border: 1px solid white;background-color:white;">
-                <table class="table bg-primary-negro">
-                  <tbody>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.subject') %></td>
-                      <td><%= @inspection.matter %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.period') %></td>
-                      <td><%= @inspection.duration %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.norm') %></td>
-                      <td><%= @inspection.rule %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.before_tips') %></td>
-                      <td><%= @inspection.before %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.during_tips') %></td>
-                      <td><%= @inspection.during %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.after_tips') %></td>
-                      <td><%= @inspection.after %></td>
-                    </tr>
-                    <tr>
-                      <td class="texto-verde-wrap"><%= t('.sanctions_tips') %></td>
-                      <td><%= @inspection.sanction %></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+ </div>
+ <div class="col-sm-3 text-right">
+  <%= link_to t('.nueva_busqueda'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+</div>
+</div>
+<br/>
+  <%= content_tag :h2, @inspection.name%> 
+<br/>
+  <div style="border: 1px solid white;background-color:white;">
+    <table class="table bg-primary-negro">
+      <tbody>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.subject') %></td>
+          <td><p><%= @inspection.matter %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.period') %></td>
+          <td><p><%= @inspection.duration %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.norm') %></td>
+          <td><p><%= @inspection.rule %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.before_tips') %></td>
+          <td><p><%= @inspection.before %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.during_tips') %></td>
+          <td><p><%= @inspection.during %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.after_tips') %></td>
+          <td><p><p><%= @inspection.after %></p></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.sanctions_tips') %></td>
+          <td><p><%= @inspection.sanction %></p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr class="small">
+  <p class="text-left"><%=t('.inspection_debes')%></p>
 
-              <br>
-              <br>
+  <div class="deck">
+    <% if @inspection.requirements.any? %>
+    <div class="row text-center ">
+      <div class="col-lg-12">
+        <%= render "shared/carrusel_inspections" %>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+</div>
 
-              <div class="deck">
-                <% if @inspection.requirements.any? %>
-                  <h4 class='texto-verde'><%= t('.requisitos') %></h4>
-                  <hr class="small">
-                    <div class="row text-center ">
-                      <div class="col-lg-12">
-                        <%= render "shared/carrusel_inspections" %>
-                      </div>
-                    </div>
-                <%end%>
-              </div>
-
-                
-
-
-             
 
 <!-- 
 <div class="deck">
@@ -80,12 +78,6 @@
   <% #end %>
 </div> -->
 
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-</div>
+
+
 

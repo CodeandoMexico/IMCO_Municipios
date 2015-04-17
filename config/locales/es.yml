@@ -311,6 +311,7 @@ es:
       sanctions_tips: Sanciones
       more_info: Más información
       requisitos: Requisitos
+      inspection_debes: Debes cumplir con todos los siguientes requisitos.
   inspectors:
     index:
       title: Inspectores

@@ -60,21 +60,21 @@
         <div class="table__card">
          <ul>
            <li class="table--row">
-             <div class="row--title texto-verde-wrap"><%=t('.nombre')%> </div>
-             <div class="row--subtitle texto-verde-wrap"><%=t('.materia')%> </div>
-             <div class="row--footer texto-verde-wrap"><%=t('.duracion')%> </div>
+             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.nombre')%> </div>
+             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.materia')%> </div>
+             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.duracion')%> </div>
            </li>
            <% @inspections.each do |inspection| %>
-           <% if inspection.inspection_lines.count > 0 %>
-           <%= link_to city_inspection_path(@city, inspection) do %>
-           <li class="table--row">
-            <div class="row--title bg-primary-negro"><%= inspection.name %></div>
-            <div class="row--subtitle bg-primary-negro"><%= inspection.matter %></div>
-            <div class="row--footer bg-primary-negro"><%= inspection.duration %></div>
-            <hr class="small">
-          </li>
-          <% end %>
-          <% end %>
+             <% if inspection.inspection_lines.count > 0 %>
+               <%= link_to city_inspection_path(@city, inspection) do %>
+               <li class="table--row">
+                <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= inspection.name %></p></div>
+                <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.matter %></p></div>
+                <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.duration %></p></div>
+                <hr class="small">
+              </li>
+              <% end %>
+            <% end %>
           <% end %>
         </ul>
         <% end %>

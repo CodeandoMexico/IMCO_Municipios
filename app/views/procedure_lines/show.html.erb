@@ -1,4 +1,15 @@
+
+  
+<div class="row text-left texto-verde texto-margin-top">
+  <div class="col-sm-9 text-left">
 <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+ </div>
+ <div class="col-sm-3 text-right">
+  <%= link_to t('.nueva_busqueda'), city_procedure_lines_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+</div>
+</div>
+<br/>
+
 <div class="row text-center texto-verde texto-margin-top">
   <%= content_tag :h2, @line%> 
   <p><%=@procedure%></p>
