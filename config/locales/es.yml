@@ -317,6 +317,8 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
+      no_inspectors_selected_subtitle: Podras ver a los UNICOS INSPECTORES autorizados por el municipio para poder inspeccionar tu negocio.
+      no_inspectors_selected_resultado: Resultado de la busqueda.
     show:
       vigencia: Vigencia
       Materia: Materia

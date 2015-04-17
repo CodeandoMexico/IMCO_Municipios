@@ -7,11 +7,10 @@ class InspectorsController < ApplicationController
    @cities = City.all
    if params[:q]
      @busqueda =Inspector.search_by_city(@city, params[:q])
-     @busqueda.count
      @inspectors = @busqueda.page(params[:page]).per(6)
    else
-     @busqueda =Inspector.by_city(@city)
-     @inspectors = @busqueda.page(params[:page]).per(6)
+    # @busqueda =Inspector.by_city(@city)
+     @inspectors = Inspector.by_city(@city).page(params[:page]).per(6)
    end
 
    add_breadcrumb @city.name ,city_path(@city)

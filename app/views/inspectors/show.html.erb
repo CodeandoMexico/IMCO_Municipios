@@ -1,10 +1,13 @@
-<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-<div id="wrap">
-  <div id="main" class="container clear-top">
-    <div class="row row-padding-bottom">
-      <div class="span12">
-        <section id="services ">
-          <div class="center-block-margin">
+
+<div class="row text-left texto-verde texto-margin-top">
+  <div class="col-sm-9 text-left">
+    <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+  </div>
+  <div class="col-sm-3 text-right">
+    <%= link_to t('.nueva_busqueda'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+  </div>
+</div>
+<br/>
             <div class="container">
               <div class="row text-center">
                 <h3 class="title texto-verde"><%= @inspector.name %></h3>
@@ -37,9 +40,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+

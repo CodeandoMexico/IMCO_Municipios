@@ -1,11 +1,13 @@
 <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-<div class="row text-center">
-  <div class="col-lg-10 col-lg-offset-1">
-    <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
-    <hr class="small">
-    <br>
-  </div>
-</div>
+    <div class="row text-center texto-verde">
+      <%= content_tag :h1,t('.title') %> 
+      <%if @busqueda.nil?%>
+      <p><%=t('.no_inspectors_selected_subtitle')%></p>
+      <%else%>
+      <p><%=t('.no_inspectors_selected_resultado')%></p>
+      <%end%>
+      <hr class="small">
+    </div>
   <%= render "shared/search", custom_path: city_inspectors_path(@city), search_placeholder: t('.search_inspectors') %>
   <br><br>
   <% if @inspectors.any? %>
@@ -25,6 +27,4 @@
   <div class="row text-center">
     <%=paginate @inspectors, :window => 2%>
   </div>
-  <% else %>
-  <%= render "shared/empty_resource", message: t('.no_inspectors_available') %>
   <% end %>
