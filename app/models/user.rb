@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     self.operation_license.present?
   end
 
+  def to_s
+    self.business_name || self.name || self.email
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
@@ -65,5 +69,4 @@ class User < ActiveRecord::Base
 
     end
   end
-
 end

@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def navbar_title(city)
-    title = "MI NEGOCIO MÉXICO"
+    title = "Mi Negocio México"
     if city
       title + " | #{city}"
     else

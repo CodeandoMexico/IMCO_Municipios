@@ -4,7 +4,7 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<% if user_signed_in? %>
-				<p class="navbar-text pull-right navbar-custom"><texto-blanco><%="#{current_user.email}\t"%> |</texto-blanco> <%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%>
+				<p class="navbar-text pull-right navbar-custom"><texto-blanco><%="#{current_user}\t"%> |</texto-blanco> <%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%>
 				</p>
 				<% else %>
 				<%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
@@ -39,7 +39,7 @@
 			</div>
 			<%end%>
 			<%end%>
-			
+
 
 		</div>
 	</div>

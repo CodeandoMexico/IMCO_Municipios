@@ -12,11 +12,7 @@
   </head>
 
   <body>
-    <% if current_page? city_path(@city) %>
-      <%= render "shared/navbar_menu" %>
-    <% else %>
-      <%= render "shared/navbar_all_menus" %>
-    <% end %>
+    <%= render "shared/navbar_menu" %>
 
     <div id="main" class="container clear-top">
       <%= yield %>
