@@ -37,7 +37,7 @@ class RemindersController < ApplicationController
       notice: 'El recordatorio fue creado satisfactoriamente.' 
     else
       @reminders = Reminders.where(user: current_user)
-      redirect_to city_reminders_path(@city), notice: 'El recordatorio NO fue guardado.' 
+       render :index
     end
   end
 

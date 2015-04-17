@@ -1,12 +1,13 @@
-<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-<div class= "row">
-  <div class="col-sm-9">
-   <h2> <%= t('titles.edit_reminder') %></h2>
- </div>
- <div class="col-sm-3 text-right">
-  <%= link_to t('.atras'), city_reminders_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+<div class="row ">
+  <div class="col-sm-9 text-left">
+    <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+  </div>
+  <div class="col-sm-3 text-right">
+    <%= link_to t('.atras'), city_reminders_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+  </div>
 </div>
-</div>
+
+ <h2> <%= t('titles.edit_reminder') %></h2>
 <espacio>
   <br>
   <table class="table">
@@ -26,12 +27,16 @@
   <div class="form-group row">
     <div class="col-sm-3 margin-bottom-button">
       <%= f.text_field :name, class: 'form-controler', placeholder: t('.name_hint') %>
+         <div class='texto-rojo text-left'><%=@reminder.errors[:name][0].to_s%>   </div> 
     </div>
     <div class="col-sm-3 margin-bottom-button">
       <%= f.text_field :license, class: 'form-controler', placeholder: t('.license_hint')  %>
+         <div class='texto-rojo text-left'><%=@reminder.errors[:license][0].to_s%>   </div> 
     </div>
+
     <div class="col-sm-3 margin-bottom-button">
       <%= f.text_field :until_to, class: 'form-controler' , placeholder: t('.until_to_hint') %>
+         <div class='texto-rojo text-left'><%=@reminder.errors[:until_to][0].to_s%>   </div> 
     </div>
     <div class="col-sm-3 text-right">
       <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-lg outlineverde' %>
