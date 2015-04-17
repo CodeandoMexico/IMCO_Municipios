@@ -72,6 +72,7 @@ es:
     cierra: Cerrar
     federal: Federales
     municipal: Municipales
+    buscar: Buscar
   navbar:
     new: Nuevo negocio
     tramite: Trámites
@@ -295,6 +296,9 @@ es:
       duracion: Duración
       complaint: Crear denuncia
       recordatorios: Recordatorios
+      no_inspections_selected_subtitle: Podras ver todas las INSPECCIONES que el municipio puede realizar a tu empresa, puedes DENUNCIAR una inspeccion irregular o puedes crear un RECORDATORIO.
+      no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
+      no_inspections_selected_resultado: Resultado de la busqueda.
     show:
       nombre: Nombre
       Descripcion: Descripción
@@ -353,6 +357,8 @@ es:
       no_procedure_lines_selected_subtitle: Podras ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
       no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
       no_procedure_lines_selected_resultado: Resultado de la busqueda.
+    show:
+      requisitos: Debes cumplir con todos los siguientes requisitos.
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
