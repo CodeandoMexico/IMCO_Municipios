@@ -1,4 +1,14 @@
+  
+<div class="row text-left texto-verde texto-margin-top">
+  <div class="col-sm-9 text-left">
 <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+ </div>
+ <div class="col-sm-3 text-right">
+  <%= link_to t('.atras'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+</div>
+</div>
+<br/>
+
 <div class="row text-center">
   <div class="col-lg-10 col-lg-offset-1">
    <%= content_tag :h1, t('.new_complaint') %>
@@ -34,7 +44,7 @@
   <div class="form-group">
     <%= f.radio_button :reason, "other" %>
     <%= f.label :reason_other, "Otro: " %>
-    <%= f.text_field :custom_reason, class: 'form-control', style: 'margin-left: 15px;width: 300px;display:inline;',:placeholder => t('.razon_denuncia_texto') %>
+    <%= f.text_field :custom_reason, class: 'form-controler', style: 'margin-left: 15px;width: 300px;display:inline;',:placeholder => t('.razon_denuncia_texto') %>
   </div>
 
   <br>
@@ -46,7 +56,7 @@
    <div class='texto-rojo col-md-8 text-left'><%=@complaint.errors[:description][0].to_s%>
    </div>
  </div>
- <%= f.text_area :description, class: 'form-control',:placeholder => t('.descripcion_denuncia') %>
+ <%= f.text_area :description, class: 'form-controler',:placeholder => t('.descripcion_denuncia') %>
 </div>
 <br>
 <div class="form-group">
