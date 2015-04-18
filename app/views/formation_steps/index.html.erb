@@ -1,16 +1,26 @@
-<div class="row text-center">
-	<div class="col-lg-10 col-lg-offset-1">
-		<%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
-		<hr class="small">
-		<br>
-	</div>
+<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+<div class="row text-center ">
+	<%flash.each do |key, value| %>
+	<div class="alert alert-danger"><%=value%></div>
+	<% end %>
 </div>
+<div class="row text-center texto-verde">
+	<%= content_tag :h1,t('.title') %> 
+	<%if @line.nil?%>
+		<p><%=t('.no_formation_steps_selected_subtitle')%></p>
+		<p><%=t('.no_formation_steps_selected_instruction')%></p>
+	<%else%>
+		<p><%=t('.no_formation_steps_selected_resultado')%> <%=" #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."%> </p>
+	<%end%>
+	<hr class="small">
+</div>
+
 <%= form_for :get, :html => {:method => :get}, :url => { :controller => :formation_steps, :action => :index }  do |f| %>
 <div class="col-md-12">
-	<div class="col-md-6 col-md-offset-3 text-center texto-verde-wrap">
+	<div class="col-md-8 col-md-offset-1 text-center texto-verde-wrap">
 		<div class="row text-left">
 			<div class="row">
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-xs-6 col-sm-3 texto-margin-top text-right">
 					<%=t('.formation_steps_select_name')%>
 				</div>
 				<div class="clearfix visible-xs-block">
@@ -21,7 +31,7 @@
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-xs-6 col-sm-3 texto-margin-top text-right">
 					<%= t('.formation_steps_radio_name')%>
 				</div>
 				<div class="clearfix visible-xs-block">
@@ -79,15 +89,11 @@
 	</div>
 	<%end%>
 	<%end%>
-	<%else%>
-	<br>
-	<br>
-	<%= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
+	<%#else%>
+	<%#= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
 	<%end%>
-	<% else %>
-	<br>
-	<br>
-	<%= render "shared/empty_resource", message: t('.no_formation_steps_selected') %>
+	<%# else %>
+	<%#= render "shared/empty_resource", message: t('.no_formation_steps_selected'), message2: t('.no_formation_steps_selected_subtitle')  %>
 	<% end %>
 </div>
 <% end %>

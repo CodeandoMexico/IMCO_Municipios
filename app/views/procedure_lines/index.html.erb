@@ -1,15 +1,24 @@
-<div class="row text-center">
-  <div class="col-lg-10 col-lg-offset-1">
-    <%= content_tag :h1,t('.title'), class: 'text-center texto-verde ' %>
-    <hr class="small">
-    <br>
-  </div>
+<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+<div class="row text-center ">
+  <%flash.each do |key, value| %>
+  <div class="alert alert-danger"><%=value%></div>
+  <% end %>
+</div>
+<div class="row text-center texto-verde">
+  <%= content_tag :h1,t('.title') %> 
+  <%if @line.nil? || @categoria.nil?%>
+    <p><%=t('.no_procedure_lines_selected_subtitle')%></p>
+    <p><%=t('.no_procedure_lines_selected_instruction')%></p>
+  <%else @categoria.nil?%>
+    <p><%=t('.no_procedure_lines_selected_resultado')%> <%=" #{Line.find(@line).name} para persona #{tipo(@tipo)}, #{@categoria}."%> </p>
+  <%end%>
+  <hr class="small">
 </div>
 <%= form_for :get, :html => {:method => :get}, :url => { :controller => :procedure_lines, :action => :index }  do |f| %>
-<div class="col-md-8 col-md-offset-2 text-center texto-verde-wrap">
+  <div class="col-md-8 col-md-offset-1 text-center texto-verde-wrap">
   <div class="row text-left">
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-6 col-sm-3 texto-margin-top text-right">
         <%=t('.procedure_lines_select_name')%>
       </div>
       <div class="clearfix visible-xs-block">
@@ -20,7 +29,7 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-6 col-sm-3 texto-margin-top text-right">
         <%= t('.procedure_lines_radio_name')%>
       </div>
       <div class="clearfix visible-xs-block"></div>
@@ -44,7 +53,7 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-6 col-sm-3 texto-margin-top text-right">
         <%= t('.procedure_lines_radio_estados')%>
       </div>
       <div class="clearfix visible-xs-block"></div>
@@ -91,15 +100,11 @@
       </div>
     </div>
     <br>
-    <div class="row text-left">
-      <div class="col-xs-6 col-sm-3"></div>
-      <div class="clearfix visible-xs-block"></div>
-      <div class="actions col-md-offset-3">
-       <%= f.submit t('buttons.ok'),:class => 'btn btn-success btn-lg outlineverde' %>
-       <br>
-       <br>
-     </div>
-   </div>
+<div class="row text-lef">
+        <div class="actions col-md-offset-3 text-lef">
+          <div class="col-md-6 margin-bottom-button"><%= f.submit t('buttons.buscar'),:class => 'btn btn-success btn-lg outlineverde btn-block'%></div>
+        </div>
+      </div>
  </div>
 </div>
 

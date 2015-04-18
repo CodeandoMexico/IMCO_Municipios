@@ -9,18 +9,24 @@
             <span class="icon-bar"></span>
         </button>
 
-        <%= link_to navbar_title(@city.name), city_path(@city), class: 'navbar-brand', style: 'font-size:16px;' %>
+        <% if @city %>
+          <%= link_to navbar_title(@city.name), city_path(@city), class: 'navbar-brand', style: 'font-size:16px;' %>
+        <% else %>
+          <%= link_to navbar_title(@city), root_path, class: 'navbar-brand', style: 'font-size:16px;' %>
+        <% end %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <!-- Depending on the action show different options -->
-        <% if current_page? city_path(@city) %>
-          <%#= content_tag :li, link_to(t('navbar.inicio'), root_path, class: 'a-verde') %>
-        <% else %>
-          <%= content_tag :li, link_to(t('navbar.new'), city_formation_steps_path(@city)) %>
-          <%= content_tag :li, link_to(t('navbar.tramite'), city_procedure_lines_path(@city)) %>
-          <%= content_tag :li, link_to(t('navbar.inspections'), city_inspections_path(@city)) %>
-          <%= content_tag :li, link_to(t('navbar.inspectors'), city_inspectors_path(@city)) %>
+        <% if @city %>
+          <% if current_page? city_path(@city) %>
+            <%#= content_tag :li, link_to(t('navbar.inicio'), root_path, class: 'a-verde') %>
+          <% else %>
+            <%= content_tag :li, link_to(t('navbar.new'), city_formation_steps_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.tramite'), city_procedure_lines_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.inspections'), city_inspections_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.inspectors'), city_inspectors_path(@city)) %>
+          <% end %>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -72,6 +72,7 @@ es:
     cierra: Cerrar
     federal: Federales
     municipal: Municipales
+    buscar: Buscar
   navbar:
     new: Nuevo negocio
     tramite: Trámites
@@ -295,6 +296,9 @@ es:
       duracion: Duración
       complaint: Crear denuncia
       recordatorios: Recordatorios
+      no_inspections_selected_subtitle: Podras ver todas las INSPECCIONES que el municipio puede realizar a tu empresa, puedes DENUNCIAR una inspeccion irregular o puedes crear un RECORDATORIO.
+      no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
+      no_inspections_selected_resultado: Resultado de la busqueda.
     show:
       nombre: Nombre
       Descripcion: Descripción
@@ -307,11 +311,14 @@ es:
       sanctions_tips: Sanciones
       more_info: Más información
       requisitos: Requisitos
+      inspection_debes: Debes cumplir con todos los siguientes requisitos.
   inspectors:
     index:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
+      no_inspectors_selected_subtitle: Podras ver a los UNICOS INSPECTORES autorizados por el municipio para poder inspeccionar tu negocio.
+      no_inspectors_selected_resultado: Resultado de la busqueda.
     show:
       vigencia: Vigencia
       Materia: Materia
@@ -321,7 +328,10 @@ es:
     index:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
-      no_formation_steps_selected: Selecciona las opciones de búsqueda
+      no_formation_steps_selected: Apertura de un nuevo negocio
+      no_formation_steps_selected_subtitle: Podras ver todas los tramites FEDERALES y MUNICIPALES que debes cumplir para poder abrir tu empresa.
+      no_formation_steps_selected_instruction: Por favor selecciona el giro de tu empresa y el tipo de persona que eres.
+      no_formation_steps_selected_resultado: Resultado de la busqueda.
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
@@ -347,6 +357,11 @@ es:
       vigencia: Vigencia
       procedure_lines_select_name: 'Giro del negocio:'
       procedure_lines_radio_estados: 'Etapa de tu negocio:'
+      no_procedure_lines_selected_subtitle: Podras ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
+      no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
+      no_procedure_lines_selected_resultado: Resultado de la busqueda.
+    show:
+      requisitos: Debes cumplir con todos los siguientes requisitos.
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
@@ -364,6 +379,8 @@ es:
       texto_nuevo: ¿Cómo puedo crear mi negocio?
       texto_tramite: ¿Qué tramites puedo realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
+      subtitulo: Selecciona una opción.
+      titulo: Menú Mi Negocio México
   imcos:
     index:
       titulo_modal: Mi Negocio México
@@ -375,10 +392,12 @@ es:
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
   users:
-    index:
+    new:
       iniciar_sesion: Iniciar sesión
+      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
     edit:
       edit_profile: Editar perfil
+      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
       name: Nombre
       correo: Correo
       business_name: Nombre del negocio

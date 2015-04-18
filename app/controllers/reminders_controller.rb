@@ -1,17 +1,26 @@
 class RemindersController < ApplicationController
-  layout 'blanco'
   before_action :authenticate_business!
   before_action :business_profile_complete!
   before_action :set_cities
   before_action :set_reminder, only: [:edit, :update, :destroy]
   before_action :reminder_params, only: [:create, :update]
 
+  add_breadcrumb "Inicio", :root_path
+
   def index
-    @reminders = Reminders.where(user_id: current_user)
+    @reminders = Reminders.where(user: current_user)
     @reminder = Reminders.new
+
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb "Recordatorios"
   end
 
   def edit
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb "Recordatorios" , city_reminders_path(@city)
+     add_breadcrumb "Editar recordatorio"
   end
 
   def create
@@ -22,11 +31,13 @@ class RemindersController < ApplicationController
       until_to: ordenate_date(reminder_params[:until_to])
       )
     authorize @reminder
+
     if @reminder.save
       redirect_to  city_reminders_path(@city),
       notice: 'El recordatorio fue creado satisfactoriamente.' 
     else
-      render :new
+      @reminders = Reminders.where(user: current_user)
+       render :index
     end
   end
 
@@ -54,12 +65,21 @@ class RemindersController < ApplicationController
     end
   end
 
-  def ordenate_date(date)
-    fecha = date.split('/')
-    return (fecha[2]+"/"+fecha[0]+"/"+fecha[1]).to_date
-  end
+  
 
   private
+
+def ordenate_date(date)
+    fecha = date.split('/')
+    if fecha.length == 3
+      return (fecha[2]+"/"+fecha[0]+"/"+fecha[1]).to_date 
+    elsif fecha.length == 1
+          fecha = date.split('-')
+        if fecha.length == 3
+          return (fecha[2]+"-"+fecha[0]+"-"+fecha[1]).to_date 
+      end
+    end
+end
 
   def set_cities
     @city = City.find(params[:city_id])

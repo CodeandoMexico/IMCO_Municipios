@@ -1,7 +1,10 @@
 class CitiesController < ApplicationController
+  add_breadcrumb "Inicio", :root_path
+
   def show
     @cities = City.all
     set_city(:id)
+    add_breadcrumb @city.name 
   end
 
   def search

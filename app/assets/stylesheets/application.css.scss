@@ -147,31 +147,32 @@ body {
 
 /*************************a-verde******************/
 a-verde{
-  color: $light-green;
+  color: $light-green !important;
   cursor: pointer;
   width:100%;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
+  a{color: $light-green !important;}
 }
 
 a-verde:link {
-    color: $light-green;
+  color: $light-green !important;
 }
 
 /* visited link */
 a-verde:visited {
-    color: $light-green;
+  color: $light-green !important;
 }
 
 /* mouse over link */
 a-verde:hover {
-    color: $light-green;
+  color: $light-green !important;
 }
 
 /* selected link */
 a-verde:active {
-    color: $light-green;
+  color: $light-green !important;
 }
 
 
@@ -248,6 +249,10 @@ texto-blanco{
 
 .texto-padding-bottom{
   padding-bottom: 15px;
+}
+
+.texto-margin-top{
+  margin-top: 10px;
 }
 
 .texto-margin-bottom{
@@ -363,6 +368,42 @@ section{
   -ms-user-select: none;
       user-select: none;
   width: 100% !important;
+}
+
+
+.chosen-container-single .chosen-single {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0px 0px 0px 8px;
+    height: 25px;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+    background-color: #FFF;
+    background-clip: padding-box;
+    box-shadow: 0px 0px 3px #FFF inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
+    color: #444;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+     height: 45px !important;
+    padding-top: 10px !important;
+}
+
+.chosen-container-single .chosen-default {
+
+    height: 45px !important;
+    padding-top: 10px !important;
+}
+
+.chosen-container-single .chosen-single div {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 18px;
+    height: 100%;
+    padding-top: 10px !important;
 }
 
 /*carrusel*************/
@@ -562,4 +603,10 @@ espacio{
   min-height: 1px;
   padding-left: 0px;
   padding-right: 5px;
+}
+
+.btn-block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
 }

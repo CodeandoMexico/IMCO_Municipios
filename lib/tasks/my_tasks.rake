@@ -347,5 +347,10 @@ namespace :my_tasks do
     model.delete_all
   end
 
+  desc "Load all data to the db"
+  task :load_all_data => [:load_lines, :load_dependencies, :load_inspectors, :load_requirements, :load_inspections, :load_formation_steps, :load_procedures] do
+    puts "Done running all the tasks.."
+  end
+
 
 end
