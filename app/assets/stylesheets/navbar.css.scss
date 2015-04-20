@@ -8,24 +8,34 @@
 
   .navbar-nav > li > a {
     &:link {
-      color: $blanco;
+      color: $white;
     }
 
     &:visited {
-      color: $blanco;
+      color: $white;
       background-color: $light-green;
     }
 
     &:hover {
-      color: $blanco;
+      color: $white;
       background-color: $light-green;
     }
 
     &:active {
-      color: $blanco;
+      color: $white;
+      background-color: $light-green;
+    }
+
+    &:focus {
+      color: $white;
       background-color: $light-green;
     }
   }
+}
+
+.dropdown-toggle {
+  color: $white;
+  background-color: $light-green;
 }
 
 // Remove the border

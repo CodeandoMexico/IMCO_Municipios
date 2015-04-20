@@ -174,7 +174,7 @@ a-verde:active {
 
 /*************************a******************/
 a{
-  color: $blanco;
+  color: $white;
   cursor: pointer;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -182,28 +182,28 @@ a{
 }
 
 a:link {
-    color: $blanco;
+    color: $white;
 }
 
 /* visited link */
 a:visited {
-    color: $blanco;
+    color: $white;
 }
 
 /* mouse over link */
 a:hover {
-    color: $blanco;
+    color: $white;
 }
 
 /* selected link */
 a:active {
-    color: $blanco;
+    color: $white;
 }
 
 
 /**********************textos de colores*****************/
 texto-blanco{
-  color: $blanco !important;
+  color: $white !important;
   width:100%;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -293,12 +293,12 @@ texto-blanco{
 }
 .dropdown-menu > li > a:hover{
  color: $dark-green;
- background-color: $blanco;
+ background-color: $white;
 }
 
 .dropdown-menu > li > a:active{
  color: $dark-green;
- background-color: $blanco;
+ background-color: $white;
 }
 
 .main-menu li a:focus + ul {
@@ -527,7 +527,7 @@ section{
 }
 
 .pagination {
-    border-left: 1px solid $blanco;
+    border-left: 1px solid $white;
     .first{
         padding : 0;
         float: none;
@@ -580,7 +580,7 @@ p {
 }
 
 p-blanco {
-  @include base_tipography($blanco, 11pt);
+  @include base_tipography($white, 11pt);
 }
 
 

@@ -1,6 +1,6 @@
 $light-green: #4EB976;
 $dark-green: #46aa6c;
-$blanco: #ffffff;
+$white: #ffffff;
 $negro: #000000;
 $rojo: #ff0000;
 /*********************************************************************
@@ -32,74 +32,74 @@ $rojo: #ff0000;
 
 .btn-default {
 	border: 2px solid $dark-green;
-	color: $blanco;
+	color: $white;
 	padding: 12px 22px;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
-	background: $blanco;
-	border-color: $blanco;
-	color: $blanco;
+	background: $white;
+	border-color: $white;
+	color: $white;
 }
 .btn-default:active, .btn-default.active {
-	border-color: $blanco;
+	border-color: $white;
 	box-shadow: none;
 }
 .btn-primary {
-	background: $blanco;
-	color: $blanco;
+	background: $white;
+	color: $white;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-	background: $blanco;
+	background: $white;
 }
 .btn-primary:active, .btn-primary.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 }
 .btn-success {
-	background: $blanco;
-	color: $blanco;
+	background: $white;
+	color: $white;
 		outline: none;
 }
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success {
-	background: $blanco;
+	background: $white;
 		outline: none;
 }
 .btn-success:active, .btn-success.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 		outline: none;
 }
 .btn-info {
-	background: $blanco;
-	color: $blanco;
+	background: $white;
+	color: $white;
 }
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
-	background: $blanco;
+	background: $white;
 }
 .btn-info:active, .btn-info.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 }
 .btn-warning {
-	background: $blanco;
-	color: $blanco;
+	background: $white;
+	color: $white;
 }
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open > .dropdown-toggle.btn-warning {
-	background: $blanco;
+	background: $white;
 }
 .btn-warning:active, .btn-warning.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 }
 .btn-danger {
-	background: $blanco;
-	color: $blanco;
+	background: $white;
+	color: $white;
 }
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .dropdown-toggle.btn-danger {
-	background: $blanco;
+	background: $white;
 }
 .btn-danger:active, .btn-danger.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 }
 
@@ -129,32 +129,32 @@ $rojo: #ff0000;
 	outline: none;
 }
 .btn-primary.outline {
-	border: 2px solid $blanco;
-	color: $blanco;
+	border: 2px solid $white;
+	color: $white;
 	outline: none;
 }
 .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-	color: $blanco;
-	border-color: $blanco;
+	color: $white;
+	border-color: $white;
 	outline: none;
 }
 .btn-primary.outline:active, .btn-primary.outline.active {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 	box-shadow: none;
 }
 .btn-success.outline {
-	border: 2px solid $blanco;
-	color: $blanco;
+	border: 2px solid $white;
+	color: $white;
 	outline: none;
 }
 .btn-success.outline:hover, .btn-success.outline:focus, .btn-success.outline:active, .btn-success.outline.active, .open > .dropdown-toggle.btn-success {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 }
 .btn-success.outline:active, .btn-success.outline.active {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 	box-shadow: none;
 }
 
@@ -164,11 +164,11 @@ $rojo: #ff0000;
 }
 .btn-success.outlineverde:hover, .btn-success.outlineverde:focus, .btn-success.outlineverde:active, .btn-success.outlineverde.active, .open > .dropdown-toggle.btn-success {
 	border-color: $dark-green;
-	color: $blanco;
+	color: $white;
 }
 .btn-success.outlineverde:active, .btn-success.outlineverde.active {
 	border-color: $dark-green;
-	color: $blanco;
+	color: $white;
 	box-shadow: none;
 }
 
@@ -178,51 +178,51 @@ $rojo: #ff0000;
 }
 .btn-danger.outlinerojo:hover, .btn-danger.outlinerojo:focus, .btn-danger.outlinerojo:active, .btn-danger.outlinerojo.active, .open > .dropdown-toggle.btn-success {
 	border-color: vrojo;
-	color: $blanco;
+	color: $white;
 }
 .btn-danger.outlinerojo:active, .btn-danger.outlinerojo.active {
 	border-color: $rojo;
-	color: $blanco;
+	color: $white;
 	box-shadow: none;
 }
 
 .btn-info.outline {
-	border: 2px solid $blanco;
-	color: $blanco;
+	border: 2px solid $white;
+	color: $white;
 }
 .btn-info.outline:hover, .btn-info.outline:focus, .btn-info.outline:active, .btn-info.outline.active, .open > .dropdown-toggle.btn-info {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 }
 .btn-info.outline:active, .btn-info.outline.active {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 	box-shadow: none;
 }
 .btn-warning.outline {
-	border: 2px solid $blanco;
-	color: $blanco;
+	border: 2px solid $white;
+	color: $white;
 }
 .btn-warning.outline:hover, .btn-warning.outline:focus, .btn-warning.outline:active, .btn-warning.outline.active, .open > .dropdown-toggle.btn-warning {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 }
 .btn-warning.outline:active, .btn-warning.outline.active {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 	box-shadow: none;
 }
 .btn-danger.outline {
-	border: 2px solid $blanco;
-	color: $blanco;
+	border: 2px solid $white;
+	color: $white;
 }
 .btn-danger.outline:hover, .btn-danger.outline:focus, .btn-danger.outline:active, .btn-danger.outline.active, .open > .dropdown-toggle.btn-danger {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 }
 .btn-danger.outline:active, .btn-danger.outline.active {
-	border-color: $blanco;
-	color: $blanco;
+	border-color: $white;
+	color: $white;
 	box-shadow: none;
 }
 
@@ -391,7 +391,7 @@ $rojo: #ff0000;
 		outline: none;
 }
 .btn-primary.raised:active, .btn-primary.raised.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
@@ -401,7 +401,7 @@ $rojo: #ff0000;
 			outline: none;
 }
 .btn-success.raised:active, .btn-success.raised.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
@@ -409,28 +409,28 @@ $rojo: #ff0000;
 
 }
 .btn-info.raised {
-	box-shadow: 0 3px 0 0 $blanco;
+	box-shadow: 0 3px 0 0 $white;
 }
 .btn-info.raised:active, .btn-info.raised.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
 }
 .btn-warning.raised {
-	box-shadow: 0 3px 0 0 $blanco;
+	box-shadow: 0 3px 0 0 $white;
 }
 .btn-warning.raised:active, .btn-warning.raised.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
 }
 .btn-danger.raised {
-	box-shadow: 0 3px 0 0 $blanco;
+	box-shadow: 0 3px 0 0 $white;
 }
 .btn-danger.raised:active, .btn-danger.raised.active {
-	background: $blanco;
+	background: $white;
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
