@@ -30,7 +30,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (5.1.9)
+    autoprefixer-rails (5.1.10)
       execjs
       json
     bcrypt (3.1.10)
@@ -90,7 +90,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.7)
-    excon (0.45.1)
+    excon (0.45.2)
     execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)

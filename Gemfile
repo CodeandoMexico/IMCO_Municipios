@@ -52,11 +52,6 @@ gem 'mini_magick'
 
 gem "breadcrumbs_on_rails" #breadcrumbs
  
-
-gem 'nifty-generators'  
-gem 'bcrypt-ruby', :require => 'bcrypt'    
-gem 'client_side_validations'  
-
 group :development, :test do
   # Load env variables
   gem 'figaro'
