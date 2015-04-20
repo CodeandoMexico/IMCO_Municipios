@@ -1,39 +1,59 @@
 class InspectionsController < ApplicationController
   before_action :set_inspection, only: :show
-  before_action :set_municipio, only: [:index, :show]
-  layout 'blanco'
+  before_action :set_cities, only: [:index, :show]
+  before_action :set_search_filters, only: :index
+  after_filter :save_my_previous_url!
 
+  add_breadcrumb "Inicio", :root_path
   def index
-     valores  if params[:get]
-         @municipios = Municipio.all
- end
- 
-  def valores
-     @line = params[:get][:lines]
-     @first_time = true
-     if params[:q]
-      @inspections = Inspection.search_by_city(@municipio, params[:q])
-      @inspection_line = InspectionLine.where(line_id: @line)
-    else
-        @inspections =  Inspection.by_city(@municipio)
-         @inspection_line = InspectionLine.where(line_id: @line)
-      end
- end 
+    #  raise params.inspect
+    @cities = City.all
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones"
+
+
+
+  end
 
   def show
-        @municipios = Municipio.all
+    @cities = City.all
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Inspecciones", city_inspections_path(@city)
+    add_breadcrumb @inspection.name
   end
 
   private
-    def set_inspection
-      @inspection = Inspection.find(params[:id])
-    end
 
-    def inspection_params
-      params.require(:inspection).permit(:nombre, :materia, :duracion, :norma, :antes, :durante, :despues, :sancion, :dependency_id)
-    end
+  def set_inspection
+    @inspection = Inspection.find(params[:id])
+  end
 
-    def set_municipio
-       @municipio = Municipio.find(params[:municipio_id])
+  def inspection_params
+    params.require(:inspection).permit(:name, :matter, :duration, :rule, :before, :during, :after, :sanction, :dependency_id)
+  end
+
+  def set_cities
+    @city = City.find(params[:city_id])
+  end
+
+  def set_search_filters
+    if params[:get]
+      @line = params[:get][:lines]
+      valida_giro
+      @inspection_line = InspectionLine.where(line_id: @line) if @line.present?
+      if params[:q].present?
+        @inspections = Inspection.search_by_city(@city, params[:q])
+      else
+        @inspections =  Inspection.by_city(@city)
+      end
     end
+  end
+
+
+  def valida_giro
+    if @line.nil? || @line.empty?
+      redirect_to city_inspections_path(@city), notice: 'Debes seleccionar un giro.' 
+    end
+end
+
 end

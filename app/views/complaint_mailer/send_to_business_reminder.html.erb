@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.recordatorio.saludo')%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%= t('correos.recordatorio.body',nombre: @reminder.name, folio: @reminder.license, fecha: @reminder.until_to) %>
+		<%= link_to t('correos.recordatorio.liga_a_la_denuncia'), root_url %>.
+	</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.gracias')%>
+	</p>
+</body>
+</html>

@@ -5,19 +5,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   after_action :store_location
-  # after_filter :verify_authorized, except: [:index, :show, :new, :edit]
+  layout :layout_by_resource
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
-
-
-
-  #helper_method :current_user
-
-  #def current_user
-    #@current_user ||= User.find(session[:user_id]) if session[:user_id]
-  #end
 
   def verify_admin
     admin_is_logged_in? || not_found
@@ -41,9 +33,52 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
-    root_path
+    if validaDatos(resource)
+          return   session[:my_previous_url]  
+        else
+          return  edit_user_path(resource)
+      end
+    #return  root_path if resource.profile_complete?
+    #edit_user_path(resource)
+  end
+
+  def authenticate_business!
+    if !user_signed_in? #|| !current_user.business?
+      return redirect_to new_user_path, alert: I18n.t('devise.sessions.user.session_needed_to_continue')
+    end
+  end
+
+  def business_profile_complete!
+   unless validaDatos(current_user)
+     return redirect_to  edit_user_path(current_user) , alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+   end
+    end
+   
+
+  #  if !current_user.profile_complete?
+    #  return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+  #  end
+
+
+
+
+   def save_my_previous_url!
+    session[:my_previous_url] = request.fullpath
+  end
+
+  protected
+
+  def layout_by_resource
+    # Do we want a custom layout for views when there's a user
+    # involved but, is not an admin?
+    if devise_controller? && resource && !resource.admin?
+      'session'
+    elsif devise_controller?
+      'session'
+    end
   end
 
   private
@@ -53,6 +88,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-
-
+  def validaDatos(resource)
+    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?  
+   end
 end

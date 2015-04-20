@@ -1,0 +1,59 @@
+<div id="main" class="container clear-top">
+	<div class="row">
+		<div class="span12">
+			<section id="services">
+				<div class="center-block-margin">
+					<div class="container">
+						<h1 class="title text-center texto-verde"><%=t('.all_profile',:city => @city.name)%></h1>
+						<hr class="small">
+						<div class="col-md-6 col-md-offset-3">	
+							<%= form_for @city , html: { class: 'form-horizontal' } do |f| %>
+							<div class="row">
+								<%= f.label t('.correo_municipio'), class: 'col-sm-3 control-label' %>
+								<div class="col-sm-9">
+									<%= f.text_field :contact_email , class: 'form-control' %>
+								</div>
+							</div>
+							<br>
+							<div class="col-md-9 col-md-offset-3 ">
+								<%= f.submit t('.actualizar'), :class => 'btn btn-success btn-sm outlineverde' %>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="main" class="container clear-top">
+	<div class="row">
+		<div class="span12">
+			<section id="services">
+				<div class="center-block-margin">
+					<div class="container">
+						<h2> <%= t('.admins') %></h2>
+						<table class="table">
+							<thead>
+								<th><%= t('.email') %></th>
+							</thead>
+							<tbody>
+								<%= content_tag :tr do %>
+								<%= content_tag :td, @user.email %>
+								<%= content_tag :td, :class => 'text-right'  do %>
+								<%= link_to t('.edit'), edit_dashboard_city_contact_path(@city,@user) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
+								<% end %>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</div>
+

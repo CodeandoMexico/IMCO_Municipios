@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def navbar_title(city)
-    title = "MI NEGOCIO MÉXICO"
+    title = "Mi Negocio México"
     if city
       title + " | #{city}"
     else
@@ -12,6 +12,11 @@ module ApplicationHelper
     end
   end
 
-
-  
+  def page_title(base_title="Mi Negocio México", subtitle=nil)
+    if subtitle.nil?
+      content_tag :title, base_title
+    else
+      content_tag :title, "#{base_title} | #{subtitle}"
+    end
+  end
 end

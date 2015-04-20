@@ -2,8 +2,8 @@
 $grey-200: #EEEEEE;
 $grey-400: #BDBDBD;
 $grey-500: #9E9E9E;
-$verde-claro: #4EB976;
-$verde-obscuro: #46AA6C;
+$light-green: #4EB976;
+$dark-green: #46AA6C;
 $teal-500: #009688;
 $blanco: #ffffff;
 $negro: #000000;
@@ -13,31 +13,34 @@ $rojo: #ff0000;
 
 
 .img-responsive {
-padding-top: 0%;
-max-width: 100%; /* or to whatever you want here */
-max-height: auto; /* or to whatever you want here */
+  padding-top: 0%;
+  max-width: 100%; /* or to whatever you want here */
+  max-height: auto; /* or to whatever you want here */
 }
 
 .navbar-text-blanco{
-    color: #ffffff;
-    margin:40px 0px 20px 0px;
-    text-align:center;
+  color: #ffffff;
+  margin:10px 0px 20px 0px;
+  text-align:center;
 }
 
 .btn-lg-social {
-   width: 100%;
+  min-width: 480px;
+  max-width: 480px;
+  display: block !important;
+  margin-bottom: 15px !important;
 }
 
 .modal-dialog-center {
-    margin-top: 25%;
-    margin-left: 30%;
-    margin-right: 30%;
+  margin-top: 25%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .divide-8{
   width: 10%;
 }
-.row-padding-bottom{padding-bottom: 150px;}
 
-
-
+.margin-bottom-button{
+	margin-bottom: 10px;
+}

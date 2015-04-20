@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @lines = policy_scope(Line).where(municipio_id: current_user.municipio).order(:nombre)
+      @lines = policy_scope(Line).where(city_id: current_user.city).order(:name)
       respond_to do |format|
         format.html
         format.csv { send_data @lines.to_csv }
@@ -14,16 +14,16 @@ module Dashboard
 
     def new
       @line = Line.new
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
     end
 
     def edit
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
     end
 
     def create
       @line = Line.new(line_params)
-      @line.municipio = current_user.municipio
+      @line.city = current_user.city
       authorize @line
 
       respond_to do |format|
@@ -67,7 +67,7 @@ module Dashboard
     end
 
     def line_params
-      params.require(:line).permit(:nombre, :descripcion, :municipio_id)
+      params.require(:line).permit(:name, :description, :city_id)
     end
   end
 end

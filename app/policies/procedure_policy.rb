@@ -1,7 +1,7 @@
 class ProcedurePolicy < ApplicationPolicy
   def create?
     #raise record.inspect
-    record.dependency.municipio_id == user.municipio_id && user.admin?
+    record.dependency.city_id == user.city_id && user.admin?
   end
 
   # def new?
@@ -25,7 +25,7 @@ class ProcedurePolicy < ApplicationPolicy
       if user.admin?
         scope.
           includes(:dependency).
-          where(dependencies: { municipio_id: user.municipio_id })
+          where(dependencies: { city_id: user.city_id })
       else
         scope
       end

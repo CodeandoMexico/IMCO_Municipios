@@ -21,8 +21,8 @@
                <%= content_tag :tr do %>
                <%= content_tag :td, idx + 1 %>
                <%= content_tag :td, formation.name %>
-               <%= content_tag :td, type(formation.type) %>
-               <%= content_tag :td, formation.municipio.nombre %>
+               <%= content_tag :td, type(formation.type_formation_step) %>
+               <%= content_tag :td, formation.city.name %>
                <%= content_tag :td do %>
                <%= link_to t('form.actions.edit'), edit_dashboard_formation_step_path(formation), :class => 'btn btn-success btn-xs outlineverde'  %> 
                <%= link_to t('form.actions.destroy'), dashboard_formation_step_path(formation), method: :delete, data: { confirm: t('form.confirmations.delete_formation_step') } , :class => 'btn btn-success btn-xs outlineverde' %>

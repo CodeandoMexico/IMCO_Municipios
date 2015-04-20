@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @dependencies = policy_scope(Dependency).where(municipio_id: current_user.municipio).order(:nombre)
+      @dependencies = policy_scope(Dependency).where(city_id: current_user.city).order(:name)
 
         respond_to do |format|
           format.html
@@ -22,7 +22,7 @@ module Dashboard
 
     def create
       @dependency = Dependency.new(dependency_params)
-      @dependency.municipio = current_user.municipio
+      @dependency.city = current_user.city
       authorize @dependency
 
       respond_to do |format|
@@ -66,7 +66,7 @@ module Dashboard
     end
 
     def dependency_params
-      params.require(:dependency).permit(:nombre, :municipio_id)
+      params.require(:dependency).permit(:name, :city_id)
     end
   end
 end

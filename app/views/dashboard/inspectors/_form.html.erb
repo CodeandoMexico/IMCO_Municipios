@@ -13,21 +13,21 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :nombre, class: 'col-sm-2 control-label' %>
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :nombre, class: 'form-control' %>
+        <%= f.text_field :name, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :vigencia, class: 'col-sm-2 control-label' %>
+      <%= f.label :validity, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :vigencia, class: 'form-control' %>
+        <%= f.text_field :validity, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :materia, class: 'col-sm-2 control-label' %>
+      <%= f.label :matter, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :materia, class: 'form-control' %>
+        <%= f.text_field :matter, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
@@ -37,22 +37,22 @@
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :contacto, class: 'col-sm-2 control-label' %>
+      <%= f.label :contact, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :contacto, class: 'form-control' %>
+        <%= f.text_field :contact, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :foto, class: 'col-sm-2 control-label' %>
+      <%= f.label :photo, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <span><%= link_to(@inspector.foto_identifier, @inspector.foto_url, target: "_blank") if @inspector.foto_url %></span>
-        <%= f.file_field :foto, class: 'form-control' %>
+        <span><%= link_to(@inspector.photo_identifier, @inspector.photo_url, target: "_blank") if @inspector.photo_url %></span>
+        <%= f.file_field :photo, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :dependencia, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= collection_select(:inspector, :dependency_id, Dependency.all, :id, :nombre, {:prompt => false}, class: 'form-control') %>
+        <%= collection_select(:inspector, :dependency_id, Dependency.all, :id, :name, {:prompt => false}, class: 'form-control') %>
       </div>
     </div>
 

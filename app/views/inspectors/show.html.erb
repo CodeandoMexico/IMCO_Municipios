@@ -1,44 +1,36 @@
-<div id="wrap">
-  <div id="main" class="container clear-top">
-    <div class="row row-padding-bottom">
-      <div class="span12">
-        <section id="services ">
-          <div class="center-block-margin">
-            <div class="container">
-              <div class="row text-center">
-                <h3 class="title texto-verde"><%= @inspector.nombre %></h3>
-                <div style="border: 1px solid white;background-color: white;">
-                  <div class="col-md-6 col-md-offset-3">
-                    <div class="thumbnail">
-                      <%= image_tag @inspector.foto_url || "missing-image.gif" %>
-                    </div>
-                  </div>
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td class="texto-verde-wrap"><%= t('.vigencia') %></td>
-                        <td class ="bg-primary-nergro"><%= @inspector.vigencia %></td>
-                      </tr>
-                      <tr>
-                        <td class="texto-verde-wrap"><%= t('.materia') %></td>
-                        <td class ="bg-primary-nergro"><%= @inspector.materia %></td>
-                      </tr>
-                      <tr>
-                        <td class="texto-verde-wrap"><%= t('.supervisor') %></td>
-                        <td class ="bg-primary-nergro"><%= @inspector.supervisor %></td>
-                      </tr>
-                      <tr>
-                        <td class="texto-verde-wrap"><%= t('.contacto') %></td>
-                        <td class ="bg-primary-nergro"><%= @inspector.contacto %></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+<div class="row text-left texto-verde texto-margin-top">
+  <div class="col-sm-9 text-left">
+    <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+  </div>
+  <div class="col-sm-3 text-right">
+    <%= link_to t('.nueva_busqueda'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+  </div>
+</div>
+
+<div class="row text-center">
+  <h3 class="title texto-verde"><%= @inspector.name %></h3>
+  <div style="border: 1px solid white;background-color: white;">
+    <div class="thumbnail" style="margin-left:auto;margin-right:auto;width:305px;height:305px;">
+      <%= image_tag @inspector.photo_url || "missing-image.gif" %>
     </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.vigencia') %></td>
+          <td class ="bg-primary-negro"><%= @inspector.validity %></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.materia') %></td>
+          <td class ="bg-primary-negro"><%= @inspector.matter %></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.supervisor') %></td>
+          <td class ="bg-primary-negro"><%= @inspector.supervisor %></td>
+        </tr>
+        <tr>
+          <td class="texto-verde-wrap"><%= t('.contacto') %></td>
+          <td class ="bg-primary-negro"><%= @inspector.contact %></td>
+        </tr>
+    </table>
   </div>
 </div>

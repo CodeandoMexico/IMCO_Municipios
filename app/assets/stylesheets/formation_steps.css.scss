@@ -1,5 +1,5 @@
-$verde-claro: #4EB976;
-$verde-obscuro: #46AA6C;
+$light-green: #4EB976;
+$dark-green: #46AA6C;
 $teal-500: #009688;
 $blanco: #ffffff;
 $negro: #000000;
@@ -61,13 +61,13 @@ section {
    /*width: 48px;
     height: 48px;
     margin: 10px;*/
-    background-color: $verde-claro;
+    background-color: $light-green;
 }
-bg-primary-nergro {
+
+bg-primary-negro {
   color: #000;
 }
 
 .btn-lg {
 margin: 0px 0px;
 }
-

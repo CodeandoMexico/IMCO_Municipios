@@ -50,6 +50,17 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "breadcrumbs_on_rails" #breadcrumbs
+
+group :development, :test do
+  # Load env variables
+  gem 'figaro'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
 
 group :development do
   # Thin server
@@ -61,8 +72,8 @@ group :development do
   gem 'binding_of_caller'
   # Seeds
   gem 'seed_dump'
-  # Load env variables
-  gem 'figaro'
+  # Email debugging
+  gem 'letter_opener'
 end
 
 group :production do

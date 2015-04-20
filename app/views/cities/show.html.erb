@@ -1,0 +1,34 @@
+<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+<div class="row text-center texto-verde">
+  <h1><%=t('.titulo')%></h1>
+  <p><%=t('.subtitulo') %></p>
+  <hr class="small">
+</div>
+
+<div class="row text-center" style="margin-bottom:60px;">
+  <div class="col-md-4">
+      <%= image_tag "abrir.png", class: "img-responsive center-block" %>
+      <p><%=t('.texto_no_tengo')%><br><%=t('.texto_nuevo')%></p>
+      <%= link_to t('.nuevo'),city_formation_steps_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
+  </div>
+  <div class="col-md-4">
+      <%= image_tag "tramites.png", class: "img-responsive center-block" %>
+      <p><%=t('.texto_ya_tengo')%><br><%=t('.texto_tramite')%> </p>
+      <%= link_to t('.tramite'),city_procedure_lines_path(@city), :class => 'btn btn-success btn-lg outlineverde half-width'%>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag "inspecciones.png", class: "img-responsive center-block" %>
+    <p><%=t('.texto_ya_tengo')%><br><%=t('.texto_inspeccion')%></p>
+    <div class="dropdown">
+      <button class="btn btn-success btn-lg outlineverde half-width" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          <%=t('.inspecciones')%>
+          <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu half-width" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><%= link_to t('.inspeccion'), city_inspections_path(@city) %></li>
+          <hr class="divider">
+          <li role="presentation"><%= link_to t('.inspector'), city_inspectors_path(@city) %></li>
+      </ul>
+    </div>
+  </div>
+</div>

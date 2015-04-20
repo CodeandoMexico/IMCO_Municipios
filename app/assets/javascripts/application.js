@@ -19,7 +19,7 @@
 //= require chosen-jquery
 //= require_tree .
 
-var ready = function(){ 
+var loadChosen = function(){
     $('.chosen-select').chosen({
        allow_single_deselect: true,
        no_results_text: 'No hay resultados',
@@ -28,7 +28,10 @@ var ready = function(){
     });
 };
 
-$(document).ready(ready);
-$(document).on('page:load',ready);
+var loadComponents = function () {
+  loadChosen();
+  loadProcedureLinesTooltips();
+};
 
-
+$(document).ready(loadComponents);
+$(document).on('page:load', loadComponents);

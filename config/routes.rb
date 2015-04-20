@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
 
-  #devise_for :users
-  post "municipios/search"
-   #resources :procedure_requirements, only: [:index]#Para pruebas
+  post "cities/search"
 
+  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-
-
-  resources :municipios, only: [:show] do
+  resources :cities, only: [:show, :update, :edit] do
     get 'about'
     get 'aviso'
     resources :inspections, only: [:index, :show]
     resources :inspectors, only: [:index, :show]
     resources :procedure_lines, only: [:index,:show]
     resources :formation_steps, only: [:index]
+    resources :complaints, only: [:new, :create, :edit, :update]
+    resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
   end
 
   resource :dashboard, only: :show, controller: :dashboard do
@@ -25,7 +24,13 @@ Rails.application.routes.draw do
     resources :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/dependencies'
     resources :requirements, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/requirements'
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
+    resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
+    resources :cities, only: [:show], controller: 'dashboard/cities' do
+         resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
+    end
   end
+
+  resources :users, only: [:new, :create, :edit, :update]
 
   root 'imcos#index'
 end

@@ -1,17 +1,6 @@
-<div id="wrap">
-	<div id="main" class="container clear-top">
-		<div class="row">
-			<div class="span12">
-				<section id="services ">
-					<div class="center-block-margin">
-						<div class="container">
-							<div class="jumbotron">
-								<h2 class="empty-resource"><%= message %></h2>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
+<div class="jumbotron">
+	<h2 class="empty-resource"><%= message %></h2>
+	<% if defined?(message2) && message2.present? %>
+		<p class="empty-resource"><%= message2 %></p>
+	<% end %>
 </div>

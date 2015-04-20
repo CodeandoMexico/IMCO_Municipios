@@ -1,4 +1,15 @@
 es:
+  flash:
+    users:
+      updated: La información del usuario ha sido guardada satisfactoriamente.
+    complaints:
+      you_need_to_complete_your_profile: Necesitas completar tu perfil antes de hacer una denuncia.
+  mailers:
+    complaints:
+      send_to_business_subject: Denuncia enviada correctamente
+      send_to_city_subject: Denuncia de inspección recibida
+    reminders:
+      send_to_bussines_reminder_subject: Un documento de tu negocio está por vencer
   views:
     pagination:
       first: "&laquo; Primero"
@@ -6,17 +17,62 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  tooltips:
+    cierra: Los trámites que necesitas para cerrar un negocio
+    construye: Todos los relativos a construcción
+    crece: Son apoyos ofrecidos por el municipio a empresas. Los apoyos pueden ser de distintos tipos, desde orientación y capacitación hasta apoyos monetarios o en especie.
+    administra: Los relativos a los movimientos que puedan realizarse con la licencia de funcionamiento y los trámites necesarios para publicitar el negocio y trámites que las empresas requieran con regularidad (como constancias de pago o impuestos)
+    crea: Trámites necesarios para abrir un nuevo negocio
+  correos:
+    empresa:
+      subject: Denuncia enviada correctamente
+      saludo: Hola,
+      body: |
+            La denuncia de tu empresa ha sido enviada al municipio  %{city} correctamente. El folio de la denuncia es %{folio}.
+
+            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+      gracias: Gracias por utilizar Mi Negocio México.
+    municipio:
+      subject: Denuncia de inspección recibida
+      saludo: Hola,
+      body: |
+            Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
+
+            Puedes ver la información completa.
+      liga_a_la_denuncia: 'aquí'
+      gracias: Gracias por utilizar Mi Negocio México.
+    recordatorio:
+      subject: Notificación de MiNegocioMx
+      saludo: Hola,
+      body: |
+            Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
+
+            Puedes ver la información completa en tus recordatorios en
+      liga_a_la_denuncia: 'MiNegocioMx'
+      gracias: Gracias por utilizar Mi Negocio México.
   titles:
     titulo: MI NEGOCIO MÉXICO
     inspections: Inspecciones
     inspectors: Inspectores
-    formation_steps: Tramites de Apertura
+    formation_steps: Trámites de Apertura
     lines: Giros
     dependencies: Dependencias
     requirements: Requerimientos
     procedures: Requerimientos
+    reports: Reportes
+    reminder: Tus recordatorios
+    new_reminder: Nuevo recordatorio
+    edit_reminder: Editar recordatorio
   buttons:
     ok: Aceptar
+    crea: Crear
+    administra: Administrar
+    crece: Crecer
+    construye: Construir
+    cierra: Cerrar
+    federal: Federales
+    municipal: Municipales
+    buscar: Buscar
   navbar:
     new: Nuevo negocio
     tramite: Trámites
@@ -25,14 +81,8 @@ es:
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
-  dashboard:
-    dependencias: Dependencias
-    giros: Giros
-    apertura: Apertura
-    requerimientos: Requerimientos
-    tramites: Trámites
-    inspecciones: Inspecciones
-    inspectores: Inspectores
+    edit_profile: Editar perfil
+    sign_out: Cerrar sesión
   footer:
     municipio: Municipios
     acerca_de: Acerca de
@@ -43,21 +93,67 @@ es:
     actions:
       edit: Editar
       destroy: Borrar
+      show: Ver
     confirmations:
       delete_inspection: ¿Estás seguro que deseas borrar esta inspección?
       delete_inspector: ¿Estás seguro que deseas borrar a este inspector?
       delete_formation_step: ¿Estás seguro que deseas borrar este trámite?
-      delete_line: ¿Estás seguro que deseas borrar a este giro?
+      delete_line: ¿Estás seguro que deseas borrar este giro?
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
       delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
+      delete_admin: ¿Estás seguro que deseas borrar este administrador?
+      delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
   dashboard:
+    show:
+      dependencias: Dependencias
+      giros: Giros
+      apertura: Apertura
+      requerimientos: Requerimientos
+      tramites: Trámites
+      inspecciones: Inspecciones
+      inspectores: Inspectores
+      denuncia: Denuncias
+    contacts:
+      index:
+        all_profile: Contacto municipio %{city}
+        correo_admin: Correo de administradores
+        correo_municipio: Correo del Municipio
+        save: Guardar
+        admins: Administrador
+        email: Correo
+        edit: Editar
+        correo_municipio: 'Correo municipal:'
+        actualizar: Actualizar
+      edit:
+        title: Editar datos
+        correo: 'Correo:'
+        password: 'Contraseña:'
+        ok: Actualizar
+    reports:
+      index:
+        negocio: Negocio
+        fecha: Fecha
+        colonia: Domicilio
+        usuario_eliminado: Usuario eliminado
+      show:
+        negocio: Negocio
+        fecha: Fecha
+        colonia: Domicilio
+        razon: Razón
+        descripcion: Descripción
+        correo: Correo
+        comentario: Comentario
+        licencia_operacion: Licencia de operación
+        descargar: 'Descargar:'
+        licencia_de_operacion: Licencia de operación
+        licencia_uso_de_suelo: Licencia de uso de suelo
     inspections:
       index:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_inspection: Nueva Inspección
+        new_inspection: Nueva inspección
       new:
         title: Nueva inspección
       edit:
@@ -69,7 +165,7 @@ es:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_inspector: Nuevo Inspector
+        new_inspector: Nuevo inspector
       new:
         title: Nuevo inspector
       edit:
@@ -81,11 +177,11 @@ es:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
-        new_formation_step: Nuevo Tramite Apertura
+        new_formation_step: Nuevo trámite apertura
       new:
-        title: Nuevo Tramite de Apertura
+        title: Nuevo trámite de apertura
       edit:
-        title: Editar Tramite de Apertura
+        title: Editar trámite de apertura
       form:
         create_formation_steps: Guardar cambios
     lines:
@@ -93,7 +189,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_line: Nuevo Tramite Apertura
+        new_lines: Nuevo Giro
       new:
         title: Nuevo Giro
       edit:
@@ -105,7 +201,7 @@ es:
         name: Nombre
         municipio: Municipio
         actions: Acciones
-        new_requirement: Nuevo requerimiento
+        new_requirements: Nuevo requerimiento
       new:
         title: Nuevo requerimiento
       edit:
@@ -137,8 +233,13 @@ es:
       form:
         create_dependency: Guardar cambios
   devise:
+    omniauth_callbacks:
+      success: Inicio de sesión exitoso.
+      user:
+        success: Has iniciado sesión.
     sessions:
       user:
+        session_needed_to_continue: Necesitas iniciar sesión para poder continuar.
         signed_in: Has iniciado sesión.
         signed_out: Has terminado tu sesión.
       new:
@@ -152,6 +253,39 @@ es:
         already_authenticated: Ya has sido autentificado.
         not_found_in_database: Revisa que el correo y contraseña sean correctos.
         unauthenticated: Necesitas iniciar sesión primero.
+  reminders:
+    index:
+      new_reminder: Nuevo recordatorio
+      name: Nombre
+      license: Licencia
+      until: Valida hasta
+      edit: Editar
+      borrar: Borrar
+      create_reminder: Guardar
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
+      no_reminders_available: |+
+        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
+      no_reminders_available_examples: |+
+        Algunos documentos pueden ser (Licencia de funcionamiento, Permiso de uso de suelo, Cédula de zonificación, etc).
+    edit:
+      name: Nombre
+      license: Licencia
+      until: Valido hasta
+      name_hint: Nombre del documento...
+      license_hint: Número de fólio...
+      until_to_hint: Fecha de vencimiento...
+      create_reminder: Crear recordatorio
+      atras: Atras
+  complaints:
+      new:
+        razon_denuncia: ¿Cuál es la razón de la denuncia?
+        new_complaint: Crear denuncia
+        save_button: Guardar denuncia
+        razon_denuncia_texto: ¿Cuál fue la razón?
+        descripcion_denuncia: Explica la situación.
+      created_successfully: Denuncia enviada correctamente, porfavor revise su correo.
   inspections:
     index:
       title: Inspecciones
@@ -160,11 +294,16 @@ es:
       nombre: Nombre
       materia: Materia
       duracion: Duración
+      complaint: Crear denuncia
+      recordatorios: Recordatorios
+      no_inspections_selected_subtitle: Podras ver todas las INSPECCIONES que el municipio puede realizar a tu empresa, puedes DENUNCIAR una inspeccion irregular o puedes crear un RECORDATORIO.
+      no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
+      no_inspections_selected_resultado: Resultado de la busqueda.
     show:
       nombre: Nombre
       Descripcion: Descripción
       subject: Materia
-      period: Duracion
+      period: Duración
       norm: Norma
       before_tips: Tips (antes)
       during_tips: Tips (durante)
@@ -172,11 +311,14 @@ es:
       sanctions_tips: Sanciones
       more_info: Más información
       requisitos: Requisitos
+      inspection_debes: Debes cumplir con todos los siguientes requisitos.
   inspectors:
     index:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
+      no_inspectors_selected_subtitle: Podras ver a los UNICOS INSPECTORES autorizados por el municipio para poder inspeccionar tu negocio.
+      no_inspectors_selected_resultado: Resultado de la busqueda.
     show:
       vigencia: Vigencia
       Materia: Materia
@@ -186,7 +328,10 @@ es:
     index:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
-      no_formation_steps_selected: Selecciona las opciones de busqueda
+      no_formation_steps_selected: Apertura de un nuevo negocio
+      no_formation_steps_selected_subtitle: Podras ver todas los tramites FEDERALES y MUNICIPALES que debes cumplir para poder abrir tu empresa.
+      no_formation_steps_selected_instruction: Por favor selecciona el giro de tu empresa y el tipo de persona que eres.
+      no_formation_steps_selected_resultado: Resultado de la busqueda.
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
@@ -195,12 +340,12 @@ es:
       fin_steps: Has terminado
       link: Obtener aquí
       terminado: terminado
-      tengo_tramite: Ya tengo este tramite
+      tengo_tramite: Ya tengo este trámite
   procedure_lines:
     index:
       title: Trámites
-      no_procedure_lines_available: No encontramos trámites  con estos parámetros
-      no_procedure_lines_selected: Selecciona las opciones de busqueda
+      no_procedure_lines_available: No encontramos trámites con estos parámetros
+      no_procedure_lines_selected: Selecciona las opciones de búsqueda
       radio_fisica: Física
       radio_moral: Moral
       radio_ambas: Ambos
@@ -211,10 +356,16 @@ es:
       costo: Costo
       vigencia: Vigencia
       procedure_lines_select_name: 'Giro del negocio:'
+      procedure_lines_radio_estados: 'Etapa de tu negocio:'
+      no_procedure_lines_selected_subtitle: Podras ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
+      no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
+      no_procedure_lines_selected_resultado: Resultado de la busqueda.
+    show:
+      requisitos: Debes cumplir con todos los siguientes requisitos.
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
-  municipios:
+  cities:
     index:
       title: Selecciona una opción
     show:
@@ -228,20 +379,37 @@ es:
       texto_nuevo: ¿Cómo puedo crear mi negocio?
       texto_tramite: ¿Qué tramites puedo realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
+      subtitulo: Selecciona una opción.
+      titulo: Menú Mi Negocio México
   imcos:
     index:
       titulo_modal: Mi Negocio México
-      contenido_modal: Estamos trabajando con diversos municipios para poder darle más información de como puede abrir y mentener al día un negocio. Si tiene alguna duda porfavor escribanos a contacto@minegociomexico.mx 
-      iniciar_sesion: Iniciar sesión
+      contenido_modal: 'Estamos trabajando con diversos municipios para poder darle más información de cómo puede abrir y mantener al día un negocio. Si tiene alguna duda, por favor escríbanos a contacto@minegociomexico.mx'
       subtitulo: Elige tu municipio
       salir: Salir
-      no_municipio: ¿No encuentras tu municipio? da
+      no_municipio: ¿No encuentras tu municipio? haz
       click: clic aquí
       Aceptar: Aceptar
+      iniciar_sesion: Iniciar sesión
+  users:
+    new:
+      iniciar_sesion: Iniciar sesión
+      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
+    edit:
+      edit_profile: Editar perfil
+      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
+      name: Nombre
+      correo: Correo
+      business_name: Nombre del negocio
+      address: Dirección
+      operation_license: Licencia de operación (Folio)
+      operation_license_file: Licencia de operación (Archivo)
+      land_permission_file: Permiso de uso de suelo (Archivo)
+      save: Guardar
   layouts:
     blanco:
       new: NUEVO NEGOCIO
-      tramite: TRAMITES
+      tramite: TRÁMITES
       inspections: INSPECCIONES
       inspectors: INSPECTORES
   activerecord:

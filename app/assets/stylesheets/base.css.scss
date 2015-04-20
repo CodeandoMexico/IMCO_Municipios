@@ -7,15 +7,27 @@
 
 
 $blanco: #ffffff;
-$verde-obscuro: #46aa6c;
-$verde-claro: #4EB976;
+$dark-green: #46aa6c;
+$light-green: #4EB976;
+
+#landing {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(image_path('bg.png')) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
 .text-muted {
     color: #777;
 }
 
 .text-primary {
-    color: $verde-obscuro;
+    color: $dark-green;
 }
 
 p {
@@ -36,7 +48,7 @@ a.active {
 }
 
 a {
-    color: $verde-obscuro;
+    color: $dark-green;
 }
 
 a:hover,
@@ -44,17 +56,6 @@ a:focus,
 a:active,
 a.active {
     color: #fec503;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
 }
 
 .img-centered {
@@ -70,12 +71,12 @@ h6 {
 }
 
 .btn-primary {
-    border-color: $verde-obscuro;
-    text-transform: uppercase;
+    border-color: $dark-green;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
-    background-color: $verde-obscuro;
+    background-color: $dark-green;
 }
 
 .btn-primary:hover,
@@ -109,25 +110,25 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: $verde-obscuro;
-    background-color: $verde-obscuro;
+    border-color: $dark-green;
+    background-color: $dark-green;
 }
 
 .btn-primary .badge {
-    color: $verde-obscuro;
+    color: $dark-green;
     background-color: #fff;
 }
 
 .btn-xl {
     padding: 20px 40px;
-    border-color: $verde-obscuro;
+    border-color: $dark-green;
     border-radius: 3px;
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: #fff;
-    background-color: $verde-obscuro;
+    background-color: $dark-green;
 }
 
 .btn-xl:hover,
@@ -161,119 +162,13 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-    border-color: $verde-obscuro;
-    background-color: $verde-obscuro;
+    border-color: $dark-green;
+    background-color: $dark-green;
 }
 
 .btn-xl .badge {
-    color: $verde-obscuro;
+    color: $dark-green;
     background-color: #fff;
-}
-
-.navbar-default {
-    border-color: transparent;
-    background-color: #222;
-}
-
-.navbar-default .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: $verde-obscuro;
-}
-
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:active,
-.navbar-default .navbar-brand.active {
-    color: #fec503;
-}
-
-.navbar-default .navbar-collapse {
-    border-color: rgba(255,255,255,.02);
-}
-
-.navbar-default .navbar-toggle {
-    border-color: $verde-obscuro;
-    background-color: $verde-obscuro;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #fff;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: $verde-obscuro;
-}
-
-.navbar-default .nav li a {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: $blanco;
-}
-
-.navbar-default .nav li a:hover,
-.navbar-default .nav li a:focus {
-    outline: 0;
-    color: $blanco;
-}
-
-.navbar-default .navbar-nav>.active>a {
-    border-radius: 0;
-    color: #fff;
-    background-color: $verde-obscuro;
-}
-
-
-.navbar-default .navbar-nav>.active>a:hover,
-.navbar-default .navbar-nav>.active>a:focus {
-    color: #fff;
-    background-color: $blanco;
-}
-
-@media(min-width:768px) {
-    .navbar-default {
-        padding: 0px 15%;
-        border: 0;
-        background-color: transparent;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
-    }
-
-    .navbar-default .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
-
-    .navbar-default .navbar-nav>.active>a {
-        border-radius: 3px;
-    }
-
-    .navbar-default.navbar-shrink {
-        padding: 10px 0;
-        background-color: #222;
-    }
-
-    .navbar-default.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
-    }
-}
-
-
-.header {
-    /*display: table;*/
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: url(image_path('bg.png')) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
 }
 
 section {
@@ -449,7 +344,7 @@ section h3.section-subheading {
     border-radius: 100%;
     text-align: center;
     color: #fff;
-    background-color: $verde-obscuro;
+    background-color: $dark-green;
 }
 
 .timeline>li .timeline-image h4 {
@@ -636,33 +531,33 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: $verde-obscuro;
+    border-color: $dark-green;
     box-shadow: none;
 }
 
 section#contact::-webkit-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact::-moz-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-ms-input-placeholder {
-    text-transform: uppercase;
+
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
@@ -703,7 +598,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: $verde-obscuro;
+    background-color: $dark-green;
 }
 
 .btn:focus,
@@ -791,13 +686,13 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: $verde-obscuro;
+    background: $dark-green;
 }
 
 ::selection {
     text-shadow: none;
     text: $blanco;
-    background: $verde-obscuro;
+    background: $dark-green;
 }
 
 img::selection {
@@ -809,7 +704,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: $verde-obscuro;
+    webkit-tap-highlight-color: $dark-green;
 }
 
 
@@ -847,6 +742,3 @@ body {
 .btn-danger.btn-outline:hover {
     color: $blanco;
 }
-
-
-

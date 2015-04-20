@@ -14,17 +14,17 @@ module Dashboard
 
     def new
       @inspection = Inspection.new
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
-      @lines = Line.where(municipio_id: current_user.municipio_id)
-        @requirements = Requirement.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
+      @lines = Line.where(city_id: current_user.city_id)
+        @requirements = Requirement.where(city_id: current_user.city_id)
     end
 
     def edit
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
-      @lines = Line.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
+      @lines = Line.where(city_id: current_user.city_id)
       @inspection_line= InspectionLine.where(inspection_id: @inspection)
       @inspection_requirement= InspectionRequirement.where(inspection_id: @inspection)
-      @requirements = Requirement.where(municipio_id: current_user.municipio_id)
+      @requirements = Requirement.where(city_id: current_user.city_id)
       end
 
     def create
@@ -79,7 +79,7 @@ module Dashboard
     end
 
     def inspection_params
-      params.require(:inspection).permit(:nombre, :materia, :duracion, :norma, :antes, :durante, :despues, :sancion, :dependency_id, :inspection=>{:line_ids => []},:inspection=>{:requirement_ids => []})
+      params.require(:inspection).permit(:name, :matter, :duration, :rule, :after, :before, :during, :sanction, :dependency_id, :inspection=>{:line_ids => []},:inspection=>{:requirement_ids => []})
     end
 
     def create_relation_inspection_lines

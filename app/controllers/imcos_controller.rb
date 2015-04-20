@@ -1,16 +1,8 @@
 class ImcosController < ApplicationController
-  
-
-#before_filter :authenticate_user! 
+  after_filter :save_my_previous_url!
+  layout 'landing'
 
   def index
-    @municipios = Municipio.all
-
-     if params[:query].present?
-      @results = Municipio.search(params[:query], nombre: params[:nombre])
-    else
-      @results = Municipio.all
-    end
-
+    @cities = City.all.order(:name)
   end
 end

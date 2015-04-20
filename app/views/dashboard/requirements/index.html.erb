@@ -19,8 +19,8 @@
                <% @requirements.each_with_index do |requirement, idx| %>
                <%= content_tag :tr do %>
                <%= content_tag :td, idx + 1 %>
-               <%= content_tag :td, truncate(requirement.nombre, :length => 70)%>
-               <%= content_tag :td, requirement.municipio.nombre  %>
+               <%= content_tag :td, truncate(requirement.name, :length => 70)%>
+               <%= content_tag :td, requirement.city.name  %>
                <%= content_tag :td do %>
                <%= link_to t('form.actions.edit'), edit_dashboard_requirement_path(requirement) , :class => 'btn btn-success btn-xs outlineverde'%> |
                <%= link_to t('form.actions.destroy'), dashboard_requirement_path(requirement), method: :delete, data: { confirm: t('form.confirmations.delete_requirement') }, :class => 'btn btn-success btn-xs outlineverde' %>

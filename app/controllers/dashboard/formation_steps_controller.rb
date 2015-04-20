@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @formation_steps = policy_scope(FormationStep).where(municipio_id: current_user.municipio).order(:name)
+      @formation_steps = policy_scope(FormationStep).where(city_id: current_user.city).order(:name)
        respond_to do |format|
         format.html
         format.csv { send_data @formation_steps.to_csv }
@@ -14,16 +14,16 @@ module Dashboard
 
     def new
       @formation_step = FormationStep.new
-      @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+      @dependency = Dependency.where(city_id: current_user.city_id)
     end
 
     def edit
-          @dependency = Dependency.where(municipio_id: current_user.municipio_id)
+          @dependency = Dependency.where(municicity_idpio_id: current_user.city_id)
     end
 
     def create
       @formation_step = FormationStep.new(formation_steps_params)
-      @formation_step.municipio = current_user.municipio
+      @formation_step.city = current_user.city
       authorize @formation_step
 
       respond_to do |format|
@@ -64,7 +64,7 @@ module Dashboard
     end
 
     def formation_steps_params
-      params.require(:formation_step).permit(:name, :description, :type, :path, :municipio_id )
+      params.require(:formation_step).permit(:name, :description, :type, :path, :city_id )
     end
   end
 end

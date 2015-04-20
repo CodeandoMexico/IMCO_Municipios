@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.saludo')%>
+	</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @complaint.user.address)%>
+		<%= link_to t('correos.municipio.liga_a_la_denuncia'), dashboard_report_url(@complaint.id) %>.
+	</p>
+	<p class ="texto-margin-bottom">
+		<%=t('correos.municipio.gracias')%>
+	</p>
+</body>
+</html>

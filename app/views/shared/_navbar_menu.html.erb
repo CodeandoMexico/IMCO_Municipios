@@ -1,38 +1,46 @@
  <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <ul class="nav navbar-nav navbar-left">
-                    <li >
-                    <div class="dropdown nav navbar-nav navbar-left">
-                        <%unless @municipio.nil?%>
-                        <%=t('titles.titulo') %>  | <a href="" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" ><%=@municipio.nombre %><span class="caret a" ></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <%@municipios.each do |municipio|%>
-                                    <%unless municipio == @municipio%>
-                                         <li role="presentation">
-                                            <%=link_to municipio.nombre,municipio_path(municipio), :role => "menuitem", :tabindex => "-1"%>
-                                         </li>
-                                    <%end%>
-                                <%end%>
-                            </ul>
-                        <%end%>
-                    </div>
-                    </li>
-               </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <%=link_to t('navbar.inicio'),root_path , :class => 'a-verde'%>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-user navbar-fixed-top">
+  <div class="nav-wrapper container">
+    <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <% if @city %>
+          <%= link_to navbar_title(@city.name), city_path(@city), class: 'navbar-brand', style: 'font-size:16px;' %>
+        <% else %>
+          <%= link_to navbar_title(@city), root_path, class: 'navbar-brand', style: 'font-size:16px;' %>
+        <% end %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <!-- Depending on the action show different options -->
+        <% if @city %>
+          <% if current_page? city_path(@city) %>
+            <%#= content_tag :li, link_to(t('navbar.inicio'), root_path, class: 'a-verde') %>
+          <% else %>
+            <%= content_tag :li, link_to(t('navbar.new'), city_formation_steps_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.tramite'), city_procedure_lines_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.inspections'), city_inspections_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.inspectors'), city_inspectors_path(@city)) %>
+          <% end %>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Let's check for a signed in user, if there is one, show an option dropdown -->
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user %><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to t('navbar.edit_profile'), edit_user_path(current_user) %></li>
+              <li><%= link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
