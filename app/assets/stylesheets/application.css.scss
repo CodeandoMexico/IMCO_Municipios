@@ -32,12 +32,11 @@ html {
 }
 
 body {
-  min-height: 600px;
-  margin-bottom: $footer_height;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   font-size: 11pt;
   color: #777777;
+  margin-bottom: $footer_height;
 }
 
 #wrap {
@@ -46,16 +45,13 @@ body {
 
 #main {
   margin-top: 70px;
-  margin-bottom: 70px;
 }
 
-#footer {
+.footer {
   position: absolute;
   bottom: 0;
-  height: $footer_height;
   width: 100%;
-
-  // clear:both;
+  height: $footer_height;
   color:#fff;
   background-color: #46aa6c !important;
   text-align: center;
