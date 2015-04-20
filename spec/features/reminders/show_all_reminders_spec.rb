@@ -48,6 +48,7 @@ end
 
 def fill_new_user
   new_user_info = {
+    name: 'Mi Nombre',
     address: 'This is a fake address',
     business_name: 'This is a business name',
     operation_license: 'AN49FN40865J'
@@ -55,24 +56,35 @@ def fill_new_user
 end
 
 def update_user(args)
-  user.update(
-    :address => args.fetch(:address),
-    :business_name => args.fetch(:business_name),
-    :operation_license => args.fetch(:operation_license)
-    )
+  fill_in 'user[name]', with: args.fetch(:name)  
+  fill_in 'user[address]', with: args.fetch(:address)
+  fill_in 'user[business_name]', with: args.fetch(:business_name)
+  fill_in 'user[operation_license]',  with: args.fetch(:operation_license)
+  
+  click_on I18n.t('users.edit.save')
+#  user.update(
+  #  :address => args.fetch(:address),
+   # :business_name => args.fetch(:business_name),
+    #:operation_license => args.fetch(:operation_license)
+    #)
 end
 
 def create_reminder
   sign_in user
+  
 
-  update_user(fill_new_user)
-
+#  save_and_open_page
   visit city_inspections_path(user.city)
+
 
   click_on I18n.t('inspections.index.recordatorios')
 
+  update_user(fill_new_user)
+
+  click_on I18n.t('inspections.index.recordatorios')
+  
   #fill all text_fields
-  expect(page).to have_content I18n.t('reminders.index.new_reminder')
+  #expect(page).to have_content I18n.t('reminders.index.new_reminder')
   fill_in 'reminders[name]', with: 'Licencia de uso de suelo'
   fill_in 'reminders[license]', with: '234567sdfghj'
   fill_in 'reminders[until_to]', with: '04/16/2015'
