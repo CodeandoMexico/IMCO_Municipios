@@ -6,7 +6,7 @@
  */
 
 
-$blanco: #ffffff;
+$white: #ffffff;
 $dark-green: #46aa6c;
 $light-green: #4EB976;
 
@@ -691,7 +691,7 @@ ul.social-buttons li a:active {
 
 ::selection {
     text-shadow: none;
-    text: $blanco;
+    text: $white;
     background: $dark-green;
 }
 
@@ -716,23 +716,23 @@ body {
 }
 
 .btn-primary.btn-outline {
-    color: $blanco;
+    color: $white;
 }
 
 .btn-success.btn-outline {
-    color: $blanco;
+    color: $white;
 }
 
 .btn-info.btn-outline {
-    color: $blanco;
+    color: $white;
 }
 
 .btn-warning.btn-outline {
-    color: $blanco;
+    color: $white;
 }
 
 .btn-danger.btn-outline {
-    color: $blanco;
+    color: $white;
 }
 
 .btn-primary.btn-outline:hover,
@@ -740,5 +740,5 @@ body {
 .btn-info.btn-outline:hover,
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
-    color: $blanco;
+    color: $white;
 }
