@@ -54,7 +54,7 @@ module Dashboard
 
       @inspector.destroy
       respond_to do |format|
-        format.html { redirect_to dashboard_inspectors_url, notice: 'El inspector fue borrado satisfactoriamente.' }
+        format.html { redirect_to dashboard_inspectors_url, notice:  'El inspector fue borrado satisfactoriamente.' }
         format.json { head :no_content }
       end
     end

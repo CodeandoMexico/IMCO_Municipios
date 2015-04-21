@@ -1,16 +1,6 @@
 <div id="form-container">
   <%= form_for [:dashboard, @requirement], html: { class: 'form-horizontal' } do |f| %>
-    <% if @requirement.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@requirements.errors.count, "error") %> prohibited this lines from being saved:</h2>
-
-        <ul>
-        <% @requirement.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+   <%= render "shared/show_flash" %>
 
     <div class="form-group">
       <%= f.label :name, class: 'col-sm-2 control-label' %>

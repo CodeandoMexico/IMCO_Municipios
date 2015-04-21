@@ -44,7 +44,7 @@ end
 
 def valida_parametros
     if @line.nil? || @line.empty?
-      redirect_to city_formation_steps_path(@city), notice: 'Debes seleccionar un giro.' 
+      redirect_to city_formation_steps_path(@city),  error:  "Debes seleccionar un giro."
     end
 end
 

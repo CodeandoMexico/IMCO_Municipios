@@ -52,7 +52,7 @@ class InspectionsController < ApplicationController
 
   def valida_giro
     if @line.nil? || @line.empty?
-      redirect_to city_inspections_path(@city), notice: 'Debes seleccionar un giro.' 
+      redirect_to city_inspections_path(@city), error: = 'Debes seleccionar un giro.' 
     end
 end
 

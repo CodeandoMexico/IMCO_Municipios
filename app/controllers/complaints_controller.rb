@@ -36,7 +36,7 @@ end
     authorize @complaint
     if @complaint.save
       redirect_to city_inspections_path(@city),
-        notice: I18n.t('complaints.created_successfully')
+        notice: =  I18n.t('complaints.created_successfully')
     else
       render :new
     end

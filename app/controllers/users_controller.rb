@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 def update
  if current_user.admin?
         @user.update_attributes(update_attributes_admin)
-         redirect_to dashboard_path, notice: t('flash.users.updated')
+         redirect_to dashboard_path, notice:  t('flash.users.updated')
     else
     if @user.update_attributes(user_params)
        redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
@@ -36,7 +36,7 @@ def update
       if @user.save?
         redirect_to edit_user_path, notice: t('flash.users.updated')
       else
-         redirect_to edit_user_path, notice: t('FALLA')
+         redirect_to edit_user_path, error: t('FALLA')
       end
 
     end
@@ -47,10 +47,10 @@ def update
 
       User.find(params[:id]).destroy
       respond_to do |format|
-        format.html { redirect_to dashboard_dependencies_path notice: 'La dependencia fue borrada satisfactoriamente.' }
+        format.html { redirect_to dashboard_dependencies_path, notice:  'El usuario fue borrado satisfactoriamente.' }
         format.json { head :no_content }
       end
-       redirect_to edit_user_path, notice: t('flash.users.updated')
+       redirect_to edit_user_path, notice:  t('flash.users.updated')
     end
 
   private

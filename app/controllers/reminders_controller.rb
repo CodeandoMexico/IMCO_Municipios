@@ -46,7 +46,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.update(reminder_params)
-        format.html { redirect_to city_reminders_path(@city), notice: 'El recordatorio fue actualizado satisfactoriamente.' }
+        format.html { redirect_to city_reminders_path(@city), notice:  'El recordatorio fue actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @reminder }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class RemindersController < ApplicationController
 
     @reminder.destroy
     respond_to do |format|
-      format.html { redirect_to city_reminders_path(@city), notice: 'El recordatorio fue borrado satisfactoriamente.' }
+      format.html { redirect_to city_reminders_path(@city), notice:  'El recordatorio fue borrado satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

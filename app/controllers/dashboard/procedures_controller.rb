@@ -35,7 +35,7 @@ module Dashboard
         if @procedure.save
           create_relation_procedure_requirements
           create_relation_procedure_lines
-          format.html { redirect_to edit_dashboard_procedure_url(@procedure), notice: 'El trámite fue creado satisfactoriamente.' }
+          format.html { redirect_to edit_dashboard_procedure_url(@procedure), notice:  'El trámite fue creado satisfactoriamente.' }
           format.json { render :show, status: :created, location: @procedure }
         else
           format.html { render :new }
