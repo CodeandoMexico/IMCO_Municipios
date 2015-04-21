@@ -13,7 +13,7 @@
  *= require font-awesome
  *= require bootstrap3-switch
  *= require chosen
- *= require_tree .
+ *= require_tree ./public
  *= require_self
  */
  @import "bootstrap-sprockets";
@@ -21,9 +21,9 @@
 
 
  // custom stylesheeets
- @import "variables";
- @import "colors";
- @import "cards";
+ @import "public/variables";
+ @import "public/colors";
+ @import "public/cards";
 
 
 html {
