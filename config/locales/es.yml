@@ -105,6 +105,15 @@ es:
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
   dashboard:
+    menu:
+      complaints: Denuncias
+      dependencies: Dependencias
+      lines: Giros
+      formation_steps: Apertura
+      requirements: Requerimientos
+      procedures: Trámites
+      inspections: Inspecciones
+      inspectors: Inspectores
     show:
       dependencias: Dependencias
       giros: Giros

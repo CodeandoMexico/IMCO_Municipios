@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   before_action :verify_admin
-  layout 'new_dashboard'
+  layout 'dashboard'
 
   def show
   end
