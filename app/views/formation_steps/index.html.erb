@@ -5,14 +5,14 @@
 	<% end %>
 </div>
 <div class="row text-center texto-verde">
-	<%= content_tag :h1,t('.title') %> 
+	<%= content_tag :h1,t('.title') %>
 	<%if @line.nil?%>
 		<p><%=t('.no_formation_steps_selected_subtitle')%></p>
 		<p><%=t('.no_formation_steps_selected_instruction')%></p>
 	<%else%>
 		<p><%=t('.no_formation_steps_selected_resultado')%> <%=" #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."%> </p>
 	<%end%>
-	<hr class="small">
+	<!-- <hr class="small"> -->
 </div>
 
 <%= form_for :get, :html => {:method => :get}, :url => { :controller => :formation_steps, :action => :index }  do |f| %>
@@ -74,7 +74,7 @@
 						<section id="services ">
 							<div class="bs-example">
 								<p class="text-center texto-verde" >
-									<hr class="small">
+									<!-- <hr class="small"> -->
 									<%=Procedure.find(procedure_line.procedure_id).name%>
 								</p>
 							</div>
