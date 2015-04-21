@@ -341,6 +341,7 @@ es:
       link: Obtener aquí
       terminado: terminado
       tengo_tramite: Ya tengo este trámite
+      select_giro: Selecciona un giro
   procedure_lines:
     index:
       title: Trámites
