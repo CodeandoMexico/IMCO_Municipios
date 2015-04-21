@@ -285,7 +285,7 @@ es:
         save_button: Guardar denuncia
         razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
-      created_successfully: Denuncia enviada correctamente, porfavor revise su correo.
+      created_successfully: Denuncia enviada correctamente, por favor revise su correo.
   inspections:
     index:
       title: Inspecciones
@@ -296,9 +296,9 @@ es:
       duracion: Duración
       complaint: Crear denuncia
       recordatorios: Recordatorios
-      no_inspections_selected_subtitle: Podras ver todas las INSPECCIONES que el municipio puede realizar a tu empresa, puedes DENUNCIAR una inspeccion irregular o puedes crear un RECORDATORIO.
+      no_inspections_selected_subtitle: Podrás ver todas las inspecciones que el municipio puede realizar a tu empresa, puedes denunciar una inspección irregular o puedes crear un recordatorio.
       no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
-      no_inspections_selected_resultado: Resultado de la busqueda.
+      no_inspections_selected_resultado: Resultado de la búsqueda.
     show:
       nombre: Nombre
       Descripcion: Descripción
@@ -317,8 +317,8 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
-      no_inspectors_selected_subtitle: Podras ver a los UNICOS INSPECTORES autorizados por el municipio para poder inspeccionar tu negocio.
-      no_inspectors_selected_resultado: Resultado de la busqueda.
+      no_inspectors_selected_subtitle: Podras ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
+      no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
       vigencia: Vigencia
       Materia: Materia
@@ -329,8 +329,8 @@ es:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
       no_formation_steps_selected: Apertura de un nuevo negocio
-      no_formation_steps_selected_subtitle: Podras ver todas los tramites FEDERALES y MUNICIPALES que debes cumplir para poder abrir tu empresa.
-      no_formation_steps_selected_instruction: Por favor selecciona el giro de tu empresa y el tipo de persona que eres.
+      no_formation_steps_selected_subtitle: Trámites federales y municipales que debes cumplir para poder abrir tu empresa.
+      no_formation_steps_selected_instruction: Selecciona el giro de tu empresa y el tipo de persona que eres.
       no_formation_steps_selected_resultado: Resultado de la busqueda.
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'

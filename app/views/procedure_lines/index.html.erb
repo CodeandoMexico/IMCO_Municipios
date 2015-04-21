@@ -12,7 +12,7 @@
   <%else @categoria.nil?%>
     <p><%=t('.no_procedure_lines_selected_resultado')%> <%=" #{Line.find(@line).name} para persona #{tipo(@tipo)}, #{@categoria}."%> </p>
   <%end%>
-  <hr class="small">
+  <!-- <hr class="small"> -->
 </div>
 <%= form_for :get, :html => {:method => :get}, :url => { :controller => :procedure_lines, :action => :index }  do |f| %>
   <div class="col-md-8 col-md-offset-1 text-center texto-verde-wrap">

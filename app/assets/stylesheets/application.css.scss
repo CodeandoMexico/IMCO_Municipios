@@ -558,7 +558,6 @@ section{
 /*********************************tipografia***********************/
 @mixin base_tipography($color, $font_size) {
   font-family: Montserrat, sans-serif;
-  font-weight: 700;
   color: $color;
   font-size: $font_size;
 }
