@@ -39,7 +39,7 @@ class InspectionsController < ApplicationController
   def set_search_filters
     if params[:get]
       @line = params[:get][:lines]
-      valida_giro
+      if valida_giro.nil?
       @inspection_line = InspectionLine.where(line_id: @line) if @line.present?
       if params[:q].present?
         @inspections = Inspection.search_by_city(@city, params[:q])
@@ -47,13 +47,16 @@ class InspectionsController < ApplicationController
         @inspections =  Inspection.by_city(@city)
       end
     end
+    end
   end
 
 
   def valida_giro
     if @line.nil? || @line.empty?
-      redirect_to city_inspections_path(@city), error: = 'Debes seleccionar un giro.' 
-    end
+      redirect_to city_inspections_path(@city), error:  'Debes seleccionar un giro.' 
+     return "OK"
+  end
+  return nil
 end
 
 end
