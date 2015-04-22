@@ -222,6 +222,12 @@ texto-blanco{
   width:100%;
 }
 
+.texto-gris{
+  color: #777777 !important;
+}
+
+
+
 .texto-negro{
   color: $negro !important;
   width:100%;
@@ -351,7 +357,9 @@ section{
 .chosen-container ul.chosen-results li.highlighted {
   background-color: $light-green;
   background-image: none;
+  color: #000000 !important;
 }
+
 .chosen-container {
   position: relative;
   display: inline-block;
@@ -364,6 +372,8 @@ section{
   -ms-user-select: none;
       user-select: none;
   width: 100% !important;
+  color: #777777 !important;
+  font-size: 9pt !important; 
 }
 
 
@@ -378,18 +388,32 @@ section{
     background-color: #FFF;
     background-clip: padding-box;
     box-shadow: 0px 0px 3px #FFF inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-    color: #444;
+    color: #777777;
     text-decoration: none;
     white-space: nowrap;
     line-height: 24px;
      height: 45px !important;
     padding-top: 10px !important;
+
+}
+.chosen-container .chosen-results li.active-result {
+  display: list-item;
+  cursor: pointer;
+  color: #777777 !important;
 }
 
 .chosen-container-single .chosen-default {
 
     height: 45px !important;
     padding-top: 10px !important;
+            color: #777777 !important;
+}
+
+.chosen-container-single .chosen-results li.result-selected{
+    display: list-item;
+    color: #000000 !important;
+    cursor: default;
+    background-color: white;
 }
 
 .chosen-container-single .chosen-single div {
@@ -400,7 +424,20 @@ section{
     width: 18px;
     height: 100%;
     padding-top: 10px !important;
+        color: #777777 !important;
 }
+
+.chosen-container-active .chosen-single,
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border-color: #ccc;
+    border-color: rgba(82, 168, 236, .8);
+    outline: 0;
+    outline: thin dotted \9;
+    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+    box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+      color: #777777 !important;
+}
+
 
 /*carrusel*************/
 .item{
