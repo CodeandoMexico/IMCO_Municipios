@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :store_location
   layout :layout_by_resource
+ add_flash_types :error, :notice
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -47,13 +48,13 @@ class ApplicationController < ActionController::Base
 
   def authenticate_business!
     if !user_signed_in? #|| !current_user.business?
-      return redirect_to new_user_path, alert: I18n.t('devise.sessions.user.session_needed_to_continue')
+      return redirect_to new_user_path, error: I18n.t('devise.sessions.user.session_needed_to_continue')
     end
   end
 
   def business_profile_complete!
    unless validaDatos(current_user)
-     return redirect_to  edit_user_path(current_user) , alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
+     return redirect_to  edit_user_path(current_user) , error: I18n.t('flash.complaints.you_need_to_complete_your_profile')
    end
     end
    

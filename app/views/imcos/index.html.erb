@@ -12,11 +12,7 @@
 		</div>
 	</div>
 	<div class="col-md-6 col-md-offset-3">
-	<div class="row text-center ">
-		<% flash.each do |key, value| %>
-			<div class="alert alert-success"><%=value%></div>
-		<% end %>
-	</div>
+	<%= render "shared/show_flash" %>
 	</div>
 	<%= image_tag "logo.png", class: "img-responsive center-block"%>
 	<div class="navbar-text-blanco">

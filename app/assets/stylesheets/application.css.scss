@@ -174,7 +174,7 @@ a-verde:active {
 
 /*************************a******************/
 a{
-  color: $blanco;
+  color: $white;
   cursor: pointer;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -182,28 +182,28 @@ a{
 }
 
 a:link {
-    color: $blanco;
+    color: $white;
 }
 
 /* visited link */
 a:visited {
-    color: $blanco;
+    color: $white;
 }
 
 /* mouse over link */
 a:hover {
-    color: $blanco;
+    color: $white;
 }
 
 /* selected link */
 a:active {
-    color: $blanco;
+    color: $white;
 }
 
 
 /**********************textos de colores*****************/
 texto-blanco{
-  color: $blanco !important;
+  color: $white !important;
   width:100%;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
@@ -221,6 +221,12 @@ texto-blanco{
   color: $dark-green !important;
   width:100%;
 }
+
+.texto-gris{
+  color: #777777 !important;
+}
+
+
 
 .texto-negro{
   color: $negro !important;
@@ -293,12 +299,12 @@ texto-blanco{
 }
 .dropdown-menu > li > a:hover{
  color: $dark-green;
- background-color: $blanco;
+ background-color: $white;
 }
 
 .dropdown-menu > li > a:active{
  color: $dark-green;
- background-color: $blanco;
+ background-color: $white;
 }
 
 .main-menu li a:focus + ul {
@@ -351,7 +357,9 @@ section{
 .chosen-container ul.chosen-results li.highlighted {
   background-color: $light-green;
   background-image: none;
+  color: #000000 !important;
 }
+
 .chosen-container {
   position: relative;
   display: inline-block;
@@ -364,6 +372,8 @@ section{
   -ms-user-select: none;
       user-select: none;
   width: 100% !important;
+  color: #777777 !important;
+  font-size: 9pt !important; 
 }
 
 
@@ -378,18 +388,32 @@ section{
     background-color: #FFF;
     background-clip: padding-box;
     box-shadow: 0px 0px 3px #FFF inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-    color: #444;
+    color: #777777;
     text-decoration: none;
     white-space: nowrap;
     line-height: 24px;
      height: 45px !important;
     padding-top: 10px !important;
+
+}
+.chosen-container .chosen-results li.active-result {
+  display: list-item;
+  cursor: pointer;
+  color: #777777 !important;
 }
 
 .chosen-container-single .chosen-default {
 
     height: 45px !important;
     padding-top: 10px !important;
+            color: #777777 !important;
+}
+
+.chosen-container-single .chosen-results li.result-selected{
+    display: list-item;
+    color: #000000 !important;
+    cursor: default;
+    background-color: white;
 }
 
 .chosen-container-single .chosen-single div {
@@ -400,7 +424,20 @@ section{
     width: 18px;
     height: 100%;
     padding-top: 10px !important;
+        color: #777777 !important;
 }
+
+.chosen-container-active .chosen-single,
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border-color: #ccc;
+    border-color: rgba(82, 168, 236, .8);
+    outline: 0;
+    outline: thin dotted \9;
+    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+    box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+      color: #777777 !important;
+}
+
 
 /*carrusel*************/
 .item{
@@ -527,7 +564,7 @@ section{
 }
 
 .pagination {
-    border-left: 1px solid $blanco;
+    border-left: 1px solid $white;
     .first{
         padding : 0;
         float: none;
@@ -558,7 +595,6 @@ section{
 /*********************************tipografia***********************/
 @mixin base_tipography($color, $font_size) {
   font-family: Montserrat, sans-serif;
-  font-weight: 700;
   color: $color;
   font-size: $font_size;
 }
@@ -580,7 +616,7 @@ p {
 }
 
 p-blanco {
-  @include base_tipography($blanco, 11pt);
+  @include base_tipography($white, 11pt);
 }
 
 

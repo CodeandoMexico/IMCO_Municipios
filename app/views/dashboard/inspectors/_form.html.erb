@@ -1,16 +1,6 @@
 <div id="form-container">
   <%= form_for [:dashboard, @inspector], html: { class: 'form-horizontal', multipart: true } do |f| %>
-    <% if @inspector.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@inspector.errors.count, "error") %> prohibited this inspector from being saved:</h2>
-
-        <ul>
-        <% @inspector.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render "shared/show_flash" %>
 
     <div class="form-group">
       <%= f.label :name, class: 'col-sm-2 control-label' %>

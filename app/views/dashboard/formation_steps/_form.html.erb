@@ -1,16 +1,6 @@
 <div id="form-container">
   <%= form_for [:dashboard, @formation_step], html: { class: 'form-horizontal' } do |f| %>
-    <% if @formation_step.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@formation_step.errors.count, "error") %> prohibited this formation_step from being saved:</h2>
-
-        <ul>
-        <% @formation_step.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render "shared/show_flash" %>
 
     <div class="form-group">
       <%= f.label :name, class: 'col-sm-2 control-label' %>

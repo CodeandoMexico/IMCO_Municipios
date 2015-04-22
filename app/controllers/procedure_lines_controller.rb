@@ -18,12 +18,14 @@ class ProcedureLinesController < ApplicationController
 
   def valores
    @line = params[:get][:lines]
-    valida_giro
-   @tipo = params[:rating]
-   @etapa = params[:etapa]
-   valida_categoria
-   @categoria = get_categoria(params[:etapa])
-   @tramites_del_giro =  ProcedureLine.where(line_id: @line)
+   if valida_giro.nil?
+     @tipo = params[:rating]
+     @etapa = params[:etapa]
+     if valida_categoria.nil?
+       @categoria = get_categoria(params[:etapa])
+       @tramites_del_giro =  ProcedureLine.where(line_id: @line)
+     end
+   end
  end
 
  def show
@@ -102,15 +104,19 @@ def update
 end
 
 def valida_giro
-    if @line.nil? || @line.empty?
-      redirect_to city_procedure_lines_path(@city), notice: 'Debes seleccionar un giro.' 
-    end
+  if @line.nil? || @line.empty?
+    redirect_to city_procedure_lines_path(@city), error: 'Debes seleccionar un giro.' 
+    return "OK"
+  end
+  return nil
 end
 
 def valida_categoria
-    if @etapa.nil? || @etapa.empty?
-      redirect_to city_procedure_lines_path(@city), notice: 'Debes seleccionar una categoría.' 
-    end
+  if @etapa.nil? || @etapa.empty?
+    redirect_to city_procedure_lines_path(@city), error:  'Debes seleccionar una categoría.' 
+    return "OK"
+  end
+  return nil
 end
 
 

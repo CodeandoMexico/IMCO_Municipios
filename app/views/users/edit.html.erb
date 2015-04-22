@@ -5,7 +5,7 @@
       <div id="main" class="clear-top">
         <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
         <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
-        <hr class="small">
+        <!-- <hr class="small"> -->
         <div id="authentication">
           <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
           <div class="form-group">
@@ -18,7 +18,7 @@
            </div>
            <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo' %>
          </div>
-         <hr class="small">
+         <!-- <hr class="small"> -->
 
          <div class="form-group">
           <div class="row">
@@ -30,7 +30,7 @@
          </div>
          <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico' %>
        </div>
-       <hr class="small">
+       <!-- <hr class="small"> -->
 
        <div class="form-group">
         <div class="row">
@@ -42,7 +42,18 @@
        </div>
        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
      </div>
-     <hr class="small">
+
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+           <%= f.label t('.city_id') %>
+         </div>
+         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%>
+         </div>
+       </div>
+       <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
+     </div>
+     <!-- <hr class="small"> -->
 
      <div class="form-group">
       <div class="row">
@@ -54,7 +65,7 @@
      </div>
      <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio' %>
    </div>
-   <hr class="small">
+   <!-- <hr class="small"> -->
 
    <div class="form-group">
     <div class="row">
@@ -67,7 +78,7 @@
     <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón' %>
 
   </div>
-  <hr class="small">
+  <!-- <hr class="small"> -->
   <div class="form-group">
     <%= f.label t('.operation_license_file') %><br />
     <span><%= link_to(@user.operation_license_file_identifier, @user.operation_license_file_url, target: "_blank", style:"color: black;") if @user.operation_license_file.present? %></span>

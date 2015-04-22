@@ -26,17 +26,23 @@ end
   end
 
   def create
+    if complaint_params[:inspector].empty?
+            description = complaint_params[:description] 
+    else
+            description = complaint_params[:description] +" Inspector: "+ Inspector.find(complaint_params[:inspector]).name
+    end
+
    @complaint = Complaint.new(
                   user: current_user,
                   city: @city,
                   reason: complaint_params[:reason],
                   custom_reason: complaint_params[:custom_reason],
-                  description: complaint_params[:description]
+                  description: description
                  )
     authorize @complaint
     if @complaint.save
       redirect_to city_inspections_path(@city),
-        notice: I18n.t('complaints.created_successfully')
+        notice:   I18n.t('complaints.created_successfully')
     else
       render :new
     end
@@ -53,13 +59,15 @@ end
   def set_cities
     @city = City.find(params[:city_id])
     @cities = City.all
+    @inspectors = Inspector.by_city(@city)
   end
 
   def complaint_params
     params.require(:complaint).permit(
       :reason,
       :custom_reason,
-      :description
+      :description,
+      :inspector
     )
   end
 end

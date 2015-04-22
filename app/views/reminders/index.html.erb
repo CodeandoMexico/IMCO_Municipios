@@ -7,10 +7,7 @@
     <%= link_to t('.atras'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
   </div>
 </div>
-<%flash.each do |key, value| %>
-<br/>
-<div class="alert alert-success"><%=value%></div>
-<% end %>
+<%= render "shared/show_flash" %>
 
 <h2> <%= t('titles.new_reminder') %></h2>
 <div class="row text-left">
@@ -43,7 +40,7 @@
 </div>
 
 <% end %>
-<hr class="small">
+<!-- <hr class="small"> -->
 <%unless @reminders.nil? || @reminders.empty?%>
 <h2> <%= t('titles.reminder') %></h2>
 <div class="row text-right">

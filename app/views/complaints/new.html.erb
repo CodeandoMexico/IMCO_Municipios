@@ -1,18 +1,18 @@
   
 <div class="row text-left texto-verde texto-margin-top">
   <div class="col-sm-9 text-left">
-<a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
- </div>
- <div class="col-sm-3 text-right">
-  <%= link_to t('.atras'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
-</div>
+    <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
+  </div>
+  <div class="col-sm-3 text-right">
+    <%= link_to t('.atras'), city_inspections_path, class: 'btn btn-success btn-lg outlineverde text-right' %>
+  </div>
 </div>
 <br/>
 
 <div class="row text-center">
   <div class="col-lg-10 col-lg-offset-1">
    <%= content_tag :h1, t('.new_complaint') %>
-   <hr class="small">
+   <!-- <hr class="small"> -->
    <br>
  </div>
 </div>
@@ -51,14 +51,25 @@
   <div class="form-group">
    <div class="row">
     <div class= "col-md-4">
-      <%= f.label "Descripción" %>
-   </div>
-   <div class='texto-rojo col-md-8 text-left'><%=@complaint.errors[:description][0].to_s%>
-   </div>
- </div>
- <%= f.text_area :description, class: 'form-controler',:placeholder => t('.descripcion_denuncia') %>
+      <%= f.label "Nombre del inspector que realizó la inspección" %>
+    </div>
+  </div>
+  <%= f.select :inspector, @inspectors.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @inspector }, { class: 'chosen-select' }%>
 </div>
 <br>
+<div class="form-group">
+ <div class="row">
+  <div class= "col-md-4">
+    <%= f.label "Descripción" %>
+  </div>
+  <div class='texto-rojo col-md-8 text-left'><%=@complaint.errors[:description][0].to_s%>
+  </div>
+</div>
+<%= f.text_area :description, class: 'form-controler',:placeholder => t('.descripcion_denuncia') %>
+</div>
+<br>
+
+
 <div class="form-group">
   <%= f.submit t('.save_button'), class: 'btn btn-success btn-lg outlineverde' %>
 </div>

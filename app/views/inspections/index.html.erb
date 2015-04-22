@@ -1,12 +1,10 @@
     <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
     <div class="row text-center ">
-      <%flash.each do |key, value| %>
-      <div class="alert alert-danger"><%=value%></div>
-      <% end %>
+     <%= render "shared/show_flash" %>
     </div>
 
     <div class="row text-center texto-verde">
-      <%= content_tag :h1,t('.title') %> 
+      <%= content_tag :h1,t('.title') %>
       <%if @line.nil?%>
       <p><%=t('.no_inspections_selected_subtitle')%></p>
 
@@ -14,7 +12,7 @@
       <p><%=t('.no_inspections_selected_resultado')%> <%=" #{Line.find(@line).name}"%> </p>
       <%end%>
 
-      <hr class="small">
+      <!-- <hr class="small"> -->
     </div>
 
     <div class="row">
@@ -71,7 +69,7 @@
                 <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= inspection.name %></p></div>
                 <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.matter %></p></div>
                 <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.duration %></p></div>
-                <hr class="small">
+                <!-- <hr class="small"> -->
               </li>
               <% end %>
             <% end %>

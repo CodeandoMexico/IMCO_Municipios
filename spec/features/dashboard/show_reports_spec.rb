@@ -10,6 +10,8 @@ feature 'validate Reports' do
 
   scenario 'and show all reports' do
     sign_in user
+
+
     create_report
     sign_out user
 
@@ -48,5 +50,28 @@ def create_report
   fill_in 'complaint[description]', with: 'money'
   
  # click_on I18n.t('complaints.new.save_button')
+end
+
+def fill_new_user
+  new_user_info = {
+    name: 'Mi Nombre',
+    address: 'This is a fake address',
+    business_name: 'This is a business name',
+    operation_license: 'AN49FN40865J'
+  }
+end
+
+def update_user(args)
+  fill_in 'user[name]', with: args.fetch(:name)  
+  fill_in 'user[address]', with: args.fetch(:address)
+  fill_in 'user[business_name]', with: args.fetch(:business_name)
+  fill_in 'user[operation_license]',  with: args.fetch(:operation_license)
+  
+  click_on I18n.t('users.edit.save')
+#  user.update(
+  #  :address => args.fetch(:address),
+   # :business_name => args.fetch(:business_name),
+    #:operation_license => args.fetch(:operation_license)
+    #)
 end
 end
