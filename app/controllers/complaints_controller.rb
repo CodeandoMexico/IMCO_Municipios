@@ -27,9 +27,9 @@ end
 
   def create
     if complaint_params[:inspector].empty?
-            descricion = complaint_params[:description] 
+            description = complaint_params[:description] 
     else
-            descricion = complaint_params[:description] +" Inspector: "+ Inspector.find(complaint_params[:inspector]).name
+            description = complaint_params[:description] +" Inspector: "+ Inspector.find(complaint_params[:inspector]).name
     end
 
    @complaint = Complaint.new(
@@ -37,7 +37,7 @@ end
                   city: @city,
                   reason: complaint_params[:reason],
                   custom_reason: complaint_params[:custom_reason],
-                  description: descricion
+                  description: description
                  )
     authorize @complaint
     if @complaint.save
