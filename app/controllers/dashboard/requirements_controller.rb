@@ -42,7 +42,7 @@ module Dashboard
 
       respond_to do |format|
         if @requirement.update(requirement_params)
-          format.html { redirect_to edit_dashboard_requirement_url(@requirement), notice: 'El requerimiento fue actualizado satisfactoriamente.' }
+          format.html { redirect_to edit_dashboard_requirement_url(@requirement), notice:  'El requerimiento fue actualizado satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @requirement}
         else
           format.html { render :edit }
@@ -56,7 +56,7 @@ module Dashboard
 
       @requirement.destroy
       respond_to do |format|
-        format.html { redirect_to dashboard_requirements_path notice: 'El requerimiento fue borrado satisfactoriamente.' }
+        format.html { redirect_to dashboard_requirements_path , notice:'El requerimiento fue borrado satisfactoriamente.' }
         format.json { head :no_content }
       end
     end

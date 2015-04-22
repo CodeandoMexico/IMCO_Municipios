@@ -43,7 +43,7 @@ class CitiesController < ApplicationController
      @city = City.find(params[:id])
     respond_to do |format|
       if @city.update(city_params)
-        format.html { redirect_to  dashboard_city_contacts_path(@city), notice: t('flash.users.updated') }
+        format.html { redirect_to  dashboard_city_contacts_path(@city), notice:  t('flash.users.updated') }
       else
         format.html { render :edit }
         format.json { render json: @city.errors, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class CitiesController < ApplicationController
   def destroy
     @city.destroy
     respond_to do |format|
-      format.html { redirect_to cities_url, notice: 'city was successfully destroyed.' }
+      format.html { redirect_to cities_url, notice:  'city was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

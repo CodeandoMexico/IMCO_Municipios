@@ -40,7 +40,7 @@ module Dashboard
      def update
     respond_to do |format|
       if @formation_step.update(formation_steps_params)
-        format.html { redirect_to edit_dashboard_formation_step_url(@formation_step), notice: 'formation_step was successfully updated.' }
+        format.html { redirect_to edit_dashboard_formation_step_url(@formation_step), notice:'formation_step was successfully updated.' }
         format.json { render :show, status: :ok, location: @formation_step }
       else
         format.html { render :edit }
@@ -53,7 +53,7 @@ module Dashboard
       authorize @formation_step
       @formation_step.destroy
       respond_to do |format|
-        format.html { redirect_to dashboard_formation_steps_path, notice: 'Inspection was successfully destroyed.' }
+        format.html { redirect_to dashboard_formation_steps_path, notice:  'Inspection was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
