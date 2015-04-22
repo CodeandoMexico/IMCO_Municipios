@@ -15,10 +15,12 @@ class User < ActiveRecord::Base
   validates_presence_of :operation_license, :message => "La licencia de operación no puede estar en blanco.", on:  :update
    validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones.", on:  :update
 
+  validates_presence_of :city_id, :message => 'Debes escribir el municipio donde está tu negocio.', on:  :update
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
-  validates :city_id, presence: true
+  #validates :city_id, presence: true
   belongs_to :city
 
   has_many :user_formation_step
@@ -57,8 +59,7 @@ class User < ActiveRecord::Base
           provider:auth.provider,
           uid:auth.uid,
           email:auth.info.email,
-          password:Devise.friendly_token[0,20],
-          city_id: '1'
+          password:Devise.friendly_token[0,20]
           )
       end
     end
@@ -78,8 +79,7 @@ class User < ActiveRecord::Base
           provider:auth.provider,
           uid:auth.uid,
           email:auth.info.email,
-          password:Devise.friendly_token[0,20],
-          city_id: '1'
+          password:Devise.friendly_token[0,20]
           )
       end
 

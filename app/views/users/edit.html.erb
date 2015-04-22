@@ -42,6 +42,17 @@
        </div>
        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+           <%= f.label t('.city_id') %>
+         </div>
+         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%>
+         </div>
+       </div>
+       <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
+     </div>
      <!-- <hr class="small"> -->
 
      <div class="form-group">
