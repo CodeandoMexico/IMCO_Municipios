@@ -4,8 +4,10 @@ class ImcosController < ApplicationController
 
   def index
     @cities = City.all.order(:name)
-    unless current_user.city_id.nil?
+    unless current_user.nil?
+            unless current_user.city_id.nil?
         redirect_to city_path(current_user.city_id)
+      end
     end
   end
 end
