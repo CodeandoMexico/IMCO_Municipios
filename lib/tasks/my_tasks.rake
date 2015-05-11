@@ -1,4 +1,5 @@
 ## In this order the tasks should be run
+#heroku run rake my_tasks:delete_all_datasets
 #heroku run rake my_tasks:load_all_data
 # heroku run rake my_tasks:load_lines
 # heroku run rake my_tasks:load_dependencies
@@ -31,7 +32,7 @@ end
 
 desc "Load lines to the db"
 task :load_lines  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/giros_chalco.csv','lib/datasets/Huixquilucan/giros_huixquilucan.csv','lib/datasets/Lerma/giros_lerma.csv','lib/datasets/Metepec/giros_metepec.csv','lib/datasets/TenangoDelValle/giros_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/giros_chalco.csv','lib/datasets/Huixquilucan/giros_huixquilucan.csv','lib/datasets/Lerma/giros_lerma.csv','lib/datasets/Metepec/giros_metepec.csv','lib/datasets/TenangoDelValle/giros_tenango_del_valle.csv','lib/datasets/Toluca/giros_toluca.csv']
   cities_files.each do |city_file|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -51,7 +52,7 @@ end
 
 desc "Load dependencies to the db"
 task :load_dependencies  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/dependencias_chalco.csv','lib/datasets/Huixquilucan/dependencias_huixquilucan.csv','lib/datasets/Lerma/dependencias_lerma.csv','lib/datasets/Metepec/dependencias_metepec.csv','lib/datasets/TenangoDelValle/dependencias_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/dependencias_chalco.csv','lib/datasets/Huixquilucan/dependencias_huixquilucan.csv','lib/datasets/Lerma/dependencias_lerma.csv','lib/datasets/Metepec/dependencias_metepec.csv','lib/datasets/TenangoDelValle/dependencias_tenango_del_valle.csv','lib/datasets/Toluca/dependencias_toluca.csv']
   cities_files.each do |city_file|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -70,7 +71,7 @@ end
 
 desc "Load inspectors to the db"
 task :load_inspectors  => :environment do |t, args|   
-  cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv','lib/datasets/Toluca/inspectores_toluca.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -107,7 +108,7 @@ end
 
 desc "Load requirements to the db"
 task :load_requirements  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/requisitos_chalco.csv','lib/datasets/Huixquilucan/requisitos_huixquilucan.csv','lib/datasets/Lerma/requisitos_lerma.csv','lib/datasets/Metepec/requisitos_metepec.csv','lib/datasets/TenangoDelValle/requisitos_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/requisitos_chalco.csv','lib/datasets/Huixquilucan/requisitos_huixquilucan.csv','lib/datasets/Lerma/requisitos_lerma.csv','lib/datasets/Metepec/requisitos_metepec.csv','lib/datasets/TenangoDelValle/requisitos_tenango_del_valle.csv','lib/datasets/Toluca/requisitos_toluca.csv']
   cities_files.each do |city_file|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -129,7 +130,7 @@ end
 
 desc "Load inspections to the db"
 task :load_inspections  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/inspecciones_chalco.csv','lib/datasets/Huixquilucan/inspecciones_huixquilucan.csv','lib/datasets/Lerma/inspecciones_lerma.csv','lib/datasets/Metepec/inspecciones_metepec.csv','lib/datasets/TenangoDelValle/inspecciones_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/inspecciones_chalco.csv','lib/datasets/Huixquilucan/inspecciones_huixquilucan.csv','lib/datasets/Lerma/inspecciones_lerma.csv','lib/datasets/Metepec/inspecciones_metepec.csv','lib/datasets/TenangoDelValle/inspecciones_tenango_del_valle.csv','lib/datasets/Toluca/inspecciones_toluca.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -193,7 +194,7 @@ end
 
 desc "Load formation stsp to the db"
 task :load_formation_steps  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/apertura_chalco.csv','lib/datasets/Huixquilucan/apertura_huixquilucan.csv','lib/datasets/Lerma/apertura_lerma.csv','lib/datasets/Metepec/apertura_metepec.csv','lib/datasets/TenangoDelValle/apertura_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/apertura_chalco.csv','lib/datasets/Huixquilucan/apertura_huixquilucan.csv','lib/datasets/Lerma/apertura_lerma.csv','lib/datasets/Metepec/apertura_metepec.csv','lib/datasets/TenangoDelValle/apertura_tenango_del_valle.csv','lib/datasets/Toluca/apertura_toluca.csv']
   cities_files.each do |city_file|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
@@ -217,7 +218,7 @@ end
 
 desc "Load procedures to the db"
 task :load_procedures  => :environment do |t, args|
-  cities_files = ['lib/datasets/Chalco/tramites_chalco.csv','lib/datasets/Huixquilucan/tramites_huixquilucan.csv','lib/datasets/Lerma/tramites_lerma.csv','lib/datasets/Metepec/tramites_metepec.csv','lib/datasets/TenangoDelValle/tramites_tenango_del_valle.csv']
+  cities_files = ['lib/datasets/Chalco/tramites_chalco.csv','lib/datasets/Huixquilucan/tramites_huixquilucan.csv','lib/datasets/Lerma/tramites_lerma.csv','lib/datasets/Metepec/tramites_metepec.csv','lib/datasets/TenangoDelValle/tramites_tenango_del_valle.csv','lib/datasets/Toluca/tramites_toluca.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
     CSV.foreach(city_file, :headers => true) do |row|
