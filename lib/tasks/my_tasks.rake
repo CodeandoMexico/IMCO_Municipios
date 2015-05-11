@@ -129,14 +129,12 @@ end
 
 desc "Load inspections to the db"
 task :load_inspections  => :environment do |t, args|
-  clean_db(Inspection)
-  clean_db(InspectionLine)
-  clean_db(InspectionRequirement)
+    clean_db(Inspection)
+    clean_db(InspectionLine)
+    clean_db(InspectionRequirement)
   cities_files = ['lib/datasets/Chalco/inspecciones_chalco.csv','lib/datasets/Huixquilucan/inspecciones_huixquilucan.csv','lib/datasets/Lerma/inspecciones_lerma.csv','lib/datasets/Metepec/inspecciones_metepec.csv','lib/datasets/TenangoDelValle/inspecciones_tenango_del_valle.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
-    number_of_successfully_created_giros = 0
-    number_of_successfully_created_requerimientos = 0
     CSV.foreach(city_file, :headers => true) do |row|
       dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: index+1)
       name = row.to_hash['nombre']
@@ -166,60 +164,58 @@ task :load_inspections  => :environment do |t, args|
 
       if dependency.present? && row_does_not_exist_in_the_db(Inspection, row_values)
         inspection_created =  Inspection.create(row_values)
-        
+
+        number_of_successfully_created_giros = 0
         giros.split('; ').each do |v|
           unless Line.where(name: v).first.nil?
             InspectionLine.create(inspection_id: inspection_created.id, line_id: Line.where(name: v).first.id)
             number_of_successfully_created_giros += 1
           end
         end
-
+        puts  "#{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros}"
+        
+        number_of_successfully_created_requerimientos = 0
         requerimientos.split('; ').each do |v|
           unless Requirement.where(name: v).first.nil?
             InspectionRequirement.create(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: v).first.id)
             number_of_successfully_created_requerimientos += 1
           end
         end
+        puts "#{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
+        
         number_of_successfully_created_rows  += 1
       else
         puts "#{ name} | #{city_file}"
-        #puts "#{ row_values.inspect }"
       end
 
     end
-    puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}, Giros: #{number_of_successfully_created_giros}, Requ: #{number_of_successfully_created_requerimientos}"
+    puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
 end
 
 
-  desc "Load formation stsp to the db"
-  task :load_formation_steps  => :environment do |t, args|
-
-  #  clean_db(FormationStep) # let's erase everyone from the db
-
-    cities_files = ['lib/datasets/Lerma/apertura_lerma.csv']
-
-    cities_files.each do |city_file|
-      # init variables
-      number_of_successfully_created_rows = 0
-      CSV.foreach(city_file, :headers => true) do |row|
-        city = City.find_by(name: row.to_hash['municipio_id'])
-        name = row.to_hash['nombre']
-        description = row.to_hash['descripcion']
-        path = row.to_hash['path']
-        type = getTipoApertura(row.to_hash['tipo'])
-
-        row_values = { name: name, city: city, description: description, path: path, type_formation_step: type }
-        if city.present? && row_does_not_exist_in_the_db(FormationStep, row_values)
-          FormationStep.create!(row_values)
-          number_of_successfully_created_rows = number_of_successfully_created_rows + 1
-        else
-          puts "#{row_values.inspect}"
-        end
+desc "Load formation stsp to the db"
+task :load_formation_steps  => :environment do |t, args|
+  cities_files = ['lib/datasets/Lerma/apertura_lerma.csv']
+  cities_files.each do |city_file|
+    number_of_successfully_created_rows = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      city = City.find_by(name: row.to_hash['municipio_id'])
+      name = row.to_hash['nombre']
+      description = row.to_hash['descripcion']
+      path = row.to_hash['path']
+      type = getTipoApertura(row.to_hash['tipo'])
+      row_values = { name: name, city: city, description: description, path: path, type_formation_step: type }
+      if city.present? && row_does_not_exist_in_the_db(FormationStep, row_values)
+        FormationStep.create!(row_values)
+        number_of_successfully_created_rows += 1
+      else
+        puts "#{row_values.inspect}"
       end
-      puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
+    puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
+end
 
 
   desc "Load procedures to the db"
