@@ -1,4 +1,5 @@
 ## In this order the tasks should be run
+#heroku run rake my_tasks:load_all_data
 # heroku run rake my_tasks:load_lines
 # heroku run rake my_tasks:load_dependencies
 # heroku run rake my_tasks:load_inspectors
@@ -10,11 +11,9 @@
 namespace :my_tasks do
  require 'csv'
 
-  desc "Load lines to the db"
-  task :load_lines  => :environment do |t, args|
 
-     cities_files = ['lib/datasets/giros_lerma.csv']
-
+desc "Delete all datasets"
+task :delete_all_datasets => :environment do |t,env|
     clean_db(UserFormationStep)#al perder las referencias se debe eliminar las relaciones
     clean_db(Line)
     clean_db(Dependency)# let's erase everyone from the db
@@ -27,28 +26,34 @@ namespace :my_tasks do
     clean_db(ProcedureRequirement)
     clean_db(InspectionLine)
     clean_db(InspectionRequirement)
+end
 
-    cities_files.each do |city_file|
-      CSV.foreach(city_file, :headers => true) do |row|
-        city = City.find_by(name: row.to_hash['municipio_id'])
-        name = row.to_hash['nombre']
-        description = row.to_hash['descripcion']
 
-        if city.present? && row_does_not_exist_in_the_db(Line, { name: name, city: city })
-          Line.create(name: name, description: description , city: city)
-        end
-
+desc "Load lines to the db"
+task :load_lines  => :environment do |t, args|
+  cities_files = ['lib/datasets/Chalco/giros_chalco.csv','lib/datasets/Huixquilucan/giros_huixquilucan.csv','lib/datasets/Lerma/giros_lerma.csv','lib/datasets/Metepec/giros_metepec.csv','lib/datasets/TenangoDelValle/giros_tenango_del_valle.csv']
+  cities_files.each do |city_file|
+    number_of_successfully_created_rows = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      city = City.find_by(name: row.to_hash['municipio_id'])
+      name = row.to_hash['nombre']
+      description = row.to_hash['descripcion']
+      if city.present? && row_does_not_exist_in_the_db(Line, { name: name, city: city })
+        Line.create(name: name, description: description , city: city)
+        number_of_successfully_created_rows += 1 
+      else
+        puts "REPETIDO #{name} | City #{city.name}"
       end
     end
+  puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
+end
 
   desc "Load dependencies to the db"
   task :load_dependencies  => :environment do |t, args|
 
-    #clean_db(Dependency) # let's erase everyone from the db
-
-    cities_files = ['lib/datasets/dependencias_lerma.csv']
-
+ cities_files = ['lib/datasets/Chalco/dependencias_chalco.csv','lib/datasets/Huixquilucan/dependencias_huixquilucan.csv','lib/datasets/Lerma/dependencias_lerma.csv','lib/datasets/Metepec/dependencias_metepec.csv','lib/datasets/TenangoDelValle/dependencias_tenango_del_valle.csv',]
+  number_of_successfully_created_rows = 0
     cities_files.each do |city_file|
       CSV.foreach(city_file, :headers => true) do |row|
         city = City.find_by(name: row.to_hash['municipio_id'])
@@ -56,8 +61,12 @@ namespace :my_tasks do
 
         if city.present? && row_does_not_exist_in_the_db(Dependency, { name: name, city: city })
           Dependency.create(name: name, city: city)
+          puts "#{name} | City #{city}"
+        else
+          puts "REPETIDO #{name} | City #{city}"
         end
       end
+       puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
   end
 
@@ -65,7 +74,7 @@ namespace :my_tasks do
 
   task :load_inspectors  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspectores_lerma.csv']
+   cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv',]
 
    # clean_db(Inspector) # let's erase everyone from the db
     cities_files.each_with_index do |city_file, index|
@@ -73,13 +82,10 @@ namespace :my_tasks do
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
 
-        #if index == 0
-          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '1')
-        #elsif index == 1
-          #dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '4')
-        #elsif index == 2
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: '3')
-        #end
+          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: index+1)
+         
+
+
 
         name = row.to_hash['nombre']
         valid_through = row.to_hash['vigencia']
@@ -118,7 +124,7 @@ namespace :my_tasks do
 
     #clean_db(Requirement) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/requisitos_lerma.csv']
+    cities_files = ['lib/datasets/Lerma/requisitos_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
@@ -144,7 +150,7 @@ namespace :my_tasks do
   desc "Load inspections to the db"
   task :load_inspections  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/inspecciones_lerma.csv']
+    cities_files = ['lib/datasets/Lerma/inspecciones_lerma.csv']
     #clean_db(Inspection) # let's erase everyone from the db
     cities_files.each_with_index do |city_file, index|
       # init variables
@@ -216,7 +222,7 @@ namespace :my_tasks do
 
   #  clean_db(FormationStep) # let's erase everyone from the db
 
-    cities_files = ['lib/datasets/apertura_lerma.csv']
+    cities_files = ['lib/datasets/Lerma/apertura_lerma.csv']
 
     cities_files.each do |city_file|
       # init variables
@@ -244,7 +250,7 @@ namespace :my_tasks do
   desc "Load procedures to the db"
   task :load_procedures  => :environment do |t, args|
 
-    cities_files = ['lib/datasets/tramites_lerma.csv']
+    cities_files = ['lib/datasets/Lerma/tramites_lerma.csv']
 
     #clean_db(Procedure) # let's erase everyone from the db
     #clean_db(ProcedureLine)
@@ -348,7 +354,7 @@ namespace :my_tasks do
   end
 
   desc "Load all data to the db"
-  task :load_all_data => [:load_lines, :load_dependencies, :load_inspectors, :load_requirements, :load_inspections, :load_formation_steps, :load_procedures] do
+  task :load_all_data => [:delete_all_datasets, :load_lines, :load_dependencies, :load_inspectors, :load_requirements, :load_inspections, :load_formation_steps, :load_procedures] do
     puts "Done running all the tasks.."
   end
 
