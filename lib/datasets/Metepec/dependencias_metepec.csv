@@ -1,9 +1,13 @@
 nombre,municipio_id
-DIRECCIÓN DE DESARROLLO ECONÓMICO Y FOMENTO TURÍSTICO,Metepec
+Desarrollo Económico,Metepec
+Desarrollo Urbano,Metepec
+Dirección de Desarrollo Económico,Metepec
 DIRECCIÓN DE DESARROLLO URBANO,Metepec
 DIRECCIÓN DE GOBIERNO,Metepec
-DIRECCIÓN DE MEDIO AMBIENTE ,Metepec
+Dirección de Medio Ambiente,Metepec
+DIRECCIÓN DE MEDIO AMBIENTE,Metepec
 DIRECCIÓN DE NORMATIVIDAD,Metepec
+Normatividad,Metepec
 OPDAPAS,Metepec
 OPDAPAS.ADMINISTRACION,Metepec
 OPDAPAS.ATENCION A USUARIOS,Metepec
@@ -11,7 +15,8 @@ OPDAPAS.COMERCIALIZACION,Metepec
 OPDAPAS.DEPTO DE PALNEACION,Metepec
 OPDAPAS.PADRON A USUARIOS,Metepec
 OPDAPAS.UNIDAD JURIDICA,Metepec
-OTRA,Metepec
-SUBDIRECCIÓN DE PROTECCIÓN CIVIL,Metepec
-SUBDIRECCIÓN DE INGRESOS,Metepec
+Otra,Metepec
+Protección Civil,Metepec
+Subdirección de Ingresos,Metepec
+Tesorería,Metepec
 TESORERÍA MUNICIPAL,Metepec

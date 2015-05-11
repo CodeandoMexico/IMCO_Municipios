@@ -49,75 +49,62 @@ task :load_lines  => :environment do |t, args|
   end
 end
 
-  desc "Load dependencies to the db"
-  task :load_dependencies  => :environment do |t, args|
-
- cities_files = ['lib/datasets/Chalco/dependencias_chalco.csv','lib/datasets/Huixquilucan/dependencias_huixquilucan.csv','lib/datasets/Lerma/dependencias_lerma.csv','lib/datasets/Metepec/dependencias_metepec.csv','lib/datasets/TenangoDelValle/dependencias_tenango_del_valle.csv',]
-  number_of_successfully_created_rows = 0
-    cities_files.each do |city_file|
-      CSV.foreach(city_file, :headers => true) do |row|
-        city = City.find_by(name: row.to_hash['municipio_id'])
-        name = row.to_hash['nombre']
-
-        if city.present? && row_does_not_exist_in_the_db(Dependency, { name: name, city: city })
-          Dependency.create(name: name, city: city)
-          puts "#{name} | City #{city}"
-        else
-          puts "REPETIDO #{name} | City #{city}"
-        end
+desc "Load dependencies to the db"
+task :load_dependencies  => :environment do |t, args|
+  cities_files = ['lib/datasets/Chalco/dependencias_chalco.csv','lib/datasets/Huixquilucan/dependencias_huixquilucan.csv','lib/datasets/Lerma/dependencias_lerma.csv','lib/datasets/Metepec/dependencias_metepec.csv','lib/datasets/TenangoDelValle/dependencias_tenango_del_valle.csv']
+  cities_files.each do |city_file|
+    number_of_successfully_created_rows = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      city = City.find_by(name: row.to_hash['municipio_id'])
+      name = row.to_hash['nombre']
+      if city.present? && row_does_not_exist_in_the_db(Dependency, { name: name, city: city })
+        Dependency.create(name: name, city: city)
+        number_of_successfully_created_rows += 1 
+      else
+        puts "REPETIDO #{name} | City #{city}"
       end
-       puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
+  puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
+end
 
-  desc "Load inspectors to the db"
+desc "Load inspectors to the db"
+task :load_inspectors  => :environment do |t, args|   
+  clean_db(Inspector)
+  cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv']
+  cities_files.each_with_index do |city_file, index|
+    number_of_successfully_created_rows = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: index+1)
+      name = row.to_hash['nombre']
+      valid_through = row.to_hash['vigencia']
+      subject = row.to_hash['materia']
+      supervisor = row.to_hash['supervisor']
+      contact = row.to_hash['contacto']
+      photo = row.to_hash['foto']
 
-  task :load_inspectors  => :environment do |t, args|
-
-   cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv',]
-
-   # clean_db(Inspector) # let's erase everyone from the db
-    cities_files.each_with_index do |city_file, index|
-      # init variables
-      number_of_successfully_created_rows = 0
-      CSV.foreach(city_file, :headers => true) do |row|
-
-          dependency = Dependency.find_by(name: row.to_hash['dependencia_id'], city_id: index+1)
-         
-
-
-
-        name = row.to_hash['nombre']
-        valid_through = row.to_hash['vigencia']
-        subject = row.to_hash['materia']
-        supervisor = row.to_hash['supervisor']
-        contact = row.to_hash['contacto']
-        photo = row.to_hash['foto']
-
-        if  row_does_not_exist_in_the_db(Inspector, {
-            name: name,
-            dependency: dependency,
-            matter: subject
-          })
-          Inspector.create!(
-             dependency: dependency,
-             name: name,
-             validity: valid_through,
-             matter: subject,
-             supervisor: supervisor,
-            photo: photo,
-             contact: contact
-          )
-
-          number_of_successfully_created_rows = number_of_successfully_created_rows + 1
-        else
-            puts "#{name} | #{valid_through} | #{subject} | #{supervisor} | #{contact} | #{photo} | #{}"
-        end
-
+      if  row_does_not_exist_in_the_db(Inspector, {
+        name: name,
+        dependency: dependency,
+        matter: subject
+      })
+        Inspector.create!(
+        dependency: dependency,
+        name: name,
+        validity: valid_through,
+        matter: subject,
+        supervisor: supervisor,
+        photo: photo,
+        contact: contact
+        )
+        number_of_successfully_created_rows += 1
+      else
+        puts "#{name} | #{valid_through} | #{subject} | #{supervisor} | #{contact} | #{photo} | #{}"
       end
-      puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
+  puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
+end
 
   desc "Load requirements to the db"
   task :load_requirements  => :environment do |t, args|
