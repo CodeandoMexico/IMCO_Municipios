@@ -42,7 +42,7 @@ task :load_lines  => :environment do |t, args|
         Line.create(name: name, description: description , city: city)
         number_of_successfully_created_rows += 1 
       else
-        puts "REPETIDO #{name} | City #{city.name}"
+        puts "DATO REPETIDO #{name} | City #{city.name}"
       end
     end
   puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
@@ -61,7 +61,7 @@ task :load_dependencies  => :environment do |t, args|
         Dependency.create(name: name, city: city)
         number_of_successfully_created_rows += 1 
       else
-        puts "REPETIDO #{name} | City #{city}"
+        puts "DATO REPETIDO #{name} | City #{city}"
       end
     end
   puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
@@ -70,7 +70,6 @@ end
 
 desc "Load inspectors to the db"
 task :load_inspectors  => :environment do |t, args|   
-  clean_db(Inspector)
   cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
@@ -106,102 +105,91 @@ task :load_inspectors  => :environment do |t, args|
   end
 end
 
-  desc "Load requirements to the db"
-  task :load_requirements  => :environment do |t, args|
-
-    #clean_db(Requirement) # let's erase everyone from the db
-
-    cities_files = ['lib/datasets/Lerma/requisitos_lerma.csv']
-
-    cities_files.each do |city_file|
-      # init variables
-      number_of_successfully_created_rows = 0
-      CSV.foreach(city_file, :headers => true) do |row|
-        city = City.find_by(name: row.to_hash['municipio_id'])
-        name = row.to_hash['nombre']
-        description = row.to_hash['descripcion']
-        path = row.to_hash['path']
-
-        row_values = { name: name, city: city, description: description, path: path }
-        if city.present? && row_does_not_exist_in_the_db(Requirement, row_values)
-          Requirement.create!(row_values)
-          number_of_successfully_created_rows = number_of_successfully_created_rows + 1
-        else
-          puts "DATO REPETIDO #{row_values.inspect}"
-        end
+desc "Load requirements to the db"
+task :load_requirements  => :environment do |t, args|
+  cities_files = ['lib/datasets/Chalco/requisitos_chalco.csv','lib/datasets/Huixquilucan/requisitos_huixquilucan.csv','lib/datasets/Lerma/requisitos_lerma.csv','lib/datasets/Metepec/requisitos_metepec.csv','lib/datasets/TenangoDelValle/requisitos_tenango_del_valle.csv']
+  cities_files.each do |city_file|
+    number_of_successfully_created_rows = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      city = City.find_by(name: row.to_hash['municipio_id'])
+      name = row.to_hash['nombre']
+      description = row.to_hash['descripcion']
+      path = row.to_hash['path']
+      row_values = { name: name, city: city, description: description, path: path }
+      if city.present? && row_does_not_exist_in_the_db(Requirement, row_values)
+        Requirement.create!(row_values)
+        number_of_successfully_created_rows += 1
+      else
+        puts "DATO REPETIDO #{row_values.inspect}"
       end
-      puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
     end
+    puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
+end
 
-  desc "Load inspections to the db"
-  task :load_inspections  => :environment do |t, args|
+desc "Load inspections to the db"
+task :load_inspections  => :environment do |t, args|
+  clean_db(Inspection)
+  clean_db(InspectionLine)
+  clean_db(InspectionRequirement)
+  cities_files = ['lib/datasets/Chalco/inspecciones_chalco.csv','lib/datasets/Huixquilucan/inspecciones_huixquilucan.csv','lib/datasets/Lerma/inspecciones_lerma.csv','lib/datasets/Metepec/inspecciones_metepec.csv','lib/datasets/TenangoDelValle/inspecciones_tenango_del_valle.csv']
+  cities_files.each_with_index do |city_file, index|
+    number_of_successfully_created_rows = 0
+    number_of_successfully_created_giros = 0
+    number_of_successfully_created_requerimientos = 0
+    CSV.foreach(city_file, :headers => true) do |row|
+      dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: index+1)
+      name = row.to_hash['nombre']
+      subject = row.to_hash['materia']
+      period = row.to_hash['duracion']
+      norm = row.to_hash['norma']
+      before_tips = row.to_hash['antes']
+      during_tips = row.to_hash['durante']
+      after_tips = row.to_hash['despues']
+      sanctions = row.to_hash['sancion']
+      certification = row.to_hash['documento_acredita']
+      giros = row.to_hash['giros']
+      requerimientos = row.to_hash['requerimientos']
+      
+      row_values = {
+      dependency: dependency,
+      name: name,
+      matter: subject,
+      duration: period,
+      rule: norm,
+      before: before_tips,
+      during: during_tips,
+      after: after_tips,
+      sanction: sanctions,
+      certification: certification
+      }
 
-    cities_files = ['lib/datasets/Lerma/inspecciones_lerma.csv']
-    #clean_db(Inspection) # let's erase everyone from the db
-    cities_files.each_with_index do |city_file, index|
-      # init variables
-      number_of_successfully_created_rows = 0
-      CSV.foreach(city_file, :headers => true) do |row|
-        #if index == 0
-         # dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '1')
-        #elsif index == 1
-          #dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '4')
-        #elsif index == 2
-          dependency = Dependency.find_by(name: row.to_hash['dependency_name'], city_id: '3')
-        #end
-
-        name = row.to_hash['nombre']
-        subject = row.to_hash['materia']
-        period = row.to_hash['duracion']
-        norm = row.to_hash['norma']
-        before_tips = row.to_hash['antes']
-        during_tips = row.to_hash['durante']
-        after_tips = row.to_hash['despues']
-        sanctions = row.to_hash['sancion']
-        certification = row.to_hash['documento_acredita']
-        giros = row.to_hash['giros']
-        requerimientos = row.to_hash['requerimientos']
-
-        row_values = {
-          dependency: dependency,
-          name: name,
-          matter: subject,
-          duration: period,
-          rule: norm,
-          before: before_tips,
-          during: during_tips,
-          after: after_tips,
-          sanction: sanctions,
-          certification: certification
-        }
-
-        if dependency.present? && row_does_not_exist_in_the_db(Inspection, row_values)
-         a =  Inspection.create(row_values)
-
-
-         giros.split('; ').each do |v|
-             unless Line.where(name: v).first.nil?
-                 InspectionLine.create(inspection_id: a.id, line_id: Line.where(name: v).first.id)
-             end
-           end
-
-          requerimientos.split('; ').each do |v|
-              unless Requirement.where(name: v).first.nil?
-                InspectionRequirement.create(inspection_id: a.id, requirement_id: Requirement.where(name: v).first.id)
-              end
-           end
-
-          number_of_successfully_created_rows = number_of_successfully_created_rows + 1
-        else
-            # puts "#{ row_values[:nombre]} | #{row_values[:materia]} | #{row_values[:duracion]}"
-            puts "#{ row_values.inspect }"
+      if dependency.present? && row_does_not_exist_in_the_db(Inspection, row_values)
+        inspection_created =  Inspection.create(row_values)
+        
+        giros.split('; ').each do |v|
+          unless Line.where(name: v).first.nil?
+            InspectionLine.create(inspection_id: inspection_created.id, line_id: Line.where(name: v).first.id)
+            number_of_successfully_created_giros += 1
+          end
         end
 
+        requerimientos.split('; ').each do |v|
+          unless Requirement.where(name: v).first.nil?
+            InspectionRequirement.create(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: v).first.id)
+            number_of_successfully_created_requerimientos += 1
+          end
+        end
+        number_of_successfully_created_rows  += 1
+      else
+        puts "#{ name} | #{city_file}"
+        #puts "#{ row_values.inspect }"
       end
-      puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
+
     end
+    puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}, Giros: #{number_of_successfully_created_giros}, Requ: #{number_of_successfully_created_requerimientos}"
   end
+end
 
 
   desc "Load formation stsp to the db"
