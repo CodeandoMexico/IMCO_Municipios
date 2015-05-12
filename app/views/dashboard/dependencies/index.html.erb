@@ -27,7 +27,7 @@
      <%= content_tag :td, dependency.city.name  %>
      <%= content_tag :td do %>
      <div class="text-right">
-      <%= link_to t('form.actions.edit'), edit_dashboard_dependency_path(dependency) , :class => 'btn btn-success btn-lg outlineverde'%> 
+      <%= link_to t('form.actions.edit'), edit_dashboard_dependency_path(dependency) , :class => 'btn btn-success btn-lg outlineverde'%>
       <%= link_to t('form.actions.destroy'), dashboard_dependency_path(dependency), method: :delete, data: { confirm: t('form.confirmations.delete_line')  }, :class => 'btn btn-success btn-lg outlineverde' %>
      </div>
      <% end %>

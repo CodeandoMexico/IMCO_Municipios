@@ -232,6 +232,7 @@ es:
         title: Editar dependencia
       form:
         create_dependency: Guardar cambios
+        nombre: Nombre
   devise:
     omniauth_callbacks:
       success: Inicio de sesión exitoso.
