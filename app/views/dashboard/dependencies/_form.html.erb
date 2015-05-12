@@ -1,6 +1,6 @@
   <%= form_for [:dashboard, @dependency], html: { class: 'form-container' } do |f| %>
   <%= render "shared/show_flash" %>
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
       <%= t('.nombre') %>
       <%= f.text_field :name, class: 'form-control' %>
     </div>

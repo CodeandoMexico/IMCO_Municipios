@@ -18,6 +18,7 @@ module Dashboard
     end
 
     def edit
+      @dependency = Dependency.where(city_id: current_user.city_id)
     end
 
     def create
