@@ -133,6 +133,7 @@ es:
     reports:
       index:
         negocio: Negocio
+        razon: Razón
         fecha: Fecha
         colonia: Domicilio
         usuario_eliminado: Usuario eliminado
@@ -160,6 +161,17 @@ es:
         title: Editar inspección
       form:
         create_inspection: Guardar cambios
+        name: Nombre
+        matter: Materia
+        duration: Duración
+        rule: Ley
+        before: Antes
+        during: Durante
+        after: Despues
+        sanction: Sanción
+        dependency_id: Dependecia
+        requirement_ids: Requerimientos
+        line_ids: Giros
     inspectors:
       index:
         name: Nombre
@@ -172,10 +184,19 @@ es:
         title: Editar inspector
       form:
         create_inspector: Guardar cambios
+        nombre: Nombre
+        validity: Vigencia
+        matter: Materia
+        supervisor: Supervisor
+        contact: contacto
+        photo: Foto
+        dependency_id: Dependencia
     formation_steps:
       index:
         name: Nombre
         dependency: Dependencia
+        tipo: Tipo
+        municipio: Municipio
         actions: Acciones
         new_formation_step: Nuevo trámite apertura
       new:
@@ -200,6 +221,8 @@ es:
         title: Editar Giro
       form:
         create_lines: Guardar cambios
+        nombre: Nombre
+        description: Descripción
     requirements:
       index:
         name: Nombre
@@ -212,6 +235,9 @@ es:
         title: Editar requerimiento
       form:
         create_requirements: Guardar cambios
+        nombre: Nombre
+        description: Descripción
+        path: Path
     procedures:
       index:
         name: Nombre
@@ -224,6 +250,17 @@ es:
         title: Editar trámite
       form:
         create_procedures: Guardar cambios
+        nombre: Nombre
+        long: Duración
+        cost: Costo
+        validity: Vigencia
+        contact: Contacto
+        type_procedure: Tipo de trámite
+        category: Categoría
+        sare: SARE
+        dependency_id: Dependencia
+        requirement_ids: Requerimientos
+        line_ids: Giros
     dependencies:
       index:
         name: Nombre
