@@ -28,7 +28,7 @@
      <%= content_tag :td, formation.city.name %>
      <%= content_tag :td do %>
      <div class="text-right">
-      <%= link_to t('form.actions.edit'), edit_dashboard_formation_step_path(formation), :class => 'btn btn-success btn-lg outlineverde'  %> 
+      <%= link_to t('form.actions.edit'), edit_dashboard_formation_step_path(formation), :class => 'btn btn-success btn-lg outlineverde'%> | 
       <%= link_to t('form.actions.destroy'), dashboard_formation_step_path(formation), method: :delete, data: { confirm: t('form.confirmations.delete_formation_step') } , :class => 'btn btn-success btn-lg outlineverde' %>
      </div>
      <% end %>

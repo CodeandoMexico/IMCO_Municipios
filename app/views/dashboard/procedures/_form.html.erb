@@ -1,86 +1,84 @@
-<div id="form-container">
-  <%= form_for [:dashboard, @procedure], html: { class: 'form-horizontal' } do |f| %>
-    <%= render "shared/show_flash" %>
+  <%= form_for [:dashboard, @procedure], html: { class: 'form-container' } do |f| %>
+  <%= render "shared/show_flash" %>
 
-    <div class="form-group">
-      <%= f.label :name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3">
+      <%= t('.nombre') %>
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :long, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :long, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.long') %>
+      <%= f.text_field :long, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :cost, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :cost, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.cost') %>
+      <%= f.text_field :cost, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :validity, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :validity, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.validity') %>
+      <%= f.text_field :validity, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :contact, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :contact, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.contact') %>
+      <%= f.text_field :contact, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :type_procedure, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :type_procedure, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.type_procedure') %>
+      <%= f.select(:type_procedure, type_of_people_procedures, {:include_blank => false}, :class => 'form-control') %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :category, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :category, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+        <div class="col-md-6 col-md-offset-3 texto-margin-top">
+      <%= t('.category') %>
+      <%= f.text_field :category, class: 'form-control' %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :sare, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.text_field :sare, class: 'form-control' %>
-      </div>
+  <div class="form-group">
+      <div class="col-md-6 col-md-offset-3 texto-margin-top">
+        <%= t('.sare') %>
+        <%= f.select(:sare, type_of_sare, {:include_blank => false}, :class => 'form-control') %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :dependency, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.select :dependency_id, @dependencies.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
-      </div>
+  <div class="form-group">
+      <div class="col-md-6 col-md-offset-3 texto-margin-top">
+        <%= t('.dependency_id') %>
+      <%= f.select :dependency_id, @dependencies.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
     </div>
+  </div>
 
-     <div class="form-group">
-      <%=f.label :requirement_ids, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
-      </div>
+  <div class="form-group">
+      <div class="col-md-6 col-md-offset-3 texto-margin-top">
+        <%= t('.requirement_ids') %>
+      <%= f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
     </div>
+  </div>
 
-     <div class="form-group">
-      <%=f.label :line_ids, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
-      </div>
+  <div class="form-group">
+      <div class="col-md-6 col-md-offset-3 texto-margin-top">
+        <%= t('.line_ids') %>
+      <%= f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
     </div>
+  </div>
 
-    <div class="actions">
-      <%= f.submit t('.create_procedures'), :class => 'btn btn-success btn-xs outlineverde' %>
-    </div>
+  <div class="col-md-6 col-md-offset-3 text-center texto-padding-top">
+    <%= f.submit t('.create_procedures'), :class => 'btn btn-success btn-lg outlineverde' %>
+  </div>
   <% end %>
-</div>

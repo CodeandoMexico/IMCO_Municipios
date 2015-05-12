@@ -28,7 +28,7 @@
      <%= content_tag :td, line.city.name  %>
      <%= content_tag :td do %>
       <div class="text-right">
-      <%= link_to t('form.actions.edit'), edit_dashboard_line_path(line), :class => 'btn btn-success btn-lg outlineverde' %> 
+      <%= link_to t('form.actions.edit'), edit_dashboard_line_path(line), :class => 'btn btn-success btn-lg outlineverde' %> |
       <%= link_to t('form.actions.destroy'), dashboard_line_path(line), method: :delete, data: { confirm: t('form.confirmations.delete_line') }, :class => 'btn btn-success btn-lg outlineverde' %>
       </div>
      <% end %>
