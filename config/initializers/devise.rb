@@ -13,11 +13,9 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   require 'omniauth-linkedin'
-  config.omniauth :linkedin, "787qz1t8qct0ym", "nagKR20Nj0HMyC1J", :scope => 'r_fullprofile r_emailaddress r_network'#
+  config.omniauth :linkedin, ENV['linkedin_id'], ENV['linkedin_secret'], :scope => 'r_basicprofile r_emailaddress'#
   require 'omniauth-facebook'
-  config.omniauth :facebook, "1499379517003281", "765e1e8a12163d30156ac198aecf1888"
-
-
+  config.omniauth :facebook, ENV['facebook_id'], ENV['facebook_secret']
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
