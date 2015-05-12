@@ -138,13 +138,13 @@ es:
         usuario_eliminado: Usuario eliminado
       show:
         negocio: Negocio
-        fecha: Fecha
-        colonia: Domicilio
-        razon: Razón
-        descripcion: Descripción
-        correo: Correo
-        comentario: Comentario
-        licencia_operacion: Licencia de operación
+        fecha: 'Fecha:'
+        colonia: 'Domicilio:'
+        razon: 'Razón:'
+        descripcion: 'Descripción:'
+        correo: 'Correo:'
+        comentario: 'Comentario:'
+        licencia_operacion: 'Licencia de operación:'
         descargar: 'Descargar:'
         licencia_de_operacion: Licencia de operación
         licencia_uso_de_suelo: Licencia de uso de suelo
@@ -184,6 +184,10 @@ es:
         title: Editar trámite de apertura
       form:
         create_formation_steps: Guardar cambios
+        nombre: Nombre
+        description: Descripción
+        path: Path
+        type_formation_step: Tipo de persona
     lines:
       index:
         name: Nombre
