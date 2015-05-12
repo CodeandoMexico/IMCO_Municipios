@@ -1,45 +1,38 @@
-<div id="main" class="container clear-top">
+<div class="container top-cruds">
   <div class="row">
-    <div class="span12">
-      <section id="services">
-        <div class="center-block-margin">
-          <div class="container">
-            <h2> <%= t('titles.inspections') %></h2>
-            <div class="row text-right">
-              <%= link_to t('.new_inspection'), new_dashboard_inspection_path, :class => 'btn btn-success btn-xs outlineverde' %>
-            </div>
-            <table class="table">
-             <thead>
-               <th>#</th>
-               <th><%= t('.name') %></th>
-               <th><%= t('.dependency') %></th>
-               <th><%= t('.actions') %></th>
-             </thead>
-             <tbody>
-               <% @inspections.each_with_index do |inspection, idx| %>
-               <%= content_tag :tr do %>
-               <%= content_tag :td, idx + 1 %>
-               <%= content_tag :td, inspection.name %>
-               <%= content_tag :td, inspection.dependency.name %>
-               <%= content_tag :td do %>
-               <%= link_to t('form.actions.edit'), edit_dashboard_inspection_path(inspection) , :class => 'btn btn-success btn-xs outlineverde'%> 
-               <%= link_to t('form.actions.destroy'), dashboard_inspection_path(inspection), method: :delete, data: { confirm: t('form.confirmations.delete_inspection') }, :class => 'btn btn-success btn-xs outlineverde' %>
-               <% end %>
-               <% end %>
-               <% end %>
-             </tbody>
-           </table>
-
-           <p>
-            Descargar:
-            <%= link_to "CSV", dashboard_inspections_path( format: "csv"), :class => 'btn btn-success btn-xs outlineverde' %>
-            <%#= link_to "XLS", dashboard_inspections_path( format: "xls") %>
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="col-md-8">
+     <h2> <%= t('titles.inspections') %></h2>
+    </div>
+    <div class="col-md-4 text-right">
+      Descargar:
+      <%= link_to "CSV", dashboard_inspections_path( format: "csv"), :class => 'btn btn-success btn-lg outlineverde' %>
+    </div>
   </div>
-</div>
-</div>
-</div>
+  <hr>
 
+  <div class="row text-right">
+    <%= link_to t('.new_inspection'), new_dashboard_inspection_path, :class => 'btn btn-success btn-lg outlineverde texto-padding-right' %>
+  </div>
+  <table class="table">
+   <thead>
+     <th>#</th>
+     <th><%= t('.name') %></th>
+     <th><%= t('.dependency') %></th>
+   </thead>
+   <tbody>
+     <% @inspections.each_with_index do |inspection, idx| %>
+     <%= content_tag :tr do %>
+     <%= content_tag :td, idx + 1 %>
+     <%= content_tag :td, truncate(inspection.name, :length => 70) %>
+     <%= content_tag :td, inspection.dependency.name %>
+     <%= content_tag :td do %>
+     <div class="text-right">
+      <%= link_to t('form.actions.edit'), edit_dashboard_inspection_path(inspection) , :class => 'btn btn-success btn-lg outlineverde'%> | 
+      <%= link_to t('form.actions.destroy'), dashboard_inspection_path(inspection), method: :delete, data: { confirm: t('form.confirmations.delete_inspection') }, :class => 'btn btn-success btn-lg outlineverde' %>
+      </div>
+     <% end %>
+     <% end %>
+     <% end %>
+   </tbody>
+ </table>
+</div>

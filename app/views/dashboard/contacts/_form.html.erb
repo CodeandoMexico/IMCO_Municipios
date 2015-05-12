@@ -1,22 +1,20 @@
-<div id="form-container">
-  <%= form_for  @user, html: { class: 'form-horizontal' } do |f| %>
-<%= render "shared/show_flash" %>
+  <%= form_for  @user, html: { class: 'form-container' } do |f| %>
+  <%= render "shared/show_flash" %>
   <div class="form-group">
-    <%= f.label t('dashboard.contacts.edit.correo'), class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <div class="col-md-8 col-md-offset-2">
+      <%= t('dashboard.contacts.edit.correo') %>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   </div>
 
-   <div class="form-group">
-    <%= f.label t('dashboard.contacts.edit.password'), class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+  <div class="form-group">
+    <div class="col-md-8 col-md-offset-2">
+      <%= t('dashboard.contacts.edit.password') %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
   </div>
 
-  <div class="actions bg-primary-negro">
-    <%= f.submit t('dashboard.contacts.edit.ok'), :class => 'btn btn-success btn-sm outlineverde' %>
+  <div class="col-md-6 col-md-offset-3 text-center texto-padding-top">
+    <%= f.submit t('dashboard.contacts.edit.ok'), :class => 'btn btn-success btn-lg outlineverde' %>
   </div>
   <% end %>
-</div>

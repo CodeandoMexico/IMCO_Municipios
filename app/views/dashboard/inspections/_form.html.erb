@@ -1,86 +1,84 @@
-<div id="form-container">
-  <%= form_for [:dashboard, @inspection], html: { class: 'form-horizontal' } do |f| %>
+  <%= form_for [:dashboard, @inspection], html: { class: 'form-container' } do |f| %>
     <%= render "shared/show_flash" %>
 
     <div class="form-group">
-      <%= f.label :name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <div class="col-md-8 col-md-offset-2">
+      <%= t('.name') %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :matter, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+       <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.matter') %>
         <%= f.text_field :matter, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :duration, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+       <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.duration') %>
         <%= f.text_field :duration, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :rule, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.rule') %>
         <%= f.text_field :rule, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :before, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+       <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.before') %>
         <%= f.text_field :before, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :during, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.during') %>
         <%= f.text_field :during, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :after, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.after') %>
         <%= f.text_field :after, class: 'form-control' %>
       </div>
     </div>
 
       <div class="form-group">
-      <%= f.label :sanction, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.sanction') %>
         <%= f.text_field :sanction, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :dependencia, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-        <%= collection_select(:inspection, :dependency_id, @dependency, :id, :name, {:prompt => false}, class: 'form-control') %>
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.dependency_id') %>
+          <%= f.select :dependency_id, @dependency.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
       </div>
     </div>
 
     <div class="form-group">
-      <%=f.label :requirement_ids, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.requirement_ids') %>
         <%= f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
       </div>
     </div>
 
      <div class="form-group">
-      <%=f.label :line_ids, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+ <div class="col-md-8 col-md-offset-2 texto-margin-top">
+      <%= t('.line_ids') %>
         <%= f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}%>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit t('.create_inspection'), :class => 'btn btn-success btn-xs outlineverde'  %>
+    <div class="col-md-6 col-md-offset-3 text-center texto-padding-top">
+      <%= f.submit t('.create_inspection'), :class => 'btn btn-success btn-lg outlineverde'  %>
     </div>
   <% end %>
-</div>
