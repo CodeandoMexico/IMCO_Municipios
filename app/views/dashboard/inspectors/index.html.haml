@@ -1,0 +1,25 @@
+%h2= t('titles.inspectors')
+.row.text-right
+  = link_to t('.new_inspector'), new_dashboard_inspector_path, :class => 'btn btn-success btn-xs outlineverde'
+
+- if @inspectors.any?
+  %table{ class:'table table-striped table-bordered table-hover' }
+    %thead
+      %th #
+      %th= t('.name')
+      %th= t('.dependency')
+      %th= t('.actions')
+    %tbody
+      %tr
+        - @inspectors.each_with_index do |inspector, idx|
+          %td= idx + 1
+          %td= inspector.name
+          %td= inspector.dependency.name
+          %td
+            = link_to t('form.actions.edit'), edit_dashboard_inspector_path(inspector), class: 'btn btn-success btn-xs outlineverde'
+            = link_to t('form.actions.destroy'), dashboard_inspector_path(inspector), method: :delete, data: { confirm: t('form.confirmations.delete_inspector') }, class: 'btn btn-success btn-xs outlineverde'
+  %p
+    Descargar:
+    = link_to "CSV", dashboard_inspectors_path( format: "csv"), :class => 'btn btn-success btn-xs outlineverde'
+- else
+  = render 'shared/empty_resource', message: t('.no_inspectors_available')

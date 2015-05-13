@@ -1,0 +1,17 @@
+%h2= t('titles.reports')
+- if @complaints.any?
+  %table{ class:'table table-striped table-bordered table-hover' }
+    %thead
+      %th #
+      %th= t('.negocio')
+      %th= t('.razón')
+      %th= t('.fecha')
+    %tbody
+      %tr
+        - @complaints.each_with_index do |complaint, idx|
+          %td= idx
+          %td= complaint.user
+          %td= complaint.reason
+          %td= complaint.created_at
+- else
+  = render 'shared/empty_resource', message: t('.no_complaints_available')
