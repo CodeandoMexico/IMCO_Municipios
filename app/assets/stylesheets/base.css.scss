@@ -1,2 +1,9 @@
+@import "public/variables";
+@import "public/colors";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.empty-resource {
+  text-align: center;
+  color: $grey-500;
+}

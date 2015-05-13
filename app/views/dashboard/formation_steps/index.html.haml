@@ -1,6 +1,5 @@
 %h2= t('titles.formation_steps')
-.row.text-right
-  = link_to t('.new_formation_step'), new_dashboard_formation_step_path, :class => 'btn btn-success btn-xs outlineverde'
+= link_to t('.new_formation_step'), new_dashboard_formation_step_path, class: 'btn btn-xs btn-success outlineverde pull-right slight-bottom-margin'
 
 - if @formation_steps.any?
   %table{ class:'table table-striped table-bordered table-hover' }
@@ -11,16 +10,18 @@
       %th= t('.dependency')
       %th= t('.actions')
     %tbody
-      %tr
-        - @formation_steps.each_with_index do |formation, idx|
+      - @formation_steps.each_with_index do |formation, idx|
+        %tr
           %td= idx + 1
           %td= formation.name
           %td= type(formation.type_formation_step)
           %td= formation.city.name
           %td
-            = link_to t('form.actions.edit'), edit_dashboard_formation_step_path(formation), class: 'btn btn-success btn-xs outlineverde'
-            = link_to t('form.actions.destroy'), dashboard_formation_step_path(formation), method: :delete, data: { confirm: t('form.confirmations.delete_formation_step') } , class: 'btn btn-success btn-xs outlineverde'
-  %p
+            = link_to edit_dashboard_formation_step_path(formation) do
+              %i.fa.fa-pencil
+            = link_to dashboard_formation_step_path(formation), method: :delete, data: { confirm: t('form.confirmations.delete_formation_step') } do
+              %i.fa.fa-trash
+  %p.pull-right
     Descargar:
     = link_to "CSV", dashboard_formation_steps_path( format: "csv") , :class => 'btn btn-success btn-xs outlineverde'
 - else

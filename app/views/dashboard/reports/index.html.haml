@@ -7,8 +7,8 @@
       %th= t('.razón')
       %th= t('.fecha')
     %tbody
-      %tr
-        - @complaints.each_with_index do |complaint, idx|
+      - @complaints.each_with_index do |complaint, idx|
+        %tr
           %td= idx
           %td= complaint.user
           %td= complaint.reason
