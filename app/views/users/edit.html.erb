@@ -88,6 +88,7 @@ var geocoder;
 var marker;
 var infowindow = new google.maps.InfoWindow();
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
+  geocoder = new google.maps.Geocoder();
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
 });
@@ -99,14 +100,15 @@ function displayOnMap(position){
   },{ draggable: true});
   handler.map.centerOn(marker);
   handler.getMap().setZoom(18);
+
   google.maps.event.addListener(marker.serviceObject, 'dragend', function() {
     updateFormLocation(this.getPosition());
   });
+   codeLatLng(position.coords.latitude,position.coords.longitude);
 };
 function updateFormLocation(latLng) {
   $('#latitude').val(latLng.lat());
   $('#longitude').val(latLng.lng());
-  geocoder = new google.maps.Geocoder();
   codeLatLng(latLng.lat(),latLng.lng());
 }
   function codeLatLng(lat, lng) {
