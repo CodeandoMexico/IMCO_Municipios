@@ -1,0 +1,24 @@
+#form-container
+  = form_for [:dashboard, @line], html: { class: 'form-horizontal' } do |f|
+    - if @line.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@line.errors.count, "error")
+          prohibited this lines from being saved:
+
+        %ul
+          - @line.errors.full_messages.each do |message|
+            %li= message
+
+    .form-group
+      = f.label :name, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :name, class: 'form-control'
+
+    .form-group
+      = f.label :description, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :description, class: 'form-control'
+
+    .actions.pull-right
+      = f.submit t('.create_lines'), :class => 'btn btn-sm btn-success outlineverde'
