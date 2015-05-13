@@ -66,4 +66,4 @@
         = f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
 
     .actions.pull-right
-      = f.submit t('.create_procedures'), :class => 'btn btn-sm btn-success outlineverde'
+      = f.submit t('.create_procedures'), class: 'btn btn-sm btn-success outlineverde'
