@@ -42,6 +42,9 @@
         </div>
           <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
       </div>
+      <div style='width: 800px;'>
+        <div id="geolocation" style='width: 800px; height: 400px;'></div>
+      </div> 
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">
@@ -68,9 +71,7 @@
                 <span><%= link_to(@user.land_permission_file_identifier, @user.land_permission_file_url, target: "_blank", style:"color: black;") if @user.land_permission_file.present? %></span>
                   <%= f.file_field :land_permission_file %>
               </div>
-              <div style='width: 800px;'>
-                <div id="geolocation" style='width: 800px; height: 400px;'></div>
-              </div> 
+              
             <div class="col-md-12">
               <div class="col-md-6 col-md-offset-3 text-center texto-padding-top">
                 <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde pull-right' %>
@@ -83,17 +84,44 @@
 
 <script type="text/javascript">
 var handler = Gmaps.build('Google');
+var geocoder;
+var marker;
+var infowindow = new google.maps.InfoWindow();
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
 });
 
 function displayOnMap(position){
-  var marker = handler.addMarker({
+   marker = handler.addMarker({
     lat: position.coords.latitude,
     lng: position.coords.longitude
   },{ draggable: true});
   handler.map.centerOn(marker);
-  handler.getMap().setZoom(16);
+  handler.getMap().setZoom(18);
+  google.maps.event.addListener(marker.serviceObject, 'dragend', function() {
+    updateFormLocation(this.getPosition());
+  });
 };
+function updateFormLocation(latLng) {
+  $('#latitude').val(latLng.lat());
+  $('#longitude').val(latLng.lng());
+  geocoder = new google.maps.Geocoder();
+  codeLatLng(latLng.lat(),latLng.lng());
+}
+  function codeLatLng(lat, lng) {
+    var latlng = new google.maps.LatLng(lat,lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+            document.getElementById('user_address').value = results[1].formatted_address;
+        }
+        else{
+          alert("Geocoder sin resultado "+ status);
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
 </script>
