@@ -92,7 +92,7 @@ function displayOnMap(position){
   var marker = handler.addMarker({
     lat: position.coords.latitude,
     lng: position.coords.longitude
-  });
+  },{ draggable: true});
   handler.map.centerOn(marker);
   handler.getMap().setZoom(16);
 };
