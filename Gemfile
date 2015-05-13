@@ -52,6 +52,9 @@ gem 'mini_magick'
 
 gem "breadcrumbs_on_rails" #breadcrumbs
 
+gem 'gmaps4rails' #maps
+gem 'underscore'
+
 group :development, :test do
   # Load env variables
   gem 'figaro'

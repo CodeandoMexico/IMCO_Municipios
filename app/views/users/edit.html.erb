@@ -1,100 +1,121 @@
-    <%flash.each do |key, value| %>
-    <div class="alert alert-success"><%=value%></div>
-    <% end %>
-    <div id="wrap">
-      <div id="main" class="clear-top">
-        <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
-        <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
-        <!-- <hr class="small"> -->
-        <div id="authentication">
-          <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
-          <div class="form-group">
-            <div class="row">
-              <div class= "col-md-4">
-               <%= f.label t('.name') %>
-             </div>
-             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:name][0].to_s%>
-             </div>
-           </div>
-           <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo' %>
-         </div>
-         <!-- <hr class="small"> -->
-
-         <div class="form-group">
-          <div class="row">
-            <div class= "col-md-4">
-             <%= f.label t('.correo') %>
-           </div>
-           <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:email][0].to_s%>
-           </div>
-         </div>
-         <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico' %>
-       </div>
-       <!-- <hr class="small"> -->
-
-       <div class="form-group">
-        <div class="row">
-          <div class= "col-md-4">
-           <%= f.label t('.business_name') %>
-         </div>
-         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%>
-         </div>
-       </div>
-       <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
-     </div>
-
+<%flash.each do |key, value| %>
+  <div class="alert alert-success"><%=value%></div>
+<% end %>
+<div id="wrap">
+  <div id="main" class="clear-top">
+    <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
+    <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
+    <!-- <hr class="small"> -->
+    <div id="authentication">
+      <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">
-           <%= f.label t('.city_id') %>
+           <%= f.label t('.name') %>
          </div>
-         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%>
+         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:name][0].to_s%>
          </div>
        </div>
-       <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
+       <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo' %>
      </div>
      <!-- <hr class="small"> -->
 
      <div class="form-group">
       <div class="row">
         <div class= "col-md-4">
-         <%= f.label t('.address') %>
+         <%= f.label t('.correo') %>
        </div>
-       <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%>
+       <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:email][0].to_s%>
        </div>
      </div>
-     <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio' %>
+     <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico' %>
    </div>
    <!-- <hr class="small"> -->
 
    <div class="form-group">
     <div class="row">
       <div class= "col-md-4">
-        <%= f.label t('.operation_license') %>
-      </div>
-      <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:operation_license][0].to_s%>
-      </div>
+       <%= f.label t('.business_name') %>
+     </div>
+     <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%>
+     </div>
+   </div>
+   <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
+ </div>
+
+ <div class="form-group">
+  <div class="row">
+    <div class= "col-md-4">
+     <%= f.label t('.city_id') %>
+   </div>
+   <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%>
+   </div>
+ </div>
+ <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
+</div>
+<!-- <hr class="small"> -->
+
+<div class="form-group">
+  <div class="row">
+    <div class= "col-md-4">
+     <%= f.label t('.address') %>
+   </div>
+   <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%>
+   </div>
+ </div>
+ <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio' %>
+</div>
+<!-- <hr class="small"> -->
+
+<div class="form-group">
+  <div class="row">
+    <div class= "col-md-4">
+      <%= f.label t('.operation_license') %>
     </div>
-    <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón' %>
+    <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:operation_license][0].to_s%>
+    </div>
+  </div>
+  <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón' %>
 
-  </div>
-  <!-- <hr class="small"> -->
-  <div class="form-group">
-    <%= f.label t('.operation_license_file') %><br />
-    <span><%= link_to(@user.operation_license_file_identifier, @user.operation_license_file_url, target: "_blank", style:"color: black;") if @user.operation_license_file.present? %></span>
-    <%= f.file_field :operation_license_file %>
-  </div>
+</div>
+<!-- <hr class="small"> -->
+<div class="form-group">
+  <%= f.label t('.operation_license_file') %><br />
+  <span><%= link_to(@user.operation_license_file_identifier, @user.operation_license_file_url, target: "_blank", style:"color: black;") if @user.operation_license_file.present? %></span>
+  <%= f.file_field :operation_license_file %>
+</div>
 
-  <div class="form-group">
-    <%= f.label t('.land_permission_file') %><br />
-    <span><%= link_to(@user.land_permission_file_identifier, @user.land_permission_file_url, target: "_blank", style:"color: black;") if @user.land_permission_file.present? %></span>
-    <%= f.file_field :land_permission_file %>
-  </div>
-  <%#= render "shared/error_messages", :target => @user %>  
-  <div class="actions">
-    <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde pull-right' %>
-  </div>
-  <% end %>
+<div class="form-group">
+  <%= f.label t('.land_permission_file') %><br />
+  <span><%= link_to(@user.land_permission_file_identifier, @user.land_permission_file_url, target: "_blank", style:"color: black;") if @user.land_permission_file.present? %></span>
+  <%= f.file_field :land_permission_file %>
+</div>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div> 
+<div class="actions">
+  <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde pull-right' %>
+</div>
+<% end %>
 </div>
 </div>
 </div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": 0,
+      "lng": 0,
+      "picture": {
+        "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+        "width":  36,
+        "height": 36
+      },
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
