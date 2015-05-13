@@ -196,6 +196,7 @@ GEM
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     fssm (0.2.10)
+    geocoder (1.2.8)
     gmaps4rails (2.1.2)
     hashie (3.4.1)
     hike (1.2.3)
@@ -374,6 +375,7 @@ DEPENDENCIES
   figaro
   fog
   font-awesome-rails
+  geocoder
   gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
