@@ -451,6 +451,9 @@ es:
       save: Guardar
       city_id: Municipio de tu negocio
       mapa: Ubicación del negocio
+      line: Giro de tu negocio
+      phone: Teléfono
+      schedule: Horario
   layouts:
     blanco:
       new: NUEVO NEGOCIO

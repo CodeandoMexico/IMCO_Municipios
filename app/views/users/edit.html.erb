@@ -40,15 +40,32 @@
           </div>
           <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%></div>
         </div>
-          <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
+          <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select}, { class: 'chosen-select',:onchange=>"changeLines()" }%>
       </div>
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">
-            <%= f.label t('.mapa') %></div>
-        <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
+            <%= f.label t('.line') %>
+          </div>
+          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%></div>
+        </div>
+          <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select }, { class: 'chosen-select' }%>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-12">
+            <%= f.label t('.mapa') %>
+          </div>
         </div>
           <div id="geolocation" style='width: 100%; height: 400px;'></div>
+          <div class="row texto-margin-center">
+            <div class= "col-md-6 ">
+              <%= f.text_field :latitude , class: 'form-controler', :placeholder => 'Latitud', :readonly => true %>
+            </div>
+            <div class= "col-md-6">
+              <%= f.text_field :longitude , class: 'form-controler', :placeholder => 'Longitud', :readonly => true%>
+            </div>
+          </div>
       </div>
       <div class="form-group">
         <div class="row">
@@ -57,6 +74,20 @@
         <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
         </div>
         <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio' %>
+      </div>
+            <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+            <%= f.label t('.phone') %></div>
+        </div>
+        <%= f.text_field :phone ,  class: 'form-controler', :placeholder => 'Teléfono del negocio' %>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+            <%= f.label t('.schedule') %></div>
+        </div>
+        <%= f.text_field :schedule ,  class: 'form-controler', :placeholder => 'Horario del negocio' %>
       </div>
       <div class="form-group">
         <div class="row">
@@ -94,8 +125,14 @@ var marker;
 var infowindow = new google.maps.InfoWindow();
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
   geocoder = new google.maps.Geocoder();
-  if(navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(displayOnMap);
+  rails_condition = <%= @user.latitude.nil? %>;
+if(rails_condition){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(displayOnMap);
+  }  
+}else{
+    alert("ajustando");
+}
 });
 
 function displayOnMap(position){
@@ -117,6 +154,8 @@ function updateFormLocation(latLng) {
   codeLatLng(latLng.lat(),latLng.lng());
 }
   function codeLatLng(lat, lng) {
+    document.getElementById('user_latitude').value = lat;
+    document.getElementById('user_longitude').value = lng;
     var latlng = new google.maps.LatLng(lat,lng);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -124,11 +163,14 @@ function updateFormLocation(latLng) {
             document.getElementById('user_address').value = results[1].formatted_address;
         }
         else{
-          alert("Geocoder sin resultado "+ status);
+          alert("Geocoder Not results "+ status);
         }
       } else {
         alert("Geocoder failed due to: " + status);
       }
     });
+  }
+  function changeLines(){
+    <% @lines = Line.all %>
   }
 </script>
