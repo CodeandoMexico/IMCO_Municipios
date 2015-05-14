@@ -243,8 +243,10 @@ es:
     index:
       title: Selecciona una opción
     show:
-      nuevo: Nuevo negocio
+      floor_use: Usos de suelo
       tramite: Trámites
+      new_business: Nuevo negocio
+      already_have_a_business: Ya tengo negocio
       inspecciones: Inspecciones
       inspeccion: Inspecciones
       inspector: Inspectores
