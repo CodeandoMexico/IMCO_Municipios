@@ -201,17 +201,17 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li>
-                  <%= link_to edit_user_path(current_user) do %>
+                <!-- <li>
+                  <%#= link_to edit_user_path(current_user) do %>
                     <i class="fa fa-user fa-fw"></i> <%= t('dashboard.user_profile') %>
-                  <% end %>
-                </li>
+                  <%# end %>
+                </li> -->
                 <!-- <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li> -->
-                <li class="divider"></li>
+                <!-- <li class="divider"></li> -->
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete do %>
-                    <i class="fa fa-sign-out fa-fw"></i> <%= t('dashboard.logout') %></a>
+                    <i class="fa fa-sign-out fa-fw"></i> <%= t('dashboard.menu.logout') %></a>
                   <% end %>
                 </li>
             </ul>

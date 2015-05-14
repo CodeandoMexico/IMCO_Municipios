@@ -1,19 +1,26 @@
-%h2= t('titles.reports')
-- if @complaints.any?
-  %table{ class:'table table-striped table-bordered table-hover' }
-    %thead
-      %th #
-      %th= t('.negocio')
-      %th= t('.razón')
-      %th= t('.fecha')
-    %tbody
-      - @complaints.each_with_index do |complaint, idx|
-        %tr
-          %td= idx
-          %td
-            = link_to t('form.actions.show'), dashboard_report_path(complaint) do
-              = complaint.user
-          %td= COMPLAINTS[complaint.reason]
-          %td= complaint.created_at
-- else
-  = render 'shared/empty_resource', message: t('.no_complaints_available')
+.row
+  .col-sm-12
+    %h1.page-header= t('titles.reports')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+    .panel-body
+      - if @complaints.any?
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %thead
+            %th #
+            %th= t('.negocio')
+            %th= t('.razón')
+            %th= t('.fecha')
+          %tbody
+            - @complaints.each_with_index do |complaint, idx|
+              %tr
+                %td= idx
+                %td
+                  = link_to t('form.actions.show'), dashboard_report_path(complaint) do
+                    = complaint.user
+                %td= COMPLAINTS[complaint.reason]
+                %td= complaint.created_at
+      - else
+        = render 'shared/empty_resource', message: t('.no_complaints_available')

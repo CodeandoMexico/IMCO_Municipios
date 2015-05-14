@@ -1,5 +1,15 @@
 es:
   dashboard:
+    menu:
+      complaints: Denuncias
+      dependencies: Dependencias
+      lines: Giros
+      formation_steps: Trámites de Apertura
+      requirements: Requerimientos
+      procedures: Trámites Generales
+      inspections: Inspecciones
+      inspectors: Inspectores
+      logout: Cerrar sesión
     show:
       dependencias: Dependencias
       giros: Giros
@@ -32,6 +42,7 @@ es:
         fecha: Fecha
         colonia: Domicilio
         usuario_eliminado: Usuario eliminado
+        no_complaints_available: No hay denuncias.
       show:
         negocio: Negocio
         fecha: 'Fecha:'
@@ -50,6 +61,7 @@ es:
         dependency: Dependencia
         actions: Acciones
         new_inspection: Nueva inspección
+        no_inspections_available: No hay inspecciones disponibles.
       new:
         title: Nueva inspección
       edit:
@@ -64,28 +76,29 @@ es:
         during: Durante
         after: Despues
         sanction: Sanción
-        dependency_id: Dependecia
-        requirement_ids: Requerimientos
-        line_ids: Giros
+        dependency: Dependecia
+        requirements: Requerimientos
+        lines: Giros
     inspectors:
       index:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
         new_inspector: Nuevo inspector
+        no_inspectors_available: No hay inspectores disponibles.
       new:
         title: Nuevo inspector
       edit:
         title: Editar inspector
       form:
         create_inspector: Guardar cambios
-        nombre: Nombre
+        name: Nombre
         validity: Vigencia
         matter: Materia
         supervisor: Supervisor
         contact: contacto
         photo: Foto
-        dependency_id: Dependencia
+        dependency: Dependencia
     formation_steps:
       index:
         name: Nombre
@@ -94,13 +107,14 @@ es:
         municipio: Municipio
         actions: Acciones
         new_formation_step: Nuevo trámite apertura
+        no_formation_steps_available: No hay trámites de apertura disponibles.
       new:
         title: Nuevo trámite de apertura
       edit:
         title: Editar trámite de apertura
       form:
         create_formation_steps: Guardar cambios
-        nombre: Nombre
+        name: Nombre
         description: Descripción
         path: Path
         type_formation_step: Tipo de persona
@@ -110,13 +124,14 @@ es:
         municipio: Municipio
         actions: Acciones
         new_lines: Nuevo Giro
+        no_lines_available: No hay giros disponibles.
       new:
         title: Nuevo Giro
       edit:
         title: Editar Giro
       form:
         create_lines: Guardar cambios
-        nombre: Nombre
+        name: Nombre
         description: Descripción
     requirements:
       index:
@@ -124,28 +139,30 @@ es:
         municipio: Municipio
         actions: Acciones
         new_requirements: Nuevo requerimiento
+        no_requirements_available: No hay requerimientos disponibles.
       new:
         title: Nuevo requerimiento
       edit:
         title: Editar requerimiento
       form:
-        create_requirements: Guardar cambios
-        nombre: Nombre
+        name: Nombre
         description: Descripción
         path: Path
+        create_requirements: Guardar cambios
     procedures:
       index:
         name: Nombre
         dependency: Dependencia
         actions: Acciones
         new_procedures: Nuevo trámite
+        no_procedures_available: No hay procedimientos disponibles.
       new:
         title: Nuevo trámite
       edit:
         title: Editar trámite
       form:
         create_procedures: Guardar cambios
-        nombre: Nombre
+        name: Nombre
         long: Duración
         cost: Costo
         validity: Vigencia
@@ -153,19 +170,20 @@ es:
         type_procedure: Tipo de trámite
         category: Categoría
         sare: SARE
-        dependency_id: Dependencia
-        requirement_ids: Requerimientos
-        line_ids: Giros
+        dependency: Dependencia
+        requirements: Requerimientos
+        lines: Giros
     dependencies:
       index:
         name: Nombre
         municipio: Municipio
         actions: Acciones
         new_dependency: Nueva dependencia
+        no_dependencies_available: No hay dependencias disponibles.
       new:
         title: Nueva dependencia
       edit:
         title: Editar dependencia
       form:
         create_dependency: Guardar cambios
-        nombre: Nombre
+        name: Nombre
