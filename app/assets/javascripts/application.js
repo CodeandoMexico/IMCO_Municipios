@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-switch
 //= require chosen-jquery
-//= require_tree .
+//= require_tree ./public
 
 var loadChosen = function(){
     $('.chosen-select').chosen({

@@ -1,0 +1,26 @@
+%h2= t('titles.procedures')
+= link_to t('.new_procedures'), new_dashboard_procedure_path, class: 'btn btn-xs btn-success outlineverde pull-right slight-bottom-margin'
+
+- if @procedures.any?
+  %table{ class:'table table-striped table-bordered table-hover' }
+    %thead
+      %th #
+      %th= t('.name')
+      %th= t('.dependencia')
+      %th= t('.actions')
+    %tbody
+      - @procedures.each_with_index do |procedure, idx|
+        %tr
+          %td= idx + 1
+          %td= truncate(procedure.name, length: 70)
+          %td= procedure.dependency.name
+          %td
+            = link_to edit_dashboard_procedure_path(procedure) do
+              %i.fa.fa-pencil
+            = link_to dashboard_procedure_path(procedure), method: :delete, data: { confirm: t('form.confirmations.delete_procedure') } do
+              %i.fa.fa-trash
+  %p.pull-right
+    Descargar:
+    = link_to "CSV", dashboard_procedures_path( format: "csv") , class: 'btn btn-success btn-xs outlineverde'
+- else
+  = render 'shared/empty_resource', message: t('.no_procedures_available')

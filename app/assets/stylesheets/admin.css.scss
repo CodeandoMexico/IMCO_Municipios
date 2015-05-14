@@ -1,0 +1,30 @@
+/*
+ *= require base
+ *= require bootstrap3-switch
+ *= require metisMenu/dist/metisMenu
+ *= require timeline
+ *= require sb-admin-2
+ *= require morrisjs/morris
+ *= require font-awesome
+ *= require_tree ./admin
+ *= require chosen
+ *= require_self
+ */
+
+$default_margin_helpers: 15px;
+
+.slight-bottom-margin{
+  margin-bottom: $default_margin_helpers;
+}
+
+.slight-right-margin{
+  margin-right: $default_margin_helpers;
+}
+
+.slight-left-margin{
+  margin-left: $default_margin_helpers;
+}
+
+.slight-top-margin{
+  margin-top: $default_margin_helpers;
+}
