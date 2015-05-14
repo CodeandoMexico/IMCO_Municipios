@@ -42,9 +42,14 @@
         </div>
           <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select }, { class: 'chosen-select' }%>
       </div>
-      <div style='width: 800px;'>
-        <div id="geolocation" style='width: 800px; height: 400px;'></div>
-      </div> 
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+            <%= f.label t('.mapa') %></div>
+        <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
+        </div>
+          <div id="geolocation" style='width: 100%; height: 400px;'></div>
+      </div>
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">

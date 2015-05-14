@@ -450,6 +450,7 @@ es:
       land_permission_file: Permiso de uso de suelo (Archivo)
       save: Guardar
       city_id: Municipio de tu negocio
+      mapa: Ubicación del negocio
   layouts:
     blanco:
       new: NUEVO NEGOCIO
