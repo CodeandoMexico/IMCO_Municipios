@@ -11,13 +11,14 @@ class UsersController < ApplicationController
    end
 
    def edit
-    @lines = Line.where(name: 'false')
     redirect_to root_path if current_user.nil?
     @user = current_user
+
     unless @user.city_id.nil?
       @city_select = City.find(@user.city_id).id
       @lines = Line.where(city_id: @user.city_id)
     end
+
     unless @user.line_id.nil?
       @line_select = Line.find(@user.line_id).id
     end
@@ -59,6 +60,7 @@ class UsersController < ApplicationController
     redirect_to edit_user_path, notice: t('flash.users.updated')
   end
 
+
   private
 
   def user_params
@@ -95,5 +97,6 @@ class UsersController < ApplicationController
 
   def set_city
     @cities = City.order(:name)
+    @lines = Line.where(city_id: nil)
   end
 end

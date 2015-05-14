@@ -42,12 +42,11 @@
         </div>
           <%= f.select :city_id, @cities.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @city_select}, { class: 'chosen-select',:onchange=>"changeLines()" }%>
       </div>
-      <div class="form-group">
+      <div class="form-group line_for_city hide">
         <div class="row">
           <div class= "col-md-4">
             <%= f.label t('.line') %>
           </div>
-          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%></div>
         </div>
           <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select }, { class: 'chosen-select' }%>
       </div>
@@ -131,18 +130,24 @@ if(rails_condition){
       navigator.geolocation.getCurrentPosition(displayOnMap);
   }  
 }else{
-    alert("ajustando");
+    displayOnMap('loading')
 }
 });
 
 function displayOnMap(position){
-   marker = handler.addMarker({
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
-  },{ draggable: true});
+  if(position!='loading'){
+     marker = handler.addMarker({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    },{ draggable: true});
+  }else{
+    marker = handler.addMarker({
+      lat: <%= @user.latitude %>,
+      lng: <%= @user.longitude %>
+    },{ draggable: true});
+  }
   handler.map.centerOn(marker);
   handler.getMap().setZoom(18);
-
   google.maps.event.addListener(marker.serviceObject, 'dragend', function() {
     updateFormLocation(this.getPosition());
   });
@@ -171,6 +176,19 @@ function updateFormLocation(latLng) {
     });
   }
   function changeLines(){
-    <% @lines = Line.all %>
+    var e = document.getElementById("user_city_id");
+    if(e.value == "" || e.value == null){
+      $(".line_for_city").addClass("hide");
+      <%=load_lines(e.value)%>
+    }else{
+      $(".line_for_city").removeClass("hide");
+    }
   }
+
+  window.onload = function() {
+  var e = document.getElementById("user_city_id");
+  if(e.value != "" || e.value != null){
+    $(".line_for_city").removeClass("hide");
+  }
+}
 </script>
