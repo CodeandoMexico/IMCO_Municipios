@@ -1,15 +1,19 @@
 /*
- *= require base
  *= require bootstrap3-switch
+ *= require font-awesome
  *= require metisMenu/dist/metisMenu
  *= require timeline
  *= require sb-admin-2
  *= require morrisjs/morris
- *= require font-awesome
- *= require_tree ./admin
  *= require chosen
+ *= require_tree ./admin
+ *= require base
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
 
 $default_margin_helpers: 15px;
 

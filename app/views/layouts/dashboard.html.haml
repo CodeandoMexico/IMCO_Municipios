@@ -23,11 +23,6 @@
   .wrapper
     = render 'layouts/admin_top_and_side_navbar'
     #page-wrapper
-      .row
-        -# .col-lg-12
-          %h1.page-header Dashboard
-
-        / Kpis
-        -# = render 'shared/admin/kpi', kpis: kpis
-
-        = yield
+      / Kpis
+      -# = render 'shared/admin/kpi', kpis: kpis
+      = yield

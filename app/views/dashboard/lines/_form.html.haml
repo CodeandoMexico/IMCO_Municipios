@@ -2,12 +2,12 @@
   = form_for [:dashboard, @line], html: { class: 'form-horizontal' } do |f|
     = render 'shared/show_flash'
     .form-group
-      = f.label :name, class: 'col-sm-2 control-label'
+      = f.label t('.name'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :name, class: 'form-control'
 
     .form-group
-      = f.label :description, class: 'col-sm-2 control-label'
+      = f.label t('.description'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :description, class: 'form-control'
 

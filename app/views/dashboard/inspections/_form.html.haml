@@ -2,59 +2,59 @@
   = form_for [:dashboard, @inspection], html: { class: 'form-horizontal' } do |f|
     = render 'shared/show_flash'
     .form-group
-      = f.label :name, class: 'col-sm-2 control-label'
+      = f.label t('.name'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :name, class: 'form-control'
 
     .form-group
-      = f.label :matter, class: 'col-sm-2 control-label'
+      = f.label t('.matter'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :matter, class: 'form-control'
 
     .form-group
-      = f.label :duration, class: 'col-sm-2 control-label'
+      = f.label t('.duration'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :duration, class: 'form-control'
 
     .form-group
-      = f.label :rule, class: 'col-sm-2 control-label'
+      = f.label t('.rule'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :rule, class: 'form-control'
 
     .form-group
-      = f.label :before, class: 'col-sm-2 control-label'
+      = f.label t('.before'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :before, class: 'form-control'
 
     .form-group
-      = f.label :during, class: 'col-sm-2 control-label'
+      = f.label t('.during'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :during, class: 'form-control'
 
     .form-group
-      = f.label :after, class: 'col-sm-2 control-label'
+      = f.label t('.after'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :after, class: 'form-control'
 
     .form-group
-      = f.label :sanction, class: 'col-sm-2 control-label'
+      = f.label t('.sanction'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_field :sanction, class: 'form-control'
 
     .form-group
-      = f.label :dependencia, class: 'col-sm-2 control-label'
+      = f.label t('.dependency'), class: 'col-sm-2 control-label'
       .col-sm-10
         = collection_select(:inspection, :dependency_id, @dependency, :id, :name, {:prompt => false}, class: 'form-control')
 
     .form-group
-      = f.label :requirement_ids, class: 'col-sm-2 control-label'
+      = f.label t('.requirements'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
 
     .form-group
-      = f.label :line_ids, class: 'col-sm-2 control-label'
+      = f.label t('.lines'), class: 'col-sm-2 control-label'
       .col-sm-10
         = f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
 
     .actions.bg-primary-negro.pull-right
-      = f.submit t('.create_inspection'), :class => 'btn btn-success btn-xs outlineverde'
+      = f.submit t('.create_inspection'), :class => 'btn btn-sm btn-success outlineverde'
