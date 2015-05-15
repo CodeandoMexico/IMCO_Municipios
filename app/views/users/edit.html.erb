@@ -48,7 +48,7 @@
             <%= f.label t('.line') %>
           </div>
         </div>
-          <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select }, { class: 'chosen-select' }%>
+          <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select}, { class: 'chosen-select' }%>
       </div>
       <div class="form-group">
         <div class="row">
@@ -165,7 +165,7 @@ function updateFormLocation(latLng) {
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
-            document.getElementById('user_address').value = results[1].formatted_address;
+          document.getElementById('user_address').value = results[1].formatted_address;
         }
         else{
           alert("Geocoder Not results "+ status);
@@ -179,11 +179,18 @@ function updateFormLocation(latLng) {
     var e = document.getElementById("user_city_id");
     if(e.value == "" || e.value == null){
       $(".line_for_city").addClass("hide");
-      <%=load_lines(e.value)%>
     }else{
       $(".line_for_city").removeClass("hide");
     }
+    reloadLines(e.value);
   }
+
+  function reloadLines(values){
+    var url = window.location.href.split('?')[0];
+    window.location.href =
+    window.location.href = url + "?city="+values;
+  }
+
 
   window.onload = function() {
   var e = document.getElementById("user_city_id");
