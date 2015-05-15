@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
     unless @user.city_id.nil?
       @city_select = City.find(@user.city_id).id
+      @lines = Line.where(city_id: @user.city_id)
     end
     
     unless @user.line_id.nil?
@@ -23,9 +24,9 @@ class UsersController < ApplicationController
       @lines = Line.where(city_id: Line.find(@user.line_id).city.id)
     end
 
-      if params[:city]
-       @lines = Line.where(city_id: params[:city])
-       @city_select = City.find(params[:city]).id
+    unless params[:city].blank?
+      @lines = Line.where(city_id: params[:city])
+      @city_select = City.find(params[:city]).id
     end 
 
   end
