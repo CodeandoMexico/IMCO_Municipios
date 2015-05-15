@@ -18,7 +18,7 @@
               %tr
                 %td= idx
                 %td
-                  = link_to t('form.actions.show'), dashboard_report_path(complaint) do
+                  = link_to dashboard_report_path(complaint) do
                     = complaint.user
                 %td= COMPLAINTS[complaint.reason]
                 %td= complaint.created_at

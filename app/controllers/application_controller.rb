@@ -88,7 +88,6 @@ class ApplicationController < ActionController::Base
     authenticate_user! && current_user.admin?
   end
 
-
   def validaDatos(resource)
     !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?  
    end
