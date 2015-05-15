@@ -124,8 +124,8 @@ var marker;
 var infowindow = new google.maps.InfoWindow();
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
   geocoder = new google.maps.Geocoder();
-  rails_condition = <%= @user.latitude.nil? %>;
-if(rails_condition){
+  user_has_location = <%= @user.latitude.nil? %>;
+if(user_has_location){
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(displayOnMap);
   }  
@@ -189,8 +189,7 @@ function updateFormLocation(latLng) {
       var url = window.location.href.split('?')[0];
       window.location.href = url + "?city="+values;
   }
-
-
+  
   window.onload = function() {
   var e = document.getElementById("user_city_id");
   if(e.value != "" || e.value != null){
