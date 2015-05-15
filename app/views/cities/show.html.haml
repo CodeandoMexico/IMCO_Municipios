@@ -11,8 +11,6 @@
   .col-md-4
     = image_tag "tramites.png", class: "img-responsive center-block"
     %p
-      = t('.texto_ya_tengo')
-      %br
       = t('.texto_tramite')
     -# = link_to t('.tramite'), city_procedure_lines_path(@city), class: 'btn btn-success btn-lg outlineverde half-width'
     .dropdown
@@ -27,8 +25,6 @@
   .col-md-4
     = image_tag "inspecciones.png", class: "img-responsive center-block"
     %p
-      = t('.texto_ya_tengo')
-      %br
       = t('.texto_inspeccion')
     .dropdown
       %button.btn.btn-success.btn-lg.outlineverde.half-width{ type: "button", id: "dropdownMenu1", 'data-toggle' => "dropdown", 'aria-expanded'=> "true" }
@@ -42,7 +38,6 @@
   .col-md-4
     = image_tag "floor_section.png", class: "img-responsive center-block"
     %p
-      %br
+      = t('.texto_uso_suelo')
       &nbsp;
-      -# = t('.texto_nuevo')
     = link_to t('.floor_use'), '#', class: 'btn btn-success btn-lg outlineverde half-width'
