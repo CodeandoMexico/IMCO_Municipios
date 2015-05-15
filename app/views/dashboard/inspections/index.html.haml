@@ -6,7 +6,7 @@
     .panel-heading
       &nbsp;
       .pull-right
-        = link_to t('.new_inspection'), new_dashboard_inspection_path, class: 'btn btn-xs btn-success'
+        = link_to t('.new_inspection'), new_dashboard_inspection_path, class: 'btn btn-sm btn-success'
     .panel-body
       - if @inspections.any?
         %table{ class:'table table-striped table-bordered table-hover' }

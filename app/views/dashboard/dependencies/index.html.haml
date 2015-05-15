@@ -6,7 +6,7 @@
     .panel-heading
       &nbsp;
       .pull-right
-        = link_to t('.new_dependency'), new_dashboard_dependency_path, class: 'btn btn-xs btn-success'
+        = link_to t('.new_dependency'), new_dashboard_dependency_path, class: 'btn btn-sm btn-success'
     .panel-body
       - if @dependencies.any?
         %table{ class:'table table-striped table-bordered table-hover' }
