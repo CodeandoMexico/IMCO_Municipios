@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # additional requirements
-gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 # authentication and authorization
@@ -50,7 +50,8 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem "breadcrumbs_on_rails" #breadcrumbs
+gem 'breadcrumbs_on_rails' #breadcrumbs
+gem 'haml'
 
 group :development, :test do
   # Load env variables

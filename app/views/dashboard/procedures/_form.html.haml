@@ -1,0 +1,60 @@
+#form-container
+  = form_for [:dashboard, @procedure], html: { class: 'form-horizontal' } do |f|
+    = render 'shared/show_flash'
+    .form-group
+      = f.label t('.name'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :name, class: 'form-control'
+
+    .form-group
+      = f.label t('.long'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :long, class: 'form-control'
+
+    .form-group
+      = f.label t('.cost'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :cost, class: 'form-control'
+
+    .form-group
+      = f.label t('.validity'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :validity, class: 'form-control'
+
+    .form-group
+      = f.label t('.contact'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :contact, class: 'form-control'
+
+    .form-group
+      = f.label t('.type_procedure'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :type_procedure, class: 'form-control'
+
+    .form-group
+      = f.label t('.category'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :category, class: 'form-control'
+
+    .form-group
+      = f.label t('.sare'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :sare, class: 'form-control'
+
+    .form-group
+      = f.label t('.dependency'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.select :dependency_id, @dependencies.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }
+
+    .form-group
+      = f.label t('.requirements'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
+
+    .form-group
+      = f.label t('.lines'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
+
+    .actions.pull-right
+      = f.submit t('.create_procedures'), class: 'btn btn-sm btn-success outlineverde'

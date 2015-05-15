@@ -1,0 +1,33 @@
+.row
+  .col-sm-12
+    %h1.page-header= t('titles.lines')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+        = link_to t('.new_lines'), new_dashboard_line_path, class: 'btn btn-sm btn-success'
+    .panel-body
+      - if @lines.any?
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %thead
+            %th #
+            %th= t('.name')
+            %th= t('.municipio')
+            %th= t('.actions')
+          %tbody
+            - @lines.each_with_index do |line, idx|
+              %tr
+                %td= idx + 1
+                %td= truncate(line.name, length: 70)
+                %td= truncate(line.city.name, length: 70)
+                %td
+                  = link_to edit_dashboard_line_path(line) do
+                    %i.fa.fa-pencil
+                  = link_to dashboard_line_path(line), method: :delete, data: { confirm: t('form.confirmations.delete_line') } do
+                    %i.fa.fa-trash
+        %p.pull-right
+          Descargar:
+          = link_to "CSV", dashboard_lines_path( format: "csv"), class: 'btn btn-success btn-xs outlineverde'
+      - else
+        = render 'shared/empty_resource', message: t('.no_lines_available')

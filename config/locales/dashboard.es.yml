@@ -1,0 +1,189 @@
+es:
+  dashboard:
+    menu:
+      complaints: Denuncias
+      dependencies: Dependencias
+      lines: Giros
+      formation_steps: Trámites de Apertura
+      requirements: Requerimientos
+      procedures: Trámites Generales
+      inspections: Inspecciones
+      inspectors: Inspectores
+      logout: Cerrar sesión
+    show:
+      dependencias: Dependencias
+      giros: Giros
+      apertura: Apertura
+      requerimientos: Requerimientos
+      tramites: Trámites
+      inspecciones: Inspecciones
+      inspectores: Inspectores
+      denuncia: Denuncias
+    contacts:
+      index:
+        all_profile: Contacto municipio %{city}
+        correo_admin: Correo de administradores
+        correo_municipio: Correo del Municipio
+        save: Guardar
+        admins: Administrador
+        email: Correo
+        edit: Editar
+        correo_municipio: 'Correo municipal:'
+        actualizar: Actualizar
+      edit:
+        title: Editar datos
+        correo: 'Correo:'
+        password: 'Contraseña:'
+        ok: Actualizar
+    reports:
+      index:
+        negocio: Negocio
+        razon: Razón
+        fecha: Fecha
+        colonia: Domicilio
+        usuario_eliminado: Usuario eliminado
+        no_complaints_available: No hay denuncias.
+      show:
+        negocio: Negocio
+        fecha: 'Fecha:'
+        colonia: 'Domicilio:'
+        razon: 'Razón:'
+        descripcion: 'Descripción:'
+        correo: 'Correo:'
+        comentario: 'Comentario:'
+        licencia_operacion: 'Licencia de operación:'
+        descargar: 'Descargar:'
+        licencia_de_operacion: Licencia de operación
+        licencia_uso_de_suelo: Licencia de uso de suelo
+    inspections:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_inspection: Nueva inspección
+        no_inspections_available: No hay inspecciones disponibles.
+      new:
+        title: Nueva inspección
+      edit:
+        title: Editar inspección
+      form:
+        create_inspection: Guardar cambios
+        name: Nombre
+        matter: Materia
+        duration: Duración
+        rule: Ley
+        before: Antes
+        during: Durante
+        after: Despues
+        sanction: Sanción
+        dependency: Dependecia
+        requirements: Requerimientos
+        lines: Giros
+    inspectors:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_inspector: Nuevo inspector
+        no_inspectors_available: No hay inspectores disponibles.
+      new:
+        title: Nuevo inspector
+      edit:
+        title: Editar inspector
+      form:
+        create_inspector: Guardar cambios
+        name: Nombre
+        validity: Vigencia
+        matter: Materia
+        supervisor: Supervisor
+        contact: contacto
+        photo: Foto
+        dependency: Dependencia
+    formation_steps:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        tipo: Tipo
+        municipio: Municipio
+        actions: Acciones
+        new_formation_step: Nuevo trámite apertura
+        no_formation_steps_available: No hay trámites de apertura disponibles.
+      new:
+        title: Nuevo trámite de apertura
+      edit:
+        title: Editar trámite de apertura
+      form:
+        create_formation_steps: Guardar cambios
+        name: Nombre
+        description: Descripción
+        path: Path
+        type_formation_step: Tipo de persona
+    lines:
+      index:
+        name: Nombre
+        municipio: Municipio
+        actions: Acciones
+        new_lines: Nuevo Giro
+        no_lines_available: No hay giros disponibles.
+      new:
+        title: Nuevo Giro
+      edit:
+        title: Editar Giro
+      form:
+        create_lines: Guardar cambios
+        name: Nombre
+        description: Descripción
+    requirements:
+      index:
+        name: Nombre
+        municipio: Municipio
+        actions: Acciones
+        new_requirements: Nuevo requerimiento
+        no_requirements_available: No hay requerimientos disponibles.
+      new:
+        title: Nuevo requerimiento
+      edit:
+        title: Editar requerimiento
+      form:
+        name: Nombre
+        description: Descripción
+        path: Path
+        create_requirements: Guardar cambios
+    procedures:
+      index:
+        name: Nombre
+        dependency: Dependencia
+        actions: Acciones
+        new_procedures: Nuevo trámite
+        no_procedures_available: No hay procedimientos disponibles.
+      new:
+        title: Nuevo trámite
+      edit:
+        title: Editar trámite
+      form:
+        create_procedures: Guardar cambios
+        name: Nombre
+        long: Duración
+        cost: Costo
+        validity: Vigencia
+        contact: Contacto
+        type_procedure: Tipo de trámite
+        category: Categoría
+        sare: SARE
+        dependency: Dependencia
+        requirements: Requerimientos
+        lines: Giros
+    dependencies:
+      index:
+        name: Nombre
+        municipio: Municipio
+        actions: Acciones
+        new_dependency: Nueva dependencia
+        no_dependencies_available: No hay dependencias disponibles.
+      new:
+        title: Nueva dependencia
+      edit:
+        title: Editar dependencia
+      form:
+        create_dependency: Guardar cambios
+        name: Nombre

@@ -1,0 +1,6 @@
+.jumbotron
+	%h2.empty-resource
+		= message
+	- if defined?(message2) && message2.present?
+		%p.empty-resource
+			= message2

@@ -1,0 +1,25 @@
+#form-container
+  = form_for [:dashboard, @formation_step], html: { class: 'form-horizontal' } do |f|
+    = render 'shared/show_flash'
+    .form-group
+      = f.label t('.name'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :name, class: 'form-control'
+
+    .form-group
+      = f.label t('.description'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :description, class: 'form-control'
+
+    .form-group
+      = f.label t('.path'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :path, class: 'form-control'
+
+    .form-group
+      = f.label t('.type_formation_step'), class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :type_formation_step, class: 'form-control'
+
+    .actions.bg-primary-negro.pull-right
+      = f.submit t('.create_formation_steps'), :class => 'btn btn-sm btn-success outlineverde'

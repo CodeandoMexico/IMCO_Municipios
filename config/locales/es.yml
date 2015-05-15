@@ -58,7 +58,7 @@ es:
     lines: Giros
     dependencies: Dependencias
     requirements: Requerimientos
-    procedures: Requerimientos
+    procedures: Trámites
     reports: Reportes
     reminder: Tus recordatorios
     new_reminder: Nuevo recordatorio
@@ -87,6 +87,13 @@ es:
     municipio: Municipios
     acerca_de: Acerca de
     aviso: Aviso de privacidad
+    desarrollado: Desarrollado por el 
+    minegocio: Mi Negocio México - 2015.
+    contacto: hola@minegocio.mx
+    url_imco: http://www.imco.com.mx
+    civica:  y Cívica Digital.
+    imco: IMCO
+    contactanos: Contacto
   search:
     buscar: Buscar
   form:
@@ -104,134 +111,7 @@ es:
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
-  dashboard:
-    show:
-      dependencias: Dependencias
-      giros: Giros
-      apertura: Apertura
-      requerimientos: Requerimientos
-      tramites: Trámites
-      inspecciones: Inspecciones
-      inspectores: Inspectores
-      denuncia: Denuncias
-    contacts:
-      index:
-        all_profile: Contacto municipio %{city}
-        correo_admin: Correo de administradores
-        correo_municipio: Correo del Municipio
-        save: Guardar
-        admins: Administrador
-        email: Correo
-        edit: Editar
-        correo_municipio: 'Correo municipal:'
-        actualizar: Actualizar
-      edit:
-        title: Editar datos
-        correo: 'Correo:'
-        password: 'Contraseña:'
-        ok: Actualizar
-    reports:
-      index:
-        negocio: Negocio
-        fecha: Fecha
-        colonia: Domicilio
-        usuario_eliminado: Usuario eliminado
-      show:
-        negocio: Negocio
-        fecha: Fecha
-        colonia: Domicilio
-        razon: Razón
-        descripcion: Descripción
-        correo: Correo
-        comentario: Comentario
-        licencia_operacion: Licencia de operación
-        descargar: 'Descargar:'
-        licencia_de_operacion: Licencia de operación
-        licencia_uso_de_suelo: Licencia de uso de suelo
-    inspections:
-      index:
-        name: Nombre
-        dependency: Dependencia
-        actions: Acciones
-        new_inspection: Nueva inspección
-      new:
-        title: Nueva inspección
-      edit:
-        title: Editar inspección
-      form:
-        create_inspection: Guardar cambios
-    inspectors:
-      index:
-        name: Nombre
-        dependency: Dependencia
-        actions: Acciones
-        new_inspector: Nuevo inspector
-      new:
-        title: Nuevo inspector
-      edit:
-        title: Editar inspector
-      form:
-        create_inspector: Guardar cambios
-    formation_steps:
-      index:
-        name: Nombre
-        dependency: Dependencia
-        actions: Acciones
-        new_formation_step: Nuevo trámite apertura
-      new:
-        title: Nuevo trámite de apertura
-      edit:
-        title: Editar trámite de apertura
-      form:
-        create_formation_steps: Guardar cambios
-    lines:
-      index:
-        name: Nombre
-        municipio: Municipio
-        actions: Acciones
-        new_lines: Nuevo Giro
-      new:
-        title: Nuevo Giro
-      edit:
-        title: Editar Giro
-      form:
-        create_lines: Guardar cambios
-    requirements:
-      index:
-        name: Nombre
-        municipio: Municipio
-        actions: Acciones
-        new_requirements: Nuevo requerimiento
-      new:
-        title: Nuevo requerimiento
-      edit:
-        title: Editar requerimiento
-      form:
-        create_requirements: Guardar cambios
-    procedures:
-      index:
-        name: Nombre
-        dependency: Dependencia
-        actions: Acciones
-        new_procedures: Nuevo trámite
-      new:
-        title: Nuevo trámite
-      edit:
-        title: Editar trámite
-      form:
-        create_procedures: Guardar cambios
-    dependencies:
-      index:
-        name: Nombre
-        municipio: Municipio
-        actions: Acciones
-        new_dependency: Nueva dependencia
-      new:
-        title: Nueva dependencia
-      edit:
-        title: Editar dependencia
-      form:
-        create_dependency: Guardar cambios
+
   devise:
     omniauth_callbacks:
       success: Inicio de sesión exitoso.
@@ -370,8 +250,10 @@ es:
     index:
       title: Selecciona una opción
     show:
-      nuevo: Nuevo negocio
+      floor_use: Usos de suelo
       tramite: Trámites
+      new_business: Nuevo negocio
+      already_have_a_business: Ya tengo negocio
       inspecciones: Inspecciones
       inspeccion: Inspecciones
       inspector: Inspectores
@@ -380,6 +262,7 @@ es:
       texto_nuevo: ¿Cómo puedo crear mi negocio?
       texto_tramite: ¿Qué tramites puedo realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
+      texto_uso_suelo: ¿Tengo permiso de uso de suelo?
       subtitulo: Selecciona una opción.
       titulo: Menú Mi Negocio México
   imcos:

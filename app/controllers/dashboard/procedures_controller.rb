@@ -1,23 +1,24 @@
 module Dashboard
   class ProceduresController < Dashboard::BaseController
     before_action :set_procedure, only: [:edit, :update, :destroy]
+    helper_method :type_of_people_procedures, :type_of_sare
     layout 'dashboard'
 
     def index
       @procedures = policy_scope(Procedure)
 
-       respond_to do |format|
+      respond_to do |format|
         format.html
         format.csv { send_data @procedures.to_csv }
         format.xls { send_data @procedures.to_csv(col_sep: "\t") }
-    end
+      end
     end
 
     def new
       @procedure = Procedure.new
-     @dependencies= Dependency.where(city_id: current_user.city_id)
-     @requirements = Requirement.where(city_id: current_user.city_id)
-     @lines = Line.where(city_id: current_user.city_id)
+      @dependencies= Dependency.where(city_id: current_user.city_id)
+      @requirements = Requirement.where(city_id: current_user.city_id)
+      @lines = Line.where(city_id: current_user.city_id)
     end
 
     def edit
@@ -82,36 +83,42 @@ module Dashboard
     end
 
     def create_relation_procedure_requirements
-        params[:procedure][:requirement_ids].each do |par|
-              if par.present?
-              @procedure_requirement = ProcedureRequirement.create(procedure_id: @procedure.id, requirement_id: par)
-              @procedure_requirement.save
-              end
-          end
+      params[:procedure][:requirement_ids].each do |par|
+        if par.present?
+          @procedure_requirement = ProcedureRequirement.create(procedure_id: @procedure.id, requirement_id: par)
+          @procedure_requirement.save
+        end
+      end
     end
 
     def delete_relation_procedure_requirements
       ProcedureRequirement.all.each do |par|
-            @id = ProcedureRequirement.where(procedure_id: @procedure.id, requirement_id: par.requirement_id).pluck(:id)
-            @procedure_requirement = ProcedureRequirement.destroy(@id)
+        @id = ProcedureRequirement.where(procedure_id: @procedure.id, requirement_id: par.requirement_id).pluck(:id)
+        @procedure_requirement = ProcedureRequirement.destroy(@id)
+      end
+    end
+
+
+    def create_relation_procedure_lines
+      params[:procedure][:line_ids].each do |par|
+        if par.present?
+          @procedure_line = ProcedureLine.create(procedure_id: @procedure.id, line_id: par)
+          @procedure_line.save
         end
+      end
     end
 
-
-     def create_relation_procedure_lines
-        params[:procedure][:line_ids].each do |par|
-              if par.present?
-              @procedure_line = ProcedureLine.create(procedure_id: @procedure.id, line_id: par)
-              @procedure_line.save
-              end
-          end
+    def type_of_people_procedures
+      UserTypes.type_of_people_procedures
     end
-
+    def type_of_sare
+      UserTypes.type_of_sare
+    end
     def delete_relation_procedure_lines
       ProcedureLine.all.each do |par|
-            @id = ProcedureLine.where(procedure_id: @procedure.id, line_id: par.line_id).pluck(:id)
-            @procedure_line = ProcedureLine.destroy(@id)
-        end
+        @id = ProcedureLine.where(procedure_id: @procedure.id, line_id: par.line_id).pluck(:id)
+        @procedure_line = ProcedureLine.destroy(@id)
+      end
     end
 
   end

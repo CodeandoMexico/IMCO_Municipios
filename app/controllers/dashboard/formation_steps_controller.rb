@@ -1,6 +1,8 @@
 module Dashboard
   class FormationStepsController < Dashboard::BaseController
     before_action :set_formation_steps, only: [:edit, :update, :destroy]
+    helper_method :type_of_people_formation_step
+
     layout 'dashboard'
 
     def index
@@ -58,11 +60,15 @@ module Dashboard
       end
     end
 
+    
+
     private
     def set_formation_steps
       @formation_step = FormationStep.find(params[:id])
     end
-
+    def type_of_people_formation_step
+      UserTypes.type_of_people_formation_step
+    end
     def formation_steps_params
       params.require(:formation_step).permit(:name, :description, :type, :path, :city_id )
     end
