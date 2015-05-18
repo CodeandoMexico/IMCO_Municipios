@@ -6,7 +6,7 @@
     .panel-heading
       &nbsp;
       .pull-right
-        = link_to t('.new_procedures'), new_dashboard_procedure_path, class: 'btn btn-xs btn-success'
+        = link_to t('.new_procedures'), new_dashboard_procedure_path, class: 'btn btn-sm btn-success'
     .panel-body
       - if @procedures.any?
         %table{ class:'table table-striped table-bordered table-hover' }
