@@ -40,14 +40,3 @@ $default_margin_helpers: 15px;
 	padding: 30px 15% 30px 15%; 
 	background-color: $grey-footer;
 }
-@media(min-width:768px) {
-    .sidebar {
-        z-index: 1;
-        position: absolute;
-        width: 250px;
-        margin-top: 0px;
-    }
- }
- .margin-dashboard{
- margin: 3% 3% 3% 3%;
- }

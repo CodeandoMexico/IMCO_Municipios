@@ -83,6 +83,7 @@ es:
     dashboard: Dashboard
     edit_profile: Editar perfil
     sign_out: Cerrar sesión
+    user_profile: Mi Perfil
   footer:
     municipio: Municipios
     acerca_de: Acerca de
