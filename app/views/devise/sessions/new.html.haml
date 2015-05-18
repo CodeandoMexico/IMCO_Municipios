@@ -1,0 +1,12 @@
+#form-container
+  %h1.title.text-center
+    = t('.title')
+  %div{:id=>"authentication"}
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      %div.form-group
+        %div.field
+          = f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('.email')
+        %div.field
+          = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: t('.password')
+      %div.actions
+        = f.submit t('.log_in'), class: 'btn btn-block btn-default'
