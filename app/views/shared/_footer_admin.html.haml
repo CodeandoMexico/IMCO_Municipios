@@ -7,6 +7,7 @@
     %div.col-xs-12.col-md-4.text-center
       = t('footer.minegocio')
     %div.col-xs-12.col-md-4.text-right
-      = link_to t('footer.aviso'), city_aviso_path(current_user.city_id)
-      |
+      - unless current_user.nil?
+        = link_to t('footer.aviso'), city_aviso_path(current_user.city_id)
+        |
       = mail_to t('footer.contacto'), t('footer.contactanos')

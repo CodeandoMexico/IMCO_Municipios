@@ -1,12 +1,18 @@
-#form-container
+#form-container.top-cruds
+  - if alert
+    %div.alert.alert-danger
+      = alert
+  - if notice
+    %div.alert.alert-success
+    = notice
   %h1.title.text-center
     = t('.title')
   %div{:id=>"authentication"}
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       %div.form-group
         %div.field
-          = f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('.email')
+          = f.email_field :email, autofocus: true, class: 'form-controler', placeholder: t('.email')
         %div.field
-          = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: t('.password')
-      %div.actions
-        = f.submit t('.log_in'), class: 'btn btn-block btn-default'
+          = f.password_field :password, autocomplete: "off", class: 'form-controler', placeholder: t('.password')
+      %div.text-center
+        = f.submit t('.log_in'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3'
