@@ -1,16 +1,27 @@
 class UsersController < ApplicationController
   before_filter :set_user
   before_filter :set_city
-  layout 'session'
+  add_breadcrumb "Inicio", :root_path
+
+  def index
+    @users = User.where(admin: false)
+    @markers = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
+
+    add_breadcrumb @city.name ,city_path(@city)
+    add_breadcrumb "Uso de suelo"
+  end
 
   def new
    @user = current_user
   end
 
-   def create
-   end
+  def create
+  end
 
-   def edit
+  def edit
     redirect_to root_path if current_user.nil?
     @user = current_user
 
@@ -18,7 +29,7 @@ class UsersController < ApplicationController
       @city_select = City.find(@user.city_id).id
       @lines = Line.where(city_id: @user.city_id)
     end
-    
+
     unless @user.line_id.nil?
       @line_select = Line.find(@user.line_id).id
       @lines = Line.where(city_id: Line.find(@user.line_id).city.id)
@@ -27,8 +38,7 @@ class UsersController < ApplicationController
     unless params[:city].blank?
       @lines = Line.where(city_id: params[:city])
       @city_select = City.find(params[:city]).id
-    end 
-
+    end
   end
 
 
@@ -87,15 +97,12 @@ class UsersController < ApplicationController
       )
   end
 
-
-
   def update_attributes_admin
     params.require(:user).permit(
       :email,
       :password
       )
   end
-
 
   def set_user
     @user ||= current_user
@@ -104,6 +111,6 @@ class UsersController < ApplicationController
   def set_city
     @cities = City.order(:name)
     @lines = Line.where(city_id: nil)
-    
+    @city = City.find(params[:city_id])
   end
 end
