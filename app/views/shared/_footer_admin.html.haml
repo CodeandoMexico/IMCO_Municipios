@@ -2,12 +2,12 @@
   %div.row.footer-admin
     %div.col-xs-12.col-md-4.text-left
       = t('footer.desarrollado')
-      = link_to t('footer.imco'),  t('footer.url_imco')
+      = link_to t('footer.imco'),  t('footer.url_imco') , :target => "_blank"
       = t('footer.civica')
     %div.col-xs-12.col-md-4.text-center
       = t('footer.minegocio')
     %div.col-xs-12.col-md-4.text-right
       - unless current_user.nil?
-        = link_to t('footer.aviso'), city_aviso_path(current_user.city_id)
+        = link_to t('footer.aviso'), city_aviso_path(current_user.city_id), :target => "_blank"
         |
       = mail_to t('footer.contacto'), t('footer.contactanos')
