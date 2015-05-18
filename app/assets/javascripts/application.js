@@ -17,6 +17,9 @@
 //= require bootstrap-switch
 //= require chosen-jquery
 //= require_tree ./public
+//= require underscore
+//= require gmaps/google
+//= require_tree .
 
 var loadChosen = function(){
     $('.chosen-select').chosen({
