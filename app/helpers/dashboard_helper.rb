@@ -27,6 +27,7 @@ module DashboardHelper
       value: 13,
       message: 'Support Tickets!',
       path: '#'
-    }]
+    }
+  ]
   end
 end
