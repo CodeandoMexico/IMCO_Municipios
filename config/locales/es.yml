@@ -252,7 +252,7 @@ es:
     index:
       title: Selecciona una opción
     show:
-      floor_use: Usos de suelo
+      floor_use: Uso de suelo
       tramite: Trámites
       new_business: Nuevo negocio
       already_have_a_business: Ya tengo negocio
