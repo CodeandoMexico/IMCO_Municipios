@@ -35,7 +35,11 @@
 
 .dropdown-toggle {
   color: $white;
-  background-color: $light-green;
+  // background-color: $light-green;
+
+  &:hover{
+    background-color: $light-green;
+  }
 }
 
 // Remove the border

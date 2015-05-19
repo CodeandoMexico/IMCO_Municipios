@@ -23,8 +23,5 @@ module Dashboard
     def set_city
       @city ||= City.find(current_user.city_id)
     end
-
-
   end
-
 end

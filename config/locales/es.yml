@@ -74,21 +74,22 @@ es:
     municipal: Municipales
     buscar: Buscar
   navbar:
-    new: Nuevo negocio
-    tramite: Trámites
-    inspections: Inspecciones
-    inspectors: Inspectores
     inicio: Inicio
     menu: Menú
     dashboard: Dashboard
     edit_profile: Editar perfil
     sign_out: Cerrar sesión
     user_profile: Mi Perfil
+    new: Nuevo negocio
+    tramite: Trámites
+    inspections: Inspecciones
+    inspectors: Inspectores
+    floor_utilization: Uso de suelo
   footer:
     municipio: Municipios
     acerca_de: Acerca de
     aviso: Aviso de privacidad
-    desarrollado: Desarrollado por el 
+    desarrollado: Desarrollado por el
     minegocio: Mi Negocio México - 2015.
     contacto: hola@minegocio.mx
     url_imco: http://www.imco.com.mx
@@ -276,26 +277,6 @@ es:
       click: clic aquí
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
-  users:
-    new:
-      iniciar_sesion: Iniciar sesión
-      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
-    edit:
-      edit_profile: Editar perfil
-      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
-      name: Nombre
-      correo: Correo
-      business_name: Nombre del negocio
-      address: Dirección
-      operation_license: Licencia de operación (Folio)
-      operation_license_file: Licencia de operación (Archivo)
-      land_permission_file: Permiso de uso de suelo (Archivo)
-      save: Guardar
-      city_id: Municipio de tu negocio
-      mapa: Ubicación del negocio
-      line: Giro de tu negocio
-      phone: Teléfono
-      schedule: Horario
   layouts:
     blanco:
       new: NUEVO NEGOCIO

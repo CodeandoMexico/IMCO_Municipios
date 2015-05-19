@@ -26,6 +26,7 @@
             <%= content_tag :li, link_to(t('navbar.tramite'), city_procedure_lines_path(@city)) %>
             <%= content_tag :li, link_to(t('navbar.inspections'), city_inspections_path(@city)) %>
             <%= content_tag :li, link_to(t('navbar.inspectors'), city_inspectors_path(@city)) %>
+            <%= content_tag :li, link_to(t('navbar.floor_utilization'), city_users_path(@city)) %>
           <% end %>
         <% end %>
       </ul>

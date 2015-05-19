@@ -1,0 +1,9 @@
+%a-verde
+  = render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center.texto-verde
+  %h1= t('.title')
+  %p= t('.subtitle')
+
+.row
+  = render 'shared/google_map', markers: raw(@users.to_json)

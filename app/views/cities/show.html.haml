@@ -1,8 +1,6 @@
 %a-verde
   = render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
 
--# <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-
 .row.text-center.texto-verde
   %h1= t('.titulo')
   %p= t('.subtitulo')
@@ -12,7 +10,6 @@
     = image_tag "tramites.png", class: "img-responsive center-block"
     %p
       = t('.texto_tramite')
-    -# = link_to t('.tramite'), city_procedure_lines_path(@city), class: 'btn btn-success btn-lg outlineverde half-width'
     .dropdown
       %button.btn.btn-success.btn-lg.outlineverde.half-width{ type: "button", id: "dropdownMenu1", 'data-toggle' => "dropdown", 'aria-expanded'=> "true" }
         = t('.tramite')
@@ -40,4 +37,4 @@
     %p
       = t('.texto_uso_suelo')
       &nbsp;
-    = link_to t('.floor_use'), '#', class: 'btn btn-success btn-lg outlineverde half-width'
+    = link_to t('.floor_use'), city_users_path(@city), class: 'btn btn-success btn-lg outlineverde half-width'
