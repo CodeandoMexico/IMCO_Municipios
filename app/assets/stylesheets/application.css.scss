@@ -236,6 +236,10 @@ texto-blanco{
   color: $dark-green !important;
 }
 
+.texto-wrap{
+  width:100%;
+}
+
 .texto-padding-center{
   padding-left: 15%;
   padding-right: 15%;
@@ -268,7 +272,9 @@ texto-blanco{
   margin-bottom: 15px;
 }
 
-
+.texto-margin-bottom-long{
+  margin-bottom: 50px;
+}
 
 .texto-padding-top{
   padding-top: 10px;
