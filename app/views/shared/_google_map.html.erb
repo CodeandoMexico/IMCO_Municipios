@@ -2,7 +2,7 @@
   <!-- checkbox toogle to show or hide markers -->
   <div class="col-xs-12 col-sm-11">
     <label>
-      <input id="map-toogle" type='checkbox' onclick="toogleMap()" checked>&nbsp;
+      <input id="map-toogle" type='checkbox' onclick="toogleBusinesses()" checked>&nbsp;
       <%= t('.show_businesses') %>
     </label>
   </div>
@@ -10,35 +10,37 @@
   <!-- here start the map/table options -->
   <div class="col-xs-12 col-sm-1">
     <div class="btn-group btn-group-justified" role="group" aria-label="Map options">
-      <a role="button" class="btn btn-default btn-option" href="#"><i class="fa fa-map-marker"></i></a>
-      <a role="button" class="btn btn-default btn-option" href="#"><i class="fa fa-list"></i></a>
+      <a role="button" class="btn btn-default btn-option" onclick="switchView('map')"><i class="fa fa-map-marker"></i></a>
+      <a role="button" class="btn btn-default btn-option" onclick="switchView('table')"><i class="fa fa-list"></i></a>
     </div>
   </div>
 </div>
 
-<table class="table table-hover">
-  <thead>
-    <th>#</th>
-    <th><%= t('.name') %></th>
-    <th><%= t('.line_of_work') %></th>
-    <th><%= t('.address') %></th>
-    <th><%= t('.phone') %></th>
-  </thead>
-  <tbody>
-    <% markers.each_with_index do |marker, idx| %>
-      <tr>
-        <td><%= idx + 1 %></td>
-        <td><%= marker %></td>
-        <td><%= marker.line.name %></td>
-        <td><%= marker.address %></td>
-        <td><%= marker.phone %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row slight-bottom-margin">
+  <table id="markers-table" class="table table-hover">
+    <thead>
+      <th>#</th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.line_of_work') %></th>
+      <th><%= t('.address') %></th>
+      <th><%= t('.phone') %></th>
+    </thead>
+    <tbody>
+      <% markers.each_with_index do |marker, idx| %>
+        <tr>
+          <td><%= idx + 1 %></td>
+          <td><%= marker %></td>
+          <td><%= marker.line.name %></td>
+          <td><%= marker.address %></td>
+          <td><%= marker.phone %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<div>
-  <div id="gmap" style='height: 450px;'></div>
+  <div id="markers-map">
+    <div id="gmap" style='height: 450px;'></div>
+  </div>
 </div>
 
 <!-- let's render our map -->

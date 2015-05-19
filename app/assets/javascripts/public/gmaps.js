@@ -24,11 +24,14 @@ function initialize(markersData) {
   }
 
   // lets check if toogle checkbox is checked
-  toogleMap();
+  toogleBusinesses();
+
+  // lets initialize the view with the map
+  switchView('map');
 }
 
 // If the show hide maps checkbox is checked then show, else hide.
-var toogleMap = function(){
+var toogleBusinesses = function(){
   var toogle = $('#map-toogle')[0].checked;
 
   if(toogle){
@@ -90,4 +93,19 @@ var fetchInfoWindow = function(markerData){
   return new google.maps.InfoWindow({
      content: contentString
    });
+};
+
+// switch between table and maps
+var switchView = function(view) {
+  var mapView = $('#markers-map');
+  var tableView = $('#markers-table');
+
+  // switch views accordingly
+  if(view =='map'){
+    mapView.removeClass('hidden');
+    tableView.addClass('hidden');
+  } else {
+    tableView.removeClass('hidden');
+    mapView.addClass('hidden');
+  }
 };
