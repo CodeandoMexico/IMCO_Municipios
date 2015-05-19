@@ -17,26 +17,32 @@
 </div>
 
 <div class="row slight-bottom-margin">
-  <table id="markers-table" class="table table-hover">
-    <thead>
-      <th>#</th>
-      <th><%= t('.name') %></th>
-      <th><%= t('.line_of_work') %></th>
-      <th><%= t('.address') %></th>
-      <th><%= t('.phone') %></th>
-    </thead>
-    <tbody>
-      <% markers.each_with_index do |marker, idx| %>
-        <tr>
-          <td><%= idx + 1 %></td>
-          <td><%= marker %></td>
-          <td><%= marker.line.name %></td>
-          <td><%= marker.address %></td>
-          <td><%= marker.phone %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div id="markers-table">
+    <% if markers.any? %>
+      <table class="table table-hover">
+        <thead>
+          <th>#</th>
+          <th><%= t('.name') %></th>
+          <th><%= t('.line_of_work') %></th>
+          <th><%= t('.address') %></th>
+          <th><%= t('.phone') %></th>
+        </thead>
+        <tbody>
+          <% markers.each_with_index do |marker, idx| %>
+            <tr>
+              <td><%= idx + 1 %></td>
+              <td><%= marker %></td>
+              <td><%= marker.line.name %></td>
+              <td><%= marker.address %></td>
+              <td><%= marker.phone %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <%= render 'shared/empty_resource', message: t('.no_businesses_available') %>
+    <% end %>
+  </div>
 
   <div id="markers-map">
     <div id="gmap" style='height: 450px;'></div>
