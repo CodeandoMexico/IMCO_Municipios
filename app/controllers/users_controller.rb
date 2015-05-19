@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   before_filter :set_user
-  before_filter :set_city
+  before_filter :set_cities_and_lines
+  before_filter :set_city, only: :index
   add_breadcrumb "Inicio", :root_path
 
   def index
-    @users = User.where(admin: false)
-    @markers = Gmaps4rails.build_markers(@users) do |user, marker|
-      marker.lat user.latitude
-      marker.lng user.longitude
-    end
+    @users = User.where(admin: false, city: @city)
 
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Uso de suelo"
@@ -108,9 +105,12 @@ class UsersController < ApplicationController
     @user ||= current_user
   end
 
-  def set_city
+  def set_cities_and_lines
     @cities = City.order(:name)
     @lines = Line.where(city_id: nil)
+  end
+
+  def set_city
     @city = City.find(params[:city_id])
   end
 end
