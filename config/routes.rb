@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   post "cities/search"
 
-  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :cities, only: [:show, :update, :edit] do
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
     resources :formation_steps, only: [:index]
     resources :complaints, only: [:new, :create, :edit, :update]
     resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
+    resources :users, only: :index
   end
 
   resource :dashboard, only: :show, controller: :dashboard do
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
     resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :cities, only: [:show], controller: 'dashboard/cities' do
-         resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
+      resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
     end
   end
 
