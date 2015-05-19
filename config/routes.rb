@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, only: :show, controller: :dashboard do
+    get 'aviso'
     resources :inspections, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspections'
     resources :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspectors'
     resources :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/formation_steps'
