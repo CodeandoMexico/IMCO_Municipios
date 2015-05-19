@@ -21,19 +21,33 @@ function initialize(markerData) {
     new_point = new google.maps.LatLng(markerData[i]["lat"], markerData[i]["lng"]);
     addMarker(new_point);
   }
+
+  // lets check if toogle checkbox is checked
+  toogleMap();
 }
+
+// If the show hide maps checkbox is checked then show, else hide.
+var toogleMap = function(){
+  var toogle = $('#map-toogle')[0].checked;
+
+  if(toogle){
+    setAllMap(map);
+  } else{
+    clearMarkers();
+  }
+};
 
 // Sets the map on all markers in the array.
 var setAllMap = function(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
   }
-}
+};
 
 // Removes the markers from the map, but keeps them in the array.
 var clearMarkers = function() {
   setAllMap(null);
-}
+};
 
 var addMarker = function(location) {
   var marker = new google.maps.Marker({
@@ -45,4 +59,4 @@ var addMarker = function(location) {
 
 var fetchPoint = function(lat, lng){
   return new google.maps.LatLng(lat, lng);
-}
+};
