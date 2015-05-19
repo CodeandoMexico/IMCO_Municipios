@@ -1,8 +1,7 @@
-// This function is the one that will render th gmap
-
 var map;
 var markers = [];
 
+// This function is the one that will render th gmap
 function initialize(markersData) {
   // get center point
   var centerPoint = fetchPoint(22.1498200, -100.9791600);

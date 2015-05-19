@@ -1,7 +1,17 @@
-<label>
-  <input id="map-toogle" type='checkbox' onclick="toogleMap()" checked>&nbsp;
-  <%= t('.show_businesses') %>
-</label>
+<div class="row slight-bottom-margin">
+  <div class="col-xs-12 col-sm-11">
+    <label>
+      <input id="map-toogle" type='checkbox' onclick="toogleMap()" checked>&nbsp;
+      <%= t('.show_businesses') %>
+    </label>
+  </div>
+  <div class="col-xs-12 col-sm-1">
+    <div class="btn-group btn-group-justified" role="group" aria-label="Map options">
+      <a role="button" class="btn btn-default btn-option" href="#"><i class="fa fa-map-marker"></i></a>
+      <a role="button" class="btn btn-default btn-option" href="#"><i class="fa fa-list"></i></a>
+    </div>
+  </div>
+</div>
 
 <div>
   <div id="gmap" style='height: 450px;'></div>
