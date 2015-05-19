@@ -41,7 +41,7 @@ task :load_lines  => :environment do |t, args|
       description = row.to_hash['descripcion']
       if city.present? && row_does_not_exist_in_the_db(Line, { name: name, city: city })
         Line.create(name: name, description: description , city: city)
-        number_of_successfully_created_rows += 1 
+        number_of_successfully_created_rows += 1
       else
         puts "DATO REPETIDO #{name} | City #{city.name}"
       end
@@ -60,7 +60,7 @@ task :load_dependencies  => :environment do |t, args|
       name = row.to_hash['nombre']
       if city.present? && row_does_not_exist_in_the_db(Dependency, { name: name, city: city })
         Dependency.create(name: name, city: city)
-        number_of_successfully_created_rows += 1 
+        number_of_successfully_created_rows += 1
       else
         puts "DATO REPETIDO #{name} | City #{city}"
       end
@@ -70,7 +70,7 @@ task :load_dependencies  => :environment do |t, args|
 end
 
 desc "Load inspectors to the db"
-task :load_inspectors  => :environment do |t, args|   
+task :load_inspectors  => :environment do |t, args|
   cities_files = ['lib/datasets/Chalco/inspectores_chalco.csv','lib/datasets/Huixquilucan/inspectores_huixquilucan.csv','lib/datasets/Lerma/inspectores_lerma.csv','lib/datasets/Metepec/inspectores_metepec.csv','lib/datasets/TenangoDelValle/inspectores_tenango_del_valle.csv','lib/datasets/Toluca/inspectores_toluca.csv']
   cities_files.each_with_index do |city_file, index|
     number_of_successfully_created_rows = 0
@@ -146,7 +146,7 @@ task :load_inspections  => :environment do |t, args|
       certification = row.to_hash['documento_acredita']
       giros = row.to_hash['giros']
       requerimientos = row.to_hash['requerimientos']
-      
+
       row_values = {
       dependency: dependency,
       name: name,
@@ -171,7 +171,7 @@ task :load_inspections  => :environment do |t, args|
           end
         end
         puts  "#{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros}"
-        
+
         number_of_successfully_created_requerimientos = 0
         requerimientos.split('; ').each do |v|
           unless Requirement.where(name: v).first.nil?
@@ -180,7 +180,7 @@ task :load_inspections  => :environment do |t, args|
           end
         end
         puts "#{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
-        
+
         number_of_successfully_created_rows  += 1
       else
         puts "#{ name} | #{city_file}"
@@ -268,7 +268,7 @@ task :load_procedures  => :environment do |t, args|
           end
         end
         puts "#{a.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
-        
+
         number_of_successfully_created_rows +=  1
       else
         puts "#{name}"
@@ -278,11 +278,6 @@ task :load_procedures  => :environment do |t, args|
     puts "Number of successfully created rows is (#{city_file}): #{number_of_successfully_created_rows}"
   end
 end
-
-  desc "Load all data to the db"
-  task :load_all_data => [:load_lines, :load_dependencies, :load_inspectors, :load_requirements, :load_inspections, :load_formation_steps, :load_procedures] do
-    puts "Done running all the tasks.."
-  end
 
     def getTipo(tipo)
       if tipo == 'Física'

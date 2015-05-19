@@ -6,4 +6,4 @@
   %p= t('.subtitle')
 
 .row
-  = render 'shared/google_map', markers: raw(@users.to_json)
+  = render 'shared/google_map', markers: @users

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   #validates :city_id, presence: true
   belongs_to :city
 
+  belongs_to :line
   has_many :user_formation_step
   has_many :formation_steps, through: :user_formation_step
   has_many :complaints
