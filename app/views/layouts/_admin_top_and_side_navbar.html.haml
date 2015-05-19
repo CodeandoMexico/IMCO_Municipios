@@ -16,14 +16,13 @@
         %li
           = link_to dashboard_city_contacts_path(current_user.city_id) do
             %i.fa.fa-user.fa-fw
-            = t('dashboard.user_profile')
+            = t('navbar.user_profile')
         %li
           = link_to destroy_user_session_path, method: :delete do
             %i.fa.fa-sign-out.fa-fw
             = t('dashboard.menu.logout')
 
-
-  %div.navbar-default.sidebar{:role=>"navigation"}
+  %div.navbar-default.sidebar{:role=>"navigation", :style =>"margin-bottom: 0"}
     %div.sidebar-nav.navbar-collapse
       %ul.nav{:id=>"side-menu"}
         <!-- Dashboard -->
