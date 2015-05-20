@@ -2,13 +2,13 @@ var map;
 var markers = [];
 
 // This function is the one that will render th gmap
-function initialize(markersData) {
+function initialize(markersData, center) {
   // get center point
-  var centerPoint = fetchPoint(22.1498200, -100.9791600);
+  var centerPoint = fetchPoint(center['latitude'], center['longitude']);
 
   // paint a map into the view
   var mapOptions = {
-    zoom: 4,
+    zoom: 12,
     center: centerPoint,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };

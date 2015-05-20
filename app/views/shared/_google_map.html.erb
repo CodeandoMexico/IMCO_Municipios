@@ -53,5 +53,5 @@
 
 <!-- let's render our map -->
 <script>
-  initialize(<%= raw markers.to_json %>);
+  initialize(<%= raw markers.to_json %>, <%= raw center.to_json %>);
 </script>
