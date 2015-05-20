@@ -18,4 +18,14 @@ class ComplaintPolicy < ApplicationPolicy
   def edit?
     update?
   end
+
+  class Scope < Scope
+    def resolve
+      if user.admin?
+        scope.where(city_id: user.city_id)
+      else
+        scope
+      end
+    end
+  end
 end
