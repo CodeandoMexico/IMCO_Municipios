@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-switch
 //= require metisMenu/dist/metisMenu.min
