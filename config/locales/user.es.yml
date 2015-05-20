@@ -3,6 +3,7 @@ es:
     index:
       title: Uso de suelo
       subtitle: Observa en el mapa todos los negocios ó filtra por giro.
+      lines_of_work: Todos los giros de negocio
     new:
       iniciar_sesion: Iniciar sesión
       iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
