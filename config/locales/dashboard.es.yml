@@ -19,6 +19,12 @@ es:
       inspecciones: Inspecciones
       inspectores: Inspectores
       denuncia: Denuncias
+      complaints_message: Denuncias totales
+      usere_total: Empresas registradas
+      user_news: Empresas nuevas
+      reminders_total: Recordatorios totales
+      reminders_uniq: Usuarios con recordatorios
+      documents_until_to: Documentos próximos a 
     contacts:
       index:
         all_profile: Contacto municipio %{city}

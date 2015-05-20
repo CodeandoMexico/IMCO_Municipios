@@ -18,27 +18,27 @@ class DashboardController < ApplicationController
     @kpi_data = [
       {
         value: @complaints.count,
-        message: 'Denuncias totales'
+        message: t('.complaints_message')
       },
       {
         value: users.count,
-        message: 'Empresarios registrados'
+        message: t('.usere_total')
       },
       {
         value: users.where("created_at >= ? ", 1.week.ago.utc).count,
-        message: 'Empresarios nuevos'
+        message: t('.user_news')
       },
       {
         value: total_reminders.count,
-        message: 'Recordatorios totales'
+        message: t('.reminders_total')
       },
       {
         value: total_reminders.uniq.pluck(:user_id).count,
-        message: 'Usuarios con recordatorios'
+        message: t('.reminders_uniq')
       },
       {
         value: total_reminders.where("until_to <= ? ",Date.today() + 30.day).count,
-        message: 'Documentos próximos a vencer'
+        message: t('.documents_until_to')
       }
     ]
   end
