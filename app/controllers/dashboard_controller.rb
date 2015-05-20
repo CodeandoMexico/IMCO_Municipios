@@ -10,19 +10,19 @@ class DashboardController < ApplicationController
   complaint = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
     value: Complaint.where(city_id: current_user.city_id).count, message: 'Denuncias totales', path: root_path}
 
-  business_creates = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x',
+  business_creates = {panel: 'panel-green', awesome_icons_class: 'fa fa-area-chart fa-5x',
    value: users.count, message: 'Empresarios registrados', path: root_path}
 
-  business_this_week = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
+  business_this_week = {panel: 'panel-red', awesome_icons_class: 'fa fa-plus fa-5x', 
     value: users.where("created_at >= ? ", 1.week.ago.utc).count, message: 'Empresarios nuevos', path: root_path}
 
-  users_with_reminders = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
+  users_with_reminders = {panel: 'panel-purple', awesome_icons_class: 'fa fa-clock-o fa-5x', 
     value: total_reminders.count, message: 'Recordatorios totales', path: root_path}
 
-  new_reminders = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
+  new_reminders = {panel: 'panel-yellow', awesome_icons_class: 'fa fa-user fa-5x', 
     value: total_reminders.uniq.pluck(:user_id).count, message: 'Usuarios con recordatorios', path: root_path}
 
-  documents_until_to = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
+  documents_until_to = {panel: 'panel-brown', awesome_icons_class: 'fa fa-calendar-o fa-5x', 
     value: total_reminders.where("until_to <= ? ",Date.today() + 30.day).count, message: 'Documentos próximos a vencer', path: '#'}
       
   @kpis = [complaint, business_creates, business_this_week, users_with_reminders,new_reminders,documents_until_to]
