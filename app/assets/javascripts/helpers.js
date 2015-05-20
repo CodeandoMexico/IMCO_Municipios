@@ -1,5 +1,4 @@
 function valuePresent(value){
-  console.log(value);
   if(value != null && value != undefined && value != ''){
     return true;
   }
