@@ -7,7 +7,7 @@
       &nbsp;
       .pull-right
         = link_to t('.licencia_de_operacion'), User.find(@report.user_id).operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
-        = link_to t('.licencia_de_operacion'), User.find(@report.user_id).operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
+        = link_to t('.licencia_uso_de_suelo'), User.find(@report.user_id).land_permission_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
     .panel-body
       %table{ class:'table table-striped table-bordered table-hover' }
         %tbody
