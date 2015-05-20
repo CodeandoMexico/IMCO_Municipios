@@ -1,0 +1,35 @@
+.row
+  .col-sm-12
+    %h1.page-header= User.find(@report.user_id).business_name
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+        = link_to t('.licencia_de_operacion'), User.find(@report.user_id).operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
+        = link_to t('.licencia_de_operacion'), User.find(@report.user_id).operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
+    .panel-body
+      %table{ class:'table table-striped table-bordered table-hover' }
+        %tbody
+          %tr
+            %td= t('.correo')
+            %td= truncate(User.find(@report.user_id).email, length: 70)
+          %tr
+            %td= t('.fecha')
+            %td= @report.created_at
+          %tr
+            %td= t('.colonia')
+            %td= truncate(User.find(@report.user_id).address, length: 70)
+          %tr
+            %td= t('.razon')
+            %td= COMPLAINTS[@report.reason]
+          - unless @report.custom_reason.empty?  
+            %tr
+              %td= t('.comentario')
+              %td= truncate(@report.custom_reason, length: 70)
+          %tr
+            %td= t('.descripcion')
+            %td= truncate(@report.description, length: 70)
+          %tr
+            %td= t('.licencia_operacion')
+            %td= User.find(@report.user_id).operation_license

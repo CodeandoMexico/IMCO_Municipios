@@ -8,19 +8,19 @@ class DashboardController < ApplicationController
     total_reminders = reminders.joins(:user).where(user_id: users)
 
   complaint = {panel: 'panel-primary', awesome_icons_class: 'fa fa-comments fa-5x', 
-    value: Complaint.where(city_id: current_user.city_id).count, message: 'Denuncias totales', path: root_path}
+    value: Complaint.where(city_id: current_user.city_id).count, message: 'Denuncias totales', path: '#'}
 
   business_creates = {panel: 'panel-green', awesome_icons_class: 'fa fa-area-chart fa-5x',
-   value: users.count, message: 'Empresarios registrados', path: root_path}
+   value: users.count, message: 'Empresarios registrados', path: '#'}
 
   business_this_week = {panel: 'panel-red', awesome_icons_class: 'fa fa-plus fa-5x', 
-    value: users.where("created_at >= ? ", 1.week.ago.utc).count, message: 'Empresarios nuevos', path: root_path}
+    value: users.where("created_at >= ? ", 1.week.ago.utc).count, message: 'Empresarios nuevos', path: '#'}
 
   users_with_reminders = {panel: 'panel-purple', awesome_icons_class: 'fa fa-clock-o fa-5x', 
-    value: total_reminders.count, message: 'Recordatorios totales', path: root_path}
+    value: total_reminders.count, message: 'Recordatorios totales', path: '#'}
 
   new_reminders = {panel: 'panel-yellow', awesome_icons_class: 'fa fa-user fa-5x', 
-    value: total_reminders.uniq.pluck(:user_id).count, message: 'Usuarios con recordatorios', path: root_path}
+    value: total_reminders.uniq.pluck(:user_id).count, message: 'Usuarios con recordatorios', path: '#'}
 
   documents_until_to = {panel: 'panel-brown', awesome_icons_class: 'fa fa-calendar-o fa-5x', 
     value: total_reminders.where("until_to <= ? ",Date.today() + 30.day).count, message: 'Documentos próximos a vencer', path: '#'}
