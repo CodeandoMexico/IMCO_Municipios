@@ -7,6 +7,7 @@
  *= require morrisjs/morris
  *= require chosen
  *= require_tree ./admin
+ *= require helpers
  *= require base
  *= require_self
  */
@@ -15,29 +16,10 @@
  @import "bootstrap";
  $grey-footer: #dddddd;
 
-
-$default_margin_helpers: 15px;
-
-.slight-bottom-margin{
-  margin-bottom: $default_margin_helpers;
-}
-
-.slight-right-margin{
-  margin-right: $default_margin_helpers;
-}
-
-.slight-left-margin{
-  margin-left: $default_margin_helpers;
-}
-
-.slight-top-margin{
-  margin-top: $default_margin_helpers;
-}
-
 .panel-heading { padding: 5px 15px 15px 15px; }
 
 .footer-admin{
-	padding: 30px 15% 30px 15%; 
+	padding: 30px 15% 30px 15%;
 	background-color: $grey-footer;
 }
 
