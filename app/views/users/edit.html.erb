@@ -146,18 +146,20 @@
             lat: position.coords.latitude,
             lng: position.coords.longitude
           },{ draggable: true});
+          codeLatLng(position.coords.latitude,position.coords.longitude);
          }else{
           marker = handler.addMarker({
-            lat: <%= @user.latitude %>,
-            lng: <%= @user.longitude %>
+            lat: <%=@user.latitude.nil? ? 0 : @user.latitude %>,
+            lng: <%=@user.longitude.nil? ? 0 : @user.longitude %>
           },{ draggable: true});
+          codeLatLng(<%=@user.latitude.nil? ? 0 : @user.latitude %>,<%=@user.longitude.nil? ? 0 : @user.longitude %>);
         }
         handler.map.centerOn(marker);
         handler.getMap().setZoom(18);
         google.maps.event.addListener(marker.serviceObject, 'dragend', function() {
           updateFormLocation(this.getPosition());
         });
-        codeLatLng(position.coords.latitude,position.coords.longitude);
+
       }
 
       function updateFormLocation(latLng) {
