@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_length_of :address, :minimum => 10, :message => 'la dirección debe tener por lo menos 10 caracteres.', on:  :update
 
   validates_presence_of :operation_license, :message => "La licencia de operación no puede estar en blanco.", on:  :update
-   validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones.", on:  :update
+  validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones.", on:  :update
 
   validates_presence_of :city_id, :message => 'Debes escribir el municipio donde está tu negocio.', on:  :update
 
