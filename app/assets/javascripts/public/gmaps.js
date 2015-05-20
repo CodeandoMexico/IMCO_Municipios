@@ -72,23 +72,20 @@ var fetchPoint = function(lat, lng){
 };
 
 var fetchInfoWindow = function(markerData){
-  var name = markerData["name"];
-  var address = markerData["address"];
-  var schedule = markerData["schedule"];
-  var phone = markerData["phone"];
+  var name = pretty_business_name(markerData);
+  var address = fetchValue(markerData["address"], 'No tenemos una dirección registrada.');
+  var schedule = fetchValue(markerData["schedule"], 'No tenemos un horario registrado.');
+  var phone = fetchValue(markerData["phone"], 'No tenemos un teléfono registrado.');
 
-  var contentString = '<div id="content">'+
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1 id="firstHeading" class="firstHeading">' + name +'</h1>' +
-        '<div id="bodyContent">' +
-        '<ul>' +
-        '<li>' + name + '</li>' +
-        '<li>' + address + '</li>' +
-        '<li>' + schedule + '</li>' +
-        '<li>' + phone + '</li>' +
-        '</ul>' +
-        '</div>' +
+  var contentString = '<div id="gmap-content">'+
+          '<h2 id="firstHeading" class="firstHeading">' + name +'</h2>' +
+          '<div id="bodyContent">' +
+            '<ul>' +
+              '<li>' + address + '</li>' +
+              '<li>' + schedule + '</li>' +
+              '<li>' + phone + '</li>' +
+            '</ul>' +
+          '</div>' +
         '</div>';
   return new google.maps.InfoWindow({
      content: contentString
