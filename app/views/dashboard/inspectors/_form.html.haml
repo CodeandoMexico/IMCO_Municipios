@@ -1,41 +1,34 @@
-#form-container
-  = form_for [:dashboard, @inspector], html: { class: 'form-horizontal' } do |f|
-    = render 'shared/show_flash'
-    .form-group
-      = f.label t('.name'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :name, class: 'form-control'
-
-    .form-group
-      = f.label t('.validity'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :validity, class: 'form-control'
-
-    .form-group
-      = f.label t('.matter'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :matter, class: 'form-control'
-
-    .form-group
-      = f.label t('.supervisor'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :supervisor, class: 'form-control'
-
-    .form-group
-      = f.label t('.contact'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :contact, class: 'form-control'
-
-    .form-group
-      = f.label t('.photo'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        %span= link_to(@inspector.photo_identifier, @inspector.photo_url, target: "_blank") if @inspector.photo_url
-        = f.file_field :photo
-
-    .form-group
-      = f.label t('.dependency'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = collection_select(:inspector, :dependency_id, Dependency.all, :id, :name, {:prompt => false}, class: 'form-control')
-
-    .actions.pull-right
-      = f.submit t('.create_inspector'), :class => 'btn btn-sm btn-success outlineverde'
+= form_for [:dashboard, @inspector], html: { class: 'form-horizontal' } do |f|
+  = render 'shared/show_flash'
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.create_inspector'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.name')
+              %td= f.text_field :name, class: 'form-control'
+            %tr
+              %td= t('.validity')
+              %td= f.text_field :validity, class: 'form-control'
+            %tr
+              %td= t('.matter')
+              %td= f.text_field :matter, class: 'form-control'
+            %tr
+              %td= t('.supervisor')
+              %td= f.text_field :supervisor, class: 'form-control'
+            %tr
+              %td= t('.contact')
+              %td= f.text_field :contact, class: 'form-control'
+            %tr
+              %td= t('.photo')
+              %td
+                %span= link_to(@inspector.photo_identifier, @inspector.photo_url, target: "_blank") if @inspector.photo_url
+                = f.file_field :photo
+            %tr
+              %td= t('.dependency')
+              %td= collection_select(:inspector, :dependency_id, Dependency.where(city_id: current_user.city_id), :id, :name, {:prompt => false}, class: 'form-control')

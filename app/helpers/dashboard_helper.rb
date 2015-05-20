@@ -1,32 +1,47 @@
 module DashboardHelper
-  def kpis
-    [{
-      panel: 'panel-primary',
-      awesome_icons_class: 'fa fa-comments fa-5x',
-      value: 26,
-      message: 'New Comments!',
-      path: '#'
-    },
-    {
-      panel: 'panel-green',
-      awesome_icons_class: 'fa fa-tasks fa-5x',
-      value: 12,
-      message: 'New Tasks!',
-      path: '#'
-    },
-    {
-      panel: 'panel-yellow',
-      awesome_icons_class: 'fa fa-shopping-cart fa-5x',
-      value: 124,
-      message: 'New Orders!',
-      path: '#'
-    },
-    {
-      panel: 'panel-red',
-      awesome_icons_class: 'fa fa-support fa-5x',
-      value: 13,
-      message: 'Support Tickets!',
-      path: '#'
-    }]
+  def pretty_kpi_data(kpi_data)
+    panels.map do |panel|
+      # process the panel
+      kpi = kpi_data.shift
+      panel[:value] = kpi[:value]
+      panel[:message] = kpi[:message]
+      # return array element value
+      panel
+    end
+  end
+
+  def panels
+    [
+      {
+        panel: 'panel-primary',
+        awesome_icons_class: 'fa fa-comments fa-5x',
+        path: '#'
+      },
+      {
+        panel: 'panel-green',
+        awesome_icons_class: 'fa fa-area-chart fa-5x',
+        path: '#'
+      },
+      {
+        panel: 'panel-red',
+        awesome_icons_class: 'fa fa-plus fa-5x',
+        path: '#'
+      },
+      {
+        panel: 'panel-purple',
+        awesome_icons_class: 'fa fa-clock-o fa-5x',
+        path: '#'
+      },
+      {
+        panel: 'panel-yellow',
+        awesome_icons_class: 'fa fa-user fa-5x',
+        path: '#'
+      },
+      {
+        panel: 'panel-brown',
+        awesome_icons_class: 'fa fa-calendar-o fa-5x',
+        path: '#'
+      }
+    ]
   end
 end

@@ -94,8 +94,7 @@ end
     params.require(:reminders).permit(
       :name,
       :license,
-      :until_to,
-      :user
+      :until_to
       )
   end
 end

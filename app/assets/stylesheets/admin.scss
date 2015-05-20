@@ -22,3 +22,26 @@
 	padding: 30px 15% 30px 15%;
 	background-color: $grey-footer;
 }
+
+.panel-purple {
+     background-color: #8A2BE2 !important;
+}
+.panel-purple .panel-heading {
+  border-color: #8A2BE2;
+  color: #fff;
+  background-color: #8A2BE2;
+}
+.panel-purple a {
+  color: #8A2BE2;
+}
+.panel-brown {
+     background-color: #926239 !important;
+}
+.panel-brown .panel-heading {
+  border-color: #926239;
+  color: #fff;
+  background-color: #926239;
+}
+.panel-brown a {
+  color: #926239;
+}
