@@ -9,6 +9,10 @@ class Line < ActiveRecord::Base
   has_many :inspection_lines
   has_many :inspections, through: :inspection_lines
 
+ def to_s
+   self.name
+ end
+
  def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ["name", "description","city_id"]#column_names
