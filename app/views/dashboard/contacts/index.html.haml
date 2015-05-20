@@ -1,0 +1,31 @@
+= form_for @city , html: { class: 'form-horizontal' } do |f|
+  .h1= t('.all_profile',:city => @city.name)
+  = render 'shared/show_flash'
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.actualizar'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.correo_municipio')
+              %td= f.text_field :contact_email, class: 'form-control'
+
+%h2= t('.admins')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+    .panel-body
+      %table{ class:'table table-striped table-bordered table-hover' }
+        %tbody
+          %tr
+            %td= t('.email')
+            %td= @user.email
+            %td
+              = link_to edit_dashboard_city_contact_path(@city,@user) do
+                %i.fa.fa-pencil
