@@ -72,7 +72,7 @@
             <%= f.label t('.address') %></div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
           </div>
-          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio' %>
+          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio'%>
         </div>
         <div class="form-group">
           <div class="row">
@@ -183,6 +183,11 @@
             alert("Geocoder failed due to: " + status);
           }
         });
+        $('#user_address').keyup(function() {
+          delay(function(){
+            address_latlng(document.getElementById('user_address').value);
+          }, 5000 );
+        });
       }
       function changeLines(){
         var e = document.getElementById("user_city_id");
@@ -200,5 +205,28 @@
       }
 
       $(document).ready(loadMap);
+
+      function address_latlng(address){
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            marker = handler.addMarker({
+            lat: latitude,
+            lng: longitude
+          },{ draggable: true});
+            handler.map.centerOn(marker);
+            handler.getMap().setZoom(18);
+          } 
+        });
+      }
+
+      var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+        };
+        })();
 
     </script>
