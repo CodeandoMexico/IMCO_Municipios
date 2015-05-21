@@ -224,27 +224,6 @@ es:
       terminado: terminado
       tengo_tramite: Ya tengo este trámite
       select_giro: Selecciona un giro
-  procedure_lines:
-    index:
-      title: Trámites
-      no_procedure_lines_available: No encontramos trámites con estos parámetros
-      no_procedure_lines_selected: Selecciona las opciones de búsqueda
-      radio_fisica: Física
-      radio_moral: Moral
-      radio_ambas: Ambos
-      procedure_lines_radio_name: 'Tipo de persona:'
-      nombre: Nombre
-      descripcion: Descripción
-      tipo: Tipo
-      costo: Costo
-      vigencia: Vigencia
-      procedure_lines_select_name: 'Giro del negocio:'
-      procedure_lines_radio_estados: 'Etapa de tu negocio:'
-      no_procedure_lines_selected_subtitle: Podras ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
-      no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
-      no_procedure_lines_selected_resultado: Resultado de la busqueda.
-    show:
-      requisitos: Debes cumplir con todos los siguientes requisitos.
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
