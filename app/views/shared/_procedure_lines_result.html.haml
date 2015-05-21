@@ -8,7 +8,7 @@
       %th= t('.duracion')
     %tbody
       - @tramites_del_giro.each do |tramite_de_giro|
-        - if Procedure.find(tramite_de_giro.procedure_id).type_procedure == @tipo || @tipo == 'A'
+        - if((Procedure.find(tramite_de_giro.procedure_id).type_procedure == @tipo || @tipo == 'A') && Procedure.find(tramite_de_giro.procedure_id).category == @categoria)
           %tr
             %td
               = link_to city_procedure_line_path(@city,tramite_de_giro), class: 'texto-verde' do
