@@ -27,15 +27,6 @@
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">
-            <%= f.label t('.business_name') %>
-          </div>
-          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
-        </div>
-        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class= "col-md-4">
             <%= f.label t('.city_id') %>
           </div>
           <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:city_id][0].to_s%></div>
@@ -65,6 +56,15 @@
             <%= f.text_field :longitude , class: 'form-controler', :placeholder => 'Longitud', :readonly => true%>
           </div>
         </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+            <%= f.label t('.business_name') %>
+          </div>
+          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
+        </div>
+        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
       </div>
       <div class="form-group">
         <div class="row">
@@ -201,6 +201,9 @@
 
       function reloadLines(values){
         var url = window.location.href.split('?')[0];
+        if(url.includes("#_=_")){
+          url = url.replace("#_=_","");
+        }
         window.location.href = url + "?city="+values;
       }
 
