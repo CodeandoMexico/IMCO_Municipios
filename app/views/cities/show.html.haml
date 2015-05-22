@@ -1,5 +1,7 @@
-%a-verde
-  = render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+%a-verde= render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center
+  = render "shared/show_flash"
 
 .row.text-center.texto-verde
   %h1= t('.titulo')
