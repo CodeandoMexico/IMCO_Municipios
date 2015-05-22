@@ -1,0 +1,24 @@
+@import 'colors';
+
+.no-background {
+  background: none;
+	padding: 12px 22px;
+	outline: none;
+}
+
+.btn-red-outline {
+  @extend .no-background;
+  border: 2px solid $red !important;
+	color: $red !important;
+  padding: 12px 22px 12px 22px !important;
+}
+
+
+// search input
+#q {
+  font-size: 14px;
+}
+
+#procedure_lines_form .form-group {
+  padding-bottom: 5px;
+}

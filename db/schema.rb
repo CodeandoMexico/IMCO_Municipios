@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407185051) do
+ActiveRecord::Schema.define(version: 20150520221931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150407185051) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "contact_email"
+    t.decimal  "latitude",      precision: 10, scale: 6
+    t.decimal  "longitude",     precision: 10, scale: 6
   end
 
   create_table "complaints", force: true do |t|
@@ -191,6 +193,11 @@ ActiveRecord::Schema.define(version: 20150407185051) do
     t.text     "operation_license_file"
     t.text     "land_permission_file"
     t.string   "name"
+    t.text     "phone"
+    t.text     "schedule"
+    t.integer  "line_id"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree

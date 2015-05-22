@@ -1,0 +1,44 @@
+= form_for [:dashboard, @inspection], html: { class: 'form-horizontal' } do |f|
+  = render 'shared/show_flash'
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.create_inspection'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.name')
+              %td= f.text_field :name, class: 'form-control'
+            %tr
+              %td= t('.matter')
+              %td= f.text_field :matter, class: 'form-control'
+            %tr
+              %td= t('.duration')
+              %td= f.text_field :duration, class: 'form-control'
+            %tr
+              %td= t('.rule')
+              %td= f.text_field :rule, class: 'form-control'
+            %tr
+              %td= t('.before')
+              %td= f.text_field :before, class: 'form-control'
+            %tr
+              %td= t('.during')
+              %td= f.text_field :during, class: 'form-control'
+            %tr
+              %td= t('.after')
+              %td= f.text_field :after, class: 'form-control'
+            %tr
+              %td= t('.sanction')
+              %td= f.text_field :sanction, class: 'form-control'
+            %tr
+              %td= t('.dependency')
+              %td= collection_select(:inspection, :dependency_id, @dependency, :id, :name, {:prompt => false}, class: 'form-control')
+            %tr
+              %td= t('.requirements')
+              %td= f.select :requirement_ids, @requirements.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}
+            %tr
+              %td= t('.lines')
+              %td= f.select :line_ids, @lines.map { |u| [u.name, u.id] },{ include_blank: true },{ class: 'chosen-select', :multiple=>true, :data => { :placeholder => ' ' }}

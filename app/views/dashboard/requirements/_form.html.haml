@@ -1,0 +1,20 @@
+= form_for [:dashboard, @requirement], html: { class: 'form-horizontal' } do |f|
+  = render 'shared/show_flash'
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.create_requirements'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.name')
+              %td= f.text_field :name, class: 'form-control'
+            %tr
+              %td= t('.description')
+              %td= f.text_field :description, class: 'form-control'
+            %tr
+              %td= t('.path')
+              %td= f.text_field :path, class: 'form-control'

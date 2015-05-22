@@ -1,0 +1,11 @@
+%a-verde
+  = render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center.texto-verde
+  %h1= t('.title')
+  %p= t('.subtitle')
+
+.row
+  = select_tag 'lines_filter', options_from_collection_for_select(@lines, 'id', 'name', @line_id), prompt: t('.lines_of_work'), class: 'form-control slight-bottom-margin', 'onchange'=> "filterBusiness()"
+.row
+  = render 'shared/google_map', markers: @users, center: { latitude: @city.latitude, longitude: @city.longitude }

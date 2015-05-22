@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-database fa-fw"></i> Registros por dataset
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.dependencia')%>
+                <span class="pull-right text-muted small"><em><%= @dependencies.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.giros')%>
+                <span class="pull-right text-muted small"><em><%= @lines.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.apertura')%>
+                <span class="pull-right text-muted small"><em><%= @formation_steps.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.requerimientos')%>
+                <span class="pull-right text-muted small"><em><%= @requirements.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.tramites')%>
+                <span class="pull-right text-muted small"><em><%= @procedures.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.inspecciones')%>
+                <span class="pull-right text-muted small"><em><%= @inspections.count %></em>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <i class="fa fa-tasks fa-fw"></i> <%=t('.inspectores')%>
+                <span class="pull-right text-muted small"><em><%= @inspectors.count %></em>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel-body -->
+</div>
+<!-- /.panel -->

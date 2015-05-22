@@ -1,0 +1,158 @@
+%a-verde
+  = render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde'
+
+.row.text-center
+  = render 'shared/show_flash'
+
+.row.text-center.texto-verde
+  %h1= t('.title')
+  - if @line.nil? || @categoria.nil?
+    %p= t('.no_procedure_lines_selected_subtitle')
+    %p= t('.no_procedure_lines_selected_instruction')
+  - elsif @categoria.nil?
+    %p
+      = t('.no_procedure_lines_selected_resultado')
+      = "#{Line.find(@line).name} para persona #{tipo(@tipo)}, #{@categoria}."
+
+= form_for :get, html: { method: :get, id: 'procedure_lines_form', class: 'form-horizontal', style: 'margin-bottom: 115px;'}, url: { controller: :procedure_lines, action: :index }  do |f|
+  .form-group
+    %label.col-sm-2.control-label.texto-margin-top.texto-verde-wrap= t('.procedure_lines_select_name')
+    .col-sm-10
+      = f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line }, { class: 'chosen-select' }
+  .form-group
+    %label.col-sm-2.control-label.texto-verde-wrap= t('.procedure_lines_radio_name')
+    .col-sm-10
+      .btn-group.btn-toggle{ 'data-toggle'=> "buttons" }
+        -if @tipo == 'TF'
+          %label.btn.btn-default.active.texto-gris
+            = t('.radio_fisica')
+            = radio_button_tag :rating, 'TF', true
+          %label.btn.btn-default.texto-gris
+            = t('.radio_moral')
+            = radio_button_tag :rating, 'TM'
+          %label.btn.btn-default.texto-gris
+            = t('.radio_ambas')
+            = radio_button_tag :rating, 'A'
+        - elsif @tipo == 'TM'
+          %label.btn.btn-default.texto-gris
+            = t('.radio_fisica')
+            = radio_button_tag :rating, 'TF'
+          %label.btn.btn-default.active.texto-gris
+            = t('.radio_moral')
+            = radio_button_tag :rating, 'TM',true
+          %label.btn.btn-default.texto-gris
+            = t('.radio_ambas')
+            = radio_button_tag :rating, 'A'
+        - else
+          %label.btn.btn-default.texto-gris
+            = t('.radio_fisica')
+            = radio_button_tag :rating, 'TF'
+          %label.btn.btn-default.texto-gris
+            = t('.radio_moral')
+            = radio_button_tag :rating, 'TM'
+          %label.btn.btn-default.active.texto-gris
+            = t('.radio_ambas')
+            = radio_button_tag :rating, 'A',true
+  .form-group
+    %label.col-sm-2.control-label.texto-verde-wrap= t('.procedure_lines_radio_estados')
+    .col-sm-10
+      .btn-group.btn-toggle{ 'data-toggle'=> "buttons" }
+        - if @etapa == t('buttons.crea')
+          %label.btn.btn-default.active.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crea')}" }
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea'), true
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa,  t('buttons.crece')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra')
+        - elsif @etapa == t('buttons.administra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crea')}" }
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea')
+          %label.btn.btn-default.active.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra'), true
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa,  t('buttons.crece')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra')
+        - elsif @etapa == t('buttons.crece')
+          %label.btn.btn-defaul.texto-gris texto-grist" data-toggle="tooltip" data-placement="top" title:"<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea' )
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra')
+          %label.btn.btn-default.active.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa, t('buttons.crece'), true
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra')
+        - elsif @etapa == t('buttons.construye')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crea')}" }
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa,  t('buttons.crece')
+          %label.btn.btn-default.active.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=>"top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye'), true
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra')
+        - elsif @etapa == t('buttons.cierra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crea')}" }
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa,  t('buttons.crece')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye')
+          %label.btn.btn-default.active.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=>"top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra'), true
+        - else
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=> "top", title:"#{t('tooltips.crea')}" }
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=> "top", title:"#{t('tooltips.administra')}" }
+            = t('buttons.administra')
+            = radio_button_tag :etapa, t('buttons.administra')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=> "top", title:"#{t('tooltips.crece')}" }
+            = t('buttons.crece')
+            = radio_button_tag :etapa,  t('buttons.crece')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=> "top", title:"#{t('tooltips.construye')}" }
+            = t('buttons.construye')
+            = radio_button_tag :etapa, t('buttons.construye')
+          %label.btn.btn-default.texto-gris{ 'data-toggle'=> "tooltip", 'data-placement'=> "top", title:"#{t('tooltips.cierra')}" }
+            = t('buttons.cierra')
+            = radio_button_tag :etapa, t('buttons.cierra')
+
+  .col-sm-offset-2.col-sm-3{ style: 'padding-left:0;'}
+    = f.submit t('buttons.buscar'), class: 'btn btn-success btn-lg outlineverde btn-block'
+
+= render "shared/procedure_lines_result"

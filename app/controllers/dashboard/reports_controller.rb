@@ -4,11 +4,11 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @reports = policy_scope(Complaint).where(city_id: current_user.city).order(:created_at)
+      @complaints = policy_scope(Complaint).where(city_id: current_user.city).order(:created_at)
     end
 
     def show
-          
+
     end
 
 

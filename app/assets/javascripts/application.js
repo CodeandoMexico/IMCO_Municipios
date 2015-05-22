@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-switch
 //= require chosen-jquery
+//= require underscore
+//= require gmaps/google
+//= require_tree ./public
 //= require_tree .
 
 var loadChosen = function(){

@@ -1,0 +1,33 @@
+.row
+  .col-sm-12
+    %h1.page-header= t('titles.requirements')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+        = link_to t('.new_requirements'), new_dashboard_requirement_path, class: 'btn btn-sm btn-success'
+    .panel-body
+      - if @requirements.any?
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %thead
+            %th #
+            %th= t('.name')
+            %th= t('.municipio')
+            %th= t('.actions')
+          %tbody
+            - @requirements.each_with_index do |requirement, idx|
+              %tr
+                %td= idx + 1
+                %td= truncate(requirement.name, length: 70)
+                %td= truncate(requirement.city.name, length: 70)
+                %td
+                  = link_to edit_dashboard_requirement_path(requirement) do
+                    %i.fa.fa-pencil
+                  = link_to dashboard_requirement_path(requirement), method: :delete, data: { confirm: t('form.confirmations.delete_requirement') } do
+                    %i.fa.fa-trash
+        %p.pull-right
+          Descargar:
+          = link_to "CSV", dashboard_requirements_path( format: "csv"), :class => 'btn btn-success btn-xs outlineverde'
+      - else
+        = render 'shared/empty_resource', message: t('.no_requirements_available')

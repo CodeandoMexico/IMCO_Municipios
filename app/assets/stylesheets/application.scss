@@ -1,0 +1,591 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require bootstrap3-switch
+ *= require chosen
+ *= require_tree ./public
+ *= require helpers
+ *= require gmaps
+ *= require base
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+ // custom stylesheeets
+ @import "public/variables";
+ @import "public/colors";
+ @import "public/cards";
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  color: #777777;
+  margin-bottom: $footer_height;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  margin-top: 70px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer_height;
+  color:#fff;
+  background-color: #46aa6c !important;
+  text-align: center;
+  padding: 10px 17% 10px 12%;
+}
+
+.padding-left-center {
+  padding-left: 20%;
+}
+
+.img-responsive-footer {
+  display: block;
+  max-width: 65%;
+  margin: 0 auto;
+}
+.text-right {
+  text-align: right;
+}
+
+.link_image {
+  background-color: white;
+  border: 1px white solid;
+  margin: 15px;
+}
+
+.col-md-3 {
+  width: 33%;
+}
+
+.bg-primary {
+  background-color: #fff;
+}
+
+.input-group-addon {
+  padding: 6px 12px;
+  font-size: 11px;
+  height: 45px !important;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0,0,0,0);
+  border: 0px solid #00B26E;
+  border-radius: 4px;
+}
+
+.form-controler {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 6px 12px;
+  font-size: 0.90em;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: white;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  margin-left: 0px;
+  font-size: 0.90em;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: white;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+/******************************zona de A****************/
+
+/*************************a-verde******************/
+a-verde{
+  color: $light-green !important;
+  cursor: pointer;
+  width:100%;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  a{color: $light-green !important;}
+}
+
+a-verde:link {
+  color: $light-green !important;
+}
+
+/* visited link */
+a-verde:visited {
+  color: $light-green !important;
+}
+
+/* mouse over link */
+a-verde:hover {
+  color: $light-green !important;
+}
+
+/* selected link */
+a-verde:active {
+  color: $light-green !important;
+}
+
+
+/*************************a******************/
+a{
+  color: $white;
+  cursor: pointer;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+a:link {
+    color: $white;
+}
+
+/* visited link */
+a:visited {
+    color: $white;
+}
+
+/* mouse over link */
+a:hover {
+    color: $white;
+}
+
+/* selected link */
+a:active {
+    color: $white;
+}
+
+
+/**********************textos de colores*****************/
+texto-blanco{
+  color: $white !important;
+  width:100%;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.texto-rojo{
+  color: $rojo !important;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.texto-verde{
+  color: $dark-green !important;
+  width:100%;
+}
+
+.texto-gris{
+  color: #777777 !important;
+}
+
+
+
+.texto-negro{
+  color: $negro !important;
+  width:100%;
+}
+
+.texto-negro-wrap{
+  color: $negro !important;
+}
+
+.texto-verde-wrap{
+  color: $dark-green !important;
+}
+
+.texto-wrap{
+  width:100%;
+}
+
+.texto-padding-center{
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top:10px;
+  padding-bottom: 10px;
+  text-align: center;
+  }
+
+  .texto-margin-center{
+  margin-left: 0px;
+  margin-right: -5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  }
+
+  .texto-padding-right{
+  margin-right: 15px;
+  }
+
+.texto-padding-bottom{
+  padding-bottom: 15px;
+}
+
+.texto-margin-top{
+  margin-top: 10px;
+}
+
+.texto-margin-bottom{
+  margin-bottom: 15px;
+}
+
+.texto-margin-bottom-long{
+  margin-bottom: 50px;
+}
+
+.texto-padding-top{
+  padding-top: 10px;
+}
+
+/*********************DROP DOWN****************************/
+.dropdown-menu {
+  border: 1px solid$dark-green;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+  border: 2px solid #4eb976;
+}
+
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #4EB976;
+}
+.open > .dropdown-menu {
+  display: block;
+  margin-left: 30px;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: $dark-green;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover{
+ color: $dark-green;
+ background-color: $white;
+}
+
+.dropdown-menu > li > a:active{
+ color: $dark-green;
+ background-color: $white;
+}
+
+.main-menu li a:focus + ul {
+    display: block;
+}
+
+section{
+  width: 100%;
+}
+
+/*utiizado en el footer*/
+.center-block-padding {
+  display: block;
+  padding-left: 5%;
+  padding-right: 17%;
+  text-align: center
+
+}
+/*utilizado en el menu para centrar las bolitas*/
+.center-block-margin {
+  display: block;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.center-block-margin-login {
+  display: block;
+  padding: 3%;
+  margin-top: 3%;
+  margin-left: 25%;
+  margin-right: 25%;
+  border:2px solid #46aa6c;
+  outline-color:#46aa6c;
+
+}
+
+.center-block{
+  padding-top: 10%;
+}
+
+.full-width{
+  width: 100%;
+}
+.half-width{
+  width: 80%;
+}
+
+/*carrusel*************/
+.item{
+    background: #ffffff;
+    text-align: top;
+    min-height: 300px !important;
+
+}
+.carousel{
+    padding-top: 0px;
+}
+
+.carousel-content {
+    color:black;
+/*    display:flex;*/
+    align-items:center;
+}
+
+.carousel-control{
+    height: 300px !important;
+    color: rgb(78, 185, 118);
+}
+.carousel-control:hover{
+    height: 280px !important;
+    color: rgb(78, 185, 118);
+}
+
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid rgb(0, 150, 136);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $dark-green;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.carousel-indicators lir {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid $rojo;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #46aa6c;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: $dark-green;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0px 0px rgba(0,0,0,.6) !important;
+
+
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: scroll;
+  width: 100%;
+}
+
+
+.carousel-control.right {
+  left: auto;
+  right: 0;
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}
+.carousel-control.left {
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+
+
+.carousel-indicators {
+  bottom: 20px;
+  position: relative;
+}
+.bs-example{
+  margin: 20px;
+}
+
+/******************paginacion*******************/
+
+.pagination a{
+  color: #000;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: $light-green;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+}
+
+.pagination {
+    border-left: 1px solid $white;
+    .first{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .page{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .next{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .last{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+}
+
+/*********************************tipografia***********************/
+@mixin base_tipography($color, $font_size) {
+  font-family: Montserrat, sans-serif;
+  color: $color;
+  font-size: $font_size;
+}
+
+h1 {
+  @include base_tipography(#62B372, 24pt);
+}
+h2 {
+  @include base_tipography(#62B372, 18pt);
+}
+h3 {
+  @include base_tipography(#62B372, 16pt);
+}
+h3 {
+  @include base_tipography(#62B372, 11pt);
+}
+p {
+  @include base_tipography(#777777, 11pt);
+}
+
+p-blanco {
+  @include base_tipography($white, 11pt);
+}
+
+
+/***************************BR************************/
+espacio{
+    margin: 10px 0 10px 0;
+    display: block;
+}
+
+#social-sign-in {
+  margin-top: 30px;
+}
+
+.col-md-6 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+.btn-block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+
+/******************CRUDS**********************/
+.top-cruds{
+  padding-top: 8%;
+  padding-bottom: 5%;
+}
+
+/*****************tabla*********************/
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 0px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}

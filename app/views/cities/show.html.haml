@@ -1,0 +1,42 @@
+%a-verde= render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center
+  = render "shared/show_flash"
+
+.row.text-center.texto-verde
+  %h1= t('.titulo')
+  %p= t('.subtitulo')
+
+.row.text-center{ style: "margin-bottom:60px;"}
+  .col-md-4
+    = image_tag "tramites.png", class: "img-responsive center-block"
+    %p
+      = t('.texto_tramite')
+    .dropdown
+      %button.btn.btn-success.btn-lg.outlineverde.half-width{ type: "button", id: "dropdownMenu1", 'data-toggle' => "dropdown", 'aria-expanded'=> "true" }
+        = t('.tramite')
+        %span.caret
+      %ul.dropdown-menu.half-width{ role: "menu", 'aria-labelledby' => "dropdownMenu1" }
+        %li{ role: "presentation" }= link_to t('.new_business'), city_formation_steps_path(@city)
+        %hr.divider
+        %li{ role: "presentation" }= link_to t('.already_have_a_business'), city_procedure_lines_path(@city)
+
+  .col-md-4
+    = image_tag "inspecciones.png", class: "img-responsive center-block"
+    %p
+      = t('.texto_inspeccion')
+    .dropdown
+      %button.btn.btn-success.btn-lg.outlineverde.half-width{ type: "button", id: "dropdownMenu1", 'data-toggle' => "dropdown", 'aria-expanded'=> "true" }
+        = t('.inspecciones')
+        %span.caret
+      %ul.dropdown-menu.half-width{ role: "menu", 'aria-labelledby' => "dropdownMenu1" }
+        %li{ role: "presentation" }= link_to t('.inspeccion'), city_inspections_path(@city)
+        %hr.divider
+        %li{ role: "presentation" }= link_to t('.inspector'), city_inspectors_path(@city)
+
+  .col-md-4
+    = image_tag "floor_section.png", class: "img-responsive center-block"
+    %p
+      = t('.texto_uso_suelo')
+      &nbsp;
+    = link_to t('.floor_use'), city_users_path(@city), class: 'btn btn-success btn-lg outlineverde half-width'

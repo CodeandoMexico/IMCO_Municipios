@@ -22,7 +22,11 @@ class LinePolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope
+      if user.admin?
+        scope.where(city_id: user.city_id)
+      else
+        scope
+      end
     end
   end
 end

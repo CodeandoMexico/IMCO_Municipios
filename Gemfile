@@ -22,14 +22,14 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails' #para el autocomplletar
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # additional requirements
-gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 # authentication and authorization
@@ -50,7 +50,10 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem "breadcrumbs_on_rails" #breadcrumbs
+gem 'breadcrumbs_on_rails' #breadcrumbs
+gem 'haml'
+
+gem 'gmaps4rails'
 
 group :development, :test do
   # Load env variables

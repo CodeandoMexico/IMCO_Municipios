@@ -1,0 +1,79 @@
+%nav.navbar.navbar-default.navbar-static-top{ :role => "navigation", :style =>"margin-bottom: 0"}
+  %div.navbar-header
+    %button{:type=> "button", :class=> "navbar-toggle", :data => { :toggle => "collapse", :target=> ".navbar-collapse"}}
+      %span.sr-only
+        Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to 'Mi Negocio México', dashboard_path , :class => 'navbar-brand'
+  %ul.nav.navbar-top-links.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{:data => {:toggle=>"dropdown"}, :href => "#"}
+        %i.fa.fa-user.fa-fw 
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-user
+        %li
+          = link_to dashboard_city_contacts_path(current_user.city_id) do
+            %i.fa.fa-user.fa-fw
+            = t('navbar.user_profile')
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            %i.fa.fa-sign-out.fa-fw
+            = t('dashboard.menu.logout')
+
+  %div.navbar-default.sidebar{:role=>"navigation", :style =>"margin-bottom: 0"}
+    %div.sidebar-nav.navbar-collapse
+      %ul.nav{:id=>"side-menu"}
+        <!-- Dashboard -->
+        %li
+          = link_to dashboard_path do
+            %i.fa.fa-dashboard.fa-fw 
+            Dashboard
+        <!-- Complaints -->
+        %li
+          = link_to dashboard_reports_path do
+            %i.fa.fa-dashboard.fa-fw 
+            = t('dashboard.menu.complaints')
+
+        <!-- Dependencies -->
+        %li
+          = link_to dashboard_dependencies_path do
+            %i.fa.fa-dashboard.fa-fw
+            = t('dashboard.menu.dependencies')
+
+        <!-- Lines of work -->
+        %li
+          = link_to dashboard_lines_path do
+            %i.fa.fa-dashboard.fa-fw 
+            = t('dashboard.menu.lines')
+
+        <!-- Formation Steps -->
+        %li
+          = link_to dashboard_formation_steps_path do
+            %i.fa.fa-dashboard.fa-fw
+            = t('dashboard.menu.formation_steps')
+
+        <!-- Requirements -->
+        %li
+          = link_to dashboard_requirements_path do
+            %i.fa.fa-dashboard.fa-fw
+            = t('dashboard.menu.requirements')
+
+        <!-- Procedures -->
+        %li
+          = link_to dashboard_procedures_path do
+            %i.fa.fa-dashboard.fa-fw 
+            = t('dashboard.menu.procedures')
+
+        <!-- Inspections -->
+        %li
+          = link_to dashboard_inspections_path do
+            %i.fa.fa-dashboard.fa-fw 
+            = t('dashboard.menu.inspections')
+
+        <!-- Inspectors -->
+        %li
+          = link_to dashboard_inspectors_path do
+            %i.fa.fa-dashboard.fa-fw 
+            = t('dashboard.menu.inspectors')

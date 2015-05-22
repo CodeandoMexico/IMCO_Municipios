@@ -1,0 +1,47 @@
+/*
+ *= require bootstrap3-switch
+ *= require font-awesome
+ *= require metisMenu/dist/metisMenu
+ *= require timeline
+ *= require sb-admin-2
+ *= require morrisjs/morris
+ *= require chosen
+ *= require_tree ./admin
+ *= require helpers
+ *= require base
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ $grey-footer: #dddddd;
+
+.panel-heading { padding: 5px 15px 15px 15px; }
+
+.footer-admin{
+	padding: 30px 15% 30px 15%;
+	background-color: $grey-footer;
+}
+
+.panel-purple {
+     background-color: #8A2BE2 !important;
+}
+.panel-purple .panel-heading {
+  border-color: #8A2BE2;
+  color: #fff;
+  background-color: #8A2BE2;
+}
+.panel-purple a {
+  color: #8A2BE2;
+}
+.panel-brown {
+     background-color: #926239 !important;
+}
+.panel-brown .panel-heading {
+  border-color: #926239;
+  color: #fff;
+  background-color: #926239;
+}
+.panel-brown a {
+  color: #926239;
+}

@@ -1,0 +1,72 @@
+%a-verde= render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center
+	= render "shared/show_flash"
+
+.row.text-center.texto-verde
+	%h1= t('.title')
+	- if @line.nil?
+		%p= t('.no_formation_steps_selected_subtitle')
+		%p= t('.no_formation_steps_selected_instruction')
+	- else
+		%p= "#{t('.no_formation_steps_selected_resultado')} #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."
+
+= form_for :get, html: { method: :get, id: 'procedure_lines_form', class: 'form-horizontal', style: 'margin-bottom: 115px;' }, url: { controller: :formation_steps, action: :index }  do |f|
+	.form-group
+		%label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_select_name')
+		.col-sm-10
+			= f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line, :prompt => t('.select_giro') }, { class: 'chosen-select' }
+	.form-group
+		%label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_radio_name')
+
+		.col-sm-10
+			.btn-group.btn-toggle{ 'data-toggle'=> "buttons" }
+				- if @tipo == 'AF'
+					%label.btn.btn-default.active.texto-gris
+						= t('.radio_fisica')
+						= radio_button_tag :rating, 'AF',true
+					%label.btn.btn-default.texto-gris
+						= t('.radio_moral')
+						= radio_button_tag :rating, 'AM'
+				- else
+					%label.btn.btn-default.texto-gris
+						= t('.radio_fisica')
+						= radio_button_tag :rating, 'AF'
+					%label.btn.btn-default.active.texto-gris
+						= t('.radio_moral')
+						= radio_button_tag :rating, 'AM', true
+
+	.col-sm-offset-2.col-sm-5
+		= f.submit t('buttons.federal'), class: 'btn btn-success btn-lg outlineverde btn-block'
+
+	.col-sm-5
+		= f.submit t('buttons.municipal'), class: 'btn btn-success btn-lg outlineverde btn-block'
+
+- if @line.present?
+	- if @formation_steps.present?
+		-# Federal formation steps
+		= render "shared/carrusel_custome"
+	- elsif @procedure_lines.present?
+		-# City procedures
+		%table.table.table-bordered.table-hover.slight-top-margin
+			%thead
+				%th= t('.nombre')
+				%th= t('.tipo')
+				%th= t('.costo')
+				%th= t('.vigencia')
+				%th= t('.duracion')
+			%tbody
+				- @procedure_lines.each_with_index do |procedure_line, index|
+					- if(Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa')
+						%tr
+							%td
+								= link_to city_procedure_line_path(@city,procedure_line), class: 'texto-verde' do
+									= Procedure.find(procedure_line.procedure_id).name
+							%td
+								= tipo(Procedure.find(procedure_line.procedure_id).type_procedure)
+							%td
+								= Procedure.find(procedure_line.procedure_id).cost
+							%td
+								= Procedure.find(procedure_line.procedure_id).validity
+							%td
+								= Procedure.find(procedure_line.procedure_id).long

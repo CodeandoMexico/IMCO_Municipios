@@ -1,0 +1,25 @@
+- if @tramites_del_giro && @tramites_del_giro.any?
+  %table.table.table-bordered.table-hover.slight-top-margin
+    %thead
+      %th= t('.nombre')
+      %th= t('.tipo')
+      %th= t('.costo')
+      %th= t('.vigencia')
+      %th= t('.duracion')
+    %tbody
+      - @tramites_del_giro.each do |tramite_de_giro|
+        - if((Procedure.find(tramite_de_giro.procedure_id).type_procedure == @tipo || @tipo == 'A') && Procedure.find(tramite_de_giro.procedure_id).category == @categoria)
+          %tr
+            %td
+              = link_to city_procedure_line_path(@city,tramite_de_giro), class: 'texto-verde' do
+                = Procedure.find(tramite_de_giro.procedure_id).name
+            %td
+              = tipo(Procedure.find(tramite_de_giro.procedure_id).type_procedure)
+            %td
+              = Procedure.find(tramite_de_giro.procedure_id).cost
+            %td
+              = Procedure.find(tramite_de_giro.procedure_id).validity
+            %td
+              = Procedure.find(tramite_de_giro.procedure_id).long
+- elsif @tramites_del_giro && @tramites_del_giro.empty?
+  = render 'shared/empty_resource', message: t('procedure_lines.index.no_procedure_lines_available')

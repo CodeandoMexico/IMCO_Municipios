@@ -1,0 +1,7 @@
+.row.text-center
+	- if notice
+		.alert.alert-success
+			= notice
+	-elsif error
+		.alert.alert-danger
+			= error
