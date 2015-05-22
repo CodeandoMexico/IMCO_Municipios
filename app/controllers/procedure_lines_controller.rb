@@ -2,10 +2,10 @@ class ProcedureLinesController < ApplicationController
   before_action :set_line, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb "Inicio", :root_path
-  
+
   def index
     set_city(:city_id)
-    
+
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Tramites", city_procedure_lines_path(@city)
 
@@ -31,7 +31,7 @@ class ProcedureLinesController < ApplicationController
  def show
   set_city(:city_id)
   @cities = City.all
-  
+
   @procedure_requirements = ProcedureRequirement.all
   @procedure_lines=  ProcedureLine.all
   @requirements = Requirement.all
@@ -45,7 +45,7 @@ class ProcedureLinesController < ApplicationController
   add_breadcrumb "Tramites", city_procedure_lines_path(@city)
   add_breadcrumb @procedure
 
-  
+
 end
 
 
@@ -105,7 +105,7 @@ end
 
 def valida_giro
   if @line.nil? || @line.empty?
-    redirect_to city_procedure_lines_path(@city), error: 'Debes seleccionar un giro.' 
+    redirect_to city_procedure_lines_path(@city), error: 'Debes seleccionar un giro.'
     return "OK"
   end
   return nil
@@ -113,7 +113,7 @@ end
 
 def valida_categoria
   if @etapa.nil? || @etapa.empty?
-    redirect_to city_procedure_lines_path(@city), error:  'Debes seleccionar una categoría.' 
+    redirect_to city_procedure_lines_path(@city), error:  'Debes seleccionar una etapa.' 
     return "OK"
   end
   return nil
