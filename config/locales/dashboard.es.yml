@@ -24,7 +24,7 @@ es:
       user_news: Empresas nuevas
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
-      documents_until_to: Documentos próximos a 
+      documents_until_to: Documentos próximos
     contacts:
       index:
         all_profile: Contacto municipio %{city}
