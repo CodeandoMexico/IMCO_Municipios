@@ -14,7 +14,7 @@
       = t('.no_procedure_lines_selected_resultado')
       = "#{Line.find(@line).name} para persona #{tipo(@tipo)}, #{@categoria}."
 
-= form_for :get, html: { method: :get, id: 'procedure_lines_form', class: 'form-horizontal'}, url: { controller: :procedure_lines, action: :index }  do |f|
+= form_for :get, html: { method: :get, id: 'procedure_lines_form', class: 'form-horizontal', style: 'margin-bottom: 115px;'}, url: { controller: :procedure_lines, action: :index }  do |f|
   .form-group
     %label.col-sm-2.control-label.texto-margin-top.texto-verde-wrap= t('.procedure_lines_select_name')
     .col-sm-10
@@ -155,5 +155,4 @@
   .col-sm-offset-2.col-sm-3{ style: 'padding-left:0;'}
     = f.submit t('buttons.buscar'), class: 'btn btn-success btn-lg outlineverde btn-block'
 
-%div{ style: 'margin-top: 115px;' }
 = render "shared/procedure_lines_result"

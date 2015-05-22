@@ -213,7 +213,7 @@ es:
       no_formation_steps_selected: Apertura de un nuevo negocio
       no_formation_steps_selected_subtitle: Trámites federales y municipales que debes cumplir para poder abrir tu empresa.
       no_formation_steps_selected_instruction: Selecciona el giro de tu empresa y el tipo de persona que eres.
-      no_formation_steps_selected_resultado: Resultado de la busqueda.
+      no_formation_steps_selected_resultado: Resultado de la búsqueda.
       formation_steps_select_name: 'Giro del negocio:'
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
