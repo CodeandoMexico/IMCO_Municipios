@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   def edit
     redirect_to root_path if current_user.nil?
     @user = current_user
-
     unless @user.city_id.nil?
       @city_select = City.find(@user.city_id).id
       @lines = Line.where(city_id: @user.city_id)
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
       @city_select = City.find(params[:city]).id
     end
   end
-
 
   def update
     if current_user.admin?

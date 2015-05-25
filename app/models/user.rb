@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :city_id, :message => 'Debes escribir el municipio donde está tu negocio.', on:  :update
 
+  validates_presence_of :line_id, :message => 'Debes escribir el giro de tu negocio.'
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
