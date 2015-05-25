@@ -10,7 +10,7 @@
       - @procedure_requirement.each_with_index do |procedure, index|
         %tr
           %td
-            %label
+            %label{ style: 'font-weight: 400;' }
               %input{ type: 'checkbox' } &nbsp;
               = procedure.requirement.name
           %td= procedure.requirement.description
