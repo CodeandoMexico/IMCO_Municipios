@@ -5,7 +5,7 @@
   <div id="main" class="clear-top">
     <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
     <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
-    <p class="text-center"> <%=t('.obligatorios')%> </p>
+    <p class="text-center"><strong><%=t('.obligatorios')%></strong></p>
     <div id="authentication">
       <%= form_for(@user, html: { multipart: true}, :validate => true,  :url => {:action => "update", :id => @user} ) do |f| %>
       <div class="form-group">
@@ -79,14 +79,18 @@
         <div class="form-group">
           <div class="row">
             <div class= "col-md-4">
-              <%= f.label t('.phone') %></div>
+              <%= f.label t('.phone') %>
+              <i><%= f.label t('.optional') %></i>
+            </div>
             </div>
             <%= f.text_field :phone ,  class: 'form-controler', :placeholder => 'Teléfono del negocio' %>
           </div>
           <div class="form-group">
             <div class="row">
               <div class= "col-md-4">
-                <%= f.label t('.schedule') %></div>
+                <%= f.label t('.schedule') %>
+                <i><%= f.label t('.optional') %></i>
+              </div>
               </div>
               <%= f.text_field :schedule ,  class: 'form-controler', :placeholder => 'Horario del negocio' %>
             </div>
@@ -100,11 +104,13 @@
               </div>
               <div class="form-group">
                 <%= f.label t('.operation_license_file') %><br />
+                <i><%= f.label t('.optional') %></i>
                 <span><%= link_to(@user.operation_license_file_identifier, @user.operation_license_file_url, target: "_blank", style:"color: black;") if @user.operation_license_file.present? %></span>
                 <%= f.file_field :operation_license_file %>
               </div>
               <div class="form-group">
                 <%= f.label t('.land_permission_file') %><br />
+                <i><%= f.label t('.optional') %></i>
                 <span><%= link_to(@user.land_permission_file_identifier, @user.land_permission_file_url, target: "_blank", style:"color: black;") if @user.land_permission_file.present? %></span>
                 <%= f.file_field :land_permission_file %>
               </div>

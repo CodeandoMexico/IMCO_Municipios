@@ -24,3 +24,4 @@ es:
       phone: Teléfono
       schedule: Horario
       obligatorios: '* Son obligatorios'
+      optional: (opcional)
