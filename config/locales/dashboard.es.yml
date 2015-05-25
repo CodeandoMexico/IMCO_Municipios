@@ -25,6 +25,7 @@ es:
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
       documents_until_to: Documentos próximos
+      titulo: Panel de administración
     contacts:
       index:
         all_profile: Contacto municipio %{city}
