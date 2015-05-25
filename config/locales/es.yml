@@ -231,7 +231,7 @@ es:
     index:
       title: Selecciona una opción
     show:
-      floor_use: Uso de suelo
+      floor_use: Negocios
       tramite: Trámites
       new_business: Nuevo negocio
       already_have_a_business: Ya tengo negocio
@@ -241,9 +241,9 @@ es:
       texto_no_tengo: No tengo un negocio.
       texto_ya_tengo: Ya tengo un negocio.
       texto_nuevo: ¿Cómo puedo crear mi negocio?
-      texto_tramite: ¿Qué tramites puedo realizar?
+      texto_tramite: ¿Qué trámites tengo que realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
-      texto_uso_suelo: ¿Tengo permiso de uso de suelo?
+      texto_uso_suelo: Localiza negocios en el municipio
       subtitulo: Selecciona una opción.
       titulo: Menú Mi Negocio México
   imcos:
