@@ -19,4 +19,6 @@ es:
       no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
       no_procedure_lines_selected_resultado: Resultado de la busqueda.
     show:
-      requisitos: Debes cumplir con todos los siguientes requisitos.
+      title: Requisitos
+      business_line: "Giro de negocio: "
+      line_procedure: "Procedimiento: "

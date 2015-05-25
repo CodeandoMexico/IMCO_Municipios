@@ -1,0 +1,19 @@
+- if @procedure_requirement.any?
+  %table.table.table-hover
+    %thead
+      %tr.texto-verde
+        %th= t('.name')
+        %th= t('.description')
+        %th= t('.path')
+
+    %tbody
+      - @procedure_requirement.each_with_index do |procedure, index|
+        %tr
+          %td
+            %label
+              %input{ type: 'checkbox' } &nbsp;
+              = procedure.requirement.name
+          %td= procedure.requirement.description
+          %td= procedure.requirement.path
+- else
+  = render 'shared/empty_resource', message: t('.no_procedures_available')

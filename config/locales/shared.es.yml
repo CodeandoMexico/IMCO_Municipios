@@ -7,3 +7,7 @@ es:
       address: Dirección
       phone: Teléfono
       no_businesses_available: No hay negocios para mostrar.
+    requirements:
+      name: Nombre
+      description: Descripción
+      path: Liga al recurso
