@@ -187,9 +187,9 @@ es:
       subject: Materia
       period: Duración
       norm: Norma
-      before_tips: Tips (antes)
-      during_tips: Tips (durante)
-      after_tips: Tips (después)
+      before_tips: ¿Qué esperar antes?
+      during_tips: ¿Qué sucede durante?
+      after_tips: ¿Qué pasa después?
       sanctions_tips: Sanciones
       more_info: Más información
       requisitos: Requisitos
