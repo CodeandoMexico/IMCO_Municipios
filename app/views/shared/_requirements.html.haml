@@ -1,4 +1,4 @@
-- if @procedure_requirement.any?
+- if @procedure_requirements.any?
   %table.table.table-hover
     %thead
       %tr.texto-verde
@@ -7,7 +7,7 @@
         %th= t('.path')
 
     %tbody
-      - @procedure_requirement.each_with_index do |procedure, index|
+      - @procedure_requirements.each_with_index do |procedure, index|
         %tr
           %td
             %label{ style: 'font-weight: 400;' }
