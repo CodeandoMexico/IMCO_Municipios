@@ -16,19 +16,14 @@ class FormationStepsController < ApplicationController
     add_breadcrumb "Nuevo negocio"
   end
 
+  def show
+  end
+
   def valores
     if params[:get][:lines]
      @line = params[:get][:lines]
      @tipo = params[:rating]
-     @id_formation_step = params[:guardado]
      valida_parametros
-     unless @id_formation_step.nil?
-      if UserFormationStep.where(user_id: current_user.id, formation_step_id: @id_formation_step , line_id: @line , type_user_formation_step: @tipo).first.nil?
-        a = UserFormationStep.create(user_id: current_user.id, formation_step_id: @id_formation_step, line_id: @line , type_user_formation_step: @tipo)
-        a.save
-      end
-    end
-
     if params[:commit] == 'Federales'
       @formation_steps = FormationStep.by_city(@city)
       @tramite = 'federales'
@@ -41,15 +36,12 @@ class FormationStepsController < ApplicationController
   end
 end
 
-
 def valida_parametros
     if @line.nil? || @line.empty?
       redirect_to city_formation_steps_path(@city),  error:  "Debes seleccionar un giro."
     end
 end
 
-def show
-end
 
 private
       # Use callbacks to share common setup or constraints between actions.
