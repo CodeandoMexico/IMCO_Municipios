@@ -16,6 +16,13 @@
                 %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'user_id': #{current_user.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
                 = link_to city_procedure_line_path(@city, procedure_line), class: 'texto-verde' do
                   = procedure.name
+          - else
+            -# let's redirect the user to the login page
+            %td
+              %label{ style: 'font-weight: 400;' }
+                %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
+                = link_to city_procedure_line_path(@city, procedure_line), class: 'texto-verde' do
+                  = procedure.name
         %td.col-sm-1
           = tipo(procedure.type_procedure)
         %td.col-sm-3
