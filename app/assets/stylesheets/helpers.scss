@@ -1,5 +1,7 @@
 $default_margin_helpers: 15px;
+$default_table_row_done_color: #f5f5f5;
 
+// block element helpers
 .slight-bottom-margin{
   margin-bottom: $default_margin_helpers;
 }
@@ -14,4 +16,9 @@ $default_margin_helpers: 15px;
 
 .slight-top-margin{
   margin-top: $default_margin_helpers;
+}
+
+// table element helpers
+tr.done{
+  background-color: $default_table_row_done_color;
 }

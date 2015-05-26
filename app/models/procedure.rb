@@ -7,18 +7,22 @@ class Procedure < ActiveRecord::Base
   has_many :procedure_lines
   has_many :lines, through: :procedure_lines
 
+  def to_s
+    self.name
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ["name","long","cost", "validity","contact","dependencia_id","type_procedure","giros","tramites"]#column_names
       all.each do |product|
         csv << [product.name, product.long, product.cost,product.validity, product.contact, Dependency.find(product.dependency_id).nombre,
-          tipo_tramite(product.type_procedure),  procedure_lines(product.id), procedure_requirements(product.id)] 
+          tipo_tramite(product.type_procedure),  procedure_lines(product.id), procedure_requirements(product.id)]
         end
       end
     end
   end
 
-  
+
 
 
   def procedure_lines(id_procedure)
@@ -27,7 +31,7 @@ class Procedure < ActiveRecord::Base
       aux[index] = Line.find(line.line_id).name
     end
     if aux.blank?
-      'N/A' 
+      'N/A'
     else
       aux.map(&:inspect).join('; ').gsub /"/, ''
     end
@@ -40,7 +44,7 @@ def procedure_requirements(id_procedure)
     aux[index] = Requirement.find(requirement.requirement_id).name
   end
   if aux.blank?
-    'N/A' 
+    'N/A'
   else
     aux.map(&:inspect).join('; ').gsub /"/, ''
   end
@@ -55,5 +59,3 @@ def tipo_tramite(tramite)
     'Ambas'
   end
 end
-
-

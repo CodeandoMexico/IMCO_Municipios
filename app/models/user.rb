@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :user_formation_step
   has_many :formation_steps, through: :user_formation_step
   has_many :complaints
+  has_many :user_procedures
+  has_many :procedures, through: :user_procedures
+  has_many :user_requirements
+  has_many :requirements, through: :user_requirements
 
   mount_uploader :operation_license_file, PdfUploader
   mount_uploader :land_permission_file, PdfUploader
