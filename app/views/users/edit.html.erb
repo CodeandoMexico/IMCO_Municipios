@@ -5,8 +5,9 @@
   <div id="main" class="clear-top">
     <h1 class="title text-center texto-verde"><%=t('.edit_profile')%></h1>
     <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
+    <p class="text-center"><strong><%=t('.obligatorios')%></strong></p>
     <div id="authentication">
-      <%= form_for(@user, html: { multipart: true }, :validate => true) do |f| %>
+      <%= form_for(@user, html: { multipart: true}, :validate => true,  :url => {:action => "update", :id => @user} ) do |f| %>
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">
@@ -14,7 +15,7 @@
          </div>
          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:name][0].to_s%></div>
        </div>
-       <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo' %>
+       <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo', :onchange=>"validate_requirements()" %>
      </div>
      <div class="form-group">
       <div class="row">
@@ -22,16 +23,7 @@
           <%= f.label t('.correo') %></div>
           <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:email][0].to_s%></div>
         </div>
-        <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico' %>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class= "col-md-4">
-            <%= f.label t('.business_name') %>
-          </div>
-          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
-        </div>
-        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa' %>
+        <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico', :onchange=>"validate_requirements()" %>
       </div>
       <div class="form-group">
         <div class="row">
@@ -47,8 +39,9 @@
           <div class= "col-md-4">
             <%= f.label t('.line') %>
           </div>
+          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:line_id][0].to_s%></div>
         </div>
-        <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select}, { class: 'chosen-select' }%>
+        <%= f.select :line_id, @lines.map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line_select}, { class: 'chosen-select', :onchange => "validate_requirements()" }%>
       </div>
       <div class="form-group">
         <div class="row">
@@ -59,10 +52,10 @@
         <div id="geolocation" style='width: 100%; height: 400px;'></div>
         <div class="row texto-margin-center">
           <div class= "col-md-6 ">
-            <%= f.text_field :latitude , class: 'form-controler', :placeholder => 'Latitud', :readonly => true %>
+            <%= f.text_field :latitude , class: 'form-controler', :placeholder => 'Latitud' %>
           </div>
           <div class= "col-md-6">
-            <%= f.text_field :longitude , class: 'form-controler', :placeholder => 'Longitud', :readonly => true%>
+            <%= f.text_field :longitude , class: 'form-controler', :placeholder => 'Longitud'%>
           </div>
         </div>
       </div>
@@ -72,19 +65,35 @@
             <%= f.label t('.address') %></div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
           </div>
-          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio'%>
+          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio', :onchange=>"validate_requirements()", :onFocus=>"loading();"%>
+          <div id="spinner" class="spinner" style="display:none;">
+          <%= image_tag "spinner.gif", class: "img-responsive center-block" ,:id=>"img-spinner"%>
         </div>
+        </div>
+      <div class="form-group">
+        <div class="row">
+          <div class= "col-md-4">
+            <%= f.label t('.business_name') %>
+          </div>
+          <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
+        </div>
+        <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa', :onchange=>"validate_requirements()" %>
+      </div>
         <div class="form-group">
           <div class="row">
             <div class= "col-md-4">
-              <%= f.label t('.phone') %></div>
+              <%= f.label t('.phone') %>
+              <i><%= f.label t('.optional') %></i>
+            </div>
             </div>
             <%= f.text_field :phone ,  class: 'form-controler', :placeholder => 'Teléfono del negocio' %>
           </div>
           <div class="form-group">
             <div class="row">
               <div class= "col-md-4">
-                <%= f.label t('.schedule') %></div>
+                <%= f.label t('.schedule') %>
+                <i><%= f.label t('.optional') %></i>
+              </div>
               </div>
               <%= f.text_field :schedule ,  class: 'form-controler', :placeholder => 'Horario del negocio' %>
             </div>
@@ -94,25 +103,28 @@
                   <%= f.label t('.operation_license') %></div>
                   <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:operation_license][0].to_s%></div>
                 </div>
-                <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón' %>
+                <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón', :onchange=>"validate_requirements()" %>
               </div>
               <div class="form-group">
                 <%= f.label t('.operation_license_file') %><br />
+                <i><%= f.label t('.optional') %></i>
                 <span><%= link_to(@user.operation_license_file_identifier, @user.operation_license_file_url, target: "_blank", style:"color: black;") if @user.operation_license_file.present? %></span>
                 <%= f.file_field :operation_license_file %>
               </div>
               <div class="form-group">
                 <%= f.label t('.land_permission_file') %><br />
+                <i><%= f.label t('.optional') %></i>
                 <span><%= link_to(@user.land_permission_file_identifier, @user.land_permission_file_url, target: "_blank", style:"color: black;") if @user.land_permission_file.present? %></span>
                 <%= f.file_field :land_permission_file %>
               </div>
               <div class="text-center">
-                <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3 texto-margin-bottom-long' %>
+                <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3 texto-margin-bottom-long', :id => 'save_form' %>
               </div>
               <% end %>
             </div>
           </div>
         </div>
+
         <script type='text/javascript'>
 
         var handler;
@@ -138,11 +150,12 @@
           if(e.value != "" || e.value != null){
             $(".line_for_city").removeClass("hide");
           }
+        validate_requirements();
         }
 
         function displayOnMap(position){
           if(position!='loading'){
-           marker = handler.addMarker({
+            marker = handler.addMarker({
             lat: position.coords.latitude,
             lng: position.coords.longitude
           },{ draggable: true});
@@ -167,7 +180,9 @@
         $('#longitude').val(latLng.lng());
         codeLatLng(latLng.lat(),latLng.lng());
       }
+     
       function codeLatLng(lat, lng) {
+        $('#spinner').show();
         document.getElementById('user_latitude').value = lat;
         document.getElementById('user_longitude').value = lng;
         var latlng = new google.maps.LatLng(lat,lng);
@@ -175,6 +190,7 @@
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
               document.getElementById('user_address').value = results[1].formatted_address;
+              $('#spinner').hide();
             }
             else{
               alert("Geocoder Not results "+ status);
@@ -201,6 +217,12 @@
 
       function reloadLines(values){
         var url = window.location.href.split('?')[0];
+        if(url.includes("#_=_")){
+          url = url.replace("#_=_","");
+        }
+        if(!url.includes("edit")){
+          url += "/edit";
+        }
         window.location.href = url + "?city="+values;
       }
 
@@ -217,8 +239,14 @@
           },{ draggable: true});
             handler.map.centerOn(marker);
             handler.getMap().setZoom(18);
+            document.getElementById('user_latitude').value = latitude;
+            document.getElementById('user_longitude').value = longitude;
+            google.maps.event.addListener(marker.serviceObject, 'dragend', function() {
+              updateFormLocation(this.getPosition());
+            });
           } 
         });
+        $('#spinner').hide();
       }
 
       var delay = (function(){
@@ -229,4 +257,15 @@
         };
         })();
 
+      function validate_requirements(){  
+        if(document.getElementById("user_name").value!= "" && document.getElementById("user_email").value!= "" && document.getElementById("user_address").value!= "" && document.getElementById("user_operation_license").value!= ""){
+         document.getElementById("save_form").disabled = false;
+        }else{
+        document.getElementById("save_form").disabled = true;
+        }
+      }
+
+      function loading(){
+        $('#spinner').show();
+      }       
     </script>
