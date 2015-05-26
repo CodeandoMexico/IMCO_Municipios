@@ -6,7 +6,7 @@
 
     - @formation_steps.each_with_index do |formation, index|
       - if formation.type_formation_step == @tipo
-        %tr
+        %tr{ 'ng-class'=> "{ 'done': procedures.items[#{formation.id}] }"}
           .col-sm-4
             - if user_signed_in?
               %td{ 'ng-init'=> "procedures.items[#{formation.id}] = #{UserFormationStep.exists?(user: current_user, formation_step: formation)}"}

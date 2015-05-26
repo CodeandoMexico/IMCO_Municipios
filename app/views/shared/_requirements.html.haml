@@ -6,7 +6,7 @@
       %th= t('.path')
 
     - @procedure_requirements.each_with_index do |procedure, index|
-      %tr
+      %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.requirement.id}] }"}
         - if user_signed_in?
           %td{ 'ng-init'=> "procedures.items[#{procedure.requirement.id}] = #{UserRequirement.exists?(user: current_user, requirement: procedure.requirement)}"}
             %label{ style: 'font-weight: 400;' }

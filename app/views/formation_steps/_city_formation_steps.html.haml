@@ -8,7 +8,7 @@
   - @procedure_lines.each_with_index do |procedure_line, index|
     - if(Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa')
       - procedure = Procedure.find(procedure_line.procedure_id)
-      %tr
+      %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.id}] }"}
         .col-sm-4
           - if user_signed_in?
             %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(user: current_user, procedure: procedure)}"}
