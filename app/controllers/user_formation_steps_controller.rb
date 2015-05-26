@@ -1,10 +1,12 @@
 class UserFormationStepsController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized, except: :index
 
   # this method is only called with javascript
   # via a post request, so let's respond with jsong
   def update
     @user_formation_step = UserFormationStep.find_or_initialize_by(user_formation_step_params)
+    authorize @user_formation_step
 
     if params[:done] && @user_formation_step.save(user_formation_step_params)
       # let's check that the value of the checkbox is true

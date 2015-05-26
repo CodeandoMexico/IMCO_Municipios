@@ -1,8 +1,10 @@
 class UserRequirementsController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized, except: :index
 
   def update
     @user_requirement = UserRequirement.find_or_initialize_by(user_requirements_params)
+    authorize @user_requirement
 
     if params[:done] && @user_requirement.save(user_requirements_params)
       # let's check that the value of the checkbox is true
