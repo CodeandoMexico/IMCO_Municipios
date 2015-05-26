@@ -1,6 +1,6 @@
 var app = angular.module('miNegocio', []);
 
-app.controller('ProcedureCtrl', ['$http', function($http){
+app.controller('ProcedureCtrl', ['$http', '$window', function($http, $window){
   var self = this;
 
   self.initialize = function(){
@@ -9,8 +9,9 @@ app.controller('ProcedureCtrl', ['$http', function($http){
     self.items = [];
   };
 
-  self.update = function(userId, formationId, lineId, type){
+  self.update = function(done, userId, formationId, lineId, type, path){
     console.log({
+      done: done,
       userId: userId,
       formationId: formationId,
       lineId: lineId,
@@ -23,6 +24,7 @@ app.controller('ProcedureCtrl', ['$http', function($http){
     // Checkbox id and state to change
     var data = {
       authenticity_token: csrfToken,
+      done: done,
       user_formation_step: {
         user_id: userId,
         formation_step_id: formationId,
@@ -32,12 +34,17 @@ app.controller('ProcedureCtrl', ['$http', function($http){
     };
 
     // Let's submit the checkbox info
-    $http.post('/user_formation_steps', data)
+    $http.post(path, data)
     .success(function(data, statues, headers, config){
       // do something when the checkbox has beeen successfully submitted ...
       // e.g. strike the checklist item or show a message that it has been updated
     });
-  }
+  };
+
+  self.redirect = function(path){
+    // let's redirect to the given path
+    $window.location.href = path;
+  };
 
   self.initialize();
 }]);
