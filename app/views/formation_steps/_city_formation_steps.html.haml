@@ -1,0 +1,26 @@
+%table.table.table-hover
+  %tr.texto-verde
+    %th.col-sm-4= t('.nombre')
+    %th.col-sm-1= t('.tipo')
+    %th.col-sm-3= t('.costo')
+    %th.col-sm-2= t('.vigencia')
+    %th.col-sm-2= t('.duracion')
+  - @procedure_lines.each_with_index do |procedure_line, index|
+    - if(Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa')
+      - procedure = Procedure.find(procedure_line.procedure_id)
+      %tr
+        .col-sm-4
+          - if user_signed_in?
+            %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(user: current_user, procedure: procedure)}"}
+              %label{ style: 'font-weight: 400;' }
+                %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'user_id': #{current_user.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
+                = link_to city_procedure_line_path(@city, procedure_line), class: 'texto-verde' do
+                  = procedure.name
+        %td.col-sm-1
+          = tipo(procedure.type_procedure)
+        %td.col-sm-3
+          = procedure.cost
+        %td.col-sm-2
+          = procedure.validity
+        %td.col-sm-2
+          = procedure.long
