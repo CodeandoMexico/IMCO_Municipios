@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
+  match '/user_formation_steps', to: 'user_formation_steps#update', via: :post
+
   resources :cities, only: [:show, :update, :edit] do
     get 'about'
     get 'aviso'

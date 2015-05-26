@@ -1,15 +1,19 @@
 %table.table.table-hover.master-detail
   %tr.texto-verde
-    %th.col-sm-4= t('.name')
+    .col-sm-4
+      - if current_user
+        %th= t('.name')
     %th.col-sm-6= t('.description')
     %th.col-sm-2= t('.path')
 
     - @formation_steps.each_with_index do |formation, index|
       - if formation.type_formation_step == @tipo
         %tr
-          %td.col-sm-4
-            %label{ style: 'font-weight: 400;' }
-              %input{ type: 'checkbox' } &nbsp;
-              = formation.name
+          .col-sm-4
+            - if current_user
+              %td{ 'ng-init'=> "procedures.items[#{formation.id}] = #{UserFormationStep.exists?(user: current_user, formation_step: formation)}"}
+                %label{ style: 'font-weight: 400;' }
+                  %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{formation.id}]", 'ng-click'=> "procedures.update(#{current_user.id}, #{formation.id}, #{@line}, \'#{@tipo}\')"} &nbsp;
+                  = formation.name
           %td.col-sm-6= formation.description
-          %td.col-sm-2= link_to t('.obener_aquí'), formation.path
+          %td.col-sm-2= link_to t('.obtener_aquí'), formation.path

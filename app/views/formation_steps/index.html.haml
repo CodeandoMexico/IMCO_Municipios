@@ -42,7 +42,7 @@
 	.col-sm-5
 		= f.submit t('buttons.municipal'), class: 'btn btn-success btn-lg outlineverde btn-block'
 
-.row
+.row{ 'ng-controller'=> 'ProcedureCtrl as procedures'}
 	- if @line.present?
 		- if @formation_steps.present?
 			-# Federal formation steps

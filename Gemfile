@@ -54,6 +54,7 @@ gem 'breadcrumbs_on_rails' #breadcrumbs
 gem 'haml'
 
 gem 'gmaps4rails'
+gem 'angularjs-rails'
 
 group :development, :test do
   # Load env variables
