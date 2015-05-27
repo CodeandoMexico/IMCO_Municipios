@@ -9,12 +9,9 @@
 .row
   .col-sm-12
     %p
-      %strong= t('.business_line')
-      = @line
+      %h2= @line
     %p
-      %strong= t('.line_procedure')
-      = @procedure
-
+      %h4= @procedure
 .row
   .col-sm-12
     = render "shared/requirements"

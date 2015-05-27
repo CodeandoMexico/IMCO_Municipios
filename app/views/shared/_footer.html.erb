@@ -26,6 +26,7 @@
         <% if @city.present? %>
           <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li>
           <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li>
+          <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
         <% end %>
       </ul>
     </div>

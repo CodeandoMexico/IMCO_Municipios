@@ -90,7 +90,9 @@
             = t('buttons.cierra')
             = radio_button_tag :etapa, t('buttons.cierra')
         - elsif @etapa == t('buttons.crece')
-          %label.btn.btn-defaul.texto-gris texto-grist" data-toggle="tooltip" data-placement="top" title:"<%=t('tooltips.crea')%>"><%= t('buttons.crea')%> <%= radio_button_tag :etapa, t('buttons.crea' )
+          %label.btn.btn-default.texto-gris{'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.crea')}"}
+            = t('buttons.crea')
+            = radio_button_tag :etapa, t('buttons.crea')
           %label.btn.btn-default.texto-gris{ 'data-toggle'=>"tooltip", 'data-placement'=>"top", title:"#{t('tooltips.administra')}" }
             = t('buttons.administra')
             = radio_button_tag :etapa, t('buttons.administra')
