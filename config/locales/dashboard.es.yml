@@ -10,6 +10,7 @@ es:
       inspections: Inspecciones
       inspectors: Inspectores
       logout: Cerrar sesión
+      titulo: Panel de administración
     show:
       dependencias: Dependencias
       giros: Giros
