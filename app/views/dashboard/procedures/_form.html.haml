@@ -26,13 +26,13 @@
               %td= f.text_field :contact, class: 'form-control'
             %tr
               %td= t('.type_procedure')
-              %td= f.text_field :type_procedure, class: 'form-control'
+              %td= f.select(:type_procedure, type_of_people_procedures, {:include_blank => false}, :class => 'form-control')
             %tr
               %td= t('.category')
-              %td= f.text_field :category, class: 'form-control'
+              %td= f.select(:category, type_of_category, {:include_blank => false}, :class => 'form-control')
             %tr
               %td= t('.sare')
-              %td= f.text_field :sare, class: 'form-control'
+              %td= f.select(:sare, type_of_sare, {:include_blank => false}, :class => 'form-control')
             %tr
               %td= t('.dependency')
               %td= f.select :dependency_id, @dependencies.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }
