@@ -20,4 +20,4 @@
               %td= f.text_field :path, class: 'form-control'
             %tr
               %td= t('.type_formation_step')
-              %td= f.text_field :type_formation_step, class: 'form-control'
+              %td= f.select(:type_formation_step, type_of_people_formation_step, {:include_blank => false}, :class => 'form-control') 
