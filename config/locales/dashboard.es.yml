@@ -84,7 +84,7 @@ es:
         during: Durante
         after: Despues
         sanction: Sanción
-        dependency: Dependecia
+        dependency: Dependencia
         requirements: Requerimientos
         lines: Giros
     inspectors:

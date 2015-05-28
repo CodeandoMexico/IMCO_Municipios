@@ -17,7 +17,7 @@ es:
       procedure_lines_radio_estados: Etapa de tu negocio
       no_procedure_lines_selected_subtitle: Podrás ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
       no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
-      no_procedure_lines_selected_resultado: Resultado de la busqueda.
+      no_procedure_lines_selected_resultado: Resultado de la búsqueda.
     show:
       title: Requisitos
       business_line: "Giro de negocio: "

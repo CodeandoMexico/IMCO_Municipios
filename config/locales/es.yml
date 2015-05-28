@@ -45,7 +45,7 @@ es:
       subject: Notificación de MiNegocioMx
       saludo: Hola,
       body: |
-            Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
+            Tu documento %{nombre} y folio %{folio} expirará el día %{fecha}.
 
             Puedes ver la información completa en tus recordatorios en
       liga_a_la_denuncia: 'MiNegocioMx'
@@ -96,7 +96,7 @@ es:
     estandar: Estandar de datos
     url_estandar: http://estandares.datamx.io/law/555e3c26cc1f420d00ec17bc
     civica:  y Cívica Digital.
-    imco:  Instituto Mexicano para la Competitivididad
+    imco:  Instituto Mexicano para la Competitividad
     contactanos: Contacto
   search:
     buscar: Buscar
@@ -111,7 +111,7 @@ es:
       delete_formation_step: ¿Estás seguro que deseas borrar este trámite?
       delete_line: ¿Estás seguro que deseas borrar este giro?
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
-      delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
+      delete_requirement: ¿Estás seguro que deseas borrar este requerimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
@@ -147,7 +147,7 @@ es:
       borrar: Borrar
       create_reminder: Guardar
       name_hint: Nombre del documento...
-      license_hint: Número de fólio...
+      license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       no_reminders_available: |+
         En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
@@ -158,7 +158,7 @@ es:
       license: Licencia
       until: Valido hasta
       name_hint: Nombre del documento...
-      license_hint: Número de fólio...
+      license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
       atras: Atras
@@ -201,7 +201,7 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
-      no_inspectors_selected_subtitle: Podras ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
+      no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
       no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
       vigencia: Vigencia
