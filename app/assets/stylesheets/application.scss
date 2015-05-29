@@ -53,12 +53,15 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: $footer_height;
+  width: 100;
+/*  height: $footer_height;*/
   color:#fff;
   background-color: #46aa6c !important;
   text-align: center;
-  padding: 10px 17% 10px 12%;
+  padding-top: 10px;
+  padding-left: 0%;
+  padding-right: 5% !important;
+  padding-bottom: 10px;
 }
 
 .padding-left-center {
@@ -67,9 +70,9 @@ body {
 
 .img-responsive-footer {
   display: block;
-  max-width: 65%;
-  margin: 0 auto;
+  max-width: 25%;
 }
+
 .text-right {
   text-align: right;
 }
@@ -265,6 +268,9 @@ texto-blanco{
   .texto-padding-left{
   margin-left: 15px;
   }
+  .texto-padding-left-little{
+  margin-left: 5px;
+  }
 
 .texto-padding-bottom{
   padding-bottom: 15px;
@@ -362,7 +368,7 @@ section{
 }
 
 .center-block{
-  padding-top: 10%;
+  /*padding-top: 10%;*/
 }
 
 .full-width{
