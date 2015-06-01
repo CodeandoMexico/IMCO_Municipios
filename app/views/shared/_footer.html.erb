@@ -1,16 +1,16 @@
 <% if @city.present?%>
   <footer class="footer">
-    <div class="row">
-      <div class="col-md-6 text-center margin-footer">
+      <div class="col-md-4 text-center margin-footer">
         <%= image_tag "Logoblanco.png", class: "img-responsive-footer center-block" %>
       </div>
+      <div class="col-md-2 text-center margin-footer">
+      </div>
       <div class="col-md-6 text-center">
-        <ul class="list-inline texto-padding-left-little">
+        <ul class="list-inline ">
           <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
         </ul>
       </div>
-    </div>
   </footer>
 <% end %>
