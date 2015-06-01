@@ -229,7 +229,7 @@
       $(document).ready(loadMap);
 
       function address_latlng(address){
-        geocoder.geocode( { 'address': address}, function(results, status) {
+        geocoder.geocode( { 'address': address, 'region':  'mx',}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
