@@ -2,6 +2,7 @@
 @import 'colors';
 
 // Add colors to the menu
+
 .navbar-user {
   background-color: $dark-green;
   border-width: 0;
@@ -33,6 +34,27 @@
   }
 }
 
+.navbar-user .navbar-toggle {
+  border-color: #dddddd;
+}
+
+.navbar-user .navbar-toggle .icon-bar {
+  background-color: #dddddd;
+}
+.navbar-toggle {
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+
 .dropdown-toggle {
   color: $white;
   // background-color: $light-green;
@@ -41,11 +63,63 @@
     background-color: $light-green;
   }
 }
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: $light-green !important;
+}
 
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #ffffff !important;
+  background-color: rgb(70, 170, 108) !important;
+  white-space: nowrap;
+}
 // Remove the border
 .navbar-fixed-top {
   border-width: 0;
 }
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: rgb(70, 170, 108) !important;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+  position: relative !important;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.dropdown-padding-top{
+  padding-top: 15px;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: $light-green !important;
+  border-color: $light-green !important;
+}
+
 
 
 // Add shadow to the menu
