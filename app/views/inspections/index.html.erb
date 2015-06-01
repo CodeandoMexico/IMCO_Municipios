@@ -1,8 +1,4 @@
     <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-    <div class="row text-center ">
-     <%= render "shared/show_flash" %>
-    </div>
-
     <div class="row text-center texto-verde">
       <%= content_tag :h1,t('.title') %>
       <%if @line.nil?%>

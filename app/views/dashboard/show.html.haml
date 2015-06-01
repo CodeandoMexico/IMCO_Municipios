@@ -1,6 +1,5 @@
 .row
   .col-sm-12
-    = render 'shared/show_flash'
     %h1.page-header= t('.titulo')
   %div.row.form-container.panel-heading
     = render "shared/admin/kpi", kpis: pretty_kpi_data(@kpi_data)
