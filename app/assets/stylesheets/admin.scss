@@ -14,7 +14,7 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
- $grey-footer: #dddddd;
+ $grey-footer: #f8f8f8;
 
 .panel-heading { padding: 5px 15px 15px 15px; }
 
@@ -44,4 +44,16 @@
 }
 .panel-brown a {
   color: #926239;
+}
+
+.panel-gray {
+     background-color: $grey-footer !important;
+}
+.panel-gray .panel-heading {
+  border-color: $grey-footer;
+  color: #000;
+  background-color: $grey-footer;
+}
+.panel-gray a {
+  color: $grey-footer;
 }
