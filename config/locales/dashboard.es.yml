@@ -25,7 +25,7 @@ es:
       user_news: Empresas nuevas
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
-      documents_until_to: Documentos próximos
+      documents_until_to: Documentos próximos a vencer
       titulo: Panel de administración
     contacts:
       index:

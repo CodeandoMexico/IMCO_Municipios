@@ -13,32 +13,32 @@ module DashboardHelper
   def panels
     [
       {
-        panel: 'panel-primary',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-comments fa-4x',
         path: '#'
       },
       {
-        panel: 'panel-green',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-area-chart fa-4x',
         path: '#'
       },
       {
-        panel: 'panel-red',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-plus fa-4x',
         path: '#'
       },
       {
-        panel: 'panel-purple',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-clock-o fa-4x',
         path: '#'
       },
       {
-        panel: 'panel-yellow',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-user fa-4x',
         path: '#'
       },
       {
-        panel: 'panel-brown',
+        panel: 'panel-gray',
         awesome_icons_class: 'fa fa-calendar-o fa-4x',
         path: '#'
       }

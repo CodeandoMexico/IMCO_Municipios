@@ -45,3 +45,15 @@
 .panel-brown a {
   color: #926239;
 }
+
+.panel-gray {
+     background-color: $grey-footer !important;
+}
+.panel-gray .panel-heading {
+  border-color: $grey-footer;
+  color: #000;
+  background-color: $grey-footer;
+}
+.panel-gray a {
+  color: $grey-footer;
+}
