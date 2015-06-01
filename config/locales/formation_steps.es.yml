@@ -18,6 +18,7 @@ es:
       tengo_tramite: Ya tengo este trámite
       select_giro: Selecciona un giro
     federal_formation_steps:
+      done: Hecho
       name: Nombre
       description: Descripción
       path: Recursos

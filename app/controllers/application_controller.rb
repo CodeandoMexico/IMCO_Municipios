@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
     if validaDatos(resource)
-          return   session[:my_previous_url]  
+          return   session[:my_previous_url]
         else
           return  edit_user_path(resource)
       end
@@ -56,17 +56,10 @@ class ApplicationController < ActionController::Base
    unless validaDatos(current_user)
      return redirect_to  edit_user_path(current_user) , error: I18n.t('flash.complaints.you_need_to_complete_your_profile')
    end
-    end
-   
-
-  #  if !current_user.profile_complete?
-    #  return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
-  #  end
+  end
 
 
-
-
-   def save_my_previous_url!
+  def save_my_previous_url!
     session[:my_previous_url] = request.fullpath
   end
 
@@ -89,6 +82,6 @@ class ApplicationController < ActionController::Base
   end
 
   def validaDatos(resource)
-    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?  
+    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
    end
 end
