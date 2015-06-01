@@ -65,7 +65,7 @@
             <%= f.label t('.address') %></div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
           </div>
-          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio', :onchange=>"validate_requirements()", :onFocus=>"loading();"%>
+          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio', :onchange=>"validate_requirements()", :onkeypress => "loading();"%>
           <div id="spinner" class="spinner" style="display:none;">
           <%= image_tag "spinner.gif", class: "img-responsive center-block" ,:id=>"img-spinner"%>
         </div>
