@@ -26,7 +26,7 @@ app.controller('ProcedureCtrl', ['$http', '$window', function($http, $window){
 
   self.redirect = function(path){
     // let's redirect to the given path
-    $window.location.href = path;
+    $window.location.href = path + "?sign_in=true";
   };
 
   self.initialize();

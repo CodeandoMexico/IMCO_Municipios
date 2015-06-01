@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 
   def new
    @user = current_user
+   if params[:sign_in]
+     flash[:error] = I18n.t('devise.sessions.user.session_needed_to_continue')
+   end
   end
 
   def create
