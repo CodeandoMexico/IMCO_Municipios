@@ -7,11 +7,14 @@
   %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
   %meta{ name: "description", content: "" }
   %meta{ name: "author", content: "" }
+  %script{:src=>"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry", :type=>"text/javascript"}
+  %script{:src=>'//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js', :type=>'text/javascript'}
 
   %title Mi Negocio México
   = stylesheet_link_tag 'admin', media: 'all'
   = javascript_include_tag 'admin'
   = favicon_link_tag 'favicon.ico'
+  = javascript_include_tag "application"
   = csrf_meta_tags
 
   / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries

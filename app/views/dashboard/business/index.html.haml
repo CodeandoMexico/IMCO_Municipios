@@ -24,8 +24,5 @@
                 %td= truncate(user.address, length: 70)                
                 %td= truncate(Line.find(user.line).name, length: 70)                                       
                 %td= truncate(user.operation_license, length: 70)               
-        %p.pull-right
-          Descargar:
-          = link_to "CSV", dashboard_lines_path( format: "csv"), class: 'btn btn-success btn-xs outlineverde'
       - else
         = render 'shared/empty_resource', message: t('.no_lines_available')
