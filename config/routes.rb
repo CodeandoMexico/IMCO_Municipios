@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :requirements, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/requirements'
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
     resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
+    resources :business, only: [:index, :show], controller: 'dashboard/business'
     resources :cities, only: [:show], controller: 'dashboard/cities' do
       resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
     end

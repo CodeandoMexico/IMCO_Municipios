@@ -11,6 +11,7 @@ es:
       inspectors: Inspectores
       logout: Cerrar sesión
       titulo: Panel de administración
+      business: Empresas
     show:
       dependencias: Dependencias
       giros: Giros
