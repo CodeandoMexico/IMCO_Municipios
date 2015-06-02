@@ -12,6 +12,7 @@ es:
       logout: Cerrar sesión
       titulo: Panel de administración
       business: Empresas
+      open_procedure: Trámites activos
     show:
       dependencias: Dependencias
       giros: Giros
@@ -182,6 +183,14 @@ es:
         dependency: Dependencia
         requirements: Requerimientos
         lines: Giros
+    business:
+      index:
+        title: Empresas
+        business_name: Nombre negocio
+        address: Dirección
+        line: Giro
+        operation_license: licencia de operación
+        tramites_activos: Trámites finalizados
     dependencies:
       index:
         name: Nombre

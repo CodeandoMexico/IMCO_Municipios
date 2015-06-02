@@ -1,6 +1,6 @@
 .row
   .col-sm-12
-    %h1.page-header= t('titles.business')
+    %h1.page-header= t('.title')
 .row
   .panel.panel-default
     .panel-heading
@@ -11,18 +11,18 @@
           %thead
             %th #
             %th= t('.business_name')
-            %th= t('.address')
             %th= t('.line')
             %th= t('.operation_license')
+            %th= t('.tramites_activos')
           %tbody
             - @users.each_with_index do |user, idx|
               %tr
                 %td= idx + 1
                 %td
                   = link_to dashboard_business_path(user) do
-                    = truncate(user.business_name, length: 70)                
-                %td= truncate(user.address, length: 70)                
+                    = truncate(user.business_name, length: 70)                               
                 %td= truncate(Line.find(user.line).name, length: 70)                                       
-                %td= truncate(user.operation_license, length: 70)               
+                %td= truncate(user.operation_license, length: 70)
+                %td= UserProcedure.where(user_id: user.id).count + UserFormationStep.where(user_id: user.id).count
       - else
         = render 'shared/empty_resource', message: t('.no_lines_available')
