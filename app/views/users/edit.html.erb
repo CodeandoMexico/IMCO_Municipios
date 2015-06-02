@@ -74,7 +74,7 @@
             </div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
           </div>
-          <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa', :onchange=>"validate_requirements()" %>
+          <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa', :onchange=>"validate_requirements()", :value => @bussine_name %>
         </div>
         <div class="form-group">
           <div class="row">
@@ -84,7 +84,7 @@
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="<%=t('.tooltip_telefono')%>"></i>
             </div>
           </div>
-          <%= f.text_field :phone ,  class: 'form-controler', :placeholder => 'Teléfono del negocio' %>
+          <%= f.text_field :phone ,  class: 'form-controler', :placeholder => 'Teléfono del negocio', :value => @phone %>
         </div>
         <div class="form-group">
           <div class="row">
@@ -94,7 +94,7 @@
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="<%=t('.tooltip_horario')%>"></i>
             </div>
           </div>
-          <%= f.text_field :schedule ,  class: 'form-controler', :placeholder => 'Horario del negocio' %>
+          <%= f.text_field :schedule ,  class: 'form-controler', :placeholder => 'Horario del negocio', :value => @schedule %>
         </div>
         <div class="form-group">
           <div class="row">
@@ -104,7 +104,7 @@
             </div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:operation_license][0].to_s%></div>
           </div>
-          <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón', :onchange=>"validate_requirements()" %>
+          <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón', :onchange=>"validate_requirements()" , :value => @user_operation_license %>
         </div>
         <div class="form-group">
           <%= f.label t('.operation_license_file') %><br />
@@ -203,6 +203,7 @@
         address_latlng(document.getElementById('user_address').value);
       }, 5000 );
     });
+    validate_requirements();
   }
   function changeLines(){
     var e = document.getElementById("user_city_id");
@@ -215,6 +216,11 @@
   }
 
   function reloadLines(values){
+    var bussine_name =  document.getElementById("user_business_name").value;
+    var user_phone =  document.getElementById("user_phone").value;
+    var user_schedule =  document.getElementById("user_schedule").value;
+    var user_operation_license =  document.getElementById("user_operation_license").value;
+
     var url = window.location.href.split('?')[0];
     if(url.includes("#_=_")){
       url = url.replace("#_=_","");
@@ -222,6 +228,19 @@
     if(!url.includes("edit")){
       url += "/edit";
     }
+    if(bussine_name != ""){
+      values +='&bussine_name='+bussine_name;
+    }
+    if(user_phone != ""){
+      values +='&user_phone='+user_phone;
+    }
+    if(user_schedule != ""){
+      values +='&user_schedule='+user_schedule;
+    }
+    if(user_operation_license != ""){
+      values +='&user_operation_license='+user_operation_license;
+    }
+
     window.location.href = url + "?city="+values;
   }
 
@@ -257,11 +276,13 @@
   })();
 
   function validate_requirements(){  
-    if(document.getElementById("user_name").value!= "" && document.getElementById("user_email").value!= "" && document.getElementById("user_address").value!= "" && document.getElementById("user_operation_license").value!= ""){
+    if(document.getElementById("user_name").value!= "" && document.getElementById("user_email").value!= "" && document.getElementById("user_address").value!= "" && document.getElementById("user_operation_license").value!= ""&& document.getElementById("user_business_name").value!= ""){
      document.getElementById("save_form").disabled = false;
    }else{
     document.getElementById("save_form").disabled = true;
   }
+
+  
 }
 
 function loading(){

@@ -46,6 +46,19 @@ class UsersController < ApplicationController
       @lines = Line.where(city_id: params[:city])
       @city_select = City.find(params[:city]).id
     end
+
+    unless params[:user_phone].blank?
+      @phone = params[:user_phone]
+    end
+      unless params[:user_schedule].blank?
+      @schedule = params[:user_schedule]
+    end
+    unless params[:bussine_name].blank?
+      @bussine_name = params[:bussine_name]
+    end
+      unless params[:user_operation_license].blank?
+      @user_operation_license = params[:user_operation_license]
+    end
   end
 
   def update
