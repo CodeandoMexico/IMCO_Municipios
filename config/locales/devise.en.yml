@@ -52,6 +52,12 @@ en:
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
+    models:
+      user:
+        attributes:
+          password:
+            confirmation: "Las contraseñas no cinciden"
+            too_short: "La contraseña es muy pequeña minimo debe ser de 8 caracteres"
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
