@@ -1,0 +1,15 @@
+#form-container.top-cruds
+  %h1.title.text-center
+    = t('devise.passwords.title')
+  %h4.title.text-center
+    = t('devise.passwords.subtitle')
+  %div{:id=>"authentication"}
+    = form_for(resource, :url => { :controller => "passwords", :action => "create" }) do |f|
+      %div.form-group
+        %div.field
+          = f.label :email
+          %br
+          = f.email_field :email, autofocus: true , class: 'form-controler', placeholder: t('devise.passwords.email_hint')
+      %div.text-center
+        = f.submit t('devise.passwords.submit'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3'
+=# render "devise/shared/links"

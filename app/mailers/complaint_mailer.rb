@@ -20,6 +20,10 @@ class ComplaintMailer < ActionMailer::Base
     else
       mail to: @complaint.city.contact_email, subject: I18n.t('mailers.complaints.send_to_city_subject')
     end
-    
   end
+
+  def send_to_business_password(email)
+    mail to: email 
+  end
+
 end

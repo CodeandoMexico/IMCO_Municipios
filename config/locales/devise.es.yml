@@ -1,0 +1,8 @@
+es:
+  devise:
+    passwords:
+      title: Recupera tu contraseña
+      subtitle: Te enviaremos un correo con una contraseña temporal
+      submit: Recuperar
+      email: Escribe tu correo
+      email_hint: correo@ejemplo.mx
