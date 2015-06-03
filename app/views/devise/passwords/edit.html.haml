@@ -7,17 +7,17 @@
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
       -unless @user.errors[:password][0].nil?
         %H2
-          Tienes un error:
+          =t('errors.messages.not_saved.one')
         %ul
           %li= @user.errors[:password][0].to_s
         %hr
       -else
         -unless @user.errors[:password_confirmation][0].nil?
           %H2
-            Tienes un error:
+            =t('errors.messages.not_saved.one')
           %ul
             %li
-              Las contraseñas no son iguales
+              =t('errors.messages.not_saved.passwords')
           %hr
       = f.hidden_field :reset_password_token
       %div.form-group

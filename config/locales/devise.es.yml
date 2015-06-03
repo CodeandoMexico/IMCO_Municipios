@@ -12,7 +12,7 @@ es:
       new_password: Nueva contraseña
       confirm_password: Confirma la contraseña
       user:
-        updated: Contraseña cambiada con éxito
+        updated: Contraseña cambió con éxito
         send_instructions: Te enviamos un correo con las instrucciones de como recuperar tu contraseña
   errors:
     messages:
@@ -24,6 +24,7 @@ es:
       not_saved:
         one: "Tienes un error:"
         other: "%{count} errores encontrados:"
+        passwords: "Las contraseñas no coinciden"
     models:
       user:
         attributes:
