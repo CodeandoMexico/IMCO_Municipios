@@ -56,6 +56,8 @@ gem 'haml'
 gem 'gmaps4rails'
 gem 'angularjs-rails'
 
+gem 'uservoice-ruby'
+
 group :development, :test do
   # Load env variables
   gem 'figaro'
