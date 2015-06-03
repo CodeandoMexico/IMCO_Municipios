@@ -6,3 +6,6 @@ es:
       submit: Recuperar
       email: Escribe tu correo
       email_hint: correo@ejemplo.mx
+      change_title: Cambia tu contraseña
+      change_subtitle: Escribe tu nueva contraseña
+      change_submit: Cambiar
