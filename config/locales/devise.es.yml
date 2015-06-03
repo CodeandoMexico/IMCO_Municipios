@@ -28,6 +28,6 @@ es:
       user:
         attributes:
           password:
-            confirmation: "Las contraseñas no cinciden"
+            confirmation: "Las contraseñas no coinciden"
             too_short: "La contraseña es muy pequeña minimo debe ser de 8 caracteres"
-            is_blank: La contraseña no puede estar en
+            is_blank: La contraseña no puede estar en blanco
