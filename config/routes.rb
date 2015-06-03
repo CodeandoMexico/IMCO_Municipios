@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   post "cities/search"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" ,:passwords => "passwords"}
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
 
   match '/user_formation_steps', to: 'user_formation_steps#update', via: :post
   match '/user_procedures', to: 'user_procedures#update', via: :post
