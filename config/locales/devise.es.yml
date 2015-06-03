@@ -1,5 +1,8 @@
 es:
   devise:
+    sessions:
+      user:
+        already_signed_out: Has terminado tu sesión.
     passwords:
       title: Recupera tu contraseña
       subtitle: Te enviaremos un correo con una contraseña temporal

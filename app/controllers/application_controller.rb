@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_client_user_voice
     require 'uservoice-ruby'    
       unless envirement_validates
-        client = UserVoice::Client.new(ENV['SUBDOMAIN_NAME'], ENV['API_KEY'], ENV['API_SECRET'])
+        client = UserVoice::Client.new(ENV['USERVOICE_SUBDOMAIN_NAME'], ENV['USERVOICE_API_KEY'], ENV['USERVOICE_API_SECRET'])
         client.login_as_owner do |owner|
           user = owner.get("/api/v1/users/current")['user']
         end
@@ -97,6 +97,6 @@ class ApplicationController < ActionController::Base
    end
 
    def envirement_validates
-         ENV['SUBDOMAIN_NAME'].nil? || ENV['API_SECRET'].nil? || ENV['API_KEY'].nil?
+         ENV['USERVOICE_SUBDOMAIN_NAME'].nil? || ENV['USERVOICE_API_SECRET'].nil? || ENV['USERVOICE_API_KEY'].nil?
     end
 end
