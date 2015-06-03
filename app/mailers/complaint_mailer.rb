@@ -22,8 +22,9 @@ class ComplaintMailer < ActionMailer::Base
     end
   end
 
-  def send_to_business_password(email)
-    mail to: email 
+  def send_to_business_password(user)
+    @user = user
+    mail(to: @user.email, subject: 'Recupera contraseña Mi Negocio')
   end
 
 end
