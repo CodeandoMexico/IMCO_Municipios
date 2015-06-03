@@ -7,6 +7,17 @@ class ApplicationController < ActionController::Base
   after_action :store_location
   layout :layout_by_resource
  add_flash_types :error, :notice
+ before_action :set_client_user_voice
+
+  def set_client_user_voice
+    require 'uservoice-ruby'    
+      unless envirement_validates
+        client = UserVoice::Client.new(ENV['USERVOICE_SUBDOMAIN_NAME'], ENV['USERVOICE_API_KEY'], ENV['USERVOICE_API_SECRET'])
+        client.login_as_owner do |owner|
+          user = owner.get("/api/v1/users/current")['user']
+        end
+      end
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -84,4 +95,8 @@ class ApplicationController < ActionController::Base
   def validaDatos(resource)
     !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
    end
+
+   def envirement_validates
+         ENV['USERVOICE_SUBDOMAIN_NAME'].nil? || ENV['USERVOICE_API_SECRET'].nil? || ENV['USERVOICE_API_KEY'].nil?
+    end
 end

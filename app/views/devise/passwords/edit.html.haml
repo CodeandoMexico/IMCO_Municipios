@@ -1,0 +1,32 @@
+#form-container.top-cruds
+  %h1.title.text-center
+    = t('devise.passwords.change_title')
+  %h4.title.text-center
+    = t('devise.passwords.change_subtitle')
+  %div{:id=>"authentication"}
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      -unless @user.errors[:password][0].nil?
+        %H2
+          =t('errors.messages.not_saved.one')
+        %ul
+          %li= @user.errors[:password][0].to_s
+        %hr
+      -else
+        -unless @user.errors[:password_confirmation][0].nil?
+          %H2
+            =t('errors.messages.not_saved.one')
+          %ul
+            %li
+              =t('errors.messages.not_saved.passwords')
+          %hr
+      = f.hidden_field :reset_password_token
+      %div.form-group
+        %div.field
+          = f.label :password, t('devise.passwords.new_password')
+          = f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-controler'
+      %div.form-group
+        %div.field
+          = f.label :password_confirmation, t('devise.passwords.confirm_password')
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-controler'
+      %div.text-center
+        = f.submit t('devise.passwords.change_submit'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3'

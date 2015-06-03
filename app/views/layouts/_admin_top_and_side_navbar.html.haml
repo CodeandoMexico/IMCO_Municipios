@@ -30,6 +30,13 @@
           = link_to dashboard_path do
             %i.fa.fa-dashboard.fa-fw 
             = t('dashboard.menu.titulo')
+
+        <!-- Bisiness -->
+        %li
+          = link_to dashboard_business_index_path do
+            %i.fa.fa-database.fa-fw 
+            = t('dashboard.menu.business')
+            
         <!-- Complaints -->
         %li
           = link_to dashboard_reports_path do

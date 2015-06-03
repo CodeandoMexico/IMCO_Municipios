@@ -7,6 +7,8 @@
   %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
   %meta{ name: "description", content: "" }
   %meta{ name: "author", content: "" }
+  %script{:src=>"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry", :type=>"text/javascript"}
+  %script{:src=>'//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js', :type=>'text/javascript'}
 
   %title Mi Negocio México
   = stylesheet_link_tag 'admin', media: 'all'
@@ -28,4 +30,5 @@
       -# = render 'shared/admin/kpi', kpis: kpis
       = render "shared/show_flash"
       = yield
+    = render 'shared/uservoice'
     = render "shared/footer_admin" 

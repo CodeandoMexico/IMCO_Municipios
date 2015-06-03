@@ -6,6 +6,8 @@
 //= require metisMenu/dist/metisMenu.min
 //= require raphael/raphael-min
 //= require sb-admin-2
+//= require underscore
+//= require gmaps/google
 //= require chosen-jquery
 //= require_tree ./admin
 

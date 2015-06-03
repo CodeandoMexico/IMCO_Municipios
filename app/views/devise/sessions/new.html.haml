@@ -8,5 +8,6 @@
           = f.email_field :email, autofocus: true, class: 'form-controler', placeholder: t('.email')
         %div.field
           = f.password_field :password, autocomplete: "off", class: 'form-controler', placeholder: t('.password')
+          %div.text-right= link_to "Recuperar contraseña", new_user_password_path, class: 'texto-verde'
       %div.text-center
         = f.submit t('.log_in'), class: 'btn btn-success btn-lg outlineverde col-md-6 col-md-offset-3'
