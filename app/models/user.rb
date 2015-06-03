@@ -19,9 +19,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :line_id, :message => 'Debes escribir el giro de tu negocio.', on:  :update
   
-  validates_presence_of :password, :message => 'Debes escribir una contraseña.', on:  :update
-  validates_length_of :password, :minimum => 8, :message => 'La contraseña debe tener por lo menos 8 caracteres.', on:  :update
-
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :linkedin]
 

@@ -5,20 +5,13 @@
     = t('devise.passwords.change_subtitle')
   %div{:id=>"authentication"}
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-      -unless @user.errors[:password][0].nil?
+      -unless @user.errors[:password_confirmation][0].nil?
         %H2
           =t('errors.messages.not_saved.one')
         %ul
-          %li= @user.errors[:password][0].to_s
+          %li
+            =t('errors.messages.not_saved.passwords')
         %hr
-      -else
-        -unless @user.errors[:password_confirmation][0].nil?
-          %H2
-            =t('errors.messages.not_saved.one')
-          %ul
-            %li
-              =t('errors.messages.not_saved.passwords')
-          %hr
       = f.hidden_field :reset_password_token
       %div.form-group
         %div.field

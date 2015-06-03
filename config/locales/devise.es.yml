@@ -27,7 +27,7 @@ es:
       not_saved:
         one: "Tienes un error:"
         other: "%{count} errores encontrados:"
-        passwords: "Las contraseñas no coinciden"
+        passwords: "Las contraseñas no puede estar en blanco, deben ser iguales y tener más de 8 caracteres"
     models:
       user:
         attributes:
