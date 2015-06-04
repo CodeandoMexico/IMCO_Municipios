@@ -26,11 +26,13 @@ es:
   correos:
     empresa:
       subject: Denuncia enviada correctamente
-      saludo: Hola,
+      saludo: Estimado %{nombre},
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio %{city} correctamente. El folio de la denuncia es %{folio}.
-
-            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+            Gracias por utilizar Mi Negocio México. Has recibido este correo porque realizaste una denuncia por el 
+            motivo de %{razon}.
+            En el negocio ubicado en %{domicilio}.
+            Esta denuncia ha generado un número de folio: %{folio}. Por favor, conserva este número para poderdarle seguimiento a tu queja.
+            La denuncia de tu empresa ha sido enviada al municipio de %{city} correctamente. El municipio se pondrá en contacto contigo, en caso de que esto no suceda, puedes escribirnos a %{contacto}
       gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
