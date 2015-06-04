@@ -34,6 +34,8 @@ class UsersController < ApplicationController
     redirect_to root_path if current_user.nil?
 
     @user = current_user
+    @array_line=[]
+    @array_id=[]
     
     unless @user.nil?
       unless @user.city_id.nil?
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
 
       unless params[:pagetime].blank?
         @lines = Line.where(city_id: params[:pagetime][:city_id])
-        fill_lines(params[:pagetime][:city_id])
+          fill_lines(params[:pagetime][:city_id])
       end
       @phone = @user.phone
       @schedule = @user.schedule
@@ -131,5 +133,13 @@ class UsersController < ApplicationController
   def set_city
     @city = City.find(params[:city_id])
   end
+
+def fill_lines(id)
+  @city_select = id
+  Line.order(:name).where(city_id: id).select(:name, :id).each_with_index do |value, index|
+       @array_line[index] = value.name.to_s
+        @array_id[index] = value.id.to_s;
+    end
+end
 
 end
