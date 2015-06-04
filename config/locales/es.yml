@@ -146,7 +146,7 @@ es:
       new_reminder: Nuevo recordatorio
       name: Nombre
       license: Licencia
-      until: Valida hasta
+      until: Válida hasta
       edit: Editar
       borrar: Borrar
       create_reminder: Guardar
@@ -160,12 +160,12 @@ es:
     edit:
       name: Nombre
       license: Licencia
-      until: Valido hasta
+      until: Válido hasta
       name_hint: Nombre del documento...
       license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
-      atras: Atras
+      atras: Atrás
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?

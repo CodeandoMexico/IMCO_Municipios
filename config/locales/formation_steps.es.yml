@@ -4,7 +4,7 @@ es:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
       no_formation_steps_selected: Apertura de un nuevo negocio
-      no_formation_steps_selected_subtitle: Trámites federales y municipales que debes cumplir para poder abrir tu empresa.
+      no_formation_steps_selected_subtitle: Trámites federales estatales y municipales que debes cumplir para poder abrir tu empresa.
       no_formation_steps_selected_instruction: Selecciona el giro de tu empresa y el tipo de persona que eres.
       no_formation_steps_selected_resultado: Resultado de la búsqueda.
       formation_steps_select_name: 'Giro del negocio:'
