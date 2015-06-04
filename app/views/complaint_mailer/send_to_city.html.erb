@@ -5,10 +5,15 @@
 </head>
 <body>
 	<p class ="texto-margin-bottom">
-		<%=t('correos.municipio.saludo')%>
+		<%=t('correos.municipio.saludo',city: City.find(@complaint.city).name,)%>
 	</p>
 	<p class ="texto-margin-bottom">
-		<%=t('correos.municipio.body', razon: COMPLAINTS[@complaint.reason], domicilio: @complaint.user.address)%>
+		<%=t('correos.municipio.body', 
+		city: City.find(@complaint.city).name, 
+		razon: COMPLAINTS[@complaint.reason], 
+		domicilio: @complaint.user.address, 
+		nombre: User.find(@complaint.user).business_name, 
+		folio: @complaint.id)%>
 		<%= link_to t('correos.municipio.liga_a_la_denuncia'), dashboard_report_url(@complaint.id) %>.
 	</p>
 	<p class ="texto-margin-bottom">

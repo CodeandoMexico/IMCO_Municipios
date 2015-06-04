@@ -28,17 +28,19 @@ es:
       subject: Denuncia enviada correctamente
       saludo: Hola,
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio  %{city} correctamente. El folio de la denuncia es %{folio}.
+            La denuncia de tu empresa ha sido enviada al municipio %{city} correctamente. El folio de la denuncia es %{folio}.
 
             El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
       gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
-      saludo: Hola,
+      saludo: 'Municipio de %{city},'
       body: |
-            Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
-
-            Puedes ver la información completa.
+            Usted ha recibido este mensaje debido a que el negocio %{nombre} de la plataforma Mi Negocio México, 
+            ha realizado una denuncia por el motivo de: %{razon}. 
+            En el negocio ubicado en %{domicilio}. 
+            Esta denuncia ha generado un número de folio %{folio} con el que el usuario podrá darle seguimiento a la queja. 
+            Usted puede consultar la denuncia completa
       liga_a_la_denuncia: 'aquí'
       gracias: Gracias por utilizar Mi Negocio México.
     recordatorio:
