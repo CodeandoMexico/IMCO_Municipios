@@ -30,44 +30,30 @@ class UsersController < ApplicationController
   end
 
   def edit
+
     redirect_to root_path if current_user.nil?
 
     @user = current_user
     
-    unless @user.city_id.nil?
-      @city_select = City.find(@user.city_id).id
-      @lines = Line.where(city_id: @user.city_id)
-    end
+    unless @user.nil?
+      unless @user.city_id.nil?
+        @city_select = City.find(@user.city_id).id
+        @lines = Line.where(city_id: @user.city_id)
+      end
 
-    unless @user.line_id.nil?
-      @line_select = Line.find(@user.line_id).id
-      @lines = Line.where(city_id: Line.find(@user.line_id).city.id)
-    end
+      unless @user.line_id.nil?
+        @line_select = Line.find(@user.line_id).id
+        @lines = Line.where(city_id: Line.find(@user.line_id).city.id)
+      end
 
-    unless params[:city].nil?
-      @lines = Line.where(city_id: params[:city])
-      @city_select = City.find(params[:city]).id
-    end
-
-    unless params[:user_phone].nil?
-      @phone = params[:user_phone]
-    else
+      unless params[:pagetime].blank?
+        @lines = Line.where(city_id: params[:pagetime][:city_id])
+        fill_lines(params[:pagetime][:city_id])
+      end
       @phone = @user.phone
-    end
-      unless params[:user_schedule].nil?
-      @schedule = params[:user_schedule]
-    else
       @schedule = @user.schedule
-    end
-    unless params[:bussine_name].nil?
-      @bussine_name = params[:bussine_name]
-    else
       @bussine_name = @user.business_name
-    end
-      unless params[:user_operation_license].nil?
-      @user_operation_license = params[:user_operation_license]
-      else
-        @user_operation_license = @user.operation_license
+      @user_operation_license = @user.operation_license
     end
   end
 
@@ -145,4 +131,5 @@ class UsersController < ApplicationController
   def set_city
     @city = City.find(params[:city_id])
   end
+
 end

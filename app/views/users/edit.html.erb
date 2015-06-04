@@ -146,7 +146,7 @@
       }
     });
     var e = document.getElementById("user_city_id");
-    if(e.value != "" || e.value != null){
+    if(e.value != "" && e.value != null){
       $(".line_for_city").removeClass("hide");
     }
     validate_requirements();
@@ -205,6 +205,7 @@
     });
     validate_requirements();
   }
+
   function changeLines(){
     var e = document.getElementById("user_city_id");
     if(e.value == "" || e.value == null){
@@ -212,11 +213,14 @@
     }else{
       $(".line_for_city").removeClass("hide");
     }
-    reloadLines(e.value);
+    if(e.value != null || e.value != ""){
+      reloadLines(e.value);
+    }
   }
 
   function reloadLines(values){
-    var bussine_name =  document.getElementById("user_business_name").value;
+    window.order = values;
+  /*  var bussine_name =  document.getElementById("user_business_name").value;
     var user_phone =  document.getElementById("user_phone").value;
     var user_schedule =  document.getElementById("user_schedule").value;
     var user_operation_license =  document.getElementById("user_operation_license").value;
@@ -240,8 +244,60 @@
     if(user_operation_license != ""){
       values +='&user_operation_license='+user_operation_license;
     }
-
     window.location.href = url + "?city="+values;
+*/
+   /* <%@array_line=[]%>
+    <%@array_id=[]%>
+    <%Line.where(city_id: 3).select(:name, :id).each_with_index do |value, index|%>
+        <%@array_line[index] = value.name.to_s%>
+        <%@array_id[index] = value.id.to_s;%>
+    <%end%>
+   var cuisines = <%=raw @array_line%>;/*["Chinese","Indian"]; */    
+/*   var cuisines_value = <%=raw @array_id%>;
+    var sel = document.getElementById('user_line_id');
+    for(var i = 0; i < cuisines.length; i++) {
+      var opt = document.createElement('option');
+      opt.innerHTML = cuisines[i];
+      opt.value = cuisines_value[i];
+    sel.appendChild(opt);
+      }*/
+    $.ajax({
+           type:'GET', 
+           url: '#{edit_user_path(@user)}',
+           success: saluda(),
+          error: function(){
+            alert('failure');
+          }, 
+           data: $.param({ pagetime: {city_id: window.order}})
+      });
+  
+/*
+
+    $('#user[line_id]').trigger('chosen:updated');
+    $("#user[line_id]").trigger("liszt:updated");
+    $('#user_line_id').trigger('chosen:updated');
+    $("#user_line_id").trigger("liszt:updated");*/
+  }
+
+  function saluda(){
+    var cuisines = <%=raw @array_line%>;
+    var cuisines_value = <%=raw @array_id%>;
+    var sel = document.getElementById('user_line_id');
+    for (i = 0; i < sel.options.length; i++) {
+        sel.options[i] = null;
+    }
+    for(var i = 0; i < cuisines.length; i++) {
+      var opt = document.createElement('option');
+      opt.innerHTML = cuisines[i];
+      opt.value = cuisines_value[i];
+      opt.id = cuisines_value[i];
+      opt.data = cuisines_value[i]
+      sel.appendChild(opt);
+    }
+    $('#user[line_id]').trigger('chosen:updated');
+    $("#user[line_id]").trigger("liszt:updated");
+    $('#user_line_id').trigger('chosen:updated');
+    $("#user_line_id").trigger("liszt:updated");
   }
 
   $(document).ready(loadMap);
