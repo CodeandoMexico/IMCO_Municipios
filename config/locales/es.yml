@@ -140,7 +140,7 @@ es:
       new_reminder: Nuevo recordatorio
       name: Nombre
       license: Licencia
-      until: Valida hasta
+      until: Válida hasta
       edit: Editar
       borrar: Borrar
       create_reminder: Guardar
@@ -154,12 +154,12 @@ es:
     edit:
       name: Nombre
       license: Licencia
-      until: Valido hasta
+      until: Válido hasta
       name_hint: Nombre del documento...
       license_hint: Número de fólio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
-      atras: Atras
+      atrás: Atras
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
@@ -199,7 +199,7 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
-      no_inspectors_selected_subtitle: Podras ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
+      no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el Municipio para poder realizar una inspección a tu negocio.
       no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
       vigencia: Vigencia
@@ -211,7 +211,7 @@ es:
       title: Nuevo negocio
       no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
       no_formation_steps_selected: Apertura de un nuevo negocio
-      no_formation_steps_selected_subtitle: Trámites federales y municipales que debes cumplir para poder abrir tu empresa.
+      no_formation_steps_selected_subtitle: Trámites federales, estatales y municipales que debes cumplir para poder abrir tu empresa.
       no_formation_steps_selected_instruction: Selecciona el giro de tu empresa y el tipo de persona que eres.
       no_formation_steps_selected_resultado: Resultado de la búsqueda.
       formation_steps_select_name: 'Giro del negocio:'
