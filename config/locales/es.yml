@@ -187,6 +187,7 @@ es:
       no_inspections_selected_subtitle: Podrás ver todas las inspecciones que el municipio puede realizar a tu empresa, puedes denunciar una inspección irregular o puedes crear un recordatorio.
       no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
       no_inspections_selected_resultado: Resultado de la búsqueda.
+      inspector: Conoce a tu inspector
     show:
       nombre: Nombre
       Descripcion: Descripción
