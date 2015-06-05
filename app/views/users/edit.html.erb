@@ -207,49 +207,20 @@
   }
 
   function changeLines(){
+    $(".line_for_city").addClass("hide");
     var e = document.getElementById("user_city_id");
-    if(e.value == "" || e.value == null){
-      $(".line_for_city").addClass("hide");
-    }else{
-      $(".line_for_city").removeClass("hide");
-    }
-    if(e.value != null || e.value != ""){
-      reloadLines(e.value);
-    }
-  }
-
-  function reloadLines(values){
-    window.order = values;
+    window.order = e.value;
+    $(".user_city_id").val(window.order).change(); //cambiamos la seleccion de city
     $.ajax({
            type:'GET', 
            url: '#{edit_user_path(@user)}',
-           success: fill_lines(),
+           success: function(){
+           },
           error: function(){
             alert('failure');
           }, 
            data: $.param({ pagetime: {city_id: window.order}})
       });
-  }
-
-  function fill_lines(){
-    var cuisines = <%=raw @array_line%>;
-    var cuisines_value = <%=raw @array_id%>;
-    var sel = document.getElementById('user_line_id');
-    for (i = 0; i < sel.options.length; i++) {
-        sel.options[i] = null;
-    }
-    for(var i = 0; i < cuisines.length; i++) {
-      var opt = document.createElement('option');
-      opt.innerHTML = cuisines[i];
-      opt.value = cuisines_value[i];
-      opt.id = cuisines_value[i];
-      opt.data = cuisines_value[i]
-      sel.appendChild(opt);
-    }
-    $('#user[line_id]').trigger('chosen:updated');
-    $("#user[line_id]").trigger("liszt:updated");
-    $('#user_line_id').trigger('chosen:updated');
-    $("#user_line_id").trigger("liszt:updated");
   }
 
   $(document).ready(loadMap);
@@ -292,7 +263,9 @@
 
   
 }
-
+function saludo(){
+  alert('hola');
+}
 function loading(){
   $('#spinner').show();
 }       
