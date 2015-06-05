@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   mount_uploader :land_permission_file, PdfUploader
 
 
+
   def business?
     !self.admin?
   end

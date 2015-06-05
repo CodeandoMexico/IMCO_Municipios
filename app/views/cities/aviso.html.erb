@@ -34,6 +34,11 @@
 			</UL>
 		</p>
 
-		<h3 class ="texto-verde-wrap">Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral en:  </h3>
+		<%unless @city.nil?%>
+		<hr>
+		<p class ="text-center">Descargar aviso de privacidad del municipio <%=@city.name%> <%=link_to "aqui", @city.privacy_file.to_s, {class: 'texto-verde', :target => '_blank'}%></p>
+
+		<%end%>
 	</div>
+
 </div>

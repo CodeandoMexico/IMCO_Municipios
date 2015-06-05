@@ -207,97 +207,20 @@
   }
 
   function changeLines(){
+    $(".line_for_city").addClass("hide");
     var e = document.getElementById("user_city_id");
-    if(e.value == "" || e.value == null){
-      $(".line_for_city").addClass("hide");
-    }else{
-      $(".line_for_city").removeClass("hide");
-    }
-    if(e.value != null || e.value != ""){
-      reloadLines(e.value);
-    }
-  }
-
-  function reloadLines(values){
-    window.order = values;
-  /*  var bussine_name =  document.getElementById("user_business_name").value;
-    var user_phone =  document.getElementById("user_phone").value;
-    var user_schedule =  document.getElementById("user_schedule").value;
-    var user_operation_license =  document.getElementById("user_operation_license").value;
-
-    var url = window.location.href.split('?')[0];
-    if(url.includes("#_=_")){
-      url = url.replace("#_=_","");
-    }
-    if(!url.includes("edit")){
-      url += "/edit";
-    }
-    if(bussine_name != ""){
-      values +='&bussine_name='+bussine_name;
-    }
-    if(user_phone != ""){
-      values +='&user_phone='+user_phone;
-    }
-    if(user_schedule != ""){
-      values +='&user_schedule='+user_schedule;
-    }
-    if(user_operation_license != ""){
-      values +='&user_operation_license='+user_operation_license;
-    }
-    window.location.href = url + "?city="+values;
-*/
-   /* <%@array_line=[]%>
-    <%@array_id=[]%>
-    <%Line.where(city_id: 3).select(:name, :id).each_with_index do |value, index|%>
-        <%@array_line[index] = value.name.to_s%>
-        <%@array_id[index] = value.id.to_s;%>
-    <%end%>
-   var cuisines = <%=raw @array_line%>;/*["Chinese","Indian"]; */    
-/*   var cuisines_value = <%=raw @array_id%>;
-    var sel = document.getElementById('user_line_id');
-    for(var i = 0; i < cuisines.length; i++) {
-      var opt = document.createElement('option');
-      opt.innerHTML = cuisines[i];
-      opt.value = cuisines_value[i];
-    sel.appendChild(opt);
-      }*/
+    window.order = e.value;
+    $(".user_city_id").val(window.order).change(); //cambiamos la seleccion de city
     $.ajax({
            type:'GET', 
            url: '#{edit_user_path(@user)}',
-           success: saluda(),
+           success: function(){
+           },
           error: function(){
             alert('failure');
           }, 
            data: $.param({ pagetime: {city_id: window.order}})
       });
-  
-/*
-
-    $('#user[line_id]').trigger('chosen:updated');
-    $("#user[line_id]").trigger("liszt:updated");
-    $('#user_line_id').trigger('chosen:updated');
-    $("#user_line_id").trigger("liszt:updated");*/
-  }
-
-  function saluda(){
-    var cuisines = <%=raw @array_line%>;
-    var cuisines_value = <%=raw @array_id%>;
-    var sel = document.getElementById('user_line_id');
-    for (i = 0; i < sel.options.length; i++) {
-        sel.options[i] = null;
-    }
-    for(var i = 0; i < cuisines.length; i++) {
-      var opt = document.createElement('option');
-      opt.innerHTML = cuisines[i];
-      opt.value = cuisines_value[i];
-      opt.id = cuisines_value[i];
-      opt.data = cuisines_value[i]
-      sel.appendChild(opt);
-    }
-    $('#user[line_id]').trigger('chosen:updated');
-    $("#user[line_id]").trigger("liszt:updated");
-    $('#user_line_id').trigger('chosen:updated');
-    $("#user_line_id").trigger("liszt:updated");
   }
 
   $(document).ready(loadMap);
@@ -340,7 +263,9 @@
 
   
 }
-
+function saludo(){
+  alert('hola');
+}
 function loading(){
   $('#spinner').show();
 }       

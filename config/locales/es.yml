@@ -26,19 +26,23 @@ es:
   correos:
     empresa:
       subject: Denuncia enviada correctamente
-      saludo: Hola,
+      saludo: Estimado %{nombre},
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio  %{city} correctamente. El folio de la denuncia es %{folio}.
-
-            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+            Gracias por utilizar Mi Negocio México. Has recibido este correo porque realizaste una denuncia por el 
+            motivo de %{razon}.
+            En el negocio ubicado en %{domicilio}.
+            Esta denuncia ha generado un número de folio: %{folio}. Por favor, conserva este número para poderdarle seguimiento a tu queja.
+            La denuncia de tu empresa ha sido enviada al municipio de %{city} correctamente. El municipio se pondrá en contacto contigo, en caso de que esto no suceda, puedes escribirnos a %{contacto}
       gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
-      saludo: Hola,
+      saludo: 'Municipio de %{city},'
       body: |
-            Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
-
-            Puedes ver la información completa.
+            Usted ha recibido este mensaje debido a que el negocio %{nombre} de la plataforma Mi Negocio México, 
+            ha realizado una denuncia por el motivo de: %{razon}. 
+            En el negocio ubicado en %{domicilio}. 
+            Esta denuncia ha generado un número de folio %{folio} con el que el usuario podrá darle seguimiento a la queja. 
+            Usted puede consultar la denuncia completa
       liga_a_la_denuncia: 'aquí'
       gracias: Gracias por utilizar Mi Negocio México.
     recordatorio:
@@ -142,7 +146,7 @@ es:
       new_reminder: Nuevo recordatorio
       name: Nombre
       license: Licencia
-      until: Valida hasta
+      until: Válida hasta
       edit: Editar
       borrar: Borrar
       create_reminder: Guardar
@@ -156,12 +160,12 @@ es:
     edit:
       name: Nombre
       license: Licencia
-      until: Valido hasta
+      until: Válido hasta
       name_hint: Nombre del documento...
       license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
-      atras: Atras
+      atras: Atrás
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
