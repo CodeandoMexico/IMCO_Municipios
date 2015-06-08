@@ -11,7 +11,7 @@ var sel = document.getElementById('user_line_id');
 for(var i = 0; i < array_line.length; i++) {
   var opt = document.createElement('option');
   opt.innerHTML = array_line[i];
-  opt.value = i+1;
+  opt.value = array_id[i];
   opt.id = array_id[i];
   opt.data = array_line[i]
   sel.appendChild(opt);
