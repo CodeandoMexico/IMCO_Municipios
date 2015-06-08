@@ -1,5 +1,14 @@
 es:
   devise:
+    mailer:
+      reset_password_instructions:
+        subject: "Instrucciones para restaurar contraseña"
+      title: Mi Negocio México
+      saludo: Hola
+      text_one: Si olvidaste tu contraseña porfavor da click 
+      text_here: aquí
+      text_two: para crear una nueva.
+      last_text: Tu contraseña no cambiará mientras no accedas a la liga.
     sessions:
       user:
         already_signed_out: Has terminado tu sesión.

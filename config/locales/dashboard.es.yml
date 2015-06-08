@@ -191,6 +191,7 @@ es:
         line: Giro
         operation_license: licencia de operación
         tramites_activos: Trámites finalizados
+        no_business_available: No hay empresas disponibles.
     dependencies:
       index:
         name: Nombre

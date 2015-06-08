@@ -25,4 +25,4 @@
                 %td= truncate(user.operation_license, length: 70)
                 %td= UserProcedure.where(user_id: user.id).count + UserFormationStep.where(user_id: user.id).count
       - else
-        = render 'shared/empty_resource', message: t('.no_lines_available')
+        = render 'shared/empty_resource', message: t('.no_business_available')
