@@ -12,6 +12,7 @@
           %li
             =t('errors.messages.not_saved.passwords')
         %hr
+      = devise_error_messages!
       = f.hidden_field :reset_password_token
       %div.form-group
         %div.field

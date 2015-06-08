@@ -15,9 +15,9 @@ namespace :my_tasks do
 
 desc "Delete all datasets"
 task :delete_all_datasets => :environment do |t,env|
-    clean_db(UserFormationStep)#al perder las referencias se debe eliminar las relaciones
+    clean_db(UserFormationStep)
     clean_db(Line)
-    clean_db(Dependency)# let's erase everyone from the db
+    clean_db(Dependency)
     clean_db(Inspector)
     clean_db(Requirement)
     clean_db(Inspection)
@@ -27,6 +27,42 @@ task :delete_all_datasets => :environment do |t,env|
     clean_db(ProcedureRequirement)
     clean_db(InspectionLine)
     clean_db(InspectionRequirement)
+    clean_db(Complaint)
+    clean_db(UserFormationStep)
+    clean_db(UserRequirement)
+    clean_db(User)
+    clean_db(City)
+    #creando ciudades
+    a = City.create(name: 'Chalco', contact_email: 'chalco@gmail.com')
+      a.save
+    admin = User.create(email: 'mikesaurio@codeandomexico.org', password: 'codeandochalco', city_id: a.id, admin: true)
+      admin.save
+
+    a = City.create(name: 'Huixquilucan', contact_email: 'huixquilucan@gmail.com')
+      a.save
+    admin = User.create(email: 'raul@codeandomexico.org', password: 'codeandohuixquilucan', city_id: a.id, admin: true)
+      admin.save
+
+    a = City.create(name: 'Lerma', contact_email: 'lerma@gmail.com')
+      a.save
+    admin = User.create(email: 'juanpablo@codeandomexico.org', password: 'codeandolerma', city_id: a.id, admin: true)
+      admin.save
+
+    a = City.create(name: 'Metepec', contact_email: 'metepec@gmail.com')
+      a.save
+    admin = User.create(email: 'oscar@codeandomexico.com', password: 'codeandometepec', city_id: a.id, admin: true)
+      admin.save
+
+    a = City.create(name: 'Tenango del Valle', contact_email: 'tenangodelvalle@gmail.com')
+      a.save
+    admin = User.create(email: 'paulina@codeandomexico.com', password: 'codeandotenango', city_id: a.id, admin: true)
+      admin.save
+
+    a = City.create(name: 'Toluca', contact_email: 'toluca@gmail.com')
+      a.save
+    admin = User.create(email: 'ricardo@codeandomexico.org', password: 'codeandotoluca', city_id: a.id, admin: true)
+      admin.save
+
 end
 
 
