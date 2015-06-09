@@ -24,32 +24,32 @@ namespace :my_tasks do
     #creando ciudades
     if  City.where(name: 'Chalco').empty?
       a = City.create(name: 'Chalco', contact_email: 'chalco@gmail.com')
-      User.create(email: 'mikesaurio@codeandomexico.org', password: 'codeandochalco', city_id: a, admin: true)
+      user_admin= User.create(email: 'mikesaurio@codeandomexico.org', password: 'codeandochalco', city_id: a.id, admin: true)
     end
 
     if  City.where(name: 'Huixquilucan').empty?
       a = City.create(name: 'Huixquilucan', contact_email: 'huixquilucan@gmail.com')
-     User.create(email: 'raul@codeandomexico.org', password: 'codeandohuixquilucan', city_id: a, admin: true)
+     User.create(email: 'raul@codeandomexico.org', password: 'codeandohuixquilucan', city_id: a.id, admin: true)
     end
 
     if  City.where(name: 'Lerma').empty?
       a = City.create(name: 'Lerma', contact_email: 'lerma@gmail.com')
-       User.create(email: 'juanpablo@codeandomexico.org', password: 'codeandolerma', city_id: a, admin: true)
+       User.create(email: 'juanpablo@codeandomexico.org', password: 'codeandolerma', city_id: a.id, admin: true)
     end
 
     if  City.where(name: 'Metepec').empty?
       a = City.create(name: 'Metepec', contact_email: 'metepec@gmail.com')
-     User.create(email: 'oscar@codeandomexico.com', password: 'codeandometepec', city_id: a, admin: true)
+     User.create(email: 'oscar@codeandomexico.com', password: 'codeandometepec', city_id: a.id, admin: true)
     end
 
     if  City.where(name: 'Tenango del Valle').empty?
       a = City.create(name: 'Tenango del Valle', contact_email: 'tenangodelvalle@gmail.com')
-     User.create(email: 'paulina@codeandomexico.com', password: 'codeandotenango', city_id: a, admin: true)
+     User.create(email: 'paulina@codeandomexico.com', password: 'codeandotenango', city_id: a.id, admin: true)
     end
 
     if  City.where(name: 'Toluca').empty?
       a = City.create(name: 'Toluca', contact_email: 'toluca@gmail.com')
-     User.create(email: 'ricardo@codeandomexico.org', password: 'codeandotoluca', city_id: a, admin: true)
+     User.create(email: 'ricardo@codeandomexico.org', password: 'codeandotoluca', city_id: a.id, admin: true)
     end
   end
 

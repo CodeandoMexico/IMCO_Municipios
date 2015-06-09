@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :operation_license, :message => "La licencia de operación no puede estar en blanco.", if: :business?, on:  :update
   validates_format_of :operation_license, :with => /\A[a-zA-Z-0-9]+\z/, :message => "La licencia de operación solo debe tener letras, número y guiones.", if: :business?, on:  :update
 
-  validates_presence_of :city_id, :message => 'Debes escribir el municipio donde está tu negocio.', if: :business?, on:  :update
+  validates_presence_of :city_id, :message => 'Debes escribir el municipio donde está tu negocio.', on:  :update
 
   validates_presence_of :line_id, :message => 'Debes escribir el giro de tu negocio.', if: :business?, on:  :update
   
