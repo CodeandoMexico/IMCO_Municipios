@@ -192,6 +192,17 @@ es:
         operation_license: licencia de operación
         tramites_activos: Trámites finalizados
         no_business_available: No hay empresas disponibles.
+      form:
+        licencia_de_operacion: Licencia de operación
+        licencia_uso_de_suelo: Licencia uso de suelo
+        name: Nombre
+        correo: Correo
+        address: Dirección
+        phone: Teléfono
+        schedule: Horario
+        line: Giro
+        operation_license: Licencia de operación
+        ubicacion: Ubicación
     dependencies:
       index:
         name: Nombre
