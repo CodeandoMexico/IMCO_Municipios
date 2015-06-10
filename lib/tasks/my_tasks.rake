@@ -227,7 +227,8 @@ task :load_formation_steps  => :environment do |t, args|
       description = row.to_hash['descripcion']
       path = row.to_hash['path']
       type = getTipoApertura(row.to_hash['tipo'])
-      row_values = { name: name, city: city, description: description, path: path, type_formation_step: type }
+      type_of_procedure = row.to_hash['tramite']
+      row_values = { name: name, city: city, description: description, path: path, type_formation_step: type, type_of_procedure:  type_of_procedure}
       if city.present? && row_does_not_exist_in_the_db(FormationStep, row_values)
         FormationStep.create!(row_values)
         number_of_successfully_created_rows += 1
