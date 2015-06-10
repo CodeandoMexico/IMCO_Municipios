@@ -25,7 +25,7 @@ class FormationStepsController < ApplicationController
      @tipo = params[:rating]
      valida_parametros
     if params[:commit] == 'Federales'
-      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Federales')
+      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Federal')
       @tramite = 'federales'
     elsif params[:commit] == 'Municipales'
       @tramite = 'municipales'
@@ -33,7 +33,7 @@ class FormationStepsController < ApplicationController
       @requirements = Requirement.all
       @procedure_lines = ProcedureLine.where(line_id: @line)
     elsif params[:commit] == 'Estatales'
-      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatales')
+      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatal')
       @tramite = 'estatales'
     end
   end
