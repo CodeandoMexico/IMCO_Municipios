@@ -58,6 +58,8 @@ gem 'angularjs-rails'
 
 gem 'uservoice-ruby'
 
+gem 'whenever', :require => false
+
 group :development, :test do
   # Load env variables
   gem 'figaro'
