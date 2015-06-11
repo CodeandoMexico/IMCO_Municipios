@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :store_location
   layout :layout_by_resource
- add_flash_types :error, :notice
+ add_flash_types :error, :notice, :alert
  before_action :set_client_user_voice
 
   def set_client_user_voice

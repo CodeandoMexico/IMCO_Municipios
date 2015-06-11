@@ -9,7 +9,7 @@
     = csrf_meta_tags
   %body
     = render "shared/navbar_admin"
+    = render "shared/show_flash"
     %div.container
-      = render "shared/show_flash"
       = yield
       = render 'shared/uservoice'
