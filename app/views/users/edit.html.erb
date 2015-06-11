@@ -62,7 +62,7 @@
             <%= f.label t('.address') %></div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:address][0].to_s%></div>
           </div>
-          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio', :onchange=>"validate_requirements()", :onkeypress => "loading();"%>
+          <%= f.text_area :address ,  class: 'form-controler', :placeholder => 'Dirección del negocio', :onchange=>"validate_requirements()", :onkeypress => "loading();", :value => @address%>
           <div id="spinner" class="spinner" style="display:none;">
             <%= image_tag "spinner.gif", class: "img-responsive center-block" ,:id=>"img-spinner"%>
           </div>
@@ -74,7 +74,7 @@
             </div>
             <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:business_name][0].to_s%></div>
           </div>
-          <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa', :onchange=>"validate_requirements()", :value => @bussine_name %>
+          <%= f.text_field :business_name , class: 'form-controler', :placeholder => 'El nombre de tu negocio o empresa', :onchange=>"validate_requirements()", :value => @bussine_name, :value => @bussine_name %>
         </div>
         <div class="form-group">
           <div class="row">

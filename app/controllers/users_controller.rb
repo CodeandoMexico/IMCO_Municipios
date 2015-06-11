@@ -32,7 +32,9 @@ class UsersController < ApplicationController
  def edit
   redirect_to root_path if current_user.nil?
   @user = current_user
+  
   unless @user.nil?
+
     unless @user.city_id.nil?
       @city_select = City.find(@user.city_id).id
       @lines = Line.where(city_id: @user.city_id)
@@ -49,10 +51,57 @@ class UsersController < ApplicationController
         format.js
       end
     end
-    @phone = @user.phone
-    @schedule = @user.schedule
-    @bussine_name = @user.business_name
-    @user_operation_license = @user.operation_license
+
+    unless params[:user].blank?
+      unless params[:user][:name].blank?
+        @user_name = params[:user][:name]
+      end
+
+      unless params[:user][:email].blank?
+        @user_email = params[:user][:email]
+      end
+
+      unless params[:user][:city_id].blank?
+        @city_select = City.find(params[:user][:city_id]).id
+        @lines = Line.where(city_id: @city_select)
+      end
+
+      unless params[:user][:line_id].blank?
+        @line_select = Line.find(params[:user][:line_id]).id
+      end
+
+      unless params[:user][:phone].blank?
+        @phone = params[:user][:phone]
+      end
+
+      unless params[:user][:schedule].blank?
+        @schedule = params[:user][:schedule]
+      end
+
+      unless params[:user][:business_name].blank?
+        @bussine_name = params[:user][:business_name]
+      end
+
+      unless params[:user][:operation_license].blank?
+        @user_operation_license = params[:user][:operation_license]
+      end
+
+      unless params[:user][:address].blank?
+        @address = params[:user][:address]
+     
+      end
+    else
+      @user_name = @user.name
+      @user_email = @user.email
+      @city_select = @user.city_id
+      @lines = Line.where(city_id: @city_select)
+      @line_select  = @user.line_id
+      @phone = @user.phone
+      @schedule = @user.schedule
+      @bussine_name = @user.business_name
+      @user_operation_license = @user.operation_license
+      @address = @user.address
+    end  
   end
 end
 
@@ -140,27 +189,28 @@ def save_params_temp
     @user_name = params[:user][:name]
   end
   unless params[:user][:email].blank?
-    @user_email= params[:user][:email]
+    @user_email = params[:user][:email]
   end
   unless params[:user][:city_id].blank?
     @city_select = City.find(params[:user][:city_id]).id
+    @lines = Line.where(city_id: @city_select)
   end
   unless params[:user][:line_id].blank?
     @line_select = Line.find(params[:user][:line_id]).id
   end
-  unless params[:user][:user_phone].blank?
-    @phone = params[:user][:user_phone]
+  unless params[:user][:phone].blank?
+    @phone = params[:user][:phone]
   end
-  unless params[:user][:user_schedule].blank?
-    @schedule = params[:user][:user_schedule]
+  unless params[:user][:schedule].blank?
+    @schedule = params[:user][:schedule]
   end
-  unless params[:user][:bussine_name].blank?
-    @bussine_name = params[:user][:bussine_name]
+  unless params[:user][:business_name].blank?
+    @bussine_name = params[:user][:business_name]
   end
-  unless params[:user][:user_operation_license].blank?
-    @user_operation_license = params[:user][:user_operation_license]
+  unless params[:user][:operation_license].blank?
+    @user_operation_license = params[:user][:operation_license]
   end
-    unless params[:user][:address].blank?
+  unless params[:user][:address].blank?
     @address = params[:user][:address]
   end
 end 
