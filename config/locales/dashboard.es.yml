@@ -115,6 +115,7 @@ es:
         dependency: Dependencia
         tipo: Tipo
         municipio: Municipio
+        tramite: Trámite
         actions: Acciones
         new_formation_step: Nuevo trámite apertura
         no_formation_steps_available: No hay trámites de apertura disponibles.
@@ -128,6 +129,7 @@ es:
         description: Descripción
         path: Path
         type_formation_step: Tipo de persona
+        type_procedure: Tipo de trámite
     lines:
       index:
         name: Nombre

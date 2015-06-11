@@ -15,7 +15,7 @@
             %th #
             %th= t('.name')
             %th= t('.tipo')
-            %th= t('.dependency')
+            %th= t('.tramite')
             %th= t('.actions')
           %tbody
             - @formation_steps.each_with_index do |formation, idx|
@@ -23,7 +23,7 @@
                 %td= idx + 1
                 %td= formation.name
                 %td= type(formation.type_formation_step)
-                %td= formation.city.name
+                %td= formation.type_of_procedure
                 %td
                   = link_to edit_dashboard_formation_step_path(formation) do
                     %i.fa.fa-pencil
