@@ -145,8 +145,8 @@
         displayOnMap('loading') 
       }
     });
-    var e = document.getElementById("user_city_id");
-    if(e.value != "" && e.value != null){
+
+    if($("#user_city_id").chosen().val() != ""){
       $(".line_for_city").removeClass("hide");
     }
     validate_requirements();
@@ -217,10 +217,10 @@
            success: function(){
            },
           error: function(){
-            alert('failure');
           }, 
            data: $.param({ pagetime: {city_id: window.order}})
       });
+    validate_requirements();
   }
 
   $(document).ready(loadMap);
@@ -255,13 +255,11 @@
   })();
 
   function validate_requirements(){  
-    if(document.getElementById("user_name").value!= "" && document.getElementById("user_email").value!= "" && document.getElementById("user_address").value!= "" && document.getElementById("user_operation_license").value!= ""&& document.getElementById("user_business_name").value!= ""){
+    if(document.getElementById("user_name").value!= "" && document.getElementById("user_email").value!= "" && document.getElementById("user_address").value!= "" && document.getElementById("user_operation_license").value!= ""&& document.getElementById("user_business_name").value!= "" && $("#user_city_id").chosen().val()){
      document.getElementById("save_form").disabled = false;
    }else{
     document.getElementById("save_form").disabled = true;
   }
-
-  
 }
 function saludo(){
   alert('hola');

@@ -50,7 +50,6 @@ class UsersController < ApplicationController
           format.js
         end
       end
-
       @phone = @user.phone
       @schedule = @user.schedule
       @bussine_name = @user.business_name
