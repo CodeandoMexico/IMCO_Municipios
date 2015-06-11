@@ -612,3 +612,16 @@ espacio{
     width: 48px; /* width of the spinner gif */
     height: 48px; /*hight of the spinner gif +2px to fix IE8 issue */
 }
+
+
+//close
+.chosen-container-single .chosen-single abbr {
+  position: absolute;
+  top: 6px;
+  right: 26px;
+  display: block;
+  width: 0px !important;
+  height: 0px !important;
+  background: url(/assets/chosen-sprite.png) -42px 1px no-repeat;
+  font-size: 1px;
+}

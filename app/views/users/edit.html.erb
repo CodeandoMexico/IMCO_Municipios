@@ -210,10 +210,19 @@
     $(".line_for_city").addClass("hide");
     var e = document.getElementById("user_city_id");
     window.order = e.value;
+    var url = window.location.href;
+
+    if(url.includes("#_=_")){
+       url = url.replace("#_=_","");
+    }
+    if(!url.includes("edit")){
+       url += "/edit";
+    }
+    window.url = url;
     $(".user_city_id").val(window.order).change(); //cambiamos la seleccion de city
     $.ajax({
            type:'GET', 
-           url: '#{edit_user_path(@user)}',
+           url: window.url,
            success: function(){
            },
           error: function(){
@@ -260,6 +269,7 @@
    }else{
     document.getElementById("save_form").disabled = true;
   }
+    
 }
 function saludo(){
   alert('hola');
