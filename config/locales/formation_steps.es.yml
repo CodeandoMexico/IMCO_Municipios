@@ -11,6 +11,7 @@ es:
       formation_steps_radio_name: 'Tipo de persona:'
       radio_fisica: Física
       radio_moral: Moral
+      radio_ambas: Ambos
       pasos: Paso %{parameter}
       fin_steps: Has terminado
       link: Obtener aquí
