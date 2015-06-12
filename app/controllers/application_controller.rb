@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     require 'uservoice-ruby'    
       unless envirement_validates
         client = UserVoice::Client.new(ENV['USERVOICE_SUBDOMAIN_NAME'], ENV['USERVOICE_API_KEY'], ENV['USERVOICE_API_SECRET'])
-        client.login_as_owner do |owner|
-          user = owner.get("/api/v1/users/current")['user']
-        end
+        # client.login_as_owner do |owner|
+        #   user = owner.get("/api/v1/users/current")['user']
+        # end
       end
   end
 

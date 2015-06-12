@@ -9,25 +9,26 @@
   - @procedure_lines.each_with_index do |procedure_line, index|
     - if(Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa')
       - procedure = Procedure.find(procedure_line.procedure_id)
-      %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.id}] }"}
-        .col-sm-1
-          - if user_signed_in?
-            %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(user: current_user, procedure: procedure)}"}
-              %label{ style: 'font-weight: 400;' }
-                %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'user_id': #{current_user.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
-          - else
-            -# let's redirect the user to the login page
-            %td
-              %label{ style: 'font-weight: 400;' }
-                %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
-        %td.col-sm-4
-          = link_to city_procedure_line_path(@city, procedure_line), class: 'texto-verde' do
-            = procedure.name
-        %td.col-sm-1
-          = tipo(procedure.type_procedure)
-        %td.col-sm-3
-          = procedure.cost
-        %td.col-sm-1
-          = procedure.validity
-        %td.col-sm-2
-          = procedure.long
+      -if(valida_tipo(procedure.type_procedure, @tipo))
+        %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.id}] }"}
+          .col-sm-1
+            - if user_signed_in?
+              %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(user: current_user, procedure: procedure)}"}
+                %label{ style: 'font-weight: 400;' }
+                  %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'user_id': #{current_user.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
+            - else
+              -# let's redirect the user to the login page
+              %td
+                %label{ style: 'font-weight: 400;' }
+                  %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
+          %td.col-sm-4
+            = link_to city_procedure_line_path(@city, procedure_line), class: 'texto-verde' do
+              = procedure.name
+          %td.col-sm-1
+            = tipo(procedure.type_procedure)
+          %td.col-sm-3
+            = procedure.cost
+          %td.col-sm-1
+            = procedure.validity
+          %td.col-sm-2
+            = procedure.long

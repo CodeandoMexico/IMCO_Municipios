@@ -4,9 +4,8 @@
     %th.col-sm-4= t('.name')
     %th.col-sm-6= t('.description')
     %th.col-sm-1= t('.path')
-
     - @formation_steps.each_with_index do |formation, index|
-      - if formation.type_formation_step == @tipo
+      - if formation.type_formation_step == @tipo || @tipo == 'A'
         %tr{ 'ng-class'=> "{ 'done': procedures.items[#{formation.id}] }"}
           .col-sm-1
             - if user_signed_in?
