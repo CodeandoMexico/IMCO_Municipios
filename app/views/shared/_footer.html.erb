@@ -10,6 +10,13 @@
           <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
+          <br/>
+          <%unless(@city.contact_email.nil?)%>
+            <li class="text-center"><%= mail_to @city.contact_email, "#{t('footer.correo')} #{@city.name}" %></li>| 
+          <%end%>
+          <%unless(@city.contact_phone.nil?)%>
+            <li class="text-center"> <%="#{t('footer.llama')} #{@city.name}: #{@city.contact_phone}" %></li>
+          <%end%>
         </ul>
       </div>
   </footer>
