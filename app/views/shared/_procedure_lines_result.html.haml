@@ -25,7 +25,7 @@
               %label{ style: 'font-weight: 400;' }
                 %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
           -unless procedure.name.nil?
-          	-@number_of_procedure+=1
+            -@number_of_procedure+=1
           %td.col-sm-4
             = link_to city_procedure_line_path(@city,tramite_de_giro), class: 'texto-verde' do
               = procedure.name
