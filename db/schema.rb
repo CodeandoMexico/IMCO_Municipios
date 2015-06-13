@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610223023) do
+ActiveRecord::Schema.define(version: 20150612232700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150610223023) do
     t.decimal  "latitude",      precision: 10, scale: 6
     t.decimal  "longitude",     precision: 10, scale: 6
     t.text     "privacy_file"
+    t.text     "contact_phone"
   end
 
   create_table "complaints", force: true do |t|

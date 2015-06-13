@@ -98,11 +98,13 @@ es:
     minegocio: Mi Negocio México - 2015.
     contacto: hola@minegocio.mx
     url_imco: http://www.imco.com.mx
-    estandar: Estandar de datos
+    estandar: Estándar de datos
     url_estandar: http://estandares.datamx.io/law/555e3c26cc1f420d00ec17bc
     civica:  y Cívica Digital.
     imco:  Instituto Mexicano para la Competitividad
     contactanos: Contacto
+    correo: Manda un correo a 
+    llama: Llama a 
   search:
     buscar: Buscar
   form:

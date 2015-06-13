@@ -39,6 +39,7 @@ es:
         email: Correo
         edit: Editar
         correo_municipio: 'Correo municipal:'
+        phone_municipio: 'Teléfono municipal:'
         actualizar: Actualizar
       edit:
         title: Editar datos
