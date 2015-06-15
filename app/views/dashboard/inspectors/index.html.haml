@@ -19,7 +19,7 @@
             - @inspectors.each_with_index do |inspector, idx|
               %tr
                 %td= idx + 1
-                %td= inspector.name
+                %td= truncate(inspector.name, length: 16)
                 %td= inspector.dependency.name
                 %td
                   = link_to edit_dashboard_inspector_path(inspector) do
