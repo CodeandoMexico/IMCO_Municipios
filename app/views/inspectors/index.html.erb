@@ -15,7 +15,13 @@
     <%= link_to city_inspector_path(@city,inspector) do %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <%= image_tag inspector.photo_url(:thumb) || "missing-image.gif" %>
+        <%unless inspector.photo_url.nil?%>
+          <%= image_tag inspector.photo_url(:thumb)%>
+        <%else%>
+          <div style="margin-left:auto;margin-right:auto;width:305px;height:305px;">
+          <%= image_tag "missing-image.gif" %>
+       </div>
+        <%end%>
         <div class="caption">
           <h4 class="title text-center texto-verde"><%= truncate(inspector.name, length: 24) %></h4>
           <h4 class="subtitle text-center"><%= inspector.validity %></h4>

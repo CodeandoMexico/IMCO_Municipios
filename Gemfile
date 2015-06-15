@@ -58,7 +58,8 @@ gem 'angularjs-rails'
 
 gem 'uservoice-ruby'
 
-#gem 'whenever', :require => false
+
+gem 'whenever', :require => false
 
 group :development, :test do
   # Load env variables
