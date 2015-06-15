@@ -17,7 +17,7 @@
       <div class="thumbnail">
         <%= image_tag inspector.photo_url(:thumb) || "missing-image.gif" %>
         <div class="caption">
-          <h4 class="title text-center texto-verde"><%= truncate(inspector.name, length: 16) %></h4>
+          <h4 class="title text-center texto-verde"><%= truncate(inspector.name, length: 24) %></h4>
           <h4 class="subtitle text-center"><%= inspector.validity %></h4>
         </div>
       </div>
