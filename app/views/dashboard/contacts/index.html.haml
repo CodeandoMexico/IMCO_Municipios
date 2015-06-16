@@ -32,6 +32,9 @@
               %td
                 %span= link_to(@city.privacy_file_identifier, @city.privacy_file_url, target: "_blank") if @city.privacy_file_url
                 = f.file_field :privacy_file
+            %tr
+              %td= t('.regulations_path')
+              %td= f.text_field :regulations_path, class: 'form-control'
 
 %h2= t('.admins')
 .row
