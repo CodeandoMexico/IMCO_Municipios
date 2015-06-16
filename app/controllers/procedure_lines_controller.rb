@@ -6,7 +6,7 @@ class ProcedureLinesController < ApplicationController
 
   def index
     add_breadcrumb @city.name ,city_path(@city)
-    add_breadcrumb "Tramites", city_procedure_lines_path(@city)
+    add_breadcrumb "Trámites", city_procedure_lines_path(@city)
 
     @procedure = Procedure.all.order('nombre DESC')
     @id_del_giro = "0"

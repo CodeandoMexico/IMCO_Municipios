@@ -2,7 +2,7 @@ es:
   users:
     index:
       title: Uso de suelo
-      subtitle: Observa en el mapa todos los negocios ó filtra por giro.
+      subtitle: Observa en el mapa todos los negocios o filtra por giro.
       lines_of_work: Todos los giros de negocio
     new:
       iniciar_sesion: Iniciar sesión

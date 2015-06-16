@@ -18,6 +18,8 @@ es:
       terminado: terminado
       tengo_tramite: Ya tengo este trámite
       select_giro: Selecciona un giro
+    city_formation_steps:
+      duracion: Duración
     federal_formation_steps:
       done: Hecho
       name: Nombre

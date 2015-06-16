@@ -192,6 +192,7 @@ es:
       no_inspections_selected_resultado: Resultado de la búsqueda.
       inspector: Conoce a tu inspector
     show:
+      nueva_busqueda: Nueva búsqueda
       nombre: Nombre
       Descripcion: Descripción
       subject: Materia
@@ -254,6 +255,9 @@ es:
       tramite: TRÁMITES
       inspections: INSPECCIONES
       inspectors: INSPECTORES
+  shared:
+    carrusel_inspections:
+      obtener_aqui: Obtener aquí
   activerecord:
     errors:
       messages:
