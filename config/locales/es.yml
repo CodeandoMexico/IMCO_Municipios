@@ -177,6 +177,7 @@ es:
         save_button: Guardar denuncia
         razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
+        texto_explicativo: Aquí podrás realizar una denuncia sobre actos irregulares cometidos durante tu inspección o visita. Una vez concluida tu denuncia,  recibirás un correo electrónico de seguimiento de tu municipio.
       created_successfully: Denuncia enviada correctamente, por favor revise su correo.
   inspections:
     index:
@@ -250,6 +251,7 @@ es:
       click: clic aquí
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
+      texto_explicativo: Mi Negocio México es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También podrás consultar información sobre inspecciones, crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
   layouts:
     blanco:
       new: NUEVO NEGOCIO

@@ -6,7 +6,20 @@
     %p= t('.no_formation_steps_selected_subtitle')
     %p= t('.no_formation_steps_selected_instruction')
   - else
-    %p= "#{t('.no_formation_steps_selected_resultado')} #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."
+    %div.row.texto-verde
+      %div.col-md-8.col-md-offset-2.texto-justificado
+        = "#{t('.no_formation_steps_selected_resultado')} #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."
+    %br 
+    %div.row.texto-gris
+      %div.col-md-8.col-md-offset-2.texto-justificado
+        -if @tramite == 'federales'
+          =t('.texto_explicativo_municipal')
+        -if @tramite == 'municipales'
+          =t('.texto_explicativo_federal')
+        -if @tramite == 'estatales'
+          =t('.texto_explicativo_estatal')
+    %br      
+
 
 = form_for :get, html: { method: :get, id: 'procedure_lines_form', class: 'form-horizontal', style: 'margin-bottom: 115px;' }, url: { controller: :formation_steps, action: :index }  do |f|
   .form-group
