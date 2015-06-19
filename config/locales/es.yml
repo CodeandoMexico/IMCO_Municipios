@@ -103,12 +103,14 @@ es:
     civica:  y Cívica Digital.
     imco:  Instituto Mexicano para la Competitividad
     contactanos: Contacto
-    correo: Manda un correo a 
-    llama: Llama a
-    regulation: Norma de inspecciones  
-    construction: Norma de construcción
-    business: Norma de establecimientos
-    land: Norma uso de suelo
+    correo: Correo 
+    llama: Teléfono
+    regulation: Norma de inspecciones.  
+    construction: Norma de construcción.
+    business: Norma de establecimientos mercantiles.
+    land: Norma de uso de suelo.
+    contacto: Contacta a 
+    normas: Normativas de 
   search:
     buscar: Buscar
   form:
