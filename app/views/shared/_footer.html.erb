@@ -47,7 +47,7 @@
             <%= link_to t('footer.land'), @city.land_file.to_s , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
-          <%unless @city.land_file.nil?%>
+          <%unless @city.regulations_path.nil?%>
             <%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
