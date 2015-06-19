@@ -41,7 +41,11 @@ es:
         correo_municipio: 'Correo municipal:'
         phone_municipio: 'Teléfono municipal:'
         actualizar: Actualizar
-        regulations_path: URL a normativa de inspectores
+        regulations_path: 'URL a normativa de inspectores:'
+        aviso: 'Aviso de privasidad:'
+        construction: 'Normativa de construcción:'
+        land: 'Normativa de uso de suelo:'
+        business: 'Normativa establecimientos mercantiles:'
       edit:
         title: Editar datos
         correo: 'Correo:'
