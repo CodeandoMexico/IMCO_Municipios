@@ -106,6 +106,9 @@ es:
     correo: Manda un correo a 
     llama: Llama a
     regulation: Norma de inspecciones  
+    construction: Norma de construcción
+    business: Norma de establecimientos
+    land: Norma uso de suelo
   search:
     buscar: Buscar
   form:

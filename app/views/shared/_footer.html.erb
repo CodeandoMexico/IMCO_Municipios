@@ -3,15 +3,22 @@
       <div class="col-md-4 text-center margin-footer">
         <%= image_tag "Logoblanco.png", class: "img-responsive-footer center-block" %>
       </div>
-      <div class="col-md-2 text-center margin-footer">
-      </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-8 text-center">
         <ul class="list-inline ">
           <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li> |
           <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
           <%unless @city.regulations_path.nil?%>
             | <li class="text-center"><%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank" %></li> 
+          <%end%>
+          <%unless @city.construction_file.nil?%>
+            | <li class="text-center"><%= link_to t('footer.construction'), @city.construction_file , :target => "_blank" %></li> 
+          <%end%>
+          <%unless @city.business_file.nil?%>
+            | <li class="text-center"><%= link_to t('footer.business'), @city.business_file , :target => "_blank" %></li> 
+          <%end%>
+          <%unless @city.land_file.nil?%>
+            | <li class="text-center"><%= link_to t('footer.land'), @city.land_file , :target => "_blank" %></li> 
           <%end%>
           <br/>
           <%unless(@city.contact_email.nil?)%>
