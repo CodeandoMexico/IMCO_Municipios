@@ -1,6 +1,6 @@
 <img src="http://minegociomexico.mx/images/favicon.ico" alt="Traxi" height="50" width="50"/>Mi Negocio México
 ===
-Es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También puedes consultar información sobre inspecciones(Quién y cómo se ralizan), crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
+Es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También puedes consultar información sobre inspecciones(Quién y cómo se realizan), crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
 ___
 
 Realizado en [Ruby on Rails](http://rubyonrails.org/) 4.1.1
@@ -70,7 +70,7 @@ Mi Negocio México generó un [estandar de datos](http://estandares.datamx.io/la
     Inspecciones: Listado de inspecciones que se pueden realizar por giro.
     Inspectores: Listado de inspectores autorizados por el municipio.
     Requisitos: Listado de requisitos que pueden ser pedidos en el municipio.
-    Trámites: Tramites para construir, administrar, crecer y financiar o cerrar tu empresa
+    Trámites: Trámites para construir, administrar, crecer y financiar o cerrar tu empresa.
     
 
 ##¿Preguntas o problemas? 
