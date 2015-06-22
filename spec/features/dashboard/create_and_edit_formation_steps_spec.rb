@@ -11,6 +11,8 @@ feature 'validate Formation_Steps' do
     sign_in admin
 
     visit dashboard_path(admin)
+    save_and_open_page
+    
     click_on I18n.t('dashboard.show.apertura')
     
     create_formation_step
