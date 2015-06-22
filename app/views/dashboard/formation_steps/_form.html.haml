@@ -1,5 +1,4 @@
 = form_for [:dashboard, @formation_step], html: { class: 'form-horizontal' } do |f|
-  = render 'shared/show_flash'
   .row
     .panel.panel-default
       .panel-heading
@@ -20,4 +19,7 @@
               %td= f.text_field :path, class: 'form-control'
             %tr
               %td= t('.type_formation_step')
-              %td= f.text_field :type_formation_step, class: 'form-control'
+              %td= f.select(:type_formation_step, type_of_people_formation_step, {:include_blank => false}, :class => 'form-control')
+            %tr
+              %td= t('.type_procedure')
+              %td= f.select(:type_of_procedure, type_of_procedure_formation_step, {:include_blank => false}, :class => 'form-control') 

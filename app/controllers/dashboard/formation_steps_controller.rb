@@ -1,7 +1,7 @@
 module Dashboard
   class FormationStepsController < Dashboard::BaseController
     before_action :set_formation_steps, only: [:edit, :update, :destroy]
-    helper_method :type_of_people_formation_step
+    helper_method :type_of_people_formation_step, :type_of_procedure_formation_step
 
     layout 'dashboard'
 
@@ -69,8 +69,11 @@ module Dashboard
     def type_of_people_formation_step
       UserTypes.type_of_people_formation_step
     end
+    def type_of_procedure_formation_step
+      UserTypes.type_of_procedure_formation_step
+    end
     def formation_steps_params
-      params.require(:formation_step).permit(:name, :description, :type, :path, :city_id )
+      params.require(:formation_step).permit(:name, :description, :type, :path, :city_id, :type_of_procedure )
     end
   end
 end

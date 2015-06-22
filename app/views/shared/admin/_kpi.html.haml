@@ -1,14 +1,15 @@
 .row
   - kpis.each do |k|
-    .col-lg-3.col-md-6
+    .col-lg-4.col-md-6
       = content_tag :div, class: "panel #{k[:panel]}" do
         .panel-heading
           .row
-            .col-xs-3
-              = content_tag :i, nil, class: k[:awesome_icons_class]
-            .col-xs-9.text-right
-              = content_tag :div, k[:value], class: 'huge'
+            -#.col-xs-3
+            -#= content_tag :i, nil, class: k[:awesome_icons_class]
+            .col-xs-12.text-right
               = content_tag :div, k[:message]
+              %hr
+              = content_tag :div, k[:value], class: 'huge text-left'
         -# = link_to k[:path] do
         -#   .panel-footer
         -#     = content_tag :span, 'View Details', class: 'pull-left'

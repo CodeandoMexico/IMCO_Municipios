@@ -54,6 +54,12 @@ gem 'breadcrumbs_on_rails' #breadcrumbs
 gem 'haml'
 
 gem 'gmaps4rails'
+gem 'angularjs-rails'
+
+gem 'uservoice-ruby'
+
+
+gem 'whenever', :require => false
 
 group :development, :test do
   # Load env variables

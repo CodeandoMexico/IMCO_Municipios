@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   post "cities/search"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
+
+  match '/user_formation_steps', to: 'user_formation_steps#update', via: :post
+  match '/user_procedures', to: 'user_procedures#update', via: :post
+  match '/user_requirements', to: 'user_requirements#update', via: :post
 
   resources :cities, only: [:show, :update, :edit] do
     get 'about'
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
     resources :requirements, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/requirements'
     resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
     resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
+    resources :business, only: [:index, :show], controller: 'dashboard/business'
     resources :cities, only: [:show], controller: 'dashboard/cities' do
       resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
     end

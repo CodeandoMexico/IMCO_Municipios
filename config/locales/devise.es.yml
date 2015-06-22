@@ -1,0 +1,46 @@
+es:
+  devise:
+    mailer:
+      reset_password_instructions:
+        subject: "Instrucciones para restaurar contraseña"
+      title: Mi Negocio México
+      saludo: Hola
+      text_one: Si olvidaste tu contraseña porfavor da click 
+      text_here: aquí
+      text_two: para crear una nueva.
+      last_text: Tu contraseña no cambiará mientras no accedas a la liga.
+    sessions:
+      user:
+        already_signed_out: Has terminado tu sesión.
+    passwords:
+      title: Recupera tu contraseña
+      subtitle: Te enviaremos un correo con una contraseña temporal
+      submit: Recuperar
+      email: Escribe tu correo
+      email_hint: correo@ejemplo.mx
+      change_title: Cambia tu contraseña
+      change_subtitle: Escribe tu nueva contraseña
+      change_submit: Cambiar
+      new_password: Nueva contraseña
+      confirm_password: Confirma la contraseña
+      user:
+        updated: Contraseña cambió con éxito
+        send_instructions: Te enviamos un correo con las instrucciones de como recuperar tu contraseña
+  errors:
+    messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "Tienes un error:"
+        other: "%{count} errores encontrados:"
+        passwords: "Las contraseñas no puede estar en blanco, deben ser iguales y tener más de 8 caracteres"
+    models:
+      user:
+        attributes:
+          password:
+            confirmation: "Las contraseñas no coinciden"
+            too_short: "La contraseña es muy pequeña minimo debe ser de 8 caracteres"
+            is_blank: La contraseña no puede estar en blanco

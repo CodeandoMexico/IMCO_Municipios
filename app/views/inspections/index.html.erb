@@ -1,8 +1,4 @@
     <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-    <div class="row text-center ">
-     <%= render "shared/show_flash" %>
-    </div>
-
     <div class="row text-center texto-verde">
       <%= content_tag :h1,t('.title') %>
       <%if @line.nil?%>
@@ -16,10 +12,13 @@
     </div>
 
     <div class="row">
-      <div class="text-left col-xs-6"></div>
+      <div class="text-left col-xs-6">
+      <%= link_to t('.inspector'), city_inspectors_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
+      </div>
       <div class="text-right col-xs-6">
         <%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-danger btn-md outlinerojo text-right' %>
         <%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
+        
       </div>
     </div>
   </br>
@@ -36,7 +35,7 @@
         </div>
 
         <div class="form-group">
-          <label class="col-xs-6 col-sm-3 texto-margin-top text-right">Busqueda:</label>
+          <label class="col-xs-6 col-sm-3 texto-margin-top text-right">Búsqueda:</label>
           <div class="col-md-offset-3">
             <%= text_field_tag :q, nil, class: 'form-controler', placeholder: t('.search_inspections') %>
           </div>

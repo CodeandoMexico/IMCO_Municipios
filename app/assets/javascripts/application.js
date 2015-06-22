@@ -13,11 +13,13 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require angular
 //= require bootstrap-sprockets
 //= require bootstrap-switch
 //= require chosen-jquery
 //= require underscore
 //= require gmaps/google
+//= require webapp
 //= require_tree ./public
 //= require_tree .
 

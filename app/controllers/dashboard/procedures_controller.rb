@@ -1,7 +1,8 @@
 module Dashboard
   class ProceduresController < Dashboard::BaseController
     before_action :set_procedure, only: [:edit, :update, :destroy]
-    helper_method :type_of_people_procedures, :type_of_sare
+    helper_method :type_of_people_procedures, :type_of_sare, :type_of_category
+
     layout 'dashboard'
 
     def index
@@ -113,6 +114,9 @@ module Dashboard
     end
     def type_of_sare
       UserTypes.type_of_sare
+    end
+     def type_of_category
+      UserTypes.type_of_category
     end
     def delete_relation_procedure_lines
       ProcedureLine.all.each do |par|

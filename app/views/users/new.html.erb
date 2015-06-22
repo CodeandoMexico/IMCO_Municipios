@@ -1,8 +1,13 @@
 <div id="wrap">
 	<div id="main" class="clear-top ">
 		<h2 class="text-center"><%=t('.iniciar_sesion')%></h2>
+		<div class= "row">
+			<div class="col-md-8 col-md-offset-2 texto-justificado">
+				<%=t('.texto_explicativo')%>
+			</div>
+		</div>
 		<p class="text-center"> <%=t('.iniciar_sesion_explicacion')%> </p>
-			<!-- <hr class="small"> -->
+		<!-- <hr class="small"> -->
 		<div id="social-sign-in" class="row  ">	
 			<div class="col-md-6 col-md-offset-3 contorno">
 				<%= link_to " | Facebook", user_omniauth_authorize_path(:facebook) , class: "btn-ln btn-block btn-facebook fa fa-facebook" %>

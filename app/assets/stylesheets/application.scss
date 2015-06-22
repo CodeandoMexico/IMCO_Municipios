@@ -47,18 +47,21 @@ body {
 }
 
 #main {
-  margin-top: 70px;
+  margin-top: 0px;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: $footer_height;
+/*  height: $footer_height;*/
   color:#fff;
   background-color: #46aa6c !important;
   text-align: center;
-  padding: 10px 17% 10px 12%;
+  padding-top: 10px;
+  padding-left: 0%;
+  padding-right: 5% !important;
+  padding-bottom: 10px;
 }
 
 .padding-left-center {
@@ -67,9 +70,9 @@ body {
 
 .img-responsive-footer {
   display: block;
-  max-width: 65%;
-  margin: 0 auto;
+  max-width: 25%;
 }
+
 .text-right {
   text-align: right;
 }
@@ -241,6 +244,9 @@ texto-blanco{
 .texto-wrap{
   width:100%;
 }
+.texto-justificado{
+  text-align: justify;
+}
 
 .texto-padding-center{
   padding-left: 15%;
@@ -260,6 +266,13 @@ texto-blanco{
 
   .texto-padding-right{
   margin-right: 15px;
+  }
+
+  .texto-padding-left{
+  margin-left: 15px;
+  }
+  .texto-padding-left-little{
+  margin-left: 5px;
   }
 
 .texto-padding-bottom{
@@ -358,7 +371,7 @@ section{
 }
 
 .center-block{
-  padding-top: 10%;
+  /*padding-top: 10%;*/
 }
 
 .full-width{
@@ -588,4 +601,35 @@ espacio{
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd;
+}
+
+/***********************loader****************/
+.spinner {
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* half width of the spinner gif */
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align: left;
+    z-index:1234;
+    overflow: auto;
+    width: 48px; /* width of the spinner gif */
+    height: 48px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+
+//close
+.chosen-container-single .chosen-single abbr {
+  position: absolute;
+  top: 6px;
+  right: 26px;
+  display: block;
+  width: 0px !important;
+  height: 0px !important;
+  background: url(/assets/chosen-sprite.png) -42px 1px no-repeat;
+  font-size: 1px;
+}
+
+.image-thumb{
+  width: 400px !important;
+  height: 400px !important;
 }

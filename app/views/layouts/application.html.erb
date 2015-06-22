@@ -12,11 +12,13 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-app="miNegocio">
     <%= render "shared/navbar_menu" %>
     <div id="main" class="container clear-top">
+      <%= render "shared/show_flash" %>
       <%= yield %>
     </div>
+    <%= render 'shared/uservoice'%>
     <%= render "shared/footer" %>
   </body>
 </html>

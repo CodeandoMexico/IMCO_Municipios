@@ -1,5 +1,4 @@
-= form_for @city , html: { class: 'form-horizontal' } do |f|
-  = render 'shared/show_flash'
+= form_for @city , html: { multipart: true , class: 'form-horizontal' } do |f|
   .h1= t('.all_profile',:city => @city.name)
   .row
     .panel.panel-default
@@ -13,6 +12,44 @@
             %tr
               %td= t('.correo_municipio')
               %td= f.text_field :contact_email, class: 'form-control'
+            %tr
+              %td= t('.phone_municipio')
+              %td= f.text_field :contact_phone, class: 'form-control'
+
+  .h2= t('.archivos')
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.save'), :class => 'btn btn-sm btn-success outlineverde'
+        .pull-right
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.aviso')
+              %td
+                %span= link_to(@city.privacy_file_identifier, @city.privacy_file_url, target: "_blank") if @city.privacy_file_url
+                = f.file_field :privacy_file
+            %tr
+              %td= t('.construction')
+              %td
+                %span= link_to(@city.construction_file_identifier, @city.construction_file_url, target: "_blank") if @city.construction_file_url
+                = f.file_field :construction_file
+            %tr
+              %td= t('.land')
+              %td
+                %span= link_to(@city.land_file_identifier, @city.land_file_url, target: "_blank") if @city.land_file_url
+                = f.file_field :land_file
+            %tr
+              %td= t('.business')
+              %td
+                %span= link_to(@city.business_file_identifier, @city.business_file_url, target: "_blank") if @city.business_file_url
+                = f.file_field :business_file
+            %tr
+              %td= t('.regulations_path')
+              %td= f.text_field :regulations_path, class: 'form-control'
 
 %h2= t('.admins')
 .row

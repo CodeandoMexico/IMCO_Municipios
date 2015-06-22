@@ -1,13 +1,12 @@
 class ProcedureLinesController < ApplicationController
   before_action :set_line, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:index, :show]
 
   add_breadcrumb "Inicio", :root_path
 
   def index
-    set_city(:city_id)
-
     add_breadcrumb @city.name ,city_path(@city)
-    add_breadcrumb "Tramites", city_procedure_lines_path(@city)
+    add_breadcrumb "Trámites", city_procedure_lines_path(@city)
 
     @procedure = Procedure.all.order('nombre DESC')
     @id_del_giro = "0"
@@ -29,23 +28,13 @@ class ProcedureLinesController < ApplicationController
  end
 
  def show
-  set_city(:city_id)
-  @cities = City.all
-
-  @procedure_requirements = ProcedureRequirement.all
-  @procedure_lines=  ProcedureLine.all
-  @requirements = Requirement.all
-  @line = Line.find(@procedure_line.line_id).name
-  @procedure = Procedure.find(@procedure_line.procedure_id).name
-  @procedure_requirement = @procedure_requirements.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id)
-
-
+  @line = Line.find(@procedure_line.line_id)
+  @procedure = Procedure.find(@procedure_line.procedure_id)
+  @procedure_requirements = ProcedureRequirement.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id)
 
   add_breadcrumb @city.name, city_path(@city)
-  add_breadcrumb "Tramites", city_procedure_lines_path(@city)
+  add_breadcrumb "Trámites", city_procedure_lines_path(@city)
   add_breadcrumb @procedure
-
-
 end
 
 
@@ -113,7 +102,7 @@ end
 
 def valida_categoria
   if @etapa.nil? || @etapa.empty?
-    redirect_to city_procedure_lines_path(@city), error:  'Debes seleccionar una etapa.' 
+    redirect_to city_procedure_lines_path(@city), error:  'Debes seleccionar una etapa.'
     return "OK"
   end
   return nil
@@ -134,8 +123,8 @@ private
 
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_city(val)
-      @city = City.find(params[val])
+    def set_city
+      @city = City.find(params[:city_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

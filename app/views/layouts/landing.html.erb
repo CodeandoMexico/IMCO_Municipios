@@ -16,7 +16,9 @@
 	</head>
 	<body style="height:100%;margin-bottom:0;" data-no-turbolink="true">
 	  <div id="landing">
+      <%= render "shared/show_flash" %>
 	    <%= yield %>
+      <%= render 'shared/uservoice'%>
 	  </div>
 	</body>
 </html>

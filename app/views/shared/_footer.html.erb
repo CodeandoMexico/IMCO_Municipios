@@ -1,33 +1,84 @@
+<% if @city.present?%>
 <footer class="footer">
-  <div class="row">
-    <div class="col-xs-12 col-md-4">
-      <%= image_tag "Logoblanco.png", class: "img-responsive-footer text-center" %>
-    </div>
-    <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-12 col-md-4">
-      <ul class="list-inline padding-left-center">
-        <li>
-          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-        </li>
-        <li>
-          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-        </li>
-        <li>
-          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-        </li>
-      </ul>
-    </div>
-    <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-12 col-md-4">
-      <ul class="list-inline">
-        <% if @city.present? %>
-          <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li>
-          <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li>
-        <% end %>
-      </ul>
+  <div class="col-md-4 text-center margin-footer">
+    <%= image_tag "Logoblanco.png", class: "img-responsive-footer center-block" %>
+  </div>
+  <div class="col-md-8 text-center">
+    <ul class="list-inline ">
+      <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li> |
+      <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li> |
+      <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
+      <%unless @city.regulations_path.nil? || @city.construction_file.nil? || @city.business_file.nil? || @city.land_file.nil?%>
+       | <li class="text-center">
+            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogNormas"><%="#{t('footer.normas')} #{@city.name}"%></a>
+        </li> 
+      <%end%>
+      <%unless @city.contact_email.nil? || @city.contact_phone.nil?%>
+        | <li class="text-center">
+            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogContact"><%="#{t('footer.contacto')} #{@city.name}"%></a>
+        </li> 
+      <%end%>
+</ul>
+</div>
+</footer>
+<% end %>
+
+
+
+<!--Modal para explicar porque no hay más municipios-->
+<!-- Button trigger modal -->
+<div class="modal fade" id="myModalDialogNormas" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
+  <div class="modal-dialog-center">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%="#{t('footer.normas')} #{@city.name}"%></h4>
+      </div>
+      <div class="modal-body texto-verde-wrap">
+          <%unless @city.construction_file.nil?%>
+            <%= link_to t('footer.construction'), @city.construction_file.to_s , :target => "_blank", :class =>"texto-verde" %>
+          </BR>
+          <%end%>
+          <%unless @city.business_file.nil?%>
+           <%= link_to t('footer.business'), @city.business_file.to_s , :target => "_blank", :class =>"texto-verde" %>
+           </BR>
+          <%end%>
+          <%unless @city.land_file.nil?%>
+            <%= link_to t('footer.land'), @city.land_file.to_s , :target => "_blank", :class =>"texto-verde" %> 
+            </BR>
+          <%end%>
+          <%unless @city.regulations_path.nil?%>
+            <%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank", :class =>"texto-verde" %> 
+            </BR>
+          <%end%>
+      </div>
     </div>
   </div>
-</footer>
+</div>
+
+<!--Modal para explicar porque no hay más municipios-->
+<!-- Button trigger modal -->
+<div class="modal fade" id="myModalDialogContact" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
+  <div class="modal-dialog-center">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%="#{t('footer.contacto')} #{@city.name}"%></h4>
+      </div>
+      <div class="modal-body">
+         <%unless @city.contact_email.nil?%>
+          <%= mail_to @city.contact_email, "#{t('footer.correo')}: #{@city.contact_email}", :class =>"texto-verde" %> 
+          </BR>
+         <%end%>
+         <%unless(@city.contact_phone.nil?)%>
+         <div class="texto-verde">
+           <%="#{t('footer.llama')}: #{@city.contact_phone}"%>
+          </div>
+         <%end%>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+

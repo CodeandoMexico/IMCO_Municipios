@@ -1,0 +1,25 @@
+- if @procedure_requirements.any?
+  %table.table.table-hover{ 'ng-controller'=> 'ProcedureCtrl as procedures'}
+    %tr.texto-verde
+      %th= t('.done')
+      %th= t('.name')
+      %th= t('.description')
+      %th= t('.path')
+
+    - @procedure_requirements.each_with_index do |procedure, index|
+      %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.requirement.id}] }"}
+        - if user_signed_in?
+          %td{ 'ng-init'=> "procedures.items[#{procedure.requirement.id}] = #{UserRequirement.exists?(user: current_user, requirement: procedure.requirement)}"}
+            %label{ style: 'font-weight: 400;' }
+              %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.requirement.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.requirement.id}], 'user_id': #{current_user.id}, 'requirement_id': #{procedure.requirement.id}, 'path': \'#{user_requirements_path}\'})"} &nbsp;
+        - else
+          -# let's redirect the user to the login page
+          %td
+            %label{ style: 'font-weight: 400;' }
+              %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
+
+        %td= procedure.requirement.name
+        %td= procedure.requirement.description
+        %td= procedure.requirement.path
+- else
+  = render 'shared/empty_resource', message: t('.no_procedures_available')

@@ -32,6 +32,9 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      title: Recupera tu contraseña
+      subtitle: Te enviaremos un correo con una contraseña temporal
+      submit: Recuperar
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -49,6 +52,12 @@ en:
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
+    models:
+      user:
+        attributes:
+          password:
+            confirmation: "Las contraseñas no cinciden"
+            too_short: "La contraseña es muy pequeña minimo debe ser de 8 caracteres"
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"

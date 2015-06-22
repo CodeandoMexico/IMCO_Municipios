@@ -10,6 +10,9 @@ es:
       inspections: Inspecciones
       inspectors: Inspectores
       logout: Cerrar sesión
+      titulo: Panel de administración
+      business: Empresas
+      open_procedure: Trámites activos
     show:
       dependencias: Dependencias
       giros: Giros
@@ -24,7 +27,8 @@ es:
       user_news: Empresas nuevas
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
-      documents_until_to: Documentos próximos
+      documents_until_to: Documentos próximos a vencer
+      titulo: Panel de administración
     contacts:
       index:
         all_profile: Contacto municipio %{city}
@@ -35,7 +39,13 @@ es:
         email: Correo
         edit: Editar
         correo_municipio: 'Correo municipal:'
+        phone_municipio: 'Teléfono municipal:'
         actualizar: Actualizar
+        regulations_path: 'URL a normativa de inspectores:'
+        aviso: 'Aviso de privasidad:'
+        construction: 'Normativa de construcción:'
+        land: 'Normativa de uso de suelo:'
+        business: 'Normativa establecimientos mercantiles:'
       edit:
         title: Editar datos
         correo: 'Correo:'
@@ -82,7 +92,7 @@ es:
         during: Durante
         after: Despues
         sanction: Sanción
-        dependency: Dependecia
+        dependency: Dependencia
         requirements: Requerimientos
         lines: Giros
     inspectors:
@@ -111,6 +121,7 @@ es:
         dependency: Dependencia
         tipo: Tipo
         municipio: Municipio
+        tramite: Trámite
         actions: Acciones
         new_formation_step: Nuevo trámite apertura
         no_formation_steps_available: No hay trámites de apertura disponibles.
@@ -124,6 +135,7 @@ es:
         description: Descripción
         path: Path
         type_formation_step: Tipo de persona
+        type_procedure: Tipo de trámite
     lines:
       index:
         name: Nombre
@@ -179,6 +191,26 @@ es:
         dependency: Dependencia
         requirements: Requerimientos
         lines: Giros
+    business:
+      index:
+        title: Empresas
+        business_name: Nombre negocio
+        address: Dirección
+        line: Giro
+        operation_license: licencia de operación
+        tramites_activos: Trámites finalizados
+        no_business_available: No hay empresas disponibles.
+      form:
+        licencia_de_operacion: Licencia de operación
+        licencia_uso_de_suelo: Licencia uso de suelo
+        name: Nombre
+        correo: Correo
+        address: Dirección
+        phone: Teléfono
+        schedule: Horario
+        line: Giro
+        operation_license: Licencia de operación
+        ubicacion: Ubicación
     dependencies:
       index:
         name: Nombre

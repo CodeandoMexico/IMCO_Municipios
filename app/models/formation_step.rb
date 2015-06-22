@@ -1,6 +1,4 @@
 class FormationStep < ActiveRecord::Base
-
-
   self.inheritance_column = nil
 
   belongs_to :city
@@ -15,7 +13,7 @@ class FormationStep < ActiveRecord::Base
     CSV.generate(options) do |csv|
       csv << ["mane", "description","path","type_formation_step","city_id"]#column_names
       all.each do |product|
-        csv << [product.name,product.description, product.path, product.type_formation_step == 'AF' ? 'Física' : 'Moral' , product.city.name] 
+        csv << [product.name,product.description, product.path, product.type_formation_step == 'AF' ? 'Física' : 'Moral' , product.city.name]
       end
     end
   end

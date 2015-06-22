@@ -26,26 +26,30 @@ es:
   correos:
     empresa:
       subject: Denuncia enviada correctamente
-      saludo: Hola,
+      saludo: Estimado %{nombre},
       body: |
-            La denuncia de tu empresa ha sido enviada al municipio  %{city} correctamente. El folio de la denuncia es %{folio}.
-
-            El municipio se contactará contigo para dar seguimiento. En caso de que esto no suceda, puedes escribirnos a hola@minegociomx.mx.
+            Gracias por utilizar Mi Negocio México. Has recibido este correo porque realizaste una denuncia por el 
+            motivo de %{razon}.
+            En el negocio ubicado en %{domicilio}.
+            Esta denuncia ha generado un número de folio: %{folio}. Por favor, conserva este número para poderdarle seguimiento a tu queja.
+            La denuncia de tu empresa ha sido enviada al municipio de %{city} correctamente. El municipio se pondrá en contacto contigo, en caso de que esto no suceda, puedes escribirnos a %{contacto}
       gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
-      saludo: Hola,
+      saludo: 'Municipio de %{city},'
       body: |
-            Tu municipio ha recibido una denuncia de inspección por la razón %{razon}, en el domicilio %{domicilio}.
-
-            Puedes ver la información completa.
+            Usted ha recibido este mensaje debido a que el negocio %{nombre} de la plataforma Mi Negocio México, 
+            ha realizado una denuncia por el motivo de: %{razon}. 
+            En el negocio ubicado en %{domicilio}. 
+            Esta denuncia ha generado un número de folio %{folio} con el que el usuario podrá darle seguimiento a la queja. 
+            Usted puede consultar la denuncia completa
       liga_a_la_denuncia: 'aquí'
       gracias: Gracias por utilizar Mi Negocio México.
     recordatorio:
       subject: Notificación de MiNegocioMx
       saludo: Hola,
       body: |
-            Tu documento %{nombre} y fólio %{folio} expirará el día %{fecha}.
+            Tu documento %{nombre} y folio %{folio} expirará el día %{fecha}.
 
             Puedes ver la información completa en tus recordatorios en
       liga_a_la_denuncia: 'MiNegocioMx'
@@ -73,6 +77,7 @@ es:
     federal: Federales
     municipal: Municipales
     buscar: Buscar
+    estatal: Estatales
   navbar:
     inicio: Inicio
     menu: Menú
@@ -93,9 +98,19 @@ es:
     minegocio: Mi Negocio México - 2015.
     contacto: hola@minegocio.mx
     url_imco: http://www.imco.com.mx
+    estandar: Estándar de datos
+    url_estandar: http://estandares.datamx.io/law/555e3c26cc1f420d00ec17bc
     civica:  y Cívica Digital.
-    imco:  Instituto Mexicano para la Competitivididad
+    imco:  Instituto Mexicano para la Competitividad
     contactanos: Contacto
+    correo: Correo 
+    llama: Teléfono
+    regulation: Norma de inspecciones.  
+    construction: Norma de construcción.
+    business: Norma de establecimientos mercantiles.
+    land: Norma de uso de suelo.
+    contacto: Contacta a 
+    normas: Normativas de 
   search:
     buscar: Buscar
   form:
@@ -109,7 +124,7 @@ es:
       delete_formation_step: ¿Estás seguro que deseas borrar este trámite?
       delete_line: ¿Estás seguro que deseas borrar este giro?
       delete_dependency: ¿Estás seguro que deseas borrar esta dependencia?
-      delete_requirement: ¿Estás seguro que deseas borrar este requierimiento?
+      delete_requirement: ¿Estás seguro que deseas borrar este requerimiento?
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
@@ -140,12 +155,12 @@ es:
       new_reminder: Nuevo recordatorio
       name: Nombre
       license: Licencia
-      until: Valida hasta
+      until: Válida hasta
       edit: Editar
       borrar: Borrar
       create_reminder: Guardar
       name_hint: Nombre del documento...
-      license_hint: Número de fólio...
+      license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       no_reminders_available: |+
         En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
@@ -154,12 +169,12 @@ es:
     edit:
       name: Nombre
       license: Licencia
-      until: Valido hasta
+      until: Válido hasta
       name_hint: Nombre del documento...
-      license_hint: Número de fólio...
+      license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       create_reminder: Crear recordatorio
-      atras: Atras
+      atras: Atrás
   complaints:
       new:
         razon_denuncia: ¿Cuál es la razón de la denuncia?
@@ -167,6 +182,7 @@ es:
         save_button: Guardar denuncia
         razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
+        texto_explicativo: Aquí podrás realizar una denuncia sobre actos irregulares cometidos durante tu inspección o visita. Una vez concluida tu denuncia,  recibirás un correo electrónico de seguimiento de tu municipio.
       created_successfully: Denuncia enviada correctamente, por favor revise su correo.
   inspections:
     index:
@@ -181,15 +197,17 @@ es:
       no_inspections_selected_subtitle: Podrás ver todas las inspecciones que el municipio puede realizar a tu empresa, puedes denunciar una inspección irregular o puedes crear un recordatorio.
       no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
       no_inspections_selected_resultado: Resultado de la búsqueda.
+      inspector: Conoce a tu inspector
     show:
+      nueva_busqueda: Nueva búsqueda
       nombre: Nombre
       Descripcion: Descripción
       subject: Materia
       period: Duración
       norm: Norma
-      before_tips: Tips (antes)
-      during_tips: Tips (durante)
-      after_tips: Tips (después)
+      before_tips: ¿Qué esperar antes?
+      during_tips: ¿Qué sucede durante?
+      after_tips: ¿Qué pasa después?
       sanctions_tips: Sanciones
       more_info: Más información
       requisitos: Requisitos
@@ -199,31 +217,13 @@ es:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
       no_inspectors_available: No encontramos inspectores en este municipio
-      no_inspectors_selected_subtitle: Podras ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
+      no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
       no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
       vigencia: Vigencia
       Materia: Materia
       supervisor: Supervisor
       Contacto: Contacto
-  formation_steps:
-    index:
-      title: Nuevo negocio
-      no_formation_steps_available: No encontramos trámites para apertura con estos parámetros
-      no_formation_steps_selected: Apertura de un nuevo negocio
-      no_formation_steps_selected_subtitle: Trámites federales y municipales que debes cumplir para poder abrir tu empresa.
-      no_formation_steps_selected_instruction: Selecciona el giro de tu empresa y el tipo de persona que eres.
-      no_formation_steps_selected_resultado: Resultado de la búsqueda.
-      formation_steps_select_name: 'Giro del negocio:'
-      formation_steps_radio_name: 'Tipo de persona:'
-      radio_fisica: Física
-      radio_moral: Moral
-      pasos: Paso %{parameter}
-      fin_steps: Has terminado
-      link: Obtener aquí
-      terminado: terminado
-      tengo_tramite: Ya tengo este trámite
-      select_giro: Selecciona un giro
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia
@@ -231,7 +231,7 @@ es:
     index:
       title: Selecciona una opción
     show:
-      floor_use: Uso de suelo
+      floor_use: Negocios
       tramite: Trámites
       new_business: Nuevo negocio
       already_have_a_business: Ya tengo negocio
@@ -241,9 +241,9 @@ es:
       texto_no_tengo: No tengo un negocio.
       texto_ya_tengo: Ya tengo un negocio.
       texto_nuevo: ¿Cómo puedo crear mi negocio?
-      texto_tramite: ¿Qué tramites puedo realizar?
+      texto_tramite: ¿Qué trámites tengo que realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
-      texto_uso_suelo: ¿Tengo permiso de uso de suelo?
+      texto_uso_suelo: Localiza negocios en el municipio
       subtitulo: Selecciona una opción.
       titulo: Menú Mi Negocio México
   imcos:
@@ -256,12 +256,16 @@ es:
       click: clic aquí
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
+      texto_explicativo: Mi Negocio México es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También podrás consultar información sobre inspecciones, crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
   layouts:
     blanco:
       new: NUEVO NEGOCIO
       tramite: TRÁMITES
       inspections: INSPECCIONES
       inspectors: INSPECTORES
+  shared:
+    carrusel_inspections:
+      obtener_aqui: Obtener aquí
   activerecord:
     errors:
       messages:

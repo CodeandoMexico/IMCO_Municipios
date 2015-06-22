@@ -27,7 +27,7 @@ module Dashboard
 
       respond_to do |format|
         if @dependency.save
-          format.html { redirect_to edit_dashboard_dependency_url(@dependency), notice: 'La dependencia fue creada satisfactoriamente.' }
+          format.html { redirect_to dashboard_dependencies_url, notice: 'La dependencia fue creada satisfactoriamente.' }
           format.json { render :show, status: :created, location: @dependency }
         else
           format.html { render :new }
@@ -41,7 +41,7 @@ module Dashboard
 
       respond_to do |format|
         if @dependency.update(dependency_params)
-          format.html { redirect_to edit_dashboard_dependency_url(@dependency), notice: 'La dependencia fue actualizada satisfactoriamente.' }
+          format.html { redirect_to dashboard_dependencies_url, notice: 'La dependencia fue actualizada satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @dependency }
         else
           format.html { render :edit }
@@ -55,7 +55,7 @@ module Dashboard
 
       @dependency.destroy
       respond_to do |format|
-        format.html { redirect_to dashboard_dependencies_path notice: 'La dependencia fue borrada satisfactoriamente.' }
+        format.html { redirect_to dashboard_dependencies_path, notice: 'La dependencia fue borrada satisfactoriamente.' }
         format.json { head :no_content }
       end
     end

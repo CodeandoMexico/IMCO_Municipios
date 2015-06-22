@@ -1,4 +1,7 @@
 es:
+  shared:
+    procedure_lines_result:
+      duracion: Duración
   procedure_lines:
     index:
       title: Trámites
@@ -15,8 +18,10 @@ es:
       procedure_lines_select_name: Giro del negocio
       procedure_lines_radio_name: Tipo de persona
       procedure_lines_radio_estados: Etapa de tu negocio
-      no_procedure_lines_selected_subtitle: Podrás ver todas los tramites para CREAR, ADMINISTRAR, CRECER, CONSTRUIR o CERRAR tu empresa.
+      no_procedure_lines_selected_subtitle: Podrás ver todos los trámites para Crear, Administrar, Crecer, Construir o Cerrar tu empresa.
       no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
-      no_procedure_lines_selected_resultado: Resultado de la busqueda.
+      no_procedure_lines_selected_resultado: Resultado de la búsqueda.
     show:
-      requisitos: Debes cumplir con todos los siguientes requisitos.
+      title: 'Requisitos:'
+      business_line: "Giro de negocio: "
+      line_procedure: "Trámites: "

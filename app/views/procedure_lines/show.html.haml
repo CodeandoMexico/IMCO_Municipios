@@ -1,0 +1,23 @@
+.row.text-left.texto-verde.texto-margin-top
+  .col-sm-9.text-left
+    %a-verde= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde'
+  .col-sm-3.text-right= link_to t('.nueva_busqueda'), city_procedure_lines_path, class: 'btn btn-success btn-lg outlineverde text-right'
+
+.row
+  .col-sm-12
+    .row
+      .col-md-2
+        %p= t('.business_line') 
+      .col-md-10.text-left
+        %p.texto-verde= @line
+    .row
+      .col-md-2
+        %p= t('.line_procedure')
+      .col-md-10.text-left
+        %p= @procedure
+.row
+  = content_tag :h2, t('.title'), class: 'text-left texto-verde texto-padding-left'
+
+.row
+  .col-sm-12
+    = render "shared/requirements"

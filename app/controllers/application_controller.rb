@@ -6,7 +6,18 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :store_location
   layout :layout_by_resource
- add_flash_types :error, :notice
+ add_flash_types :error, :notice, :alert
+ before_action :set_client_user_voice
+
+  def set_client_user_voice
+    require 'uservoice-ruby'    
+      unless envirement_validates
+        client = UserVoice::Client.new(ENV['USERVOICE_SUBDOMAIN_NAME'], ENV['USERVOICE_API_KEY'], ENV['USERVOICE_API_SECRET'])
+         client.login_as_owner do |owner|
+           user = owner.get("/api/v1/users/current")['user']
+         end
+      end
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -38,7 +49,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     return dashboard_path if resource.admin?
     if validaDatos(resource)
-          return   session[:my_previous_url]  
+          return   session[:my_previous_url]
         else
           return  edit_user_path(resource)
       end
@@ -56,17 +67,10 @@ class ApplicationController < ActionController::Base
    unless validaDatos(current_user)
      return redirect_to  edit_user_path(current_user) , error: I18n.t('flash.complaints.you_need_to_complete_your_profile')
    end
-    end
-   
-
-  #  if !current_user.profile_complete?
-    #  return redirect_to edit_user_path(current_user), alert: I18n.t('flash.complaints.you_need_to_complete_your_profile')
-  #  end
+  end
 
 
-
-
-   def save_my_previous_url!
+  def save_my_previous_url!
     session[:my_previous_url] = request.fullpath
   end
 
@@ -89,6 +93,10 @@ class ApplicationController < ActionController::Base
   end
 
   def validaDatos(resource)
-    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?  
+    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
    end
+
+   def envirement_validates
+         ENV['USERVOICE_SUBDOMAIN_NAME'].nil? || ENV['USERVOICE_API_SECRET'].nil? || ENV['USERVOICE_API_KEY'].nil?
+    end
 end
