@@ -10,7 +10,7 @@ feature 'validate Dependency' do
   scenario 'and validate the insert of dependencies' do
     sign_in admin
     visit dashboard_path(admin)
-    click_on I18n.t('dashboard.show.dependencias')
+    click_on I18n.t('dashboard.menu.dependencies')
     create_dependency
   end
 

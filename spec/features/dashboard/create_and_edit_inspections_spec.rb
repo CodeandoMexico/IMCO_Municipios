@@ -16,7 +16,7 @@ feature 'validate Inspections' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.inspecciones')
+    click_on I18n.t('dashboard.menu.inspecciones')
 
     create_inspections
   end
@@ -30,7 +30,7 @@ feature 'validate Inspections' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.inspecciones')
+    click_on I18n.t('dashboard.menu.inspecciones')
     
     create_inspections
     
