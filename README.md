@@ -75,11 +75,11 @@ Mi Negocio México generó un [estandar de datos](http://estandares.datamx.io/la
 
 ##¿Preguntas o problemas? 
 
-Mantenemos la conversación del proyecto en nuestra página de problemas [issues](https://github.com/civica-digital/mi-negocio-mx/issues). Si usted tiene cualquier otra pregunta, nos puede contactar por correo a <equipo@codeandomexico.org>.
+Mantenemos la conversación del proyecto en nuestra página de problemas [issues](https://github.com/civica-digital/mi-negocio-mx/issues). Si usted tiene cualquier otra pregunta, nos puede contactar por correo a <equipo@civica.digital>.
 
 ##Licencia
 
-_Available under the license: GNU Affero General Public License (AGPL) v3.0. Read the document [LICENSE](/LICENSE) for more information_
+Licensed under the Apache License, Version 2.0 Read the document [LICENSE](http://www.apache.org/licenses/LICENSE-2.0) for more information
 
-Creado por [Codeando México](http://www.codeandomexico.org) y el [Instituto Mexicano para la competitividad](http://imco.org.mx/home/), 2015.
+Creado por [Cívica Digital](http://www.civica.digital) y el [Instituto Mexicano para la competitividad](http://imco.org.mx/home/), 2015.
 
