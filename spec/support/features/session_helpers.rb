@@ -15,6 +15,6 @@ module SessionHelpers
 
   def sign_out(user)
     visit root_path
-    click_on 'Salir'
+    click_on I18n.t('navbar.sign_out')
   end
 end
