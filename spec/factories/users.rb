@@ -10,6 +10,7 @@ FactoryGirl.define do
       address 'This is a fake address'
       business_name 'This is a business name'
       operation_license 'AN49FN40865J'
+      line_id '0'
       operation_license_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'operation_license_dummy.pdf')) }
       land_permission_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'land_permission_dummy.pdf')) }
     end
