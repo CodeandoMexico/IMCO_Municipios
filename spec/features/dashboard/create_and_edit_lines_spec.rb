@@ -57,6 +57,6 @@ feature 'show all components' do
     click_on I18n.t('dashboard.lines.form.create_lines')
     visit dashboard_lines_path
     expect(page).to have_content 'Name of line'
-    expect(page).to have_content admin.city_id
+    expect(page).to have_content City.find(admin.city_id).name
   end
 end
