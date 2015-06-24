@@ -33,9 +33,7 @@ feature 'validate Inspectors' do
 
 
   def edit_inspector
-    visit dashboard_inspectors_path
-    click_on I18n.t('form.actions.edit')
-
+   visit edit_dashboard_inspector_path(Inspector.last)
     fill_in 'inspector[name]', with: 'new name of inspector'
     fill_in 'inspector[validity]', with: '2016'
     fill_in 'inspector[matter]', with: 'matter of dependency'
@@ -48,9 +46,9 @@ feature 'validate Inspectors' do
   end
 
   def create_inspector
-
+    click_on I18n.t('dashboard.menu.inspectors')
     click_on I18n.t('dashboard.inspectors.index.new_inspector')
-    
+
     fill_in 'inspector[name]', with: 'name of inspector'
     fill_in 'inspector[validity]', with: '2016'
     fill_in 'inspector[matter]', with: 'matter of dependency'
@@ -66,11 +64,10 @@ feature 'validate Inspectors' do
   def create_dependency
     visit dashboard_dependencies_path
     click_on I18n.t('dashboard.dependencies.index.new_dependency')
-    
     fill_in 'dependency[name]', with: 'Name of dependency'
     click_on I18n.t('dashboard.dependencies.form.create_dependency')
     visit dashboard_dependencies_path
-    expect(page).to have_content 'Name of dependency'
+    expect(page).to have_text('Name of dependency')
     visit dashboard_path(admin)
   end
 end

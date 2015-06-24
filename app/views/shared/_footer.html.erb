@@ -30,11 +30,14 @@
 <div class="modal fade" id="myModalDialogNormas" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
   <div class="modal-dialog-center">
     <div class="modal-content" >
+      <%unless @city.nil? %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%="#{t('footer.normas')} #{@city.name}"%></h4>
       </div>
+      <%end%>
       <div class="modal-body texto-verde-wrap">
+        <%unless @city.nil?%>
           <%unless @city.construction_file.nil?%>
             <%= link_to t('footer.construction'), @city.construction_file.to_s , :target => "_blank", :class =>"texto-verde" %>
           </BR>
@@ -51,6 +54,7 @@
             <%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
+         <%end%>
       </div>
     </div>
   </div>
@@ -61,11 +65,14 @@
 <div class="modal fade" id="myModalDialogContact" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
   <div class="modal-dialog-center">
     <div class="modal-content" >
+      <%unless @city.nil? %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%="#{t('footer.contacto')} #{@city.name}"%></h4>
       </div>
+      <%end%>
       <div class="modal-body">
+       <%unless @city.nil? %> 
          <%unless @city.contact_email.nil?%>
           <%= mail_to @city.contact_email, "#{t('footer.correo')}: #{@city.contact_email}", :class =>"texto-verde" %> 
           </BR>
@@ -75,6 +82,7 @@
            <%="#{t('footer.llama')}: #{@city.contact_phone}"%>
           </div>
          <%end%>
+        <%end%> 
      </div>
    </div>
  </div>

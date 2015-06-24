@@ -10,17 +10,13 @@ feature 'validate Reports' do
 
   scenario 'and show all reports' do
     sign_in user
-
-
     create_report
     sign_out user
 
     sign_in admin
 
     visit dashboard_path(admin)
-    click_on I18n.t('dashboard.show.denuncia')
-   #  expect(page).to have_content user.business_name
-  #  expect(page).to have_content 'Sellos de clausura improcedentes'
+    click_on I18n.t('dashboard.menu.complaints')
 end
 
 def fill_new_user

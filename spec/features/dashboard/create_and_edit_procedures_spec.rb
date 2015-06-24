@@ -16,7 +16,7 @@ feature 'validate Procedures' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.tramites')
+    click_on I18n.t('dashboard.menu.procedures')
 
     create_procedure
   end
@@ -30,7 +30,7 @@ feature 'validate Procedures' do
 
     visit dashboard_path(admin)
 
-    click_on I18n.t('dashboard.show.tramites')
+    click_on I18n.t('dashboard.menu.procedures')
 
     create_procedure
     
@@ -38,17 +38,17 @@ feature 'validate Procedures' do
   end
 
   def edit_procedure
-    click_on I18n.t('form.actions.edit')
+      visit edit_dashboard_procedure_path(Procedure.where(name: 'name of procedure').last)
 
     fill_in 'procedure[name]', with: 'new name of procedure'
     fill_in 'procedure[long]', with: '3 hours'
     fill_in 'procedure[cost]', with: '1000'
     fill_in 'procedure[validity]', with: 'one year'
     fill_in 'procedure[contact]', with: 'name of contact'
-    fill_in 'procedure[type_procedure]', with: 'TM'
-    fill_in 'procedure[category]', with: 'openinig'
-    fill_in 'procedure[sare]', with: '1'
-
+    
+    select "1", :from => "procedure[sare]"
+    select "TM", :from => "procedure[type_procedure]"
+    select "Constituye tu empresa", :from => "procedure[category]"
     select "Name of dependency", :from => "procedure[dependency_id]"
     
     click_on I18n.t('dashboard.procedures.form.create_procedures')
@@ -65,16 +65,16 @@ feature 'validate Procedures' do
     fill_in 'procedure[long]', with: '3 hours'
     fill_in 'procedure[cost]', with: '1000'
     fill_in 'procedure[validity]', with: 'one year'
-    fill_in 'procedure[contact]', with: 'name of contact'
-    fill_in 'procedure[type_procedure]', with: 'TM'
-    fill_in 'procedure[category]', with: 'openinig'
-    fill_in 'procedure[sare]', with: '1'
+    fill_in 'procedure[contact]', with: 'name of contact'   
 
-    expect(page).to have_content 'name of line'
-    expect(page).to have_content 'name of requirement'
-
+    select "1", :from => "procedure[sare]"
+    select "TM", :from => "procedure[type_procedure]"
+    select "Constituye tu empresa", :from => "procedure[category]"
     select "Name of dependency", :from => "procedure[dependency_id]"
-    
+
+    expect(page).to have_content 'Name of line'
+    expect(page).to have_content 'Name of requirement'
+
     click_on I18n.t('dashboard.procedures.form.create_procedures')
     
     visit dashboard_procedures_path
@@ -84,40 +84,36 @@ feature 'validate Procedures' do
   def create_dependency
     visit dashboard_dependencies_path
     click_on I18n.t('dashboard.dependencies.index.new_dependency')
-    
     fill_in 'dependency[name]', with: 'Name of dependency'
     click_on I18n.t('dashboard.dependencies.form.create_dependency')
     visit dashboard_dependencies_path
-    expect(page).to have_content 'Name of dependency'
+    expect(page).to have_text('Name of dependency')
     visit dashboard_path(admin)
   end
 
   def create_line
     visit dashboard_lines_path
     click_on I18n.t('dashboard.lines.index.new_lines')
-
-    fill_in 'line[name]', with: 'name of line'
+    fill_in 'line[name]', with: 'Name of line'
     fill_in 'line[description]', with: 'This is a description'
-
     click_on I18n.t('dashboard.lines.form.create_lines')
-
     visit dashboard_lines_path
-
-    expect(page).to have_content 'name of line'
+    expect(page).to have_content 'Name of line'
+    expect(page).to have_content City.find(admin.city_id).name
     visit dashboard_path(admin)
   end
 
   def create_requirement
     visit dashboard_requirements_path
     click_on I18n.t('dashboard.requirements.index.new_requirements')
-    
-    fill_in 'requirement[name]', with: 'name of requirement'
+    fill_in 'requirement[name]', with: 'Name of requirement'
     fill_in 'requirement[description]', with: 'description of requirement'
     fill_in 'requirement[path]', with: 'http://pagina_path.php'
 
     click_on I18n.t('dashboard.requirements.form.create_requirements')
     visit dashboard_requirements_path
-    expect(page).to have_content 'name of requirement'
+    expect(page).to have_content 'Name of requirement'
     visit dashboard_path(admin)
   end
+
 end

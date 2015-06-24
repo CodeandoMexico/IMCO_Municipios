@@ -11,7 +11,7 @@ feature 'validate Formation_Steps' do
     sign_in admin
 
     visit dashboard_path(admin)
-    click_on I18n.t('dashboard.show.requerimientos')
+    click_on I18n.t('dashboard.menu.requirements')
     
     create_requirement
   end
@@ -20,7 +20,7 @@ feature 'validate Formation_Steps' do
     sign_in admin
 
     visit dashboard_path(admin)
-    click_on I18n.t('dashboard.show.requerimientos')
+    click_on I18n.t('dashboard.menu.requirements')
     
     create_requirement
     
@@ -28,9 +28,7 @@ feature 'validate Formation_Steps' do
   end
 
   def edit_requirement
-    visit dashboard_requirements_path
-    click_on I18n.t('form.actions.edit')
-
+    visit edit_dashboard_requirement_path(Requirement.where(name: 'Name of requirement').last)
     fill_in 'requirement[name]', with: 'new name of requirement'
     fill_in 'requirement[description]', with: 'description of requirement'
     fill_in 'requirement[path]', with: 'http://pagina_path.php'
