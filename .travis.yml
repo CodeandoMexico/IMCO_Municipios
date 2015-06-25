@@ -13,3 +13,5 @@ notifications:
   email:
     recipients:
       - mikesaurio@gmail.com
+before_script:
+  - psql -c "CREATE USER mikesaurio WITH PASSWORD 'maikisaurio';" -U postgres
