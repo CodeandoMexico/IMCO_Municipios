@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates_presence_of :name, :message => 'Debes escribir tu nombre.', if: :business?, on:  :update
   validates_length_of :name, :minimum => 3, :message => 'Tu nombre debe tener por lo menos 3 caracteres.', if: :business?, on:  :update
-  validates_format_of :name, :with => /\A[a-zA-Z áéíóúÁÉÍÓÚñÑ]+\z/, :message => "El nombre solo debe tener letras.", if: :business?, on:  :update
+  validates_format_of :name, :with => /\A[a-zA-Z0-9 áéíóúÁÉÍÓÚñÑ._-]+\z/, :message => "El nombre solo debe tener letras, números, puntos y guiones.", if: :business?, on:  :update
 
   validates_presence_of :email, :message => 'Debes escribir tu correo.', if: :business?, on:  :update
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "El correo debe tener un formato válido.", if: :business?, on:  :update
