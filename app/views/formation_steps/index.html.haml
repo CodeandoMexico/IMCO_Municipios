@@ -13,9 +13,9 @@
     %div.row.texto-gris
       %div.col-md-8.col-md-offset-2.texto-justificado
         -if @tramite == 'federales'
-          =t('.texto_explicativo_municipal')
-        -if @tramite == 'municipales'
           =t('.texto_explicativo_federal')
+        -if @tramite == 'municipales'
+          =t('.texto_explicativo_municipal')
         -if @tramite == 'estatales'
           =t('.texto_explicativo_estatal')
     %br      
