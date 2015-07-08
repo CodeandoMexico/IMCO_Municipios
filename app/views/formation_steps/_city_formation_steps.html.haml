@@ -41,4 +41,4 @@
 -if @number_of_procedure == 0
   = render 'shared/empty_resource', message: t('procedure_lines.index.no_procedure_lines_available') 
 
-= link_to t('buttons.downloader'), download_csv_city_formation_steps_path(@city,:lines => @line, :rating => @tipo, :commit =>@commit , format: :csv),:class => "btn btn-success btn-lg outlineverde"
+= link_to t('buttons.downloader'), download_csv_formation_steps_municipal_city_formation_steps_path(@city,:lines => @line, :rating => @tipo, :commit =>@commit , format: :csv),:class => "btn btn-success btn-lg outlineverde"

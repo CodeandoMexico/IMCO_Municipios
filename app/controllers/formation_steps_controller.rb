@@ -8,7 +8,7 @@ class FormationStepsController < ApplicationController
   def index
     set_city(:city_id)
     @tipo = 'AF'
-    valores  if params[:get]
+    valores 
     @cities = City.all
     if user_signed_in?
       @tramites_realizados =  UserFormationStep.where(user_id: current_user.id, line_id: @line , type_user_formation_step: @tipo).all
@@ -22,44 +22,55 @@ class FormationStepsController < ApplicationController
   end
 
   def valores
-    if params[:get][:lines]
-     @line = params[:get][:lines]
-     get_values
+    if params[:get]
+      if params[:get][:lines]
+       @line = params[:get][:lines]
+       get_values
+     end
+   end
+ end
+
+
+ def get_values
+  @tipo = params[:rating]
+  valida_parametros
+  @commit = params[:commit]
+  if params[:commit] == 'Federales'
+    @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Federal')
+    @tramite = 'federales'
+  elsif params[:commit] == 'Municipales'
+    @tramite = 'municipales'
+    @procedure_requirements = ProcedureRequirement.all
+    @requirements = Requirement.all
+    @procedure_lines = ProcedureLine.where(line_id: @line)
+  elsif params[:commit] == 'Estatales'
+    @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatal')
+    @tramite = 'estatales'
+  end
+
+end
+
+def download_csv_formation_steps_municipal
+  respond_to do |format|
+    @line = params[:lines]
+    get_values
+    format.csv
   end
 end
 
-def get_values
-    @tipo = params[:rating]
-     valida_parametros
-     @commit = params[:commit]
-    if params[:commit] == 'Federales'
-      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Federal')
-      @tramite = 'federales'
-    elsif params[:commit] == 'Municipales'
-      @tramite = 'municipales'
-      @procedure_requirements = ProcedureRequirement.all
-      @requirements = Requirement.all
-      @procedure_lines = ProcedureLine.where(line_id: @line)
-    elsif params[:commit] == 'Estatales'
-      @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatal')
-      @tramite = 'estatales'
-    end
-
-end
-
-def download_csv
+def download_csv_formation_steps_federal
   respond_to do |format|
-      @line = params[:lines]
-        get_values
-        
-        format.csv
+    @line = params[:lines]
+      set_city(:city_id)
+    get_values
+    format.csv
   end
 end
 
 def valida_parametros
-    if @line.nil? || @line.empty?
-      redirect_to city_formation_steps_path(@city),  error:  "Debes seleccionar un giro."
-    end
+  if @line.nil? || @line.empty?
+    redirect_to city_formation_steps_path(@city),  error:  "Debes seleccionar un giro."
+  end
 end
 
 

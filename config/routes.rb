@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :procedure_lines, only: [:index,:show]
     resources :formation_steps, only: [:index] do
       collection do
-        get 'download_csv'
+        get 'download_csv_formation_steps_municipal'
+        get 'download_csv_formation_steps_federal'
       end
     end
     resources :complaints, only: [:new, :create, :edit, :update]

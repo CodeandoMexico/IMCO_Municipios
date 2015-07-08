@@ -6,5 +6,3 @@
     - procedure = Procedure.find(procedure_line.procedure_id)
     -if(valida_tipo(procedure.type_procedure, @tipo))
       = CSV.generate_line([procedure.name, tipo(procedure.type_procedure),procedure.cost, procedure.validity, procedure.long])
-    -else
-      - CSV.generate_line(["hola", "hola","hola", "hola","hola"])
