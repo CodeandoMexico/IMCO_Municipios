@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :inspections, only: [:index, :show]
     resources :inspectors, only: [:index, :show]
     resources :procedure_lines, only: [:index,:show]
-    resources :formation_steps, only: [:index]
+    resources :formation_steps, only: [:index] do
+      collection do
+        get 'download_csv'
+      end
+    end
     resources :complaints, only: [:new, :create, :edit, :update]
     resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
     resources :users, only: :index

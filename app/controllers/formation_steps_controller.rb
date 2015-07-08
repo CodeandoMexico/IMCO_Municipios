@@ -3,6 +3,7 @@ class FormationStepsController < ApplicationController
   helper :formation_steps
 
   add_breadcrumb "Inicio", :root_path
+  require 'csv'
 
   def index
     set_city(:city_id)
@@ -16,14 +17,21 @@ class FormationStepsController < ApplicationController
     add_breadcrumb "Nuevo negocio"
   end
 
+
   def show
   end
 
   def valores
     if params[:get][:lines]
      @line = params[:get][:lines]
-     @tipo = params[:rating]
+     get_values
+  end
+end
+
+def get_values
+    @tipo = params[:rating]
      valida_parametros
+     @commit = params[:commit]
     if params[:commit] == 'Federales'
       @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Federal')
       @tramite = 'federales'
@@ -36,6 +44,15 @@ class FormationStepsController < ApplicationController
       @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatal')
       @tramite = 'estatales'
     end
+
+end
+
+def download_csv
+  respond_to do |format|
+      @line = params[:lines]
+        get_values
+        
+        format.csv
   end
 end
 
