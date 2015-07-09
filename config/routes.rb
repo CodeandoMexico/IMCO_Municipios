@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :cities, only: [:show, :update, :edit] do
     get 'about'
     get 'aviso'
-    resources :inspections, only: [:index, :show]
+    resources :inspections, only: [:index, :show] do
+      collection do
+        get 'download_csv_inspections'
+      end
+    end
     resources :inspectors, only: [:index, :show]
     resources :procedure_lines, only: [:index,:show] do
       collection do

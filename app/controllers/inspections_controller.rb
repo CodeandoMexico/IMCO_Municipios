@@ -22,6 +22,22 @@ class InspectionsController < ApplicationController
     add_breadcrumb @inspection.name
   end
 
+  def download_csv_inspections
+  respond_to do |format|
+    set_cities
+    @line = params[:lines]
+    @inspection_line = InspectionLine.where(line_id: @line) if @line.present?
+      if params[:q].present?
+        @inspections = Inspection.search_by_city(@city, params[:q])
+      else
+        @inspections =  Inspection.by_city(@city)
+      end
+
+    format.csv
+  end
+end
+
+
   private
 
   def set_inspection

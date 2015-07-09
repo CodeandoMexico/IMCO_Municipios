@@ -46,15 +46,14 @@
   </div>
   <!-- <hr class="small"> -->
   <p class="text-left"><%=t('.inspection_debes')%></p>
-
   <div class="deck">
-    <% if @inspection.requirements.any? %>
+    <%# if @inspection.requirements.any? %>
     <div class="row text-center ">
       <div class="col-lg-12">
-        <%= render "shared/carrusel_inspections" %>
+        <%= render "requirement" %>
       </div>
     </div>
-    <%end%>
+    <%#end%>
   </div>
 </div>
 </div>
