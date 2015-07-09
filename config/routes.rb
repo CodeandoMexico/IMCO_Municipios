@@ -17,7 +17,11 @@ Rails.application.routes.draw do
          get 'download_csv_inspections_show'
       end
     end
-    resources :inspectors, only: [:index, :show]
+    resources :inspectors, only: [:index, :show] do
+      collection do
+        get 'download_csv_inspector'
+      end
+    end
     resources :procedure_lines, only: [:index,:show] do
       collection do
         get 'download_csv_procedure_line'
@@ -32,7 +36,11 @@ Rails.application.routes.draw do
     end
     resources :complaints, only: [:new, :create, :edit, :update]
     resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
-    resources :users, only: :index
+    resources :users, only: :index do
+      collection do
+        get 'download_csv_business'
+      end
+    end
   end
 
   resource :dashboard, only: :show, controller: :dashboard do

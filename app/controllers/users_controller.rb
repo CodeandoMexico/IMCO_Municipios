@@ -29,6 +29,13 @@ class UsersController < ApplicationController
  def create
  end
 
+ def download_csv_business
+    respond_to do |format|
+      @users = User.where(admin: false, city: params[:city_id])
+    format.csv
+  end
+ end
+
  def edit
   redirect_to root_path if current_user.nil?
   @user = current_user

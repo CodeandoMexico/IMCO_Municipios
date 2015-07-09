@@ -225,6 +225,8 @@ es:
       Materia: Materia
       supervisor: Supervisor
       Contacto: Contacto
+      nombre: Nombre
+      foto: Foto
   dependencies:
     index:
       no_dependencies: No encontramos ninguna dependencia

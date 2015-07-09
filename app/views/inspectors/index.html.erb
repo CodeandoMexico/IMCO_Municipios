@@ -27,4 +27,6 @@
   <div class="row text-center">
     <%=paginate @inspectors, :window => 2%>
   </div>
+
+  <%= link_to t('buttons.downloader'), download_csv_inspector_city_inspectors_path(:city_id=> @city, format: :csv),:class => "btn btn-success btn-lg outlineverde"%>
 <% end %>

@@ -1,0 +1,5 @@
+- headers = [t('inspectors.show.nombre'),t('inspectors.show.vigencia'),t('inspectors.show.foto'),t('inspectors.show.Materia'),t('inspectors.show.supervisor'),t('inspectors.show.Contacto')]
+= CSV.generate_line headers
+- @inspectors.each do |inspector|
+  - if @inspectors.any?
+    = CSV.generate_line([inspector.name, inspector.validity, inspector.photo_url, inspector.matter, inspector.supervisor, inspector.contact])

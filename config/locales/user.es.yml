@@ -29,3 +29,9 @@ es:
       tooltip_telefono: La gente podrá ver el teléfono de tu negocio y así contactarte con mas clientes.
       tooltip_horario: La gente podrá ver el horario de tu negocio y así saber a que hora visitarlo.
       tooltip_folio: El folio de tu licencia de operación para poder validrte como empresa.
+    csv:
+      line: Giro
+      name: Nombre Negocio
+      address: Dirección
+      phone: Teléfono
+      schedule: Horario

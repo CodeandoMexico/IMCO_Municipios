@@ -6,7 +6,6 @@ class InspectionsController < ApplicationController
 
   add_breadcrumb "Inicio", :root_path
   def index
-    #  raise params.inspect
     @cities = City.all
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Inspecciones"
