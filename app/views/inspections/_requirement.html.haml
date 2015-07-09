@@ -21,7 +21,5 @@
         %td= requirement.name
         %td= requirement.description
         %td= requirement.path
-
-  = link_to t('buttons.downloader'), download_csv_requirements_city_procedure_lines_path(@city,:id_requirement => @id_requirement, format: :csv),:class => "btn btn-success btn-lg outlineverde"
 - else
   = render 'shared/empty_resource', message: t('.no_procedures_available')

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :inspections, only: [:index, :show] do
       collection do
         get 'download_csv_inspections'
+         get 'download_csv_inspections_show'
       end
     end
     resources :inspectors, only: [:index, :show]

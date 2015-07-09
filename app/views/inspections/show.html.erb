@@ -47,17 +47,15 @@
   <!-- <hr class="small"> -->
   <p class="text-left"><%=t('.inspection_debes')%></p>
   <div class="deck">
-    <%# if @inspection.requirements.any? %>
     <div class="row text-center ">
       <div class="col-lg-12">
         <%= render "requirement" %>
       </div>
     </div>
-    <%#end%>
   </div>
+<%= link_to t('buttons.downloader'), download_csv_inspections_show_city_inspections_path(@city,:id_inspection => @id_inspection,:lines => @lines, format: :csv),:class => "btn btn-success btn-lg outlineverde"%>
 </div>
 </div>
-
 
 <!-- 
 <div class="deck">
