@@ -1,8 +1,11 @@
 es:
-  shared:
+  procedure_lines:
     procedure_lines_result:
       duracion: Duración
-  procedure_lines:
+      nombre: Nombre
+      tipo: Tipo
+      costo: Costo
+      vigencia: Vigencia
     index:
       title: Trámites
       no_procedure_lines_available: No encontramos trámites con estos parámetros.
@@ -21,6 +24,7 @@ es:
       no_procedure_lines_selected_subtitle: Podrás ver todos los trámites para Crear, Administrar, Crecer, Construir o Cerrar tu empresa.
       no_procedure_lines_selected_instruction: Por favor selecciona el giro, el tipo de persona y una categoría de trámite.
       no_procedure_lines_selected_resultado: Resultado de la búsqueda.
+      duracion: Duración
     show:
       title: 'Requisitos:'
       business_line: "Giro de negocio: "

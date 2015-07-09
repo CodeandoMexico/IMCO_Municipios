@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     get 'aviso'
     resources :inspections, only: [:index, :show]
     resources :inspectors, only: [:index, :show]
-    resources :procedure_lines, only: [:index,:show]
+    resources :procedure_lines, only: [:index,:show] do
+      collection do
+        get 'download_csv_procedure_line'
+        get 'download_csv_requirements'
+      end
+    end
     resources :formation_steps, only: [:index] do
       collection do
         get 'download_csv_formation_steps_municipal'

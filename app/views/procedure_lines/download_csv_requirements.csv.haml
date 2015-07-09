@@ -1,0 +1,5 @@
+- headers = [t('shared.requirements.name'),t('shared.requirements.description'),t('shared.requirements.path')]
+= CSV.generate_line headers
+- if @procedure_requirements.any?
+  - @procedure_requirements.each_with_index do |procedure, index|
+    = CSV.generate_line([procedure.requirement.name, procedure.requirement.description, procedure.requirement.path])
