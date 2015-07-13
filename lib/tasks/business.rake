@@ -5,6 +5,10 @@ namespace :business do
 desc "Load lines to the db"
   task :load_business  => :environment do |t, args|
     cities_files = ['lib/datasets/Licencias/LicenciasChalco.csv','lib/datasets/Licencias/LicenciasMetepec.csv']
+    a = User.where(city_id: 1, admin: false)
+    a.delete_all
+    a = User.where(city_id: 4, admin: false)
+    a.delete_all
     cities_files.each_with_index do |city_file, index|
       number_of_successfully_created_rows = 0
       CSV.foreach(city_file, :headers => true) do |row|
@@ -16,11 +20,11 @@ desc "Load lines to the db"
         longitud = row.to_hash['longitud']
         ciudad = City.find_by(name: row.to_hash['ciudad'])
         buscar_giro = Line.where(name: row.to_hash['giro'])
-        if buscar_giro.empty?
-          giro = Line.where(city_id: ciudad).first.id
-        else
-          giro = buscar_giro.last.id
-        end
+       # if buscar_giro.empty?
+        giro = Line.where(name: "Otro").first.id
+       # else
+          #giro = buscar_giro.last.id
+        #end
         #creamos
         User.create(name: "Empresario#{index}#{number_of_successfully_created_rows}", 
           email: "sincorreo#{index}#{number_of_successfully_created_rows}@email.com",
