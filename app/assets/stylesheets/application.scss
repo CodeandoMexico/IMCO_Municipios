@@ -70,7 +70,8 @@ body {
 
 .img-responsive-footer {
   display: block;
-  max-width: 25%;
+  width: 100px;
+  hight: 100px;
 }
 
 .text-right {
@@ -294,6 +295,9 @@ texto-blanco{
 .texto-padding-top{
   padding-top: 10px;
 }
+  .padding-left{
+  padding-left: 5px;
+  }
 
 /*********************DROP DOWN****************************/
 .dropdown-menu {
@@ -372,6 +376,11 @@ section{
 
 .center-block{
   /*padding-top: 10%;*/
+}
+.center-block-footer {
+    display: block;
+    margin-left: auto;
+    margin-right: initial;
 }
 
 .full-width{
