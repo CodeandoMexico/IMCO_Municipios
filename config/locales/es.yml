@@ -101,6 +101,8 @@ es:
     url_imco: http://www.imco.com.mx
     estandar: Estándar de datos
     url_estandar: http://estandares.datamx.io/law/555e3c26cc1f420d00ec17bc
+    usaid: "USAID"
+    url_usaid: "http://www.usaid.gov/"
     civica:  y Cívica Digital.
     imco:  Instituto Mexicano para la Competitividad
     contactanos: Contacto
