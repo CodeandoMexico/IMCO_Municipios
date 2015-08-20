@@ -74,8 +74,9 @@
             <% end %>
           <% end %>
         </ul>
-        <% end %>
       </div>
     </div>
   </div>
+  <%= link_to t('buttons.downloader'), download_csv_inspections_city_inspections_path(@city,:lines => @line,format: :csv),:class => "btn btn-success btn-lg outlineverde"%>
+        <% end %>
 </div>

@@ -22,7 +22,12 @@ es:
       texto_explicativo_federal: Estos son los principales trámites que debes realizar a nivel federal para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic “Liga” para consultar los requisitos.
       texto_explicativo_estatal: Estos son los principales trámites que debes realizar a nivel estatal para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic “Liga” para consultar los requisitos.
     city_formation_steps:
-      duracion: Duración
+      duration: Duración
+      name: Nombre
+      done: Hecho
+      validity: Vigencia
+      type: Tipo
+      cost: Costo
     federal_formation_steps:
       done: Hecho
       name: Nombre

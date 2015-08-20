@@ -1,0 +1,5 @@
+- headers = [t('users.csv.line'), t('users.csv.name'),t('users.csv.address'),t('users.csv.phone'),t('users.csv.schedule')]
+= CSV.generate_line headers
+- @users.each do |user|
+  -unless user.line_id.nil?
+    = CSV.generate_line([Line.find(user.line_id), user.business_name, user.address, user.phone, user.schedule])

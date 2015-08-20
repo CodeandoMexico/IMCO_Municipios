@@ -1,14 +1,22 @@
 <% if @city.present?%>
 <footer class="footer">
-  <div class="col-md-4 text-center margin-footer">
-    <%= image_tag "Logoblanco.png", class: "img-responsive-footer center-block" %>
+  <div class="col-md-4 ">
+    <div class="row col-md-6 col-md-offset-4">
+      <div class="col-md-6">
+          <%= image_tag "Logoblanco.png", class: "img-responsive-footer center-block" %>
+      </div>
+      <div class="col-md-6">
+          <%= image_tag "usaid.png", class: "img-responsive-footer center-block padding-left-footer" %>
+      </div>
+    </div>
+    
   </div>
   <div class="col-md-8 text-center">
     <ul class="list-inline ">
       <li class="text-center"><%= link_to t('footer.acerca_de'), city_about_path(@city) %></li> |
       <li class="text-center"><%= link_to t('footer.aviso'), city_aviso_path(@city) %></li> |
       <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
-      <%unless @city.regulations_path.nil? || @city.construction_file.nil? || @city.business_file.nil? || @city.land_file.nil?%>
+      <%if @city.construction_file != "" || @city.business_file != "" || @city.land_file != ""|| @city.regulations_path != ""%>
        | <li class="text-center">
             <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogNormas"><%="#{t('footer.normas')} #{@city.name}"%></a>
         </li> 
@@ -38,23 +46,25 @@
       <%end%>
       <div class="modal-body texto-verde-wrap">
         <%unless @city.nil?%>
-          <%unless @city.construction_file.nil?%>
+        
+          <%if @city.construction_file.to_s != ""%>
             <%= link_to t('footer.construction'), @city.construction_file.to_s , :target => "_blank", :class =>"texto-verde" %>
-          </BR>
+            </BR>
           <%end%>
-          <%unless @city.business_file.nil?%>
+          <%if @city.business_file.to_s != "" %>
            <%= link_to t('footer.business'), @city.business_file.to_s , :target => "_blank", :class =>"texto-verde" %>
            </BR>
           <%end%>
-          <%unless @city.land_file.nil?%>
+          <%if @city.land_file.to_s  != ""%>
             <%= link_to t('footer.land'), @city.land_file.to_s , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
-          <%unless @city.regulations_path.nil?%>
+          <%if @city.regulations_path != ""%>
             <%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
-         <%end%>
+        
+        <%end%>
       </div>
     </div>
   </div>

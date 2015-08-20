@@ -1,0 +1,5 @@
+- headers = [t('formation_steps.federal_formation_steps.name'),t('formation_steps.federal_formation_steps.description'),t('formation_steps.federal_formation_steps.path')]
+= CSV.generate_line headers
+- @formation_steps.each do |formation|
+  - if formation.type_formation_step == @tipo || @tipo == 'A'
+    = CSV.generate_line([formation.name, formation.description, formation.path])

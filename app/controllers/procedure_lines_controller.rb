@@ -15,18 +15,6 @@ class ProcedureLinesController < ApplicationController
     @cities = City.all
   end
 
-  def valores
-   @line = params[:get][:lines]
-   if valida_giro.nil?
-     @tipo = params[:rating]
-     @etapa = params[:etapa]
-     if valida_categoria.nil?
-       @categoria = get_categoria(params[:etapa])
-       @tramites_del_giro =  ProcedureLine.where(line_id: @line)
-     end
-   end
- end
-
  def show
   @line = Line.find(@procedure_line.line_id)
   @procedure = Procedure.find(@procedure_line.procedure_id)
@@ -37,6 +25,41 @@ class ProcedureLinesController < ApplicationController
   add_breadcrumb @procedure
 end
 
+  def valores
+   @line = params[:get][:lines]
+   get_values
+ end
+
+ def get_values
+   if valida_giro.nil?
+     @tipo = params[:rating]
+     @etapa = params[:etapa]
+     if valida_categoria.nil?
+       @categoria = get_categoria(params[:etapa])
+       @tramites_del_giro =  ProcedureLine.where(line_id: @line)
+     end
+   end
+ end
+
+
+def download_csv_procedure_line
+  respond_to do |format|
+    @line = params[:lines]
+    get_values
+    format.csv
+  end
+end
+
+def download_csv_requirements
+  respond_to do |format|
+    @procedure_line = ProcedureLine.find(params[:id_requirement])
+    @city = City.find(params[:city_id])
+    @line = Line.find(@procedure_line.line_id)
+    @procedure = Procedure.find(@procedure_line.procedure_id)
+    @procedure_requirements = ProcedureRequirement.where(procedure_id: Procedure.find(@procedure_line.procedure_id).id)
+    format.csv
+  end
+end
 
 
 def get_categoria(tipo)
@@ -114,6 +137,7 @@ private
     # Use callbacks to share common setup or constraints between actions.
     def set_line
       @procedure_line = ProcedureLine.find(params[:id])
+      @id_requirement = params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,7 @@
+- headers = [t('procedure_lines.procedure_lines_result.nombre'),t('procedure_lines.procedure_lines_result.tipo'),t('procedure_lines.procedure_lines_result.costo'),t('procedure_lines.procedure_lines_result.vigencia'),t('procedure_lines.procedure_lines_result.duracion')]
+= CSV.generate_line headers
+- if @tramites_del_giro && @tramites_del_giro.any?
+  - @tramites_del_giro.each do |tramite_de_giro|
+    - if((valida_tipo_procedure(Procedure.find(tramite_de_giro.procedure_id).type_procedure, @tipo)) && Procedure.find(tramite_de_giro.procedure_id).category == @categoria)
+      - procedure = Procedure.find(tramite_de_giro.procedure_id)
+      = CSV.generate_line([procedure.name, tipo(procedure.type_procedure), procedure.cost, procedure.validity,procedure.long])

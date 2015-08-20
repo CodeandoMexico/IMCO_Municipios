@@ -41,6 +41,8 @@
           <% end %>
         </tbody>
       </table>
+      <%= link_to t('buttons.downloader'), download_csv_business_city_users_path(:city_id => @city, format: :csv),:class => "btn btn-success btn-lg outlineverde"
+%>
     <% else %>
       <%= render 'shared/empty_resource', message: t('.no_businesses_available') %>
     <% end %>

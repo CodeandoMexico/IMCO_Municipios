@@ -6,7 +6,6 @@ class InspectionsController < ApplicationController
 
   add_breadcrumb "Inicio", :root_path
   def index
-    #  raise params.inspect
     @cities = City.all
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Inspecciones"
@@ -22,10 +21,29 @@ class InspectionsController < ApplicationController
     add_breadcrumb @inspection.name
   end
 
+  def download_csv_inspections
+  respond_to do |format|
+    set_cities
+    @line = params[:lines]
+    @inspection_line = InspectionLine.where(line_id: @line) if @line.present?
+    format.csv
+  end
+end
+
+
+def download_csv_inspections_show
+   @cities = City.all
+   @line = params[:lines]
+   @inspection = Inspection.find(params[:id_inspection])
+    @inspection_line = InspectionLine.where(line_id: @line) if @line.present?
+end
+
+
   private
 
   def set_inspection
     @inspection = Inspection.find(params[:id])
+    @id_inspection = params[:id]
   end
 
   def inspection_params

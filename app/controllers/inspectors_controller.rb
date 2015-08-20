@@ -25,6 +25,14 @@ class InspectorsController < ApplicationController
    add_breadcrumb @inspector.name
  end
 
+
+  def download_csv_inspector
+  respond_to do |format|
+    @inspectors = Inspector.by_city(City.find(params[:city_id]))
+    format.csv
+  end
+end
+
  private
  def set_inspector
   @inspector = Inspector.find(params[:id])

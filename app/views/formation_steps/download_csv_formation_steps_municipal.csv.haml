@@ -1,0 +1,8 @@
+-@number_of_procedure = 0
+- headers = [t('formation_steps.city_formation_steps.name'),t('formation_steps.city_formation_steps.type'),t('formation_steps.city_formation_steps.cost'),t('formation_steps.city_formation_steps.validity'),t('formation_steps.city_formation_steps.duration')]
+= CSV.generate_line headers
+- @procedure_lines.each_with_index do |procedure_line, index|
+  - if(Procedure.find(procedure_line.procedure_id).category == 'Constituye tu empresa')
+    - procedure = Procedure.find(procedure_line.procedure_id)
+    -if(valida_tipo(procedure.type_procedure, @tipo))
+      = CSV.generate_line([procedure.name, tipo(procedure.type_procedure),procedure.cost, procedure.validity, procedure.long])

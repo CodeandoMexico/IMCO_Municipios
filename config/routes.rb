@@ -11,13 +11,36 @@ Rails.application.routes.draw do
   resources :cities, only: [:show, :update, :edit] do
     get 'about'
     get 'aviso'
-    resources :inspections, only: [:index, :show]
-    resources :inspectors, only: [:index, :show]
-    resources :procedure_lines, only: [:index,:show]
-    resources :formation_steps, only: [:index]
+    resources :inspections, only: [:index, :show] do
+      collection do
+        get 'download_csv_inspections'
+         get 'download_csv_inspections_show'
+      end
+    end
+    resources :inspectors, only: [:index, :show] do
+      collection do
+        get 'download_csv_inspector'
+      end
+    end
+    resources :procedure_lines, only: [:index,:show] do
+      collection do
+        get 'download_csv_procedure_line'
+        get 'download_csv_requirements'
+      end
+    end
+    resources :formation_steps, only: [:index] do
+      collection do
+        get 'download_csv_formation_steps_municipal'
+        get 'download_csv_formation_steps_federal'
+      end
+    end
     resources :complaints, only: [:new, :create, :edit, :update]
     resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
-    resources :users, only: :index
+    resources :users, only: :index do
+      collection do
+        get 'download_csv_business'
+      end
+    end
   end
 
   resource :dashboard, only: :show, controller: :dashboard do

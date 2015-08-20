@@ -153,5 +153,5 @@
 
   .col-sm-offset-2.col-sm-3{ style: 'padding-left:0;'}
     = f.submit t('buttons.buscar'), class: 'btn btn-success btn-lg outlineverde btn-block'
-
-= render "shared/procedure_lines_result"
+- if @line.present?
+  = render "procedure_lines_result"
