@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/civica-digital/mi-negocio-mx.svg?branch=master)](https://travis-ci.org/civica-digital/mi-negocio-mx)
+[![Code Climate](https://codeclimate.com/github/civica-digital/mi-negocio-mx/badges/gpa.svg)](https://codeclimate.com/github/civica-digital/mi-negocio-mx)
+[![Test Coverage](https://codeclimate.com/github/civica-digital/mi-negocio-mx/badges/coverage.svg)](https://codeclimate.com/github/civica-digital/mi-negocio-mx/coverage)
+
 <img src="http://minegociomexico.mx/images/favicon.ico" alt="Traxi" height="50" width="50"/>Mi Negocio México
 ===
 Es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También puedes consultar información sobre inspecciones(Quién y cómo se realizan), crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
