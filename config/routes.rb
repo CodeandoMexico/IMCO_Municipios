@@ -62,7 +62,4 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
 
   root 'imcos#index'
-  
-  resources :widgets, only: [:index]
-
 end
