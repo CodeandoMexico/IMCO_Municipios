@@ -61,6 +61,9 @@ gem 'uservoice-ruby'
 
 gem 'whenever', :require => false
 
+
+gem 'social-share-button', '~> 0.1.6'
+
 group :development, :test do
   # Load env variables
   gem 'figaro'
