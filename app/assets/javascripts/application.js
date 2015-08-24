@@ -20,6 +20,7 @@
 //= require underscore
 //= require gmaps/google
 //= require webapp
+//= require social-share-button
 //= require_tree ./public
 //= require_tree .
 

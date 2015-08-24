@@ -332,6 +332,9 @@ GEM
     seed_dump (3.2.2)
       activerecord (~> 4)
       activesupport (~> 4)
+    social-share-button (0.1.8)
+      coffee-rails
+      sass-rails
     spring (1.3.6)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -412,6 +415,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   seed_dump
+  social-share-button (~> 0.1.6)
   spring
   thin
   uglifier (>= 1.3.0)

@@ -16,6 +16,7 @@
  *= require_tree ./public
  *= require helpers
  *= require gmaps
+ *= require social-share-button
  *= require base
  *= require_self
  */
@@ -33,6 +34,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 
 body {
   font-family: Montserrat, sans-serif;
