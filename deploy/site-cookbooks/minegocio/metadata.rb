@@ -1,0 +1,8 @@
+name             'minegocio'
+maintainer       'Mikesaurio and MA'
+maintainer_email 'mikesaurio@civica.digital & miguel.angel@civica.digital'
+license          'AGPL v3.0'
+description      'Installs/Configures mi negocio'
+version          '0.1.0'
+depends          'docker', '~> 1.0.11'
+depends          'git', '~> 4.3.3'
