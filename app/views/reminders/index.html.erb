@@ -16,26 +16,25 @@
 <%#= render "shared/error_messages", :target => @reminder %> 
 <%= form_for @reminder , :validate => true, url: city_reminders_path do |f| %>
 <div class="form-group row">
+ <div class="col-sm-12 text-right texto-padding-bottom">
+    <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-lg outlineverde ' %>
+  </div>
   <div class="col-sm-3">
-
     <%= f.text_field :name, :validate => true, class: 'form-controler', placeholder: t('.name_hint') %>
     <div class='texto-rojo text-left'><%=@reminder.errors[:name][0].to_s%>   </div> 
   </div>
-
   <div class="col-sm-3">
-
    <%= f.text_field :license, :validate => true, class: 'form-controler', placeholder: t('.license_hint')  %>
       <div class='texto-rojo text-left'><%=@reminder.errors[:license][0].to_s%>    </div>
  </div>
  <div class="col-sm-3">
-
    <%= f.text_field :until_to, :validate => true, class: 'form-controler' , placeholder: t('.until_to_hint') %>
       <div class='texto-rojo  text-left'><%=@reminder.errors[:until_to][0].to_s%>    </div>
  </div>
- <div class="col-sm-3 text-right">
-  <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-lg outlineverde ' %>
-
-</div>
+  <div class="col-sm-3">
+   <%=  f.select :frequency, options_for_select(reminders_category.collect {|p| [ p['value'], p['id'] ] }),{ include_blank: false },{ class: 'chosen-select', :multiple=>false, :data => { :placeholder => ' ' }}%>
+      <div class='texto-rojo  text-left'><%=@reminder.errors[:frequency][0].to_s%>    </div>
+ </div>
 </div>
 
 <% end %>
@@ -51,6 +50,7 @@
    <th><%= t('.name') %></th>
    <th><%= t('.license') %></th>
    <th><%= t('.until') %></th>
+   <th><%= t('.frequency') %></th>
    <th class="text-right"></th>
  </thead>
  <tbody>
@@ -60,6 +60,7 @@
    <%= content_tag :td, reminder.name %>
    <%= content_tag :td, reminder.license %>
    <%= content_tag :td, reminder.until_to %>
+   <%= content_tag :td, reminders_category[reminder.frequency-1]['name']%>
    <%= content_tag :td, :class => 'text-right' do %>
    <%= link_to t('.edit'), edit_city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
    <%= link_to t('.borrar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>

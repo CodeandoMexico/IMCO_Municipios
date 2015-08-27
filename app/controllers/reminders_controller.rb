@@ -4,6 +4,7 @@ class RemindersController < ApplicationController
   before_action :set_cities
   before_action :set_reminder, only: [:edit, :update, :destroy]
   before_action :reminder_params, only: [:create, :update]
+  helper_method :reminders_category
 
   add_breadcrumb "Inicio", :root_path
 
@@ -28,7 +29,8 @@ class RemindersController < ApplicationController
       user: current_user,
       name: reminder_params[:name],
       license: reminder_params[:license],
-      until_to: ordenate_date(reminder_params[:until_to])
+      until_to: ordenate_date(reminder_params[:until_to]),
+      frequency: reminder_params[:frequency]
       )
     authorize @reminder
 
@@ -94,7 +96,12 @@ end
     params.require(:reminders).permit(
       :name,
       :license,
-      :until_to
+      :until_to,
+      :frequency
       )
   end
+
+  def reminders_category
+      UserTypes.reminders_category
+    end
 end
