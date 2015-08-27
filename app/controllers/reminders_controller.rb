@@ -4,6 +4,7 @@ class RemindersController < ApplicationController
   before_action :set_cities
   before_action :set_reminder, only: [:edit, :update, :destroy]
   before_action :reminder_params, only: [:create, :update]
+  helper_method :reminders_category
 
   add_breadcrumb "Inicio", :root_path
 
@@ -20,7 +21,7 @@ class RemindersController < ApplicationController
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Inspecciones", city_inspections_path(@city)
     add_breadcrumb "Recordatorios" , city_reminders_path(@city)
-     add_breadcrumb "Editar recordatorio"
+    add_breadcrumb "Editar recordatorio"
   end
 
   def create
@@ -28,7 +29,9 @@ class RemindersController < ApplicationController
       user: current_user,
       name: reminder_params[:name],
       license: reminder_params[:license],
-      until_to: ordenate_date(reminder_params[:until_to])
+      until_to: ordenate_date(reminder_params[:until_to]),
+      frequency: reminder_params[:frequency],
+      frequency_count: 0
       )
     authorize @reminder
 
@@ -43,7 +46,6 @@ class RemindersController < ApplicationController
 
   def update
     authorize @reminder
-
     respond_to do |format|
       if @reminder.update(reminder_params)
         format.html { redirect_to city_reminders_path(@city), notice:  'El recordatorio fue actualizado satisfactoriamente.' }
@@ -94,7 +96,13 @@ end
     params.require(:reminders).permit(
       :name,
       :license,
-      :until_to
+      :until_to,
+      :frequency,
+      :frequency_count
       )
   end
+
+  def reminders_category
+      UserTypes.reminders_category
+    end
 end
