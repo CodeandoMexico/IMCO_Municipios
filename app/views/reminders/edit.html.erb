@@ -13,9 +13,10 @@
   <table class="table">
    <thead>
      <th></th>
-     <th><%= t('.name') %></th>
-     <th><%= t('.license') %></th>
-     <th><%= t('.until') %></th>
+     <th class="col-sm-3"><%= t('.name') %></th>
+     <th class="col-sm-3"><%= t('.license') %></th>
+     <th class="col-sm-3"><%= t('.until') %></th>
+     <th class="col-sm-3"><%= t('.frequency')%></th>
      <th class="text-right"></th>
    </thead>
    <tbody>
@@ -33,12 +34,15 @@
       <%= f.text_field :license, class: 'form-controler', placeholder: t('.license_hint')  %>
          <div class='texto-rojo text-left'><%=@reminder.errors[:license][0].to_s%>   </div> 
     </div>
-
     <div class="col-sm-3 margin-bottom-button">
       <%= f.text_field :until_to, class: 'form-controler' , placeholder: t('.until_to_hint') %>
          <div class='texto-rojo text-left'><%=@reminder.errors[:until_to][0].to_s%>   </div> 
     </div>
-    <div class="col-sm-3 text-right">
+    <div class="col-sm-3">
+      <%= f.select :frequency, reminders_category.collect { |p| [p['name'], p['id']] },{ include_blank: true ,selected: @reminder.frequency }, { class: 'chosen-select' }%>
+      <div class='texto-rojo  text-left'><%=@reminder.errors[:frequency][0].to_s%>    </div>
+    </div>
+    <div class="col-sm-12 text-right">
       <%= f.submit t('reminders.index.create_reminder'), :class => 'btn btn-success btn-lg outlineverde' %>
     </div>
   </div>

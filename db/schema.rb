@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150827163849) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "frequency"
+    t.integer  "frequency_count"
   end
 
   create_table "requirements", force: true do |t|

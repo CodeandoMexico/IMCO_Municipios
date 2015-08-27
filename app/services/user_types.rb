@@ -17,6 +17,6 @@ module UserTypes
   end
 
   def self.reminders_category
-    [{"name"=>"Recordar un mes antes que venza", "id"=>"1"}, {"name"=>"Recordar cada quincena", "id"=>"2"}, {"name"=>"Recordar cada semana", "id"=>"3"}, {"name"=>"Recordar cada mes", "id"=>"4"}]
+    [{"name"=>"Recordar un mes antes que venza", "id"=>"1"}, {"name"=>"Recordar cada mes", "id"=>"2"}, {"name"=>"Recordar cada quincena", "id"=>"3"}, {"name"=>"Recordar cada semana", "id"=>"4"}]
   end
 end 

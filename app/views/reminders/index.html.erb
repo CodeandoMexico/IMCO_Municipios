@@ -32,7 +32,7 @@
       <div class='texto-rojo  text-left'><%=@reminder.errors[:until_to][0].to_s%>    </div>
  </div>
   <div class="col-sm-3">
-   <%=  f.select :frequency, options_for_select(reminders_category.collect {|p| [ p['value'], p['id'] ] }),{ include_blank: false },{ class: 'chosen-select', :multiple=>false, :data => { :placeholder => ' ' }}%>
+   <%= f.select :frequency, reminders_category.collect { |p| [p['name'], p['id']] },{ include_blank: true }, { class: 'chosen-select' }%>
       <div class='texto-rojo  text-left'><%=@reminder.errors[:frequency][0].to_s%>    </div>
  </div>
 </div>
