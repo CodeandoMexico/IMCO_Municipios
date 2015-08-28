@@ -38,7 +38,7 @@ NUMBER_OF_MAILS = 0
     end
   end
     puts '*********TASK********************'
-    puts "NUMBER_OF_MAILS: #{NUMBER_OF_MAILS}, TIME: #{Time.now}, Frequency #{reminder.frequency}"
+    puts "NUMBER_OF_MAILS: #{NUMBER_OF_MAILS}, TIME: #{Time.now}"
 end
 
  def ordenate_date(date)
