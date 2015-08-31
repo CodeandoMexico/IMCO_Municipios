@@ -59,7 +59,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :edit, :update]
-
+  resources :users, only: [:new, :create, :edit, :update] do
+    resources :business, only: [:new, :create, :edit, :update], controller: 'business'
+  end
   root 'imcos#index'
 end

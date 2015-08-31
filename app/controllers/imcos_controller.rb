@@ -6,7 +6,7 @@ class ImcosController < ApplicationController
     @cities = City.all.order(:name)
     unless current_user.nil?
       #unless current_user.city_id.nil?
-        redirect_to city_path(1)
+        #redirect_to city_path(1)
       #end
     end
   end

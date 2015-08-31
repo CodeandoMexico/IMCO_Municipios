@@ -273,6 +273,28 @@ es:
   shared:
     carrusel_inspections:
       obtener_aqui: Obtener aquí
+  business:
+    new:
+      edit_profile: Mi negocio
+      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
+      name: Nombre*
+      correo: Correo*
+      business_name: Nombre del negocio*
+      address: Dirección*
+      operation_license: Licencia de operación*
+      operation_license_file: Licencia de operación (Archivo opcional)
+      land_permission_file: Permiso de uso de suelo (Archivo opcional)
+      save: Guardar
+      city_id: Municipio de tu negocio*
+      mapa: Ubicación del negocio
+      line: Giro de tu negocio*
+      phone: Teléfono
+      schedule: Horario
+      obligatorios: '* Son obligatorios'
+      optional: (opcional)
+      tooltip_telefono: La gente podrá ver el teléfono de tu negocio y así contactarte con mas clientes.
+      tooltip_horario: La gente podrá ver el horario de tu negocio y así saber a que hora visitarlo.
+      tooltip_folio: El folio de tu licencia de operación para poder validrte como empresa.
   activerecord:
     errors:
       messages:

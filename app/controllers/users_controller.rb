@@ -37,79 +37,10 @@ class UsersController < ApplicationController
  end
 
  def edit
+  add_breadcrumb "Editar usuario"
   redirect_to root_path if current_user.nil?
   @user = current_user
-  
-  unless @user.nil?
-
-    unless @user.city_id.nil?
-      @city_select = City.find(@user.city_id).id
-      @lines = Line.where(city_id: @user.city_id)
-    end
-
-    unless @user.line_id.nil?
-      @line_select = Line.find(@user.line_id).id
-      @lines = Line.where(city_id: Line.find(@user.line_id).city.id)
-    end
-
-    unless params[:pagetime].blank?
-      @city_select = params[:pagetime][:city_id]
-      respond_to do |format|
-        format.js
-      end
-    end
-
-    unless params[:user].blank?
-      unless params[:user][:name].blank?
-        @user_name = params[:user][:name]
-      end
-
-      unless params[:user][:email].blank?
-        @user_email = params[:user][:email]
-      end
-
-      unless params[:user][:city_id].blank?
-        @city_select = City.find(params[:user][:city_id]).id
-        @lines = Line.where(city_id: @city_select)
-      end
-
-      unless params[:user][:line_id].blank?
-        @line_select = Line.find(params[:user][:line_id]).id
-      end
-
-      unless params[:user][:phone].blank?
-        @phone = params[:user][:phone]
-      end
-
-      unless params[:user][:schedule].blank?
-        @schedule = params[:user][:schedule]
-      end
-
-      unless params[:user][:business_name].blank?
-        @bussine_name = params[:user][:business_name]
-      end
-
-      unless params[:user][:operation_license].blank?
-        @user_operation_license = params[:user][:operation_license]
-      end
-
-      unless params[:user][:address].blank?
-        @address = params[:user][:address]
-     
-      end
-    else
-      @user_name = @user.name
-      @user_email = @user.email
-      @city_select = @user.city_id
-      @lines = Line.where(city_id: @city_select)
-      @line_select  = @user.line_id
-      @phone = @user.phone
-      @schedule = @user.schedule
-      @bussine_name = @user.business_name
-      @user_operation_license = @user.operation_license
-      @address = @user.address
-    end  
-  end
+  @bussines = Business.where(user_id: current_user)
 end
 
 def update

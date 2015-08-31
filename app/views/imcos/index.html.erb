@@ -1,16 +1,6 @@
 <div class="col-lg-12 text-center">
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<% if user_signed_in? %>
-					<p class="navbar-text pull-right navbar-custom"><texto-blanco><%="#{current_user}\t"%> |</texto-blanco> <%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%>
-					</p>
-				<% else %>
-					<%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
-				<% end %>
-			</div>
-		</div>
-	</div>
+<%= render 'shared/navbar'%>
+
 	<%= image_tag "logo.png", class: "img-responsive center-block center-block-top"%>
 	<div class= "row">
 		<div class="col-md-8 col-md-offset-2 navbar-text-blanco-just">
