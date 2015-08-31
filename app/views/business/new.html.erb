@@ -4,7 +4,7 @@
     <p class="text-center"> <%=t('.edit_profile_explicacion')%> </p>
     <p class="text-center"><strong><%=t('.obligatorios')%></strong></p>
     <div id="authentication">
-      <%= form_for(@business, html: { multipart: true}, :validate => true,  url: new_user_business_path ) do |f| %>
+      <%= form_for(@business, html: { multipart: true}, :validate => true,  url: user_business_index_path ) do |f| %>
       <div class="form-group">
         <div class="row">
           <div class= "col-md-4">

@@ -43,8 +43,8 @@
    <%= content_tag :td, business.line_id %><%= content_tag :td, business.latitude %>
    <%= content_tag :td, business.longitude %>
    <%= content_tag :td, :class => 'text-right' do %>
-   <%= link_to t('.edit'), edit_city_reminder_path(@city,reminder) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
-   <%= link_to t('.borrar'), city_reminder_path(@city, reminder.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+   <%= link_to t('.edit'), edit_user_business_path(@user,business.id) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
+   <%= link_to t('.borrar'), user_business_path(@user, business.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
    <% end %>
    <% end %>
    <% end %>

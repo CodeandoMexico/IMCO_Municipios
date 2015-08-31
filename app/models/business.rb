@@ -14,9 +14,6 @@ class Business < ActiveRecord::Base
 
   belongs_to :user
 
-
-
-
   validates :city_id, presence: true
   belongs_to :city
 
@@ -30,5 +27,11 @@ class Business < ActiveRecord::Base
 
   mount_uploader :operation_license_file, PdfUploader
   mount_uploader :land_permission_file, PdfUploader
+
+
+
+  def business?
+    
+  end
 
 end

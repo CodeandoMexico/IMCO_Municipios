@@ -1,7 +1,7 @@
 $(".line_for_city").removeClass("hide");
 $('#business_line_id').empty();
 $('#business_line_id').trigger("chosen:updated");
-<%Line.order(:name).where(city_id: @city_select).select(:name, :id).each_with_index do |value, index|%>
+<% Line.order(:name).where(city_id: @city_select).select(:name, :id).each_with_index do |value, index|%>
   <%@array_line[index] = value.name.to_s%>
   <%@array_id[index] = value.id.to_s;%>
 <%end%>
