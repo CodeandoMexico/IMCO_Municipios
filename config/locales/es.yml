@@ -167,7 +167,7 @@ es:
       license_hint: Número de folio...
       until_to_hint: Fecha de vencimiento...
       no_reminders_available: |+
-        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos 30 y 15 días antes de que tu documento sea inválido.
+        En esta sección podrás generar recordatorios para los documentos de tu negocio, Te notificaremos cuando tu no lo indiques (30 días antes de que tu documento sea inválido o cada semana, quincena o mes).
       no_reminders_available_examples: |+
         Algunos documentos pueden ser (Licencia de funcionamiento, Permiso de uso de suelo, Cédula de zonificación, etc).
     edit:

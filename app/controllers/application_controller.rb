@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validaDatos(resource)
-    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
+    !resource.email.blank?#&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
    end
 
    def envirement_validates
