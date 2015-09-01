@@ -37,8 +37,9 @@ class UsersController < ApplicationController
  end
 
  def edit
-  add_breadcrumb "Editar usuario"
+  add_breadcrumb "Panel de negocios"
   redirect_to root_path if current_user.nil?
+  save_my_previous_url!
   @user = current_user
   @bussines = Business.where(user_id: current_user)
 end

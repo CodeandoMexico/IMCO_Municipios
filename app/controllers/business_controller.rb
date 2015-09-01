@@ -6,8 +6,80 @@ class BusinessController < ApplicationController
   def new
     redirect_to root_path if current_user.nil?
     @user = current_user
+    params_temp
+  end
 
-    unless @business.nil?
+  def edit
+    @user = current_user
+    params_temp
+  end
+
+  def create
+    if current_user.admin?
+      redirect_to dashboard_path, notice: t('flash.users.updated')
+    else
+      save_params_temp
+      business_new = Business.create(name: @user_name,
+        address: @address,
+        operation_license: @user_operation_license,
+        operation_license_file:  @operation_license_file,
+        land_permission_file: @land_permission_file,
+        city_id: @city_select,
+        phone: @phone,
+        schedule: @schedule,
+        line_id: @line_select,
+        latitude: @latitude,
+        longitude: @longitude,
+        user_id: current_user.id)
+
+      if business_new.save
+          redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
+      else
+        render :new
+      end
+    end
+  end
+  
+  def destroy
+     @buss = Business.find params[:id]
+     if @buss.destroy
+      redirect_to edit_user_path(current_user) , notice: t('flash.business.delete')
+    end
+   end
+
+    private
+    def set_user
+      @user ||= current_user
+      @business = Business.new
+      @array_line=[]
+      @array_id=[]
+      @algo = "e"
+    end
+
+    def set_cities_and_lines
+      @cities = City.order(:name)
+      @lines = Line.where(city_id: nil)
+    end
+
+    def business_params
+      params.require(:business).permit(
+        :name,
+        :address,
+        :operation_license,
+        :operation_license_file,
+        :land_permission_file,
+        :city_id,
+        :phone,
+        :schedule,
+        :line_id,
+        :latitude,
+        :longitude,
+        :user_id
+        )
+    end
+
+  def params_temp
+   unless @business.nil?
       unless @business.city_id.nil?
         @city_select = City.find(@business.city_id).id
         @lines = Line.where(city_id: @business.city_id)
@@ -72,66 +144,8 @@ class BusinessController < ApplicationController
         @address = @business.address
       end  
     end
-  end
+end
 
-
-  def create
-    if current_user.admin?
-      redirect_to dashboard_path, notice: t('flash.users.updated')
-    else
-      save_params_temp
-      business_new = Business.create(name: @user_name,
-        address: @address,
-        operation_license: @user_operation_license,
-        operation_license_file:  @operation_license_file,
-        land_permission_file: @land_permission_file,
-        city_id: @city_select,
-        phone: @phone,
-        schedule: @schedule,
-        line_id: @line_select,
-        latitude: @latitude,
-        longitude: @longitude,
-        user_id: current_user.id)
-
-      if business_new.save
-          redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
-      else
-        render :new
-      end
-    end
-  end
-
-
-    private
-    def set_user
-      @user ||= current_user
-      @business = Business.new
-      @array_line=[]
-      @array_id=[]
-      @algo = "e"
-    end
-
-    def set_cities_and_lines
-      @cities = City.order(:name)
-      @lines = Line.where(city_id: nil)
-    end
-
-    def business_params
-      params.require(:business).permit(
-        :name,
-        :address,
-        :operation_license,
-        :operation_license_file,
-        :land_permission_file,
-        :city_id,
-        :phone,
-        :schedule,
-        :line_id,
-        :latitude,
-        :longitude,
-        :user_id
-        )
-    end
 
     def save_params_temp
       unless params[:business][:name].blank?

@@ -1,5 +1,7 @@
 es:
   flash:
+    business:
+      delete: Tu negocio se elimino correctamente
     users:
       updated: La información del usuario ha sido guardada satisfactoriamente.
     complaints:
@@ -131,6 +133,7 @@ es:
       delete_procedure: ¿Estás seguro que deseas borrar este trámite?
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
+      delete_bussines: ¿Estás seguro que deseas borrar este negocio?
 
   devise:
     omniauth_callbacks:

@@ -17,16 +17,15 @@
 </div>
 
 <%unless @bussines.nil? || @bussines.empty?%>
-<h2> <%= t('titles.reminder') %></h2>
+<h2> <%= t('.my_bussines') %></h2>
 <div class="row text-right">
 </div>
 <table class="table">
  <thead>
    <th>#</th>
    <th><%= t('.name') %></th>
-   <th><%= t('.license') %></th>
-   <th><%= t('.until') %></th>
-   <th><%= t('.frequency') %></th>
+   <th><%= t('.city') %></th>
+   <th><%= t('.address') %></th>
    <th class="text-right"></th>
  </thead>
  <tbody>
@@ -34,17 +33,11 @@
    <%= content_tag :tr do %>
    <%= content_tag :td, idx + 1 %>
    <%= content_tag :td, business.name %>
+   <%= content_tag :td, City.find(business.city_id).name %>
    <%= content_tag :td, business.address %>
-   <%= content_tag :td, business.schedule %>
-   <%= content_tag :td, business.city_id %>
-   <%= content_tag :td, business.operation_license %>
-   <%= content_tag :td, business.operation_license_file %>
-   <%= content_tag :td, business.land_permission_file %>
-   <%= content_tag :td, business.line_id %><%= content_tag :td, business.latitude %>
-   <%= content_tag :td, business.longitude %>
    <%= content_tag :td, :class => 'text-right' do %>
    <%= link_to t('.edit'), edit_user_business_path(@user,business.id) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
-   <%= link_to t('.borrar'), user_business_path(@user, business.id), method: :delete, data: { confirm: t('form.confirmations.delete_reminder') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+   <%= link_to t('.borrar'), user_business_path(@user, business.id), method: :delete, data: { confirm: t('form.confirmations.delete_bussines') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
    <% end %>
    <% end %>
    <% end %>
