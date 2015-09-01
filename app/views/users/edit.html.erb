@@ -10,6 +10,32 @@
 
 <h1 class="title text-center texto-verde"><%=t('.add_business')%></h1>
 
+<%= form_for(@user, html: { multipart: true}, :validate => true,  :url => {:action => "update", :id => @user} ) do |f| %>
+<table class="table">
+ <thead>
+   <th><%= t('.name') %></th>
+   <th><%= t('.correo') %></th>
+   <th class='text-right'><%= t('.change') %></th>
+   <th class="text-right"></th>
+ </thead>
+ <tbody>
+  <td>
+    <%= f.text_field :name , class: 'form-controler',:placeholder => 'Nombre completo'%>
+    <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:name][0].to_s%></div>
+  </td>
+  <td>
+    <%= f.text_field :email ,  class: 'form-controler',:placeholder => 'Correo electrónico' %>
+    <div class='texto-rojo col-md-8 text-left'><%=@user.errors[:email][0].to_s%></div>
+  </td>
+  <%= content_tag :td, :class => 'text-right' do %>
+    <%= f.submit t('.save'), class: 'btn btn-success btn-lg outlineverde text-right', :id => 'save_form' %>
+  <% end %>
+ </tbody>
+</table>
+<%end%>
+
+<hr>
+<h2> <%= t('.my_bussines') %></h2>
 <div class="form-group row">
  <div class="col-sm-12 text-right texto-padding-bottom">
     <%=link_to t('.nuevo'), new_user_business_path(current_user), class: 'btn btn-success btn-lg outlineverde text-right' %>
@@ -17,7 +43,6 @@
 </div>
 
 <%unless @bussines.nil? || @bussines.empty?%>
-<h2> <%= t('.my_bussines') %></h2>
 <div class="row text-right">
 </div>
 <table class="table">
@@ -36,14 +61,13 @@
    <%= content_tag :td, City.find(business.city_id).name %>
    <%= content_tag :td, business.address %>
    <%= content_tag :td, :class => 'text-right' do %>
-   <%= link_to t('.edit'), edit_user_business_path(@user,business.id) , :class => 'btn btn-success btn-xs outlineverde text-right'%> 
-   <%= link_to t('.borrar'), user_business_path(@user, business.id), method: :delete, data: { confirm: t('form.confirmations.delete_bussines') }, :class => 'btn btn-success btn-xs outlineverde text-right' %>
+   <%= link_to t('.edit'), edit_user_business_path(@user,business.id) , :class => 'btn btn-success btn-lg outlineverde text-right'%> 
+   <%= link_to t('.borrar'), user_business_path(@user, business.id), method: :delete, data: { confirm: t('form.confirmations.delete_bussines') }, :class => 'btn btn-success btn-lg outlineverde text-right' %>
    <% end %>
    <% end %>
    <% end %>
  </tbody>
 </table>
 <%end%>
-
-    </div>
+</div>
   </div>

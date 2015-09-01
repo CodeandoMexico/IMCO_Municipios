@@ -9,12 +9,15 @@ es:
       iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
       texto_explicativo: Regístrate e inicia sesión para, hacer quejas sobre inspecciones y estar informado sobre cambios en normatividad y vencimiento de tus permisos. No compartiremos tus datos con nadie.
     edit:
-      add_business: Panel de negocios
+      add_business: Panel de empresarios
+      correo: Correo
+      change: Actualizar
       nuevo: Agregar negocio
       my_bussines: Mis Negocios
       name: Nombre
       city: Municipio
       address: Dirección
+      save: Guardar
     csv:
       line: Giro
       name: Nombre Negocio

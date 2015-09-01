@@ -7,14 +7,12 @@ class UsersController < ApplicationController
   def index
     @lines = Line.where(city: @city)
     line = Line.find_by(id: params[:line_id])
-
     if line
       @line_id = line.id
       @users = line.users
     else
       @users = User.where(admin: false, city: @city)
     end
-
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Uso de suelo"
   end
@@ -37,11 +35,10 @@ class UsersController < ApplicationController
  end
 
  def edit
-  add_breadcrumb "Panel de negocios"
+  add_breadcrumb "Panel de empresarios"
   redirect_to root_path if current_user.nil?
   save_my_previous_url!
   @user = current_user
-  @bussines = Business.where(user_id: current_user).order(:name)
 end
 
 def update
@@ -85,18 +82,7 @@ private
 def user_params
   params.require(:user).permit(
     :name,
-    :email,
-    :business_name,
-    :address,
-    :operation_license,
-    :operation_license_file,
-    :land_permission_file,
-    :city_id,
-    :phone,
-    :schedule,
-    :line_id,
-    :latitude,
-    :longitude
+    :email
     )
 end
 
@@ -117,6 +103,7 @@ end
 def set_cities_and_lines
   @cities = City.order(:name)
   @lines = Line.where(city_id: nil)
+  @bussines = Business.where(user_id: current_user).order(:name)
 end
 
 def set_city
@@ -130,27 +117,6 @@ def save_params_temp
   unless params[:user][:email].blank?
     @user_email = params[:user][:email]
   end
-  unless params[:user][:city_id].blank?
-    @city_select = City.find(params[:user][:city_id]).id
-    @lines = Line.where(city_id: @city_select)
-  end
-  unless params[:user][:line_id].blank?
-    @line_select = Line.find(params[:user][:line_id]).id
-  end
-  unless params[:user][:phone].blank?
-    @phone = params[:user][:phone]
-  end
-  unless params[:user][:schedule].blank?
-    @schedule = params[:user][:schedule]
-  end
-  unless params[:user][:business_name].blank?
-    @bussine_name = params[:user][:business_name]
-  end
-  unless params[:user][:operation_license].blank?
-    @user_operation_license = params[:user][:operation_license]
-  end
-  unless params[:user][:address].blank?
-    @address = params[:user][:address]
-  end
 end 
+
 end
