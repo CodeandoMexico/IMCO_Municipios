@@ -87,7 +87,7 @@
             </div>
             <div class='texto-rojo col-md-8 text-left'><%=@business.errors[:operation_license][0].to_s%></div>
           </div>
-          <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón', :onchange=>"validate_requirements()" , :value => @business_operation_license %>
+          <%= f.text_field :operation_license ,  class: 'form-controler', :placeholder => 'Licencia de operacón', :onchange=>"validate_requirements()" , :value => @operation_license %>
         </div>
         <div class="form-group">
           <%= f.label t('.operation_license_file') %><br />

@@ -22,7 +22,7 @@ class BusinessController < ApplicationController
 
         business_new = Business.create(name: @user_name,
           address: @address,
-          operation_license: @user_operation_license,
+          operation_license: @operation_license,
           operation_license_file:  @operation_license_file,
           land_permission_file: @land_permission_file,
           city_id: @city_select,
@@ -50,7 +50,7 @@ class BusinessController < ApplicationController
 
         business_new = Business.find(@business.id).update(name: @user_name,
           address: @address,
-          operation_license: @user_operation_license,
+          operation_license: @operation_license,
           operation_license_file:  @operation_license_file,
           land_permission_file: @land_permission_file,
           city_id: @city_select,
@@ -159,7 +159,7 @@ class BusinessController < ApplicationController
         end
 
         unless params[:business][:operation_license].blank?
-          @user_operation_license = params[:business][:operation_license]
+          @operation_license = params[:business][:operation_license]
         end
 
         unless params[:business][:address].blank?
@@ -175,7 +175,7 @@ class BusinessController < ApplicationController
         @phone = @business.phone
         @schedule = @business.schedule
         @business_name = @business.name
-        @user_operation_license = @business.operation_license
+        @operation_license = @business.operation_license
         @address = @business.address
       end  
     end
@@ -203,7 +203,7 @@ end
         @bussine_name = params[:business][:business_name]
       end
       unless params[:business][:operation_license].blank?
-        @user_operation_license = params[:business][:operation_license]
+        @operation_license = params[:business][:operation_license]
       end
       unless params[:business][:address].blank?
         @address = params[:business][:address]

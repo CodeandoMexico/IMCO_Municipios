@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   redirect_to root_path if current_user.nil?
   save_my_previous_url!
   @user = current_user
-  @bussines = Business.where(user_id: current_user)
+  @bussines = Business.where(user_id: current_user).order(:name)
 end
 
 def update
