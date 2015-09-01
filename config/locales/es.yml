@@ -277,7 +277,7 @@ es:
     carrusel_inspections:
       obtener_aqui: Obtener aquí
   business:
-    new:
+    form:
       edit_profile: Mi negocio
       edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
       name: Nombre*

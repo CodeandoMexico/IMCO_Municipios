@@ -19,23 +19,52 @@ class BusinessController < ApplicationController
       redirect_to dashboard_path, notice: t('flash.users.updated')
     else
       save_params_temp
-      business_new = Business.create(name: @user_name,
-        address: @address,
-        operation_license: @user_operation_license,
-        operation_license_file:  @operation_license_file,
-        land_permission_file: @land_permission_file,
-        city_id: @city_select,
-        phone: @phone,
-        schedule: @schedule,
-        line_id: @line_select,
-        latitude: @latitude,
-        longitude: @longitude,
-        user_id: current_user.id)
+
+        business_new = Business.create(name: @user_name,
+          address: @address,
+          operation_license: @user_operation_license,
+          operation_license_file:  @operation_license_file,
+          land_permission_file: @land_permission_file,
+          city_id: @city_select,
+          phone: @phone,
+          schedule: @schedule,
+          line_id: @line_select,
+          latitude: @latitude,
+          longitude: @longitude,
+          user_id: current_user.id)
 
       if business_new.save
           redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
       else
         render :new
+      end
+    end
+  end
+
+
+  def update
+    if current_user.admin?
+      redirect_to dashboard_path, notice: t('flash.users.updated')
+    else
+      save_params_temp
+
+        business_new = Business.find(@business.id).update(name: @user_name,
+          address: @address,
+          operation_license: @user_operation_license,
+          operation_license_file:  @operation_license_file,
+          land_permission_file: @land_permission_file,
+          city_id: @city_select,
+          phone: @phone,
+          schedule: @schedule,
+          line_id: @line_select,
+          latitude: @latitude,
+          longitude: @longitude,
+          user_id: current_user.id)
+
+      if business_new
+          redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
+      else
+        render :edit
       end
     end
   end
@@ -50,7 +79,13 @@ class BusinessController < ApplicationController
     private
     def set_user
       @user ||= current_user
-      @business = Business.new
+      unless params[:id].blank?
+        @business = Business.find(params[:id])
+        @path = user_business_path
+      else
+       @business = Business.new
+       @path = user_business_index_path
+      end
       @array_line=[]
       @array_id=[]
       @algo = "e"
