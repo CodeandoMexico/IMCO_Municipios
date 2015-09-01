@@ -11,7 +11,7 @@
             - if user_signed_in?
               %td{ 'ng-init'=> "procedures.items[#{formation.id}] = #{UserFormationStep.exists?(user: current_user, formation_step: formation)}"}
                 %label{ style: 'font-weight: 400;' }
-                  %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{formation.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{formation.id}], 'user_id': #{current_user.id}, 'formation_step_id': #{formation.id}, 'line_id': #{@line}, type_user_formation_step: \'#{@tipo}\', 'path': \'#{user_formation_steps_path}\'})"} &nbsp;
+                  %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{formation.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{formation.id}], 'business_id': #{current_user.id}, 'formation_step_id': #{formation.id}, 'line_id': #{@line}, type_user_formation_step: \'#{@tipo}\', 'path': \'#{user_formation_steps_path}\'})"} &nbsp;
             - else
               -# let's redirect the user to the login page
               %td
