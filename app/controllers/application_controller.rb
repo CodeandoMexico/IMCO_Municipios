@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :store_location
   layout :layout_by_resource
- add_flash_types :error, :notice, :alert
- before_action :set_client_user_voice
+  add_flash_types :error, :notice, :alert
+  before_action :set_client_user_voice
+  helper_method :current_bussines
 
   def set_client_user_voice
     require 'uservoice-ruby'    
@@ -86,8 +87,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
+  #Cambia el estado de todos los negocio a no preferente y solo el seleccionado tiene true
+  def set_business_used(business_id)
+    Business.where(user_id: current_user).each do |business|
+        if business.id == business_id
+          business.used = true
+        else
+          business.used = false
+        end
+          business.save
+    end
+  end
 
+  private
   def admin_is_logged_in?
     authenticate_user! && current_user.admin?
   end

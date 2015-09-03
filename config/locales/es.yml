@@ -274,6 +274,9 @@ es:
       inspections: INSPECCIONES
       inspectors: INSPECTORES
   shared:
+    navbar:
+      iniciar_sesion: Iniciar sesión
+      salir: Salir
     carrusel_inspections:
       obtener_aqui: Obtener aquí
   business:
