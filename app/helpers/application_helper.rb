@@ -20,7 +20,4 @@ module ApplicationHelper
     end
   end
 
-  def current_bussines
-    Business.where(user_id: current_user, using: true)
-  end
 end

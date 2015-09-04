@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   add_flash_types :error, :notice, :alert
   before_action :set_client_user_voice
-  helper_method :current_bussines
+  helper_method :current_business, :current_businesses 
 
   def set_client_user_voice
     require 'uservoice-ruby'    
@@ -90,13 +90,20 @@ class ApplicationController < ActionController::Base
   #Cambia el estado de todos los negocio a no preferente y solo el seleccionado tiene true
   def set_business_used(business_id)
     Business.where(user_id: current_user).each do |business|
-        if business.id == business_id
-          business.used = true
-        else
-          business.used = false
-        end
+          business.using = false
           business.save
     end
+      business = Business.find(business_id)
+      business.using = true
+      business.save
+  end
+
+  def current_business
+    Business.where(user_id: current_user, using: true)
+  end
+
+  def current_businesses
+    Business.where(user_id: current_user)
   end
 
   private
