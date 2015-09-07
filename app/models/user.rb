@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
   end
 
 
-
   def profile_complete?
     self.email.present? && self.name.present?
   end

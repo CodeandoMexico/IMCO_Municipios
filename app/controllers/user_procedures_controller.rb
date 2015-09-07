@@ -22,6 +22,6 @@ class UserProceduresController < ApplicationController
   private
 
   def user_procedure_params
-    params.require(:user_procedure).permit(:user_id, :procedure_id)
+    params.require(:user_procedure).permit(:business_id, :procedure_id)
   end
 end
