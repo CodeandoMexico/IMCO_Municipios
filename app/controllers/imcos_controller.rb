@@ -5,20 +5,18 @@ class ImcosController < ApplicationController
 
   def index
     unless current_user.nil?
-      #unless current_user.city_id.nil?
-        #redirect_to city_path(1)
-      #end
+      city = Business.where(user_id: current_user, using: true)
+      unless city.blank?
+        redirect_to city_path(city.last.id)
+      end
     end
   end
-
 
   def change_business
 
     unless params[:business].blank?
         set_business_used(params[:business])
     end
-
-    render :index
   end
 
 private

@@ -32,7 +32,7 @@ class BusinessController < ApplicationController
           latitude: @latitude,
           longitude: @longitude,
           user_id: current_user.id,
-          using:  Business.where(user_id: current_user.id).count > 1 ? false : true) 
+          using:  Business.where(user_id: current_user.id).count > 0 ? false : true) 
 
       if business_new.save
           redirect_to session[:my_previous_url] , notice: t('flash.users.updated')
