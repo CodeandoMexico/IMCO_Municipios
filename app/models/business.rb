@@ -34,4 +34,6 @@ class Business < ActiveRecord::Base
     
   end
 
+ 
+
 end

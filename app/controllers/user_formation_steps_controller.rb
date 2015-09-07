@@ -25,7 +25,7 @@ class UserFormationStepsController < ApplicationController
 
   def user_formation_step_params
     params.require(:user_formation_step).permit(
-      :user_id,
+      :business_id,
       :formation_step_id,
       :line_id,
       :type_user_formation_step

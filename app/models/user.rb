@@ -18,14 +18,14 @@ class User < ActiveRecord::Base
     !self.admin?
   end
 
+  def has_business?(business_id)
+    self.business.exists? business_id
+  end
+
 
 
   def profile_complete?
     self.email.present? && self.name.present?
-   # self.address.present? &&
-    #self.operation_license_file.present? &&
-    #self.land_permission_file.present? &&
-   # self.operation_license.present?
   end
 
   def to_s
