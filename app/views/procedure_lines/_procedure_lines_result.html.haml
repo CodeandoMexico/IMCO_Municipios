@@ -16,9 +16,9 @@
             -@add_headers=false
         %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.id}] }"}
           - if user_signed_in?
-            %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(user: current_user, procedure: procedure)}"}
+            %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(business: current_business, procedure: procedure)}"}
               %label{ style: 'font-weight: 400;' }
-                %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'user_id': #{current_user.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
+                %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'business_id': #{current_business.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
           - else
             -# let's redirect the user to the login page
             %td
