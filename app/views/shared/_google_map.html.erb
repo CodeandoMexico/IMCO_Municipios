@@ -28,15 +28,17 @@
           <th><%= t('.line_of_work') %></th>
           <th><%= t('.address') %></th>
           <th><%= t('.phone') %></th>
+          <th><%= t('.schedule') %></th>
         </thead>
         <tbody>
           <% markers.each_with_index do |marker, idx| %>
             <tr>
               <td><%= idx + 1 %></td>
-              <td><%= marker %></td>
+              <td><%= marker.name %></td>
               <td><%= marker.line %></td>
               <td><%= marker.address %></td>
               <td><%= marker.phone %></td>
+              <td><%= marker.schedule %></td>
             </tr>
           <% end %>
         </tbody>

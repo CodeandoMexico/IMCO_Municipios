@@ -55,6 +55,10 @@ end
   end
 
   def set_search_filters
+    unless current_business.nil?
+      @line = current_business.line_id
+    end
+    
     if params[:get]
       @line = params[:get][:lines]
       if valida_giro.nil?

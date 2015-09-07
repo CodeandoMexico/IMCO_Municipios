@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     line = Line.find_by(id: params[:line_id])
     if line
       @line_id = line.id
-      @users = line.users
+      @business = line.business
     else
-      @users = User.where(admin: false, city: @city)
+      @business = Business.where(city: @city)
     end
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Uso de suelo"
