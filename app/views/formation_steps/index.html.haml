@@ -25,7 +25,7 @@
   .form-group
     %label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_select_name')
     .col-sm-10
-      = f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true ,selected: @line, :prompt => t('.select_giro') }, { class: 'chosen-select' }
+      = f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true, selected: @line},{ class: 'chosen-select' }
   .form-group
     %label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_radio_name')
 

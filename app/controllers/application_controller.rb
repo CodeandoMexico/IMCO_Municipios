@@ -97,12 +97,16 @@ class ApplicationController < ActionController::Base
       business.using = true
       business.save
 
-      redirect_to city_path(business_id), notice: Business.find(business_id).name
+      redirect_to city_path(Business.find(business_id).city_id), notice: Business.find(business_id).name
   end
 
   #regresa el negocio activo
   def current_business
-    Business.where(user_id: current_user, using: true)
+    business = Business.where(user_id: current_user, using: true)
+    unless business.empty?
+      return business.last
+    end
+      return nil
   end
 
   #regresa todos los negocios de un usuario
