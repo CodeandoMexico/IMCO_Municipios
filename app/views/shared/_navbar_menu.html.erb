@@ -33,10 +33,14 @@
             <div class="dropdown dropdown-padding-top">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user %><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <%current_businesses.each do |business|%>
-                  <li>
-                    <%= link_to business.name, change_business_imcos_path(:business => business.id), data: { no_turbolink: true } %>
-                  </li>
+                <%current_businesses.order(using: :desc).each do |business|%>
+                <li>
+                  <%if business.using == true%>
+                    <%= link_to "#{business.name} (Activo)", change_business_imcos_path(:business => business.id), data: { no_turbolink: true }, :class=> "background-menu"%>
+                  <%else%>
+                    <%= link_to business.name, change_business_imcos_path(:business => business.id), data: { no_turbolink: true }, :class=> "background-menu"%>
+                  <%end%>
+                </li>
                 <%end%>
                 <hr>
                 <li><%= link_to t('navbar.edit_profile'), edit_user_path(current_user) , data: { no_turbolink: true } %></li>
