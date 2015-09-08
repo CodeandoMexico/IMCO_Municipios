@@ -16,7 +16,7 @@
           %tbody
             - @complaints.each_with_index do |complaint, idx|
               %tr
-                %td= idx
+                %td= idx+1
                 %td
                   = link_to dashboard_report_path(complaint) do
                     = complaint.user

@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @complaints = policy_scope(Complaint).where(user_id: current_user).order(:created_at)
+      @complaints = policy_scope(Complaint).order(:created_at)#.where(user_id: current_user).order(:created_at)
     end
 
     def show
