@@ -11,8 +11,8 @@
 		<%= t('correos.empresa.body',
 		city: City.find(@complaint.city).name, 
 		razon: COMPLAINTS[@complaint.reason], 
-		domicilio: @complaint.user.address, 
-		nombre: User.find(@complaint.user).business_name, 
+		domicilio: Business.where(user_id: @complaint.user).last.address, 
+		nombre: Business.where(user_id: @complaint.user).last.name, 
 		folio: @complaint.id,
 		contacto: City.find(@complaint.city).contact_email) %>
 	</p>
