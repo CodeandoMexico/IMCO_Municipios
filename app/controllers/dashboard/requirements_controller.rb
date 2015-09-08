@@ -4,7 +4,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @requirements = policy_scope(Requirement).where(city_id: current_user.city).order(:name)
+      @requirements = policy_scope(Requirement).where(city_id: current_user.city_id).order(:name)
 
        respond_to do |format|
         format.html
@@ -23,7 +23,7 @@ module Dashboard
 
     def create
       @requirement = Requirement.new(requirement_params)
-      @requirement.city = current_user.city
+      @requirement.city = current_user.city_id
       authorize @requirement
 
       respond_to do |format|
