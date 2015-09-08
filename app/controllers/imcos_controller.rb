@@ -27,8 +27,6 @@ class ImcosController < ApplicationController
     end
   end
 
-
-
 private
 
 def load_cities

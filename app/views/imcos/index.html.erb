@@ -51,9 +51,9 @@
 						<div class="col-md-10">
 						<%=select_tag "state_cat_twitter", options_from_collection_for_select(@states, "id", :state_and_town),{ class: 'chosen-select',include_blank: true,:onchange=>"activeSend()"}%>
 						</div>
-						<div class="col-md-2 button_to_send hide">
+						<div class="col-md-2 ">
 							<div id="shared_twitter" class="social-share-button"  data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-twitter-title="Unete a miNegocioMéxico" data-desc="" >
-								<a class="btn btn-success btn-lg outlineverde-not-padding half-width" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
+								<a class="btn btn-success btn-lg outlineverde-not-padding half-width button_to_send inactive" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@
 </script>
 <script type='text/javascript'>
 function activeSend(){
-	$(".button_to_send").addClass("hide");
+	$(".button_to_send").addClass("inactive");
 	document.getElementById("shared_twitter").removeAttribute("data-title");
 	var e = document.getElementById("state_cat_twitter");
     window.order = e.value;
@@ -99,7 +99,7 @@ function activeSend(){
            type:'GET', 
            url: window.url,
            success: function(){
-           	$(".button_to_send").removeClass("hide");
+           	$(".button_to_send").removeClass("inactive");
            },
           error: function(){
           }, 

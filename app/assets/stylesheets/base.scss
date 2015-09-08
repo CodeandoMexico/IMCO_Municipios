@@ -123,3 +123,8 @@ table.master-detail{
 .remove-box-shadow{
   box-shadow: inherit !important;
 }
+
+  .inactive {
+       pointer-events: none;
+       cursor: default;
+    }
