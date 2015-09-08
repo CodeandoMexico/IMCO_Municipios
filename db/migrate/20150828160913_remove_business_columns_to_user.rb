@@ -13,7 +13,7 @@ class RemoveBusinessColumnsToUser < ActiveRecord::Migration
   	remove_column :users, :longitude, :string
   end
   def down
-	add_column :users, :city_id, :integer
+    add_column :users, :city_id, :integer
   	add_column :users, :business_name, :text
   	add_column :users, :address, :text
   	add_column :users, :operation_license, :string
