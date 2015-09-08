@@ -9,9 +9,9 @@
     - @inspection.requirements.each_with_index do |requirement, index|
       %tr{ 'ng-class'=> "{ 'done': procedures.items[#{requirement.id}] }"}
         - if user_signed_in?
-          %td{ 'ng-init'=> "procedures.items[#{requirement.id}] = #{UserRequirement.exists?(user: current_user, requirement: requirement)}"}
+          %td{ 'ng-init'=> "procedures.items[#{requirement.id}] = #{UserRequirement.exists?(business: current_business, requirement: requirement)}"}
             %label{ style: 'font-weight: 400;' }
-              %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{requirement.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{requirement.id}], 'user_id': #{current_user.id}, 'requirement_id': #{requirement.id}, 'path': \'#{user_requirements_path}\'})"} &nbsp;
+              %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{requirement.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{requirement.id}], 'business_id': #{current_business.id}, 'requirement_id': #{requirement.id}, 'path': \'#{user_requirements_path}\'})"} &nbsp;
         - else
           -# let's redirect the user to the login page
           %td
