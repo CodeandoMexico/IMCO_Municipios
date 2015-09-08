@@ -46,8 +46,20 @@
 				<div class="modal-body">
 					<%=t('.contenido_modal')%>
 					<hr>
+					<%=t('social_share_button.texto_municipio')%>
+					<div class="row margin-modal">
+						<div class="col-md-10">
+						<%=select_tag "state_cat_twitter", options_from_collection_for_select(@states, "id", :state_and_town),{ class: 'chosen-select',include_blank: true,:onchange=>"activeSend()"}%>
+						</div>
+						<div class="col-md-2 button_to_send hide">
+							<div id="shared_twitter" class="social-share-button"  data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-twitter-title="Unete a miNegocioMéxico" data-desc="" >
+								<a class="btn btn-success btn-lg outlineverde-not-padding half-width" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+					<hr>
 					<%=t('social_share_button.texto')%>
-					<div class="social-share-button" data-title="Comparte con tu municipio" data-img="" data-url="http://minegociomexico.mx" data-desc="">
+					<div class="social-share-button" data-title="Todo para abrir, mantener y cuidar MiNegocio" data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-desc= ""  >
 						<a class="btn btn-social-icon border-tw btn-twitter" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
 
 						<a class="btn btn-social-icon btn-face border-face" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -70,4 +82,28 @@
 	js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=1499379517003281&version=v2.0";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type='text/javascript'>
+function activeSend(){
+	$(".button_to_send").addClass("hide");
+	document.getElementById("shared_twitter").removeAttribute("data-title");
+	var e = document.getElementById("state_cat_twitter");
+    window.order = e.value;
+    var url = window.location.href;
+
+    if(url.includes("#_=_")){
+       url = url.replace("#_=_","");
+    }
+    window.url = url;
+    $.ajax({
+           type:'GET', 
+           url: window.url,
+           success: function(){
+           	$(".button_to_send").removeClass("hide");
+           },
+          error: function(){
+          }, 
+           data: $.param({ pagetime: {state_id: window.order}})
+      });
+}  
 </script>
