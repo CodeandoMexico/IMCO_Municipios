@@ -9,7 +9,7 @@ class RemindersController < ApplicationController
   add_breadcrumb "Inicio", :root_path
 
   def index
-    @reminders = Reminders.where(user: current_user)
+    @reminders = Reminders.where(business_id: current_business)
     @reminder = Reminders.new
 
     add_breadcrumb @city.name ,city_path(@city)
@@ -26,7 +26,7 @@ class RemindersController < ApplicationController
 
   def create
     @reminder = Reminders.new(
-      user: current_user,
+      business_id: current_business.id,
       name: reminder_params[:name],
       license: reminder_params[:license],
       until_to: ordenate_date(reminder_params[:until_to]),
@@ -39,7 +39,7 @@ class RemindersController < ApplicationController
       redirect_to  city_reminders_path(@city),
       notice: 'El recordatorio fue creado satisfactoriamente.' 
     else
-      @reminders = Reminders.where(user: current_user)
+      @reminders = Reminders.where(business_id: current_business)
        render :index
     end
   end
@@ -73,8 +73,9 @@ class RemindersController < ApplicationController
 
 def ordenate_date(date)
     fecha = date.split('/')
+    puts fecha
     if fecha.length == 3
-      return (fecha[2]+"/"+fecha[0]+"/"+fecha[1]).to_date 
+      return (fecha[2]+"/"+fecha[1]+"/"+fecha[0]).to_date 
     elsif fecha.length == 1
           fecha = date.split('-')
         if fecha.length == 3
@@ -94,6 +95,7 @@ end
 
   def reminder_params
     params.require(:reminders).permit(
+      :business_id,
       :name,
       :license,
       :until_to,

@@ -4,7 +4,7 @@ class FormationStep < ActiveRecord::Base
   belongs_to :city
 
   has_many :user_formation_step
-  has_many :users, through: :user_formation_step
+  has_many :business, through: :user_formation_step
 
   scope :by_city, -> (city) { where(city: city) }
 

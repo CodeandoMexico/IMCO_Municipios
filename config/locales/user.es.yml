@@ -6,29 +6,19 @@ es:
       lines_of_work: Todos los giros de negocio
     new:
       iniciar_sesion: Iniciar sesión
-      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
-      texto_explicativo: Regístrate e inicia sesión para, hacer quejas sobre inspecciones y estar informado sobre cambios en normatividad y vencimiento de tus permisos. No compartiremos tus datos con nadie.
+      iniciar_sesion_explicacion: Selecciona la red social con la que deseas iniciar sesión.
+      texto_explicativo: Regístrate e inicia sesión para hacer quejas sobre inspecciones y estar informado sobre cambios en normatividad y vencimiento de tus permisos. No compartiremos tus datos con nadie.
     edit:
-      edit_profile: Editar perfil
-      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
-      name: Nombre*
-      correo: Correo*
-      business_name: Nombre del negocio*
-      address: Dirección*
-      operation_license: Licencia de operación*
-      operation_license_file: Licencia de operación (Archivo opcional)
-      land_permission_file: Permiso de uso de suelo (Archivo opcional)
+      add_business: Panel de empresario
+      correo: Correo
+      change: Actualizar
+      nuevo: Agregar negocio
+      my_bussines: Mis Negocios
+      name: Nombre
+      city: Municipio
+      address: Dirección
       save: Guardar
-      city_id: Municipio de tu negocio*
-      mapa: Ubicación del negocio
-      line: Giro de tu negocio*
-      phone: Teléfono
-      schedule: Horario
-      obligatorios: '* Son obligatorios'
-      optional: (opcional)
-      tooltip_telefono: La gente podrá ver el teléfono de tu negocio y así contactarte con mas clientes.
-      tooltip_horario: La gente podrá ver el horario de tu negocio y así saber a que hora visitarlo.
-      tooltip_folio: El folio de tu licencia de operación para poder validrte como empresa.
+      edit: Editar
     csv:
       line: Giro
       name: Nombre Negocio

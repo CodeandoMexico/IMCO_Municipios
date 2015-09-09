@@ -1,6 +1,7 @@
 - headers = [t('inspections.index.nombre'),t('inspections.index.materia'),t('inspections.index.duracion')]
 = CSV.generate_line headers
--if @inspections.present?
-  -@inspections.each do |inspection|
-    -if inspection.inspection_lines.count > 0
-      = CSV.generate_line([inspection.name, inspection.matter,inspection.duration])
+- if @inspections.present?
+  - @inspections.each do |inspection|
+    - if inspection.inspection_lines.count > 0
+      = CSV.generate_line ([inspection.name, inspection.matter,inspection.duration])
+      

@@ -6,7 +6,7 @@
     .panel-heading
       &nbsp;
     .panel-body
-      - if @users.any?
+      - if @businesses.any?
         %table{ class:'table table-striped table-bordered table-hover' }
           %thead
             %th #
@@ -15,14 +15,14 @@
             %th= t('.operation_license')
             %th= t('.tramites_activos')
           %tbody
-            - @users.each_with_index do |user, idx|
+            - @businesses.each_with_index do |business, idx|
               %tr
                 %td= idx + 1
                 %td
-                  = link_to dashboard_business_path(user) do
-                    = truncate(user.business_name, length: 70)                               
-                %td= truncate(Line.find(user.line).name, length: 70)                                       
-                %td= truncate(user.operation_license, length: 70)
-                %td= UserProcedure.where(user_id: user.id).count + UserFormationStep.where(user_id: user.id).count
+                  = link_to dashboard_business_path(business) do
+                    = truncate(business.name, length: 70)                               
+                %td= truncate(Line.find(business.line).name, length: 70)                                       
+                %td= truncate(business.operation_license, length: 70)
+                %td= UserProcedure.where(business_id: business.id).count + UserFormationStep.where(business_id: business.id).count
       - else
         = render 'shared/empty_resource', message: t('.no_business_available')

@@ -8,11 +8,19 @@ class FormationStepsController < ApplicationController
   def index
     set_city(:city_id)
     @tipo = 'AF'
+    
+    unless current_business.nil?
+      @line = current_business.line_id
+    end
+    
     valores 
+    
     @cities = City.all
     if user_signed_in?
       @tramites_realizados =  UserFormationStep.where(user_id: current_user.id, line_id: @line , type_user_formation_step: @tipo).all
+
     end
+
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Nuevo negocio"
   end

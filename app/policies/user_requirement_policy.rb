@@ -1,6 +1,6 @@
 class UserRequirementPolicy < ApplicationPolicy
   def update?
-    user.id == record.user_id
+    user.has_business?(record.business_id)
   end
 
   class Scope < Scope

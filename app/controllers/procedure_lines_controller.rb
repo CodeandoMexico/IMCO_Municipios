@@ -11,6 +11,11 @@ class ProcedureLinesController < ApplicationController
     @procedure = Procedure.all.order('nombre DESC')
     @id_del_giro = "0"
     @tipo  = 'A'
+
+    unless current_business.nil?
+      @line = current_business.line_id
+    end
+    
     valores  if params[:get]
     @cities = City.all
   end

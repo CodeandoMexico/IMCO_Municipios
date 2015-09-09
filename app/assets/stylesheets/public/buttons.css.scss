@@ -123,6 +123,12 @@ $rojo: #ff0000;
 	padding: 12px 22px;
 	outline: none;
 }
+
+.btn.outlineverde-not-padding {
+	background: none;
+	outline: none;
+}
+
 .btn.outlinerojo {
 	background: none;
 	padding: 12px 22px;
@@ -172,6 +178,21 @@ $rojo: #ff0000;
 	box-shadow: none;
 }
 
+
+
+.btn-success.outlineverde-not-padding {
+	border: 2px solid $light-green;
+	color: $dark-green;
+}
+.btn-success.outlineverde-not-padding:hover, .btn-success.outlineverde-not-padding:focus, .btn-success.outlineverde-not-padding:active, .btn-success.outlineverde-not-padding.active, .open > .dropdown-toggle.btn-success {
+	border-color: $dark-green;
+	color: $white;
+}
+.btn-success.outlineverde-not-padding:active, .btn-success.outlineverde-not-padding.active {
+	border-color: $dark-green;
+	color: $white;
+	box-shadow: none;
+}
 .btn-danger.outlinerojo {
 	border: 2px solid $rojo;
 	color: $rojo;

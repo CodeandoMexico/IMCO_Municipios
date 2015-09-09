@@ -19,4 +19,5 @@ module ApplicationHelper
       content_tag :title, "#{base_title} | #{subtitle}"
     end
   end
+
 end

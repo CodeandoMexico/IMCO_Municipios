@@ -1,10 +1,13 @@
 .row.text-center
 	- if notice
-		.alert.alert-success
+		.alert.alert-success{:id => "alert-success"}
 			= notice
+			= javascript_tag "setInterval(function () {$('#alert-success').addClass('hide')}, 3000);"
 	-elsif error
-		.alert.alert-danger
+		.alert.alert-danger{:id => "alert-danger"}
 			= error
+			= javascript_tag "setInterval(function () {$('#alert-danger').addClass('hide')}, 3000);"
 	-elsif alert
-		.alert.alert-danger
+		.alert.alert-danger{:id => "alert-danger"}
 			= alert
+			= javascript_tag "setInterval(function () {$('#alert-danger').addClass('hide')}, 3000);"

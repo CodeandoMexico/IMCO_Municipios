@@ -2,7 +2,7 @@ class Line < ActiveRecord::Base
 
   belongs_to :city
 
-  has_many :users
+  has_many :business
   has_many :procedure_lines
   has_many :procedures, through: :procedure_lines
 

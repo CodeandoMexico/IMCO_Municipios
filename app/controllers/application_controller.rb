@@ -6,16 +6,21 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :store_location
   layout :layout_by_resource
- add_flash_types :error, :notice, :alert
- before_action :set_client_user_voice
+  add_flash_types :error, :notice, :alert
+  before_action :set_client_user_voice
+  helper_method :current_business, :current_businesses 
 
   def set_client_user_voice
     require 'uservoice-ruby'    
       unless envirement_validates
         client = UserVoice::Client.new(ENV['USERVOICE_SUBDOMAIN_NAME'], ENV['USERVOICE_API_KEY'], ENV['USERVOICE_API_SECRET'])
-         client.login_as_owner do |owner|
+        begin 
+          client.login_as_owner do |owner|
            user = owner.get("/api/v1/users/current")['user']
-         end
+          end
+        rescue SocketError 
+          puts "Sin conexión -UserVoice-" 
+        end 
       end
   end
 
@@ -86,14 +91,40 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
+  #Cambia el estado de todos los negocio a no preferente y solo el seleccionado tiene true
+  def set_business_used(business_id)
+    Business.where(user_id: current_user).each do |business|
+          business.using = false
+          business.save
+    end
+      business = Business.find(business_id)
+      business.using = true
+      business.save
 
+      redirect_to city_path(Business.find(business_id).city_id), notice: Business.find(business_id).name
+  end
+
+  #regresa el negocio activo
+  def current_business
+    business = Business.where(user_id: current_user, using: true)
+    unless business.empty?
+      return business.last
+    end
+      return nil
+  end
+
+  #regresa todos los negocios de un usuario
+  def current_businesses
+    Business.where(user_id: current_user)
+  end
+
+  private
   def admin_is_logged_in?
     authenticate_user! && current_user.admin?
   end
 
   def validaDatos(resource)
-    !resource.email.blank?&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
+    !resource.email.blank?#&&!resource.address.blank?&&!resource.name.blank?&&!resource.business_name.blank?&&!resource.operation_license.blank?
    end
 
    def envirement_validates

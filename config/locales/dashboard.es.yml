@@ -23,8 +23,9 @@ es:
       inspectores: Inspectores
       denuncia: Denuncias
       complaints_message: Denuncias totales
-      usere_total: Empresas registradas
-      user_news: Empresas nuevas
+      users_total: Empresarios registrados
+      business_total: Empresas registras
+      business_news: Empresas nuevas
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
       documents_until_to: Documentos próximos a vencer

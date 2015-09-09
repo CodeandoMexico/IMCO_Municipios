@@ -1,37 +1,37 @@
 .row
   .col-sm-12
-    %h1.page-header= @user.business_name
+    %h1.page-header= @business.name
 .row
   .panel.panel-default
     .panel-heading
       &nbsp;
       .pull-right
-        = link_to t('.licencia_de_operacion'), @user.operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
-        = link_to t('.licencia_uso_de_suelo'), @user.land_permission_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
+        = link_to t('.licencia_de_operacion'), @business.operation_license_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
+        = link_to t('.licencia_uso_de_suelo'), @business.land_permission_file.to_s, {class: 'btn btn-sm btn-success', :target => '_blank'}
     .panel-body
       %table{ class:'table table-striped table-bordered table-hover' }
         %tbody
           %tr
             %td= t('.name')
-            %td= truncate(@user.name, length: 70)
+            %td= truncate(@business.name, length: 70)
           %tr
             %td= t('.correo')
-            %td= truncate(@user.email, length: 70)
+            %td= truncate(User.find(@business.user_id).email, length: 70)
           %tr
             %td= t('.address')
-            %td= truncate(@user.address, length: 70)
+            %td= truncate(@business.address, length: 70)
           %tr
             %td= t('.phone')
-            %td= truncate(@user.phone, length: 70)
+            %td= truncate(@business.phone, length: 70)
           %tr
             %td= t('.schedule')
-            %td= truncate(@user.schedule, length: 70)
+            %td= truncate(@business.schedule, length: 70)
           %tr
             %td= t('.line')
-            %td= truncate(Line.find(@user.line_id).name, length: 70)
+            %td= truncate(Line.find(@business.line_id).name, length: 70)
           %tr
             %td= t('.operation_license')
-            %td= truncate(@user.operation_license, length: 70)
+            %td= truncate(@business.operation_license, length: 70)
           %tr
             %td= t('.ubicacion')
             %td
@@ -46,11 +46,11 @@
     handler = Gmaps.build('Google');
     handler.buildMap({ internal: {id: 'one_marker'}}, function(){
     marker = handler.addMarker({
-        lat: "#{@user.latitude.nil? ? 0 : @user.latitude}",
-        lng: "#{@user.longitude.nil? ? 0 : @user.longitude}"
+        lat: "#{@business.latitude.nil? ? 0 : @business.latitude}",
+        lng: "#{@business.longitude.nil? ? 0 : @business.longitude}"
       },{ draggable: false});
   });
-  handler.map.centerOn(["#{@user.latitude}", "#{@user.longitude}"]);
+  handler.map.centerOn(["#{@business.latitude}", "#{@business.longitude}"]);
   handler.getMap().setZoom(16);
   }
 

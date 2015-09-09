@@ -58,21 +58,104 @@
   background-color: #0d2456 \9;
 }
 
-.btn-twitter {
-  color: #ffffff;
+.btn-face {
+  color: #2b4b90 !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #1c95d0;
-  *background-color: #0271bf;
+  background-color: #ffffff;
+  *background-color: #ffffff;
+  background-image: -moz-linear-gradient(top, #2daddc, #2b4b90);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2daddc), to(#2b4b90));
+  background-image: -webkit-linear-gradient(top, #2daddc, #2b4b90);
+  background-image: -o-linear-gradient(top, #2daddc, #2b4b90);
+  background-image: linear-gradient(to bottom, #2daddc, #2b4b90);
+  background-repeat: repeat-x;
+  border-color: #2b4b90 #2b4b90 #014473;
+  /*border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2daddc', endColorstr='#ff0271bf', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border: 1px solid #2B4B90;
+}
+
+.btn-face:hover,
+.btn-face:focus,
+.btn-face:active,
+.btn-face.active,
+.btn-face.disabled,
+.btn-face[disabled] {
+  color: #ffffff !important;
+  background-color: #2b4b90;
+  *background-color: #2b4b90;
+  border-color: #2b4b90 #2b4b90 #014473;
+  border: 1px solid #2B4B90;
+
+}
+
+.btn-face:active,
+.btn-face.active {
+  background-color: #2b4b90 \9;
+  border-color: #2b4b90 #2b4b90 #014473;
+  color: #2b4b90 !important;
+}
+
+.border-face{
+   border: 1px solid #2B4B90 !important;
+}
+
+.btn-google-plus {
+  color: #9a2b1f !important;
+ /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);*/
+  background-color: #ffffff;
+  *background-color: #ffffff;
+  background-image: -moz-linear-gradient(top, #dd4b39, #c53727);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4b39), to(#c53727));
+  background-image: -webkit-linear-gradient(top, #dd4b39, #c53727);
+  background-image: -o-linear-gradient(top, #dd4b39, #c53727);
+  background-image: linear-gradient(to bottom, #dd4b39, #c53727);
+  background-repeat: repeat-x;
+  border-color: #c53727 #c53727 #85251a;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4b39', endColorstr='#ffc53727', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border: 1px solid #c53727;
+}
+
+.btn-google-plus:hover,
+.btn-google-plus:focus,
+.btn-google-plus:active,
+.btn-google-plus.active,
+.btn-google-plus.disabled,
+.btn-google-plus[disabled] {
+  color: #ffffff !important;
+  background-color: #b03123;
+  *background-color: #b03123;
+   border-color: #b03123 #b03123 #85251a;
+}
+
+.btn-google-plus:active,
+.btn-google-plus.active {
+  background-color: #9a2b1f \9;
+}
+
+.border-gmas{
+    border: 1px solid #9a2b1f !important;
+}
+
+
+
+.btn-twitter {
+  color: #0262a6 !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  *background-color: #ffffff;
   background-image: -moz-linear-gradient(top, #2daddc, #0271bf);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2daddc), to(#0271bf));
   background-image: -webkit-linear-gradient(top, #2daddc, #0271bf);
   background-image: -o-linear-gradient(top, #2daddc, #0271bf);
   background-image: linear-gradient(to bottom, #2daddc, #0271bf);
   background-repeat: repeat-x;
-  border-color: #0271bf #0271bf #014473;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: #0262a6 #0262a6 #014473;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2daddc', endColorstr='#ff0271bf', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border: 1px solid #0262a6;
 }
 
 .btn-twitter:hover,
@@ -81,14 +164,21 @@
 .btn-twitter.active,
 .btn-twitter.disabled,
 .btn-twitter[disabled] {
-  color: #ffffff;
-  background-color: #0271bf;
+  color: #ffffff !important;
+  background-color: #0262a6;
   *background-color: #0262a6;
+  border-color: #0262a6 #0262a6 #014473;
+
 }
 
 .btn-twitter:active,
 .btn-twitter.active {
   background-color: #01538d \9;
+  border-color: #0262a6 #0262a6 #014473;
+}
+
+.border-tw{
+    border: 1px solid #0262a6 !important;
 }
 
 .btn-github {
@@ -190,38 +280,7 @@
   background-color: #367595 \9;
 }
 
-.btn-google-plus {
-  color: #ffffff;
- /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);*/
-  background-color: #d34332;
-  *background-color: #c53727;
-  background-image: -moz-linear-gradient(top, #dd4b39, #c53727);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4b39), to(#c53727));
-  background-image: -webkit-linear-gradient(top, #dd4b39, #c53727);
-  background-image: -o-linear-gradient(top, #dd4b39, #c53727);
-  background-image: linear-gradient(to bottom, #dd4b39, #c53727);
-  background-repeat: repeat-x;
-  border-color: #c53727 #c53727 #85251a;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4b39', endColorstr='#ffc53727', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
 
-.btn-google-plus:hover,
-.btn-google-plus:focus,
-.btn-google-plus:active,
-.btn-google-plus.active,
-.btn-google-plus.disabled,
-.btn-google-plus[disabled] {
-  color: #ffffff;
-  background-color: #c53727;
-  *background-color: #b03123;
-}
-
-.btn-google-plus:active,
-.btn-google-plus.active {
-  background-color: #9a2b1f \9;
-}
 
 .btn-instagram {
   color: #ffffff;

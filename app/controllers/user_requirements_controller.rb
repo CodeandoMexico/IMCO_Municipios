@@ -22,6 +22,6 @@ class UserRequirementsController < ApplicationController
   private
 
   def user_requirements_params
-    params.require(:user_requirement).permit(:user_id, :requirement_id)
+    params.require(:user_requirement).permit(:business_id, :requirement_id)
   end
 end

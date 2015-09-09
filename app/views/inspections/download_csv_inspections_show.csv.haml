@@ -1,7 +1,7 @@
 - headers = [t('inspections.show.nombre'),t('inspections.show.subject'),t('inspections.show.period'),t('inspections.show.norm'),t('inspections.show.before_tips'),t('inspections.show.during_tips'),t('inspections.show.after_tips'),t('inspections.show.sanctions_tips')]
 = CSV.generate_line headers
 = CSV.generate_line([@inspection.name, @inspection.matter, @inspection.duration, @inspection.rule, @inspection.before,  @inspection.during, @inspection.after, @inspection.sanction ])
-Requisitos
+Requisitos:
 - if @inspection.requirements.any?
   - headers = [t('shared.requirements.name'),t('shared.requirements.description'),t('shared.requirements.path')]
   = CSV.generate_line headers

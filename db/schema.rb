@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827163849) do
+ActiveRecord::Schema.define(version: 20150908160743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: true do |t|
+    t.text     "name"
+    t.text     "address"
+    t.text     "phone"
+    t.text     "schedule"
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.string   "operation_license"
+    t.text     "operation_license_file"
+    t.text     "land_permission_file"
+    t.integer  "line_id"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "using",                  default: false
+  end
+
+  create_table "cat_twitters", force: true do |t|
+    t.text     "state"
+    t.text     "town"
+    t.text     "twitter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -154,7 +180,7 @@ ActiveRecord::Schema.define(version: 20150827163849) do
     t.date     "until_to"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "business_id"
     t.integer  "frequency"
     t.integer  "frequency_count"
   end
@@ -170,7 +196,7 @@ ActiveRecord::Schema.define(version: 20150827163849) do
 
   create_table "user_formation_steps", force: true do |t|
     t.integer  "formation_step_id"
-    t.integer  "user_id"
+    t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "line_id"
@@ -178,14 +204,14 @@ ActiveRecord::Schema.define(version: 20150827163849) do
   end
 
   create_table "user_procedures", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "business_id"
     t.integer  "procedure_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_requirements", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "business_id"
     t.integer  "requirement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -204,26 +230,15 @@ ActiveRecord::Schema.define(version: 20150827163849) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "city_id"
     t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "business_name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.text     "address"
-    t.string   "operation_license"
-    t.text     "operation_license_file"
-    t.text     "land_permission_file"
     t.string   "name"
-    t.text     "phone"
-    t.text     "schedule"
-    t.integer  "line_id"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.integer  "city_id"
   end
 
-  add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

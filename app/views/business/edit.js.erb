@@ -1,13 +1,13 @@
 $(".line_for_city").removeClass("hide");
-$('#user_line_id').empty();
-$('#user_line_id').trigger("chosen:updated");
-<%Line.order(:name).where(city_id: @city_select).select(:name, :id).each_with_index do |value, index|%>
+$('#business_line_id').empty();
+$('#business_line_id').trigger("chosen:updated");
+<% Line.order(:name).where(city_id: @city_select).select(:name, :id).each_with_index do |value, index|%>
   <%@array_line[index] = value.name.to_s%>
   <%@array_id[index] = value.id.to_s;%>
 <%end%>
 var array_line = <%= raw @array_line%>
 var array_id = <%= raw @array_id%>
-var sel = document.getElementById('user_line_id');
+var sel = document.getElementById('business_line_id');
 for(var i = 0; i < array_line.length; i++) {
   var opt = document.createElement('option');
   opt.innerHTML = array_line[i];
@@ -16,4 +16,4 @@ for(var i = 0; i < array_line.length; i++) {
   opt.data = array_line[i]
   sel.appendChild(opt);
 }
-$('#user_line_id').trigger("chosen:updated");
+$('#business_line_id').trigger("chosen:updated");

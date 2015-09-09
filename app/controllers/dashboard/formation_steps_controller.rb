@@ -6,7 +6,7 @@ module Dashboard
     layout 'dashboard'
 
     def index
-      @formation_steps = policy_scope(FormationStep).where(city_id: current_user.city).order(:name)
+      @formation_steps = policy_scope(FormationStep).where(city_id: current_user.city_id).order(:name)
        respond_to do |format|
         format.html
         format.csv { send_data @formation_steps.to_csv }
@@ -25,7 +25,7 @@ module Dashboard
 
     def create
       @formation_step = FormationStep.new(formation_steps_params)
-      @formation_step.city = current_user.city
+      @formation_step.city = current_user.city_id
       authorize @formation_step
 
       respond_to do |format|
