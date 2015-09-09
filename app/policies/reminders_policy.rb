@@ -12,7 +12,7 @@ class RemindersPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.id  == record.user.id
+    user.has_business?(record.business_id)
   end
 
   def update?
