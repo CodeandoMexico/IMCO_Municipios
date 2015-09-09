@@ -9,4 +9,5 @@ class Reminders < ActiveRecord::Base
    validates_presence_of :until_to, :message => 'Debes escribir la fecha de vencimiento', on:  :update
 
    belongs_to :user
+
 end
