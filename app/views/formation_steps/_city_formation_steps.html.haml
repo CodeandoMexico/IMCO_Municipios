@@ -17,9 +17,14 @@
         %tr{ 'ng-class'=> "{ 'done': procedures.items[#{procedure.id}] }"}
           .col-sm-1
             - if user_signed_in?
-              %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(business: current_business, procedure: procedure)}"}
-                %label{ style: 'font-weight: 400;' }
-                  %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'business_id': #{current_business.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
+              - if current_business.blank?
+                %td
+                  %label{ style: 'font-weight: 400;' }
+                    %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{edit_user_path(current_user)}\')"} &nbsp;
+              -else
+                %td{ 'ng-init'=> "procedures.items[#{procedure.id}] = #{UserProcedure.exists?(business: current_business, procedure: procedure)}"}
+                  %label{ style: 'font-weight: 400;' }
+                    %input{ type: 'checkbox', 'ng-model'=> "procedures.items[#{procedure.id}]", 'ng-click'=> "procedures.update({ 'done': procedures.items[#{procedure.id}], 'business_id': #{current_business.id}, 'procedure_id': #{procedure.id}, 'path': \'#{user_procedures_path}\'})"} &nbsp;
             - else
               %td
                 %label{ style: 'font-weight: 400;' }
