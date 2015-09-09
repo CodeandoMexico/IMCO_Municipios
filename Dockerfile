@@ -22,4 +22,6 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN chown -R app:app /home/app/minegocio
 RUN ln -sf /proc/self/fd /dev/
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN whenever --update-crontab && crontab -l
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp
