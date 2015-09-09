@@ -6,8 +6,8 @@ es:
       lines_of_work: Todos los giros de negocio
     new:
       iniciar_sesion: Iniciar sesión
-      iniciar_sesion_explicacion: Selecciona con que red social te gustaría iniciar sesión.
-      texto_explicativo: Regístrate e inicia sesión para, hacer quejas sobre inspecciones y estar informado sobre cambios en normatividad y vencimiento de tus permisos. No compartiremos tus datos con nadie.
+      iniciar_sesion_explicacion: Selecciona la red social con la que deseas iniciar sesión.
+      texto_explicativo: Regístrate e inicia sesión para hacer quejas sobre inspecciones y estar informado sobre cambios en normatividad y vencimiento de tus permisos. No compartiremos tus datos con nadie.
     edit:
       add_business: Panel de empresario
       correo: Correo

@@ -96,7 +96,7 @@ es:
   footer:
     municipio: Municipios
     acerca_de: Acerca de
-    aviso: Aviso de privacidad
+    aviso: Avíso de privacidad
     desarrollado: Desarrollado por el
     minegocio: Mi Negocio México - 2015.
     contacto: hola@minegocio.mx
@@ -282,7 +282,7 @@ es:
   business:
     form:
       edit_profile: Mi negocio
-      edit_profile_explicacion: Llena los datos con la información de tu negocio, estos te ayudaran a atender cualquier tipo de irregularidad de manera más rápida y a poder tener un contacto más cercano con tu municipio.
+      edit_profile_explicacion: Llena los datos con la información de tu negocio, así podrás  anunciarte, tener contacto directo con tu municipio, y aclar cualquier irregularidad sobre trámites y servicios de manera más rápida.
       name: Nombre*
       correo: Correo*
       business_name: Nombre del negocio*
@@ -298,7 +298,7 @@ es:
       schedule: Horario
       obligatorios: '* Son obligatorios'
       optional: (opcional)
-      tooltip_telefono: La gente podrá ver el teléfono de tu negocio y así contactarte con mas clientes.
+      tooltip_telefono: La gente podrá ver el teléfono de tu negocio y así contactarte con más clientes.
       tooltip_horario: La gente podrá ver el horario de tu negocio y así saber a que hora visitarlo.
       tooltip_folio: El folio de tu licencia de operación para poder validrte como empresa.
   activerecord:
