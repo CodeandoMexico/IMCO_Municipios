@@ -11,7 +11,7 @@ es:
       send_to_business_subject: Denuncia enviada correctamente
       send_to_city_subject: Denuncia de inspección recibida
     reminders:
-      send_to_bussines_reminder_subject: Un documento de tu negocio está por vencer
+      send_to_bussines_reminder_subject: Recordatorio de documento
   views:
     pagination:
       first: "&laquo; Primero"

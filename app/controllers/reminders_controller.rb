@@ -73,8 +73,9 @@ class RemindersController < ApplicationController
 
 def ordenate_date(date)
     fecha = date.split('/')
+    puts fecha
     if fecha.length == 3
-      return (fecha[2]+"/"+fecha[0]+"/"+fecha[1]).to_date 
+      return (fecha[2]+"/"+fecha[1]+"/"+fecha[0]).to_date 
     elsif fecha.length == 1
           fecha = date.split('-')
         if fecha.length == 3
