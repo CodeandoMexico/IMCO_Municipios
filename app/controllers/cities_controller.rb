@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   add_breadcrumb "Inicio", :root_path
 
   def show
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:id)
     add_breadcrumb @city.name 
   end
@@ -13,12 +13,12 @@ class CitiesController < ApplicationController
   end
 
   def about
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:city_id)
   end
 
   def aviso
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:city_id)
   end
 

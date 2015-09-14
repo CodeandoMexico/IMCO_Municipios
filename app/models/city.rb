@@ -9,4 +9,7 @@ class City < ActiveRecord::Base
   mount_uploader :construction_file, PdfUploader
   mount_uploader :land_file, PdfUploader
   mount_uploader :business_file, PdfUploader
+
+
+  scope :is_activated, -> { where(activated: true) }
 end

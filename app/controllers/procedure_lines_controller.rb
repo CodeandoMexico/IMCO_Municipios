@@ -17,7 +17,7 @@ class ProcedureLinesController < ApplicationController
     end
     
     valores  if params[:get]
-    @cities = City.all
+    @cities = City.is_activated
   end
 
  def show

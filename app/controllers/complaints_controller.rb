@@ -58,7 +58,7 @@ end
 
   def set_cities
     @city = City.find(params[:city_id])
-    @cities = City.all
+    @cities = City.is_activated
     @inspectors = Inspector.by_city(@city)
   end
 

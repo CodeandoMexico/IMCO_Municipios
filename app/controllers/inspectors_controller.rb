@@ -4,7 +4,7 @@ class InspectorsController < ApplicationController
 
   add_breadcrumb "Inicio", :root_path
   def index
-   @cities = City.all
+   @cities = City.is_activated
    if params[:q]
      @busqueda =Inspector.search_by_city(@city, params[:q])
      @inspectors = @busqueda.page(params[:page]).per(6)
@@ -18,7 +18,7 @@ class InspectorsController < ApplicationController
  end
 
  def show
-   @cities = City.all
+   @cities = City.is_activated
    @dependency = Dependency.by_city(@city)
    add_breadcrumb @city.name ,city_path(@city)
    add_breadcrumb "Inspectores", city_inspectors_path(@city)
