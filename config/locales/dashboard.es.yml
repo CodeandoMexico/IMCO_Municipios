@@ -30,6 +30,7 @@ es:
       reminders_uniq: Usuarios con recordatorios
       documents_until_to: Documentos próximos a vencer
       titulo: Panel de administración
+      load_datasets: Carga de datasets
     contacts:
       index:
         all_profile: Contacto municipio %{city}

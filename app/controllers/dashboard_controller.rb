@@ -43,4 +43,8 @@ class DashboardController < ApplicationController
     ]
   end
 
+  def upload
+    @city = City.find(current_user.city_id)
+  end
+
 end

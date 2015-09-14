@@ -1,42 +1,49 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart"></i> Registros por dataset
+    <div class= "row">
+        <div class="col-md-6">
+            <i class="fa fa-bar-chart"></i> Registros por dataset
+        </div>
+        <div class="col-md-6 text-right">
+            <%=link_to t('dashboard.show.load_datasets'), upload_dashboard_path, :class => 'btn btn-sm btn-success outlineverde'%>
+        </div>
+    </div>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
         <div class="list-group">
             <div class="list-group-item">
-                <%=t('.dependencia')%>
+                <%=t('dashboard.show.dependencia')%>
                 <span class="pull-right text-muted small"><em><%= @dependencies.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                 <%=t('.giros')%>
+                 <%=t('dashboard.show.giros')%>
                 <span class="pull-right text-muted small"><em><%= @lines.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                <%=t('.apertura')%>
+                <%=t('dashboard.show.apertura')%>
                 <span class="pull-right text-muted small"><em><%= @formation_steps.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                 <%=t('.requerimientos')%>
+                 <%=t('dashboard.show.requerimientos')%>
                 <span class="pull-right text-muted small"><em><%= @requirements.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                <%=t('.tramites')%>
+                <%=t('dashboard.show.tramites')%>
                 <span class="pull-right text-muted small"><em><%= @procedures.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                <%=t('.inspecciones')%>
+                <%=t('dashboard.show.inspecciones')%>
                 <span class="pull-right text-muted small"><em><%= @inspections.count %></em>
                 </span>
             </div>
             <div class="list-group-item">
-                <%=t('.inspectores')%>
+                <%=t('dashboard.show.inspectores')%>
                 <span class="pull-right text-muted small"><em><%= @inspectors.count %></em>
                 </span>
             </div>
