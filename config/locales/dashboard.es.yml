@@ -16,6 +16,7 @@ es:
     upload:
       titulo: Centro de datos
       download: Descargar csv's
+      save: Subir Datasets
       subtitle:
         download: Descargar datasets
         upload: Subir datasets

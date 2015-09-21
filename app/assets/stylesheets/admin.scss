@@ -57,3 +57,10 @@
 .panel-gray a {
   color: $grey-footer;
 }
+.panel-footer {
+  padding:20px 15px !important;
+  background-color: whitesmoke;
+  border-top: 1px solid #dddddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}

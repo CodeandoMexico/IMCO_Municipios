@@ -18,45 +18,45 @@
   .row
     .panel.panel-default
       .panel-heading
-        =t('.subtitle.upload')
+        =#t('.subtitle.upload')
       .panel-body
         %table{ class:'table table-striped table-bordered table-hover' }
           %tbody
             %tr
-              %td= t('.aviso')
+              %td= t('.dependencies')
               %td
-                %span= link_to(@city.privacy_file_identifier, @city.privacy_file_url, target: "_blank") if @city.privacy_file_url
-                = f.file_field :privacy_file
+                %span= link_to(@city.dependency_file_identifier, @city.dependency_file_url, target: "_blank") if @city.dependency_file_url
+                = f.file_field :dependency_file
             %tr
-              %td= t('.construction')
+              %td= t('.lines')
               %td
-                %span= link_to(@city.construction_file_identifier, @city.construction_file_url, target: "_blank") if @city.construction_file_url
-                = f.file_field :construction_file
+                %span= link_to(@city.line_file_identifier, @city.line_file_url, target: "_blank") if @city.line_file_url
+                = f.file_field :line_file
             %tr
-              %td= t('.land')
+              %td= t('.formation_steps')
               %td
-                %span= link_to(@city.land_file_identifier, @city.land_file_url, target: "_blank") if @city.land_file_url
-                = f.file_field :land_file
+                %span= link_to(@city.formation_step_file_identifier, @city.formation_step_file_url, target: "_blank") if @city.formation_step_file_url
+                = f.file_field :formation_step_file
             %tr
-              %td= t('.business')
+              %td= t('.requirements')
               %td
-                %span= link_to(@city.business_file_identifier, @city.business_file_url, target: "_blank") if @city.business_file_url
-                = f.file_field :business_file
+                %span= link_to(@city.requirement_file_identifier, @city.requirement_file_url, target: "_blank") if @city.requirement_file_url
+                = f.file_field :requirement_file
             %tr
-              %td= t('.business')
+              %td= t('.procedures')
               %td
-                %span= link_to(@city.business_file_identifier, @city.business_file_url, target: "_blank") if @city.business_file_url
-                = f.file_field :business_file
+                %span= link_to(@city.procedure_file_identifier, @city.procedure_file_url, target: "_blank") if @city.procedure_file_url
+                = f.file_field :procedure_file
             %tr
-              %td= t('.business')
+              %td= t('.inspections')
               %td
-                %span= link_to(@city.business_file_identifier, @city.business_file_url, target: "_blank") if @city.business_file_url
-                = f.file_field :business_file
+                %span= link_to(@city.inspection_file_identifier, @city.inspection_file_url, target: "_blank") if @city.inspection_file_url
+                = f.file_field :inspection_file
             %tr
-              %td= t('.business')
+              %td= t('.inspectors')
               %td
-                %span= link_to(@city.business_file_identifier, @city.business_file_url, target: "_blank") if @city.business_file_url
-                = f.file_field :business_file
+                %span= link_to(@city.inspector_file_identifier, @city.inspector_file_url, target: "_blank") if @city.inspector_file_url
+                = f.file_field :inspector_file
       .panel-footer
         &nbsp;
         .pull-right
