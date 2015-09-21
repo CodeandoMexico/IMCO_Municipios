@@ -3,7 +3,7 @@
     %h1.page-header= t('.titulo')
 
 = form_for @city , html: { multipart: true , class: 'form-horizontal' } do |f|
-  .h1= t('title.download',:city => @city.name)
+  .h1= t('.title.download',:city => @city.name)
   .row
     .panel.panel-default
       .panel-heading
@@ -12,9 +12,9 @@
         %table{ class:'table table-striped table-bordered table-hover' }
           %tbody
             %tr
-              = f.submit t('.download'), :class => 'btn btn-sm btn-success outlineverde'
+              = link_to t('.download'),"/NombreDelMunicipio.zip" , :class => 'btn btn-sm btn-success outlineverde'
 
-  .h2= t('.upload')
+  .h2= t('.title.upload')
   .row
     .panel.panel-default
       .panel-heading

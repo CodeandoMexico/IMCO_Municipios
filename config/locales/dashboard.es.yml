@@ -13,6 +13,15 @@ es:
       titulo: Panel de administración
       business: Empresas
       open_procedure: Trámites activos
+    upload:
+      titulo: Centro de datos
+      download: Descargar csv's
+      subtitle:
+        download: Descargar datasets
+        upload: Subir datasets
+      title: 
+        download: Descargar
+        upload: Subir
     show:
       dependencias: Dependencias
       giros: Giros
