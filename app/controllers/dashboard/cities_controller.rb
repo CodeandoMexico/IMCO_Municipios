@@ -7,10 +7,11 @@ module Dashboard
       file_dependency = params[:post][:dependency_file]
       file_lines = params[:post][:line_file]
       file_inspectors = params[:post][:inspector_file]
+      file_requirements = params[:post][:requirement_file]
 
       delete_all_data
-      
-      if validate_dependencies(file_dependency) && validate_lines(file_lines) && validate_inspectors(file_inspectors)
+
+      if validate_dependencies(file_dependency) && validate_lines(file_lines) && validate_inspectors(file_inspectors)&& validate_requirements(file_requirements)
 
       else
         puts '********** Revice los errores marcados, NINGUN CAMBIO FUE EFECTUADO **********'
@@ -33,12 +34,13 @@ module Dashboard
             city = City.find_by(name: row.to_hash['municipio'])
             name = row.to_hash['nombre']
             if city_validate?(city)
-              if row_does_not_exist_in_the_db(Dependency, { name: name, city: city })
-                Dependency.create(name: name, city: city)
+              row_values = { name: name, city: city }
+              if row_does_not_exist_in_the_db(Dependency, row_values)
+                Dependency.create!(row_values)
                 puts '.'
                 number_of_successfully_created_rows += 1
               else
-                puts "********** DATO REPETIDO será omitido #{name} | City #{city} **********"
+                puts "********** DATO REPETIDO será omitido #{row_values} **********"
               end
             else
               puts "********** Municipio incorrecto NO TIENES PERMISO **********"
@@ -66,12 +68,13 @@ module Dashboard
           name = row.to_hash['nombre']
           description = row.to_hash['descripcion']
           if city_validate?(city)
-            if row_does_not_exist_in_the_db(Line, { name: name, city: city })
-              Line.create(name: name, description: description , city: city)
+            row_values = { name: name, city: city }
+            if row_does_not_exist_in_the_db(Line, row_values)
+              Line.create!(row_values)
               puts '.'
               number_of_successfully_created_rows += 1
             else
-              puts "********** DATO REPETIDO será omitido #{name} | City #{city} **********"
+              puts "********** DATO REPETIDO será omitido #{row_values}  **********"
             end
           else
             puts "********** Municipio incorrecto NO TIENES PERMISO **********"
@@ -103,12 +106,13 @@ module Dashboard
           contact = row.to_hash['contacto']
           photo = row.to_hash['foto']
           unless dependency.blank?
-            if  row_does_not_exist_in_the_db(Inspector, {name: name, dependency: dependency, matter: subject})
-              Inspector.create(dependency: dependency, name: name, validity: valid_through, matter: subject, supervisor: supervisor, photo: photo, contact: contact )
+            row_values = {dependency: dependency, name: name, validity: valid_through, matter: subject, supervisor: supervisor, photo: photo, contact: contact}
+            if  row_does_not_exist_in_the_db(Inspector, row_values)
+              Inspector.create!(row_values)
               puts '.'
               number_of_successfully_created_rows += 1
             else
-              puts "********** DATO REPETIDO será omitido #{name} | City #{city} **********"
+              puts "********** DATO REPETIDO será omitido #{row_values} **********"
             end
           else
             puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
@@ -117,6 +121,43 @@ module Dashboard
         end
         puts "Número satisfactorio de registros creados para (#{file_inspectors.original_filename}): #{number_of_successfully_created_rows}"
         if number_of_successfully_created_rows > 0
+          return true
+        end
+      return false
+      end
+    end
+
+
+
+    def validate_requirements(file_requirements)
+      puts '"********** REQUISITOS **********'
+      xml_contents =  load_file(file_requirements)
+      if csv_empty?(xml_contents, "requirement") && !xml_contents.nil?
+        puts "********** error al cargar CSV **********"
+      else
+      number_of_successfully_created_rows = 0
+      CSV.parse(xml_contents, :headers => true) do |row|
+        city = City.find_by(name: row.to_hash['municipio'])
+        name = row.to_hash['nombre']
+        description = row.to_hash['descripcion']
+        path = row.to_hash['path']
+
+        row_values = { name: name, city: city, description: description, path: path }
+        if city_validate?(city)
+          if row_does_not_exist_in_the_db(Requirement, row_values)
+          Requirement.create!(row_values)
+          puts '.'
+          number_of_successfully_created_rows += 1
+          else
+              puts "********** DATO REPETIDO será omitido #{row_values}  **********"
+          end
+        else
+          puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+          return false
+        end
+      end
+      puts "Número satisfactorio de registros creados para (#{file_requirements.original_filename}): #{number_of_successfully_created_rows}"
+      if number_of_successfully_created_rows > 0
           return true
         end
       return false
@@ -172,13 +213,21 @@ module Dashboard
     def delete_all_data
       inspector = Inspector.by_city(City.find(@city))
       unless inspector.blank?
-        inspector.delete_all
+        inspector.each do |inspector|
+          inspector.delete
+        end 
       end
       puts '********** Inspector borrados **********'
+
+
       Dependency.where(city_id: @city).delete_all
       puts '********** Dependencias borradas **********' 
+      
       Line.where(city_id: @city).delete_all
       puts '********** Giros borrados **********' 
+
+      Requirement.where(city_id: @city).delete_all
+      puts '********** Requisitos borrados **********' 
  
     end
 
@@ -189,11 +238,14 @@ module Dashboard
           puts '********** validando cabeceras dependencia **********'
           return headers[0].include?('nombre') && headers[0].include?('municipio')
         when 'line'
-          '********** validando cabeceras dependencia **********'
+          '********** validando cabeceras giros **********'
           return headers[0].include?('nombre') && headers[0].include?('municipio') && headers[0].include?('descripcion')
         when 'inspector'
-          '********** validando cabeceras dependencia **********'
+          '********** validando cabeceras inspectores **********'
           return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('vigencia') && headers[0].include?('materia') && headers[0].include?('supervisor') && headers[0].include?('contacto') && headers[0].include?('foto')
+        when 'requirement'
+          '********** validando cabeceras Requisitos **********'
+          return headers[0].include?('nombre') && headers[0].include?('municipio') && headers[0].include?('descripcion') && headers[0].include?('path')
         end  
         return false
     end
