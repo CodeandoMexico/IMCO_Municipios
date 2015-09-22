@@ -25,6 +25,12 @@ class CitiesController < ApplicationController
   def edit
   end
 
+
+  def csv_analitics
+    
+  end
+
+
   def create
     @city = City.new(city_params)
     respond_to do |format|

@@ -1,8 +1,7 @@
 .row
   .col-sm-12
     %h1.page-header= t('.titulo')
-
-= form_for @city , html: { multipart: true , class: 'form-horizontal' } do |f|
+= form_for @city, as: :post, url: csv_analitics_dashboard_cities_path , html: { multipart: true , class: 'form-horizontal' } do |f|
   .h1= t('.title.download',:city => @city.name)
   .row
     .panel.panel-default
