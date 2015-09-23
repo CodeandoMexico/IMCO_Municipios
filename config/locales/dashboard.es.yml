@@ -18,8 +18,8 @@ es:
       download: Descargar csv's
       save: Subir Datasets
       subtitle:
-        download: Descargar datasets
-        upload: Subir datasets
+        download: Descargar datasets muestra
+        upload: Esta información remplazará y por tanto eliminará la información anterior
       title: 
         download: Descargar
         upload: Subir
