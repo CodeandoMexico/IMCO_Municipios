@@ -4,7 +4,8 @@ module CsvUploads
     puts '"********** DEPENDENCIAS "**********'
     xml_contents =  load_file(file_dependency)
     if csv_empty?(xml_contents, "Dependency") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV  dependencia**********"
+      $errors << 'Error al cargar el csv DEPENDENCIAS'
       return false
     else
       number_of_successfully_created_rows = 0
@@ -15,17 +16,19 @@ module CsvUploads
             row_values = { name: name, city: city }
             if row_does_not_exist_in_the_db(Dependency, row_values)
               Dependency.create!(row_values)
-              puts '.'
               number_of_successfully_created_rows += 1
             else
-              puts "********** DATO REPETIDO será omitido #{row_values} **********"
+              #puts "********** DATO REPETIDO es omitido #{row_values} **********"
+              $warnings << "DATO REPETIDO  en DEPENDENCIAS es omitido #{row_values}"
             end
           else
-            puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+            #puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+            $errors << "Municipio incorrecto NO TIENES PERMISO"
             return false
           end
         end
-        puts "********** Número satisfactorio de registros creados para (#{file_dependency.original_filename}): #{number_of_successfully_created_rows} **********"
+        #puts "********** Número satisfactorio de registros creados para (#{file_dependency.original_filename}): #{number_of_successfully_created_rows} **********"
+        $success << "Número satisfactorio de registros creados para (#{file_dependency.original_filename}): #{number_of_successfully_created_rows}"
         if number_of_successfully_created_rows > 0
           return true
         end
@@ -38,7 +41,8 @@ module CsvUploads
     puts '"********** GIROS "**********'
     xml_contents =  load_file(file_lines)
     if csv_empty?(xml_contents, "line") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv GIROS"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -50,17 +54,19 @@ module CsvUploads
           row_values = { name: name, city: city }
           if row_does_not_exist_in_the_db(Line, row_values)
             Line.create!(row_values)
-            puts '.'
             number_of_successfully_created_rows += 1
           else
-            puts "********** DATO REPETIDO será omitido #{row_values}  **********"
+            #puts "********** DATO REPETIDO es omitido #{row_values}  **********"
+            $warnings << "DATO REPETIDO en GIROS es omitido #{row_values}"
           end
         else
-          puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+          #puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+          $errors << "Municipio incorrecto NO TIENES PERMISO"
           return false
         end
       end
-      puts "********** Número satisfactorio de registros creados para (#{file_lines.original_filename}): #{number_of_successfully_created_rows} **********"
+      #puts "********** Número satisfactorio de registros creados para (#{file_lines.original_filename}): #{number_of_successfully_created_rows} **********"
+      $success << "Número satisfactorio de registros creados para (#{file_lines.original_filename}): #{number_of_successfully_created_rows}"
       if number_of_successfully_created_rows > 0
         return true
       end
@@ -73,7 +79,8 @@ module CsvUploads
     puts '"********** INSPECTORES **********'
     xml_contents =  load_file(file_inspectors)
     if csv_empty?(xml_contents, "inspector") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv INSPECTORES"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -89,17 +96,19 @@ module CsvUploads
           row_values = {dependency: dependency, name: name, validity: valid_through, matter: subject, supervisor: supervisor, photo: photo, contact: contact}
           if  row_does_not_exist_in_the_db(Inspector, row_values)
             Inspector.create!(row_values)
-            puts '.'
             number_of_successfully_created_rows += 1
           else
-            puts "********** DATO REPETIDO será omitido #{row_values} **********"
+            #puts "********** DATO REPETIDO es omitido #{row_values} **********"
+            $warnings << "DATO REPETIDO en INSPECTORES es omitido #{row_values}"
           end
         else
-          puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          #puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          $errors << "Una o más dependencias no coinciden en INSPECTORES, porfavor revisalos para continuar"
           return false
         end
       end
-      puts "********** Número satisfactorio de registros creados para (#{file_inspectors.original_filename}): #{number_of_successfully_created_rows} **********"
+      #puts "********** Número satisfactorio de registros creados para (#{file_inspectors.original_filename}): #{number_of_successfully_created_rows} **********"
+      $success << " Número satisfactorio de registros creados para (#{file_inspectors.original_filename}): #{number_of_successfully_created_rows}"
       if number_of_successfully_created_rows > 0
         return true
       end
@@ -113,7 +122,8 @@ module CsvUploads
     puts '"********** REQUISITOS **********'
     xml_contents =  load_file(file_requirements)
     if csv_empty?(xml_contents, "requirement") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv REQUISITOS"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -127,17 +137,17 @@ module CsvUploads
         if city_validate?(city,current_user)
           if row_does_not_exist_in_the_db(Requirement, row_values)
             Requirement.create!(row_values)
-            puts '.'
             number_of_successfully_created_rows += 1
           else
-            puts "********** DATO REPETIDO será omitido #{row_values}  **********"
+            $warnings << "DATO REPETIDO en REQUERIMIENTOS es omitido #{row_values}"
           end
         else
-          puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+          $errors << "Municipio incorrecto NO TIENES PERMISO"
           return false
         end
       end
-      puts "********** Número satisfactorio de registros creados para (#{file_requirements.original_filename}): #{number_of_successfully_created_rows} **********"
+      #puts "********** Número satisfactorio de registros creados para (#{file_requirements.original_filename}): #{number_of_successfully_created_rows} **********"
+      $success << "Número satisfactorio de registros creados para (#{file_requirements.original_filename}): #{number_of_successfully_created_rows}"
       if number_of_successfully_created_rows > 0
           return true
         end
@@ -150,7 +160,8 @@ module CsvUploads
     puts '"********** INSPECCIONES **********'
     xml_contents =  load_file(file_inspections)
     if csv_empty?(xml_contents, "inspection") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv INSPECCIONES"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -177,34 +188,37 @@ module CsvUploads
               unless Line.where(name: giro, city_id: city).blank?
                 InspectionLine.create!(inspection_id: inspection_created.id, line_id: Line.where(name: giro, city_id: city).first.id)
                 number_of_successfully_created_giros += 1
-                puts 'InspectionLine .'
               else
-                puts "********** El giro: #{giro} no coincide con ninguno del dataset GIRO **********"
+                #puts "********** El giro: #{giro} no coincide con ninguno del dataset GIRO **********"
+                $warnings << "El giro: #{giro} no coincide con ninguno del dataset GIRO, es omitido"
               end
             end
-              puts  "********** #{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros} **********"
-
+              #puts "********** #{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros} **********"
+              $success << "#{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros}"
               number_of_successfully_created_requerimientos = 0
               requerimientos.split('; ').each do |requisito|
                 unless Requirement.where(name: requisito, city_id: city).blank?
                   InspectionRequirement.create!(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: requisito,city_id: city).first.id)
                   number_of_successfully_created_requerimientos += 1
-                  puts 'InspectionRequirement .'
                 else
-                  puts "********** El requisito: #{requisito} no coincide con ninguno del dataset Requisito **********"
+                  #puts "********** El requisito: #{requisito} no coincide con ninguno del dataset Requisito **********"
+                  $warnings << "El requisito: #{requisito} no coincide con ninguno del dataset Requisito, es omitido"
                 end
               end
-              puts "********** #{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos} **********"
+              #puts "********** #{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos} **********"
+              $success << "#{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
               number_of_successfully_created_rows  += 1
           else
-            puts "********** DATO REPETIDO será omitido #{row_values} **********"
+            $warnings << "DATO REPETIDO en INSPECCIONES es omitido #{row_values}"
           end
         else
-          puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          #puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          $errors << "Una o más dependencias  en INSPECCIONES no coinciden, porfavor revisalos para continuar"
           return false
         end 
       end
-      puts "********** Número satisfactorio de registros creados para (#{file_inspections.original_filename}): #{number_of_successfully_created_rows} **********"
+      #puts "********** Número satisfactorio de registros creados para (#{file_inspections.original_filename}): #{number_of_successfully_created_rows} **********"
+      $success << "Número satisfactorio de registros creados para (#{file_inspections.original_filename}): #{number_of_successfully_created_rows}"
       if number_of_successfully_created_rows > 0
         return true
       end
@@ -217,7 +231,8 @@ module CsvUploads
     puts '"********** TRAMITES DE APERTURA **********'
     xml_contents =  load_file(file_formation_steps)
     if csv_empty?(xml_contents, "formation_steps") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv TRÁMITES DE APERTURA"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -234,16 +249,16 @@ module CsvUploads
         if row_does_not_exist_in_the_db(FormationStep, row_values)
           FormationStep.create!(row_values)
           number_of_successfully_created_rows += 1
-          puts 'FormationStep .'
         else
-            puts "********** DATO REPETIDO será omitido #{row_values}  **********"
+          $warnings << "DATO REPETIDO en TRÁMITES DE APERTURA es omitido #{row_values}"
         end
       else
-        puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+        $errors << "Municipio incorrecto NO TIENES PERMISO"
         return false
       end
     end
-    puts "********** Número satisfactorio de registros creados para (#{file_formation_steps.original_filename}): #{number_of_successfully_created_rows} **********"
+    #puts "********** Número satisfactorio de registros creados para (#{file_formation_steps.original_filename}): #{number_of_successfully_created_rows} **********"
+    $success << "Número satisfactorio de registros creados para (#{file_formation_steps.original_filename}): #{number_of_successfully_created_rows}"
     if number_of_successfully_created_rows > 0
       return true
     end
@@ -257,7 +272,8 @@ module CsvUploads
     puts '"********** TRAMITES **********'
     xml_contents =  load_file(file_procedures)
     if csv_empty?(xml_contents, "procedures") && !xml_contents.nil?
-      puts "********** error al cargar CSV **********"
+      #puts "********** error al cargar CSV **********"
+      $errors << "error al cargar csv TRÁMITES"
       return false
     else
       number_of_successfully_created_rows = 0
@@ -284,33 +300,35 @@ module CsvUploads
               unless Line.where(name: giro, city_id: city).blank?
                 ProcedureLine.create(procedure_id: procedure_created.id, line_id: Line.where(name: giro, city_id: city).first.id)
                 number_of_successfully_created_giros += 1
-                puts 'ProcedureLine .'
               else
-                puts "********** El giro: #{giro} no coincide con ninguno del dataset GIRO **********"
+                $warnings << "El giro: #{giro} no coincide con ninguno del dataset GIRO es omitido"
               end
             end
-            puts  "#{procedure_created.name} tiene Giros: #{number_of_successfully_created_giros}"
-          
+            #puts  "#{procedure_created.name} tiene Giros: #{number_of_successfully_created_giros}"
+            $success << "#{procedure_created.name} tiene Giros: #{number_of_successfully_created_giros}"
             number_of_successfully_created_requerimientos = 0
             tramites.split('; ').each do |requisito|
               unless Requirement.where(name: requisito, city_id: city).blank?
                 ProcedureRequirement.create(procedure_id: procedure_created.id, requirement_id: Requirement.where(name: requisito, city_id: city).first.id)
                 number_of_successfully_created_requerimientos += 1
-                puts 'ProcedureRequirement .'
+              else
+                $warnings << "El requisito: #{requisito} no coincide con ninguno del dataset Requisito, es omitido"
               end
             end
-            puts "#{procedure_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
-    
+            #puts "#{procedure_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
+            $success << "#{procedure_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}"
             number_of_successfully_created_rows +=  1
           else
-            puts "********** DATO REPETIDO será omitido #{row_values} **********"
+            $warnings << "DATO REPETIDO en TRAMITES es omitido #{row_values}"
           end
         else
-          puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          #puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+          $errors << "Una o más dependencias  en INSPECCIONES no coinciden, porfavor revisalos para continuar"
           return false
         end 
       end
-      puts "********** Número satisfactorio de registros creados para (#{file_procedures.original_filename}): #{number_of_successfully_created_rows} **********"
+      #puts "********** Número satisfactorio de registros creados para (#{file_procedures.original_filename}): #{number_of_successfully_created_rows} **********"
+      $success << "Número satisfactorio de registros creados para (#{file_procedures.original_filename}): #{number_of_successfully_created_rows}"
       if number_of_successfully_created_rows > 0
         return true
       end
@@ -322,11 +340,13 @@ module CsvUploads
 
   def self.csv_empty?(file, name)
     if CSV.new(file, headers: :first_row).to_a.empty?
-      puts "********** CSV esta vacio **********"
+      #puts "********** CSV esta vacio **********"
+      $errors << "El csv referente a #{file.class.name} están vacios"
       return true
     else
       unless has_headers?(file,name)
-        puts "********** CSV no tiene las cabeceras correctas **********"
+        $errors << "El csv referente a #{file.class.name} no tienen las cabeceras correctas"
+        #puts "********** CSV no tiene las cabeceras correctas **********"
         return  true
       else
         return false
@@ -351,7 +371,8 @@ module CsvUploads
     elsif file.respond_to?(:path)
       xml_contents = File.read(file.path)
     else
-      puts "********** El archivo de dependencias está incorrecto: #{file.class.name}: #{file.inspect} **********"
+      #puts "********** El archivo de dependencias está incorrecto: #{file.class.name}: #{file.inspect} **********"
+      $errors << "El archivo #{file.class.name} está incorrecto: #{file.inspect}"
     end
     return xml_contents
   end
@@ -395,6 +416,7 @@ module CsvUploads
     FormationStep.where(city_id: city).delete_all
     puts '********** Tramites apertura borrados **********' 
 
+    $success << "Base de datos borrada satisfactoriamente"
   end
 
 

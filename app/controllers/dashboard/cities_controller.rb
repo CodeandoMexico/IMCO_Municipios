@@ -1,5 +1,6 @@
 module Dashboard
   class CitiesController < ApplicationController
+
     before_filter :set_city
     layout 'dashboard'
 
@@ -25,15 +26,24 @@ module Dashboard
             CsvUploads.validate_formation_steps(file_formation_steps,current_user) &&
             CsvUploads.validate_procedures(file_procedures,@city)
 
+            puts '***************'
+            puts $errors.size
+            puts $warnings.size
+            puts $success.size
+
             redirect_to upload_dashboard_path,  notice:  "Datasets cargados con éxito"
+
           else
             CsvUploads.delete_all_data(@city)
             redirect_to upload_dashboard_path,  error:  "Revice los errores marcados, NINGUN CAMBIO FUE EFECTUADO"
           end
+        else
+          redirect_to upload_dashboard_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
         end
+      else
+        redirect_to upload_dashboard_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
       end
 
-        redirect_to upload_dashboard_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
     end
 
 
@@ -41,6 +51,9 @@ module Dashboard
     private
 
     def set_city
+      $errors = []
+      $warnings = []
+      $success = []
       @city ||= City.find(current_user.city_id)
     end
 
