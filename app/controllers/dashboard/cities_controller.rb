@@ -9,11 +9,18 @@ module Dashboard
       file_inspectors = params[:post][:inspector_file]
       file_requirements = params[:post][:requirement_file]
       file_inspections = params[:post][:inspection_file]
+      file_formation_steps = params[:post][:formation_step_file]
 
       delete_all_data
 
-      if validate_dependencies(file_dependency) && validate_lines(file_lines) && validate_inspectors(file_inspectors) && validate_requirements(file_requirements) && validate_inspections(file_inspections)
+      if validate_dependencies(file_dependency) && 
+        validate_lines(file_lines) && 
+        validate_inspectors(file_inspectors) && 
+        validate_requirements(file_requirements) && 
+        validate_inspections(file_inspections) && 
+        validate_formation_steps(file_formation_steps)
 
+        puts '********** Datasets cargados con éxito **********'
       else
         puts '********** Revice los errores marcados, NINGUN CAMBIO FUE EFECTUADO **********'
         delete_all_data
@@ -238,6 +245,45 @@ module Dashboard
     end
 
 
+    def validate_formation_steps(file_formation_steps)
+      puts '"********** TRAMITES DE APERTURA **********'
+      xml_contents =  load_file(file_formation_steps)
+      if csv_empty?(xml_contents, "formation_steps") && !xml_contents.nil?
+        puts "********** error al cargar CSV **********"
+        return false
+      else
+        number_of_successfully_created_rows = 0
+        CSV.parse(xml_contents, :headers => true) do |row|
+        city = City.find_by(name: row.to_hash['municipio'])
+        name = row.to_hash['nombre']
+        description = row.to_hash['descripcion']
+        path = row.to_hash['path']
+        type = getTipoApertura(row.to_hash['tipo'])
+        type_of_procedure = row.to_hash['tramite']
+        row_values = { name: name, city: city, description: description, path: path, type_formation_step: type, type_of_procedure:  type_of_procedure}
+        
+        if city_validate?(city)
+          if row_does_not_exist_in_the_db(FormationStep, row_values)
+            FormationStep.create!(row_values)
+            number_of_successfully_created_rows += 1
+            puts 'FormationStep .'
+          else
+              puts "********** DATO REPETIDO será omitido #{row_values}  **********"
+          end
+        else
+          puts "********** Municipio incorrecto NO TIENES PERMISO **********"
+          return false
+        end
+      end
+      puts "********** Número satisfactorio de registros creados para (#{file_formation_steps.original_filename}): #{number_of_successfully_created_rows} **********"
+      if number_of_successfully_created_rows > 0
+        return true
+      end
+      return false
+      end
+    end
+
+
     def csv_empty?(file, name)
       if CSV.new(file, headers: :first_row).to_a.empty?
         puts "********** CSV esta vacio **********"
@@ -290,7 +336,6 @@ module Dashboard
       end
       puts '********** Inspector borrados **********'
 
-
       inspection = Inspection.by_city(City.find(@city))
       unless inspection.blank?
         inspection.each do |inspection|
@@ -299,7 +344,6 @@ module Dashboard
       end
       puts '********** Inspection borrados **********'
 
-
       Dependency.where(city_id: @city).delete_all
       puts '********** Dependencias borradas **********' 
       
@@ -307,7 +351,10 @@ module Dashboard
       puts '********** Giros borrados **********' 
 
       Requirement.where(city_id: @city).delete_all
-      puts '********** Requisitos borrados **********' 
+      puts '********** Requisitos borrados **********'
+
+      FormationStep.where(city_id: @city).delete_all
+      puts '********** Tramites apertura borrados **********' 
  
     end
 
@@ -330,8 +377,32 @@ module Dashboard
         when 'inspection'
           '********** validando cabeceras inspectores **********'
           return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('materia') && headers[0].include?('duracion') && headers[0].include?('norma') && headers[0].include?('antes') && headers[0].include?('durante') && headers[0].include?('despues') && headers[0].include?('sancion') && headers[0].include?('giros') && headers[0].include?('requerimientos')
+        when 'formation_steps'
+          '********** validando cabeceras tramites de apertura **********'
+          return headers[0].include?('municipio') && headers[0].include?('nombre') && headers[0].include?('descripcion') && headers[0].include?('path') && headers[0].include?('tipo') && headers[0].include?('tramite') 
         end  
       return false
+    end
+
+
+    def getTipo(tipo)
+      if tipo == 'Física'
+        'TF'
+      elsif tipo == 'Moral'
+        'TM'
+      else
+        'A'
+      end
+    end
+
+    def getTipoApertura(tipo)
+      if tipo == 'Física'
+        'AF'
+      elsif tipo == 'Moral'
+        'AM'
+      else
+        'A'
+      end
     end
 
 
