@@ -11,6 +11,13 @@ class Procedure < ActiveRecord::Base
     self.name
   end
 
+
+  scope :by_city,
+    -> (city) {
+      includes(:dependency).
+      where(dependencies: { city_id: city.id })
+    }
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ["name","long","cost", "validity","contact","dependencia_id","type_procedure","giros","tramites"]#column_names
