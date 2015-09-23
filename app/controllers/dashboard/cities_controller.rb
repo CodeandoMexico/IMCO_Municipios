@@ -198,9 +198,10 @@ module Dashboard
               inspection_created =  Inspection.create(row_values)
               number_of_successfully_created_giros = 0
               giros.split('; ').each do |giro|
-                unless Line.where(name: giro).blank?
-                  InspectionLine.create(inspection_id: inspection_created.id, line_id: Line.where(name: giro).first.id)
+                unless Line.where(name: giro, city_id: @city).blank?
+                  InspectionLine.create!(inspection_id: inspection_created.id, line_id: Line.where(name: giro, city_id: @city).first.id)
                   number_of_successfully_created_giros += 1
+                  puts 'InspectionLine .'
                 else
                   puts "********** El giro: #{giro} no coincide con ninguno del dataset GIRO **********"
                 end
@@ -209,7 +210,7 @@ module Dashboard
               puts "********** DATO REPETIDO será omitido #{row_values} **********"
             end
           else
-            puts "********** Una o más dependencias no coinciden, porfavor revisalos para continuar **********"
+            puts "********** Una o más dependencias no coinciden, porf<avor revisalos para continuar **********"
             return false
           end
           
@@ -217,9 +218,10 @@ module Dashboard
           
           number_of_successfully_created_requerimientos = 0
           requerimientos.split('; ').each do |requisito|
-            unless Requirement.where(name: requisito).blank?
-              InspectionRequirement.create(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: requisito).first.id)
+            unless Requirement.where(name: requisito, city_id: @city).blank?
+              InspectionRequirement.create!(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: requisito,city_id: @city).first.id)
               number_of_successfully_created_requerimientos += 1
+              puts 'InspectionRequirement .'
             else
               puts "********** El requisito: #{requisito} no coincide con ninguno del dataset Requisito **********"
             end
