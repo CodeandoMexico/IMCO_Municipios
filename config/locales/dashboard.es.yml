@@ -26,7 +26,7 @@ es:
       inspectors: Inspectores
       subtitle:
         download: Descargar datasets muestra
-        upload: Esta información remplazará y por tanto eliminará la información anterior
+        upload: "Esta información remplazará y por tanto eliminará la información anterior. NOTA: Esto puede tardar hasta 5 minutos."
       title: 
         download: Descargar
         upload: Subir
