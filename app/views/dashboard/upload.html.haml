@@ -60,3 +60,38 @@
         &nbsp;
         .pull-right
           = f.submit t('.save'), :class => 'btn btn-sm btn-success outlineverde'
+
+-unless @success.nil?
+  %div.container
+    %h2
+      Resultados de la carga de datos
+    %ul.nav.nav-tabs
+      %li.active
+        %a{:data=>{:toggle=>"tab"}, :href=>"#menu1"}
+          Correctos
+      %li
+        %a{:data=>{:toggle=>"tab"}, :href=>"#menu2"}
+          Advertencias
+      %li
+        %a{:data=>{:toggle=>"tab"}, :href=>"#menu3"}
+          Errores
+    %div.tab-content
+      %div{:id=>"menu1", :class=>"tab-pane in active"}
+        %h3
+          Correctos
+        %p
+          -@success.each do |succe|
+            =succe
+      %div{:id=>"menu2", :class=>"tab-pane fade"}
+        %h3
+          Advertencias
+        %p
+          -@warnings.each do |warning|
+            =warning
+      %div{:id=>"menu3", :class=>"tab-pane fade"}
+        %h3
+          Errores
+        %p
+          -@errors.each do |error|
+            =error
+
