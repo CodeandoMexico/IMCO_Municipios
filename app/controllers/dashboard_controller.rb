@@ -46,10 +46,10 @@ class DashboardController < ApplicationController
   def upload
     @city = City.find(current_user.city_id)
 
-    if params[:errors] && params[:warnings] && params[:success]
-      @errors = params[:errors]
-      @warnings = params[:warnings]
-      @success = params[:success]
+    unless $errors.nil? || $warnings.nil? || $success.nil?
+      @errors = $errors
+      @warnings = $warnings
+      @success = $success
     end
   end
 

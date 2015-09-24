@@ -1,6 +1,5 @@
 module Dashboard
   class CitiesController < ApplicationController
-
     before_filter :set_city
     layout 'dashboard'
 
@@ -16,6 +15,11 @@ module Dashboard
         file_procedures = params[:post][:procedure_file]
 
         if validate_params(file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures)
+          
+          $errors = []
+          $warnings = []
+          $success = []
+
           CsvUploads.delete_all_data(@city)
 
           if CsvUploads.validate_dependencies(file_dependency,current_user) && 
@@ -25,12 +29,13 @@ module Dashboard
             CsvUploads.validate_inspections(file_inspections,@city) && 
             CsvUploads.validate_formation_steps(file_formation_steps,current_user) &&
             CsvUploads.validate_procedures(file_procedures,@city)
-
-            redirect_to upload_dashboard_path({:errors => $errors, :warnings => $warnings, :success => $success}),  notice:  "Datasets cargados con éxito"
-
+            $success << "************ Datasets cargados con éxito ************"
+            redirect_to upload_dashboard_path,  notice:  "Datasets cargados con éxito"
           else
             CsvUploads.delete_all_data(@city)
-            redirect_to upload_dashboard_path({:errors => $errors, :warnings => $warnings, :success => $success}),  error:  "Revice los errores marcados, NINGUN CAMBIO FUE EFECTUADO"
+            $errors << "************ Revisa los errores para que puedas ingresar los datos nuevos. ************"
+            redirect_to upload_dashboard_path,  error:  "Revise los errores marcados, NINGUN CAMBIO FUE EFECTUADO"
+
           end
         else
           redirect_to upload_dashboard_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
@@ -46,9 +51,9 @@ module Dashboard
     private
 
     def set_city
-      $errors = []
-      $warnings = []
-      $success = []
+      $errors = nil
+      $warnings = nil
+      $success = nil
       @city ||= City.find(current_user.city_id)
     end
 

@@ -61,7 +61,7 @@
         .pull-right
           = f.submit t('.save'), :class => 'btn btn-sm btn-success outlineverde'
 
--unless @success.nil?
+-unless @success.nil? || @errors.nil?
   %div.container
     %h2
       Resultados de la carga de datos
@@ -78,20 +78,23 @@
     %div.tab-content
       %div{:id=>"menu1", :class=>"tab-pane in active"}
         %h3
-          Correctos
+          ="Correctos: #{@success.size} "
         %p
           -@success.each do |succe|
-            =succe
+            ="- #{succe}"
+            %BR
       %div{:id=>"menu2", :class=>"tab-pane fade"}
         %h3
-          Advertencias
+          ="Advertencias: #{@warnings.size}"
         %p
           -@warnings.each do |warning|
-            =warning
+            ="- #{warning}"
+            %BR
       %div{:id=>"menu3", :class=>"tab-pane fade"}
         %h3
-          Errores
+          ="Errores: #{@errors.size}"
         %p
           -@errors.each do |error|
-            =error
+            ="- #{error}"
+            %BR
 
