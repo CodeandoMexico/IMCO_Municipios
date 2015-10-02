@@ -64,6 +64,9 @@ gem 'whenever', :require => false
 
 gem 'social-share-button', '~> 0.1.6'
 
+
+gem 'sidekiq' #para trabajos en background
+
 group :development, :test do
   # Load env variables
   gem 'figaro'
