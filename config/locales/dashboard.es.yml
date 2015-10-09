@@ -13,23 +13,24 @@ es:
       titulo: Panel de administración
       business: Empresas
       open_procedure: Trámites activos
-    upload:
-      titulo: Centro de datos
-      download: Descargar csv's
-      save: Subir Datasets
-      dependencies: Dependencias
-      lines: Giros
-      formation_steps: Trámites de apertura
-      requirements: Requerimientos
-      procedures: Trámites
-      inspections: Inspecciones
-      inspectors: Inspectores
-      subtitle:
-        download: Descargar datasets muestra
-        upload: "Esta información remplazará y por tanto eliminará la información anterior. NOTA: Esto puede tardar hasta 5 minutos."
-      title: 
-        download: Descargar
-        upload: Subir
+    uploads:
+      index:
+        titulo: Centro de datos
+        download: Descargar csv's
+        save: Subir Datasets
+        dependencies: Dependencias
+        lines: Giros
+        formation_steps: Trámites de apertura
+        requirements: Requerimientos
+        procedures: Trámites
+        inspections: Inspecciones
+        inspectors: Inspectores
+        subtitle:
+          download: Descargar datasets muestra
+          upload: "Esta información remplazará y por tanto eliminará la información anterior. NOTA: Esto puede tardar hasta 5 minutos."
+        title: 
+          download: Descargar
+          upload: Subir
     show:
       dependencias: Dependencias
       giros: Giros

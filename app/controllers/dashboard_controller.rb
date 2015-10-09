@@ -42,20 +42,5 @@ class DashboardController < ApplicationController
       }
     ]
   end
-
-  def upload
-    @city = City.find(current_user.city_id)
-
-    unless params[:dialog].nil?
-      puts 'HOLAAAAAAA!!!!!!!!!!!!!!!'
-    else
-      unless $errors.nil? || $warnings.nil? || $success.nil?
-      @errors = $errors
-      @warnings = $warnings
-      @success = $success
-    end
-    end  
-    
-  end
-
+  
 end

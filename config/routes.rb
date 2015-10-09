@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
-    get 'upload'
+    resources :upload, controller: 'dashboard/uploads'
     resources :inspections, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspections'
     resources :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspectors'
     resources :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/formation_steps'
@@ -56,9 +56,6 @@ Rails.application.routes.draw do
     resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :business, only: [:index, :show], controller: 'dashboard/business'
     resources :cities, controller: 'dashboard/cities' do
-    collection do
-      post 'csv_analitics'
-    end
       resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
     end
   end
