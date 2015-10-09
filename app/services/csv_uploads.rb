@@ -382,6 +382,10 @@ module CsvUploads
 
   def self.delete_all_data(city, file_success)
 
+    #abrir files a utilizar
+    #llenar y cerrar
+    #archivo termina con @@@@
+
     puts '********** Borrando Todos los Datasets **********'
    
     inspector = Inspector.by_city(City.find(city))
@@ -420,9 +424,7 @@ module CsvUploads
     FormationStep.where(city_id: city).delete_all
     puts '********** Tramites apertura borrados **********' 
 
-    file_success.write("Base de datos borrada satisfactoriamente".mb_chars)
-    file_success.write("2222222222".mb_chars)
-    file_success.write("3333333333".mb_chars)
+    file_success.puts("Base de datos borrada satisfactoriamente".mb_chars)
   end
 
 

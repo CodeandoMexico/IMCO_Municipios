@@ -61,7 +61,7 @@
         .pull-right
           = f.submit t('.save'), :class => 'btn btn-sm btn-success outlineverde'
 
--unless @success.nil? || @errors.nil?
+-if @logs
   %h2
     Resultados de la carga de datos
   %ul.nav.nav-tabs
