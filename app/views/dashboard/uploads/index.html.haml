@@ -77,21 +77,20 @@
   %div.tab-content
     %div{:id=>"menu1", :class=>"tab-pane in active"}
       %h3
-        ="Correctos: #{@success.size} "
-      %p
+        ="Correctos: "
         -@success.each do |succe|
           ="- #{succe}"
           %BR
     %div{:id=>"menu2", :class=>"tab-pane fade"}
       %h3
-        ="Advertencias: #{@warnings.size}"
+        ="Advertencias:"
       %p
         -@warnings.each do |warning|
           ="- #{warning}"
           %BR
     %div{:id=>"menu3", :class=>"tab-pane fade"}
       %h3
-        ="Errores: #{@errors.size}"
+        ="Errores:"
       %p
         -@errors.each do |error|
           ="- #{error}"

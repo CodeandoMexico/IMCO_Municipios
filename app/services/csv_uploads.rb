@@ -380,12 +380,9 @@ module CsvUploads
     return xml_contents
   end
 
-  def self.delete_all_data(city, file_success)
-
-    #abrir files a utilizar
-    #llenar y cerrar
-    #archivo termina con @@@@
-
+  def self.delete_all_data(city,current_user_id)
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
+    
     puts '********** Borrando Todos los Datasets **********'
    
     inspector = Inspector.by_city(City.find(city))
@@ -425,6 +422,7 @@ module CsvUploads
     puts '********** Tramites apertura borrados **********' 
 
     file_success.puts("Base de datos borrada satisfactoriamente".mb_chars)
+    file_success.close
   end
 
 
