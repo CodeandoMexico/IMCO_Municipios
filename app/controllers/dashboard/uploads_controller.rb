@@ -13,14 +13,9 @@ module Dashboard
         if @status.status == "terminado"
           @logs = true
           @status.delete
-          puts '**************terminado'
         elsif @status.status == "iniciado"
           @dialog = true
         end
-        puts '**************No nil'
-        puts @logs
-      else
-        puts '**************nil'
       end
 
       if params[:post]
@@ -36,11 +31,9 @@ module Dashboard
             if @status.nil?
               @status = Uploads.create(id_user: current_user.id,status: "creado")
               make_files
-              puts '***************creado******************'
             end
 
             if @status.status == "iniciado"
-              puts '***************worker******************'
               LoadWorker.perform_async(@user_id,@city.id,file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures)
               redirect_to dashboard_upload_index_path,  notice:  "Espere porfavor estamos subiendo los cambios"
             end
