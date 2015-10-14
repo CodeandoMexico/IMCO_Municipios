@@ -1,9 +1,5 @@
 module Dashboard
   class UploadsController < ApplicationController
-    #rescue_from ::ActiveRecord::RecordNotFound, with: :error_occurred
-    #rescue_from ::NameError, with: :error_occurred
-    #rescue_from ::ActionController::RoutingError, with: :error_occurred
-    #rescue_from ::Exception, with: :error_occurred
     before_filter :set_city, :set_status
     layout 'dashboard'
 
@@ -12,7 +8,6 @@ module Dashboard
       unless @status.nil?
         if @status.status == "terminado"
           @logs = true
-          @status.delete
         elsif @status.status == "iniciado"
           @dialog = true
         end
@@ -31,10 +26,11 @@ module Dashboard
         file_procedures = params[:post][:procedure_file]
           if validate_params(file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures) 
                  
-            if @status.nil?
-              @status = Uploads.create(id_user: current_user.id,status: "creado")
-              make_files
+            unless @status.nil?
+              @status.delete
             end
+            @status = Uploads.create(id_user: current_user.id,status: "creado")
+            make_files
 
             if @status.status == "iniciado"
               LoadWorker.perform_async(@user_id,@city.id,file_dependency.tempfile.path, file_lines.tempfile.path, file_inspectors.tempfile.path, file_requirements.tempfile.path, file_inspections.tempfile.path, file_formation_steps.tempfile.path, file_procedures.tempfile.path)
@@ -79,7 +75,6 @@ module Dashboard
     def make_files
       @status.status = 'iniciado'
       if @status.save
-         puts '***************Iniciado******************'
         delete_files
         Dir::mkdir("#{@root_path_dir}")
         f = File.open("#{@root_path_dir}/success.txt","w+")
@@ -99,20 +94,6 @@ module Dashboard
       else
         puts '*************************** No existe el directorio Nada que borrar***************************'
       end
-    end
-
-
-
-
-
-
-  protected
-
-    def error_occurred(exception)
-      puts '******************ERROR************************'
-      #delete_files
-      puts exception.message
-      #redirect_to dashboard_upload_index_path,  error:  "Error grabe al subor los datos, intenta de nuevo, NINGUN CAMBIO FUE EFECTUADO"
     end
 
   end

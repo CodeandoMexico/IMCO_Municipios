@@ -78,3 +78,4 @@ Licencia de Uso de Suelo tiene Requisitos: 0
 FOMENTO AL AUTOEMPLEO tiene Giros: 127
 FOMENTO AL AUTOEMPLEO tiene Requisitos: 0
 Número satisfactorio de registros creados para Tramites: 31
+Base de datos borrada satisfactoriamente
