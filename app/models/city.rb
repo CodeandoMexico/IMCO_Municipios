@@ -13,13 +13,13 @@ class City < ActiveRecord::Base
 
 
 
-  mount_uploader :dependency_file, PdfUploader
-  mount_uploader :line_file, PdfUploader
-  mount_uploader :formation_step_file, PdfUploader
-  mount_uploader :requirement_file, PdfUploader
-  mount_uploader :procedure_file, PdfUploader
-  mount_uploader :inspection_file, PdfUploader
-  mount_uploader :inspector_file, PdfUploader
+  mount_uploader :dependency_file, CsvUploader
+  mount_uploader :line_file, CsvUploader
+  mount_uploader :formation_step_file, CsvUploader
+  mount_uploader :requirement_file, CsvUploader
+  mount_uploader :procedure_file, CsvUploader
+  mount_uploader :inspection_file, CsvUploader
+  mount_uploader :inspector_file, CsvUploader
 
 
   scope :is_activated, -> { where(activated: true) }

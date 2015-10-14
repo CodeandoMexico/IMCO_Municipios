@@ -1,1 +1,80 @@
 Base de datos borrada satisfactoriamente
+Número satisfactorio de registros creados para Dependencias: 7
+Número satisfactorio de registros creados para Giros: 131
+ Número satisfactorio de registros creados para Inspectores: 4
+Número satisfactorio de registros creados para Requisitos: 20
+Notificaciones tiene Giros: 126
+Notificaciones tiene Requisitos: 1
+Verificacion tiene Giros: 126
+Verificacion tiene Requisitos: 1
+Acta de verificación "Medidas de Prevención" tiene Giros: 126
+Acta de verificación "Medidas de Prevención" tiene Requisitos: 1
+Verificación Cedula Informativa de Zonifiación tiene Giros: 126
+Verificación Cedula Informativa de Zonifiación tiene Requisitos: 1
+Verificación Licencia de Uso de Suelo tiene Giros: 6
+Verificación Licencia de Uso de Suelo tiene Requisitos: 1
+Número satisfactorio de registros creados para Inspecciones: 5
+Número satisfactorio de registros creados para Apertura: 43
+Alta de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Alta de Licencias de Funcionamiento(persona moral) tiene Requisitos: 8
+Revalidación de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Revalidación de Licencias de Funcionamiento(persona moral) tiene Requisitos: 8
+Baja de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Baja de Licencias de Funcionamiento(persona moral) tiene Requisitos: 6
+Cambio de Domicilio de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Cambio de Domicilio de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Suspensión de actividades temporales de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Suspensión de actividades temporales de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Reanudación de Actividades de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Reanudación de Actividades de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Cambio de Propietario de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Cambio de Propietario de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Cambio de Giro de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Cambio de Giro de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Aumento de Giro de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Aumento de Giro de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Disminución de Giro de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Disminución de Giro de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Cambio de Denominación o razón de Licencias de Funcionamiento(persona moral) tiene Giros: 127
+Cambio de Denominación o razón de Licencias de Funcionamiento(persona moral) tiene Requisitos: 7
+Alta de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Alta de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Revalidación de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Revalidación de Licencias de Funcionamiento(persona física) tiene Requisitos: 5
+Baja de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Baja de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Cambio de Domicilio de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Cambio de Domicilio de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Suspensión de Actividades temporales de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Suspensión de Actividades temporales de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Reanudación de Actividades de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Reanudación de Actividades de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Cambio de Propietario de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Cambio de Propietario de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Cambio de Giro de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Cambio de Giro de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Aumento de Griro de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Aumento de Griro de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Disminución de Giro de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Disminución de Giro de Licencias de Funcionamiento(persona física) tiene Requisitos: 8
+Cambio de denominación o razón de Licencias de Funcionamiento(persona física) tiene Giros: 127
+Cambio de denominación o razón de Licencias de Funcionamiento(persona física) tiene Requisitos: 0
+Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  tiene Giros: 127
+Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  tiene Requisitos: 7
+Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) tiene Giros: 127
+Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) tiene Requisitos: 6
+Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  tiene Giros: 127
+Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  tiene Requisitos: 1
+Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) tiene Giros: 127
+Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) tiene Requisitos: 1
+Alta de Dictamen Automotriz de Licencias de Funcionamiento(persona moral) tiene Giros: 2
+Alta de Dictamen Automotriz de Licencias de Funcionamiento(persona moral) tiene Requisitos: 5
+Visto Bueno Protección Civil tiene Giros: 127
+Visto Bueno Protección Civil tiene Requisitos: 1
+Cedula de Zonificación tiene Giros: 127
+Cedula de Zonificación tiene Requisitos: 0
+Licencia de Uso de Suelo tiene Giros: 19
+Licencia de Uso de Suelo tiene Requisitos: 0
+FOMENTO AL AUTOEMPLEO tiene Giros: 127
+FOMENTO AL AUTOEMPLEO tiene Requisitos: 0
+Número satisfactorio de registros creados para Tramites: 31

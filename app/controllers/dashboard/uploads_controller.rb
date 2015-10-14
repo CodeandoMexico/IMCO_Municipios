@@ -1,9 +1,9 @@
 module Dashboard
   class UploadsController < ApplicationController
-    rescue_from ::ActiveRecord::RecordNotFound, with: :error_occurred
-    rescue_from ::NameError, with: :error_occurred
-    rescue_from ::ActionController::RoutingError, with: :error_occurred
-    rescue_from ::Exception, with: :error_occurred
+    #rescue_from ::ActiveRecord::RecordNotFound, with: :error_occurred
+    #rescue_from ::NameError, with: :error_occurred
+    #rescue_from ::ActionController::RoutingError, with: :error_occurred
+    #rescue_from ::Exception, with: :error_occurred
     before_filter :set_city, :set_status
     layout 'dashboard'
 
@@ -17,7 +17,10 @@ module Dashboard
           @dialog = true
         end
       end
+    end
 
+
+    def create
       if params[:post]
         file_dependency = params[:post][:dependency_file]
         file_lines = params[:post][:line_file]
@@ -34,19 +37,13 @@ module Dashboard
             end
 
             if @status.status == "iniciado"
-              LoadWorker.perform_async(@user_id,@city.id,file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures)
+              LoadWorker.perform_async(@user_id,@city.id,file_dependency.tempfile.path, file_lines.tempfile.path, file_inspectors.tempfile.path, file_requirements.tempfile.path, file_inspections.tempfile.path, file_formation_steps.tempfile.path, file_procedures.tempfile.path)
               redirect_to dashboard_upload_index_path,  notice:  "Espere porfavor estamos subiendo los cambios"
             end
 
           else
             redirect_to dashboard_upload_index_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
           end 
-      end
-    end
-
-    def create
-      if params[:post]
-        redirect_to dashboard_upload_index_path(params)
       else
         redirect_to dashboard_upload_index_path,  error:  "Debes agregar todos los datasets  NINGUN CAMBIO FUE EFECTUADO"
       end
@@ -103,6 +100,10 @@ module Dashboard
         puts '*************************** No existe el directorio Nada que borrar***************************'
       end
     end
+
+
+
+
 
 
   protected

@@ -1,14 +1,14 @@
 module CsvUploads
 
-  def self.validate_dependencies(file_dependency,current_user)
+  def self.validate_dependencies(file_dependency,current_user_id)
     puts '"********** DEPENDENCIAS "**********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_dependency)
-    if csv_empty?(xml_contents, "Dependency") && !xml_contents.nil?
+    xml_contents =  load_file(file_dependency,current_user_id)
+    if csv_empty?(xml_contents, "Dependency",current_user_id) && !xml_contents.nil?
       file_errors.puts("Error al cargar el csv DEPENDENCIAS".mb_chars)
       returned = false
     else
@@ -16,7 +16,7 @@ module CsvUploads
       CSV.parse(xml_contents, :headers => true) do |row|
         city = City.find_by(name: row.to_hash['municipio'])
         name = row.to_hash['nombre']
-        if city_validate?(city,current_user)
+        if city_validate?(city,current_user_id)
           row_values = { name: name, city: city }
           if row_does_not_exist_in_the_db(Dependency, row_values)
             Dependency.create!(row_values)
@@ -29,7 +29,7 @@ module CsvUploads
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_dependency.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Dependencias: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -42,15 +42,15 @@ module CsvUploads
   end
 
 
-  def self.validate_lines(file_lines,current_user)
+  def self.validate_lines(file_lines,current_user_id)
     puts '"********** GIROS "**********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_lines)
-    if csv_empty?(xml_contents, "line") && !xml_contents.nil?
+    xml_contents =  load_file(file_lines,current_user_id)
+    if csv_empty?(xml_contents, "line",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv GIROS".mb_chars)
       returned = false
     else
@@ -59,7 +59,7 @@ module CsvUploads
         city = City.find_by(name: row.to_hash['municipio'])
         name = row.to_hash['nombre']
         description = row.to_hash['descripcion']
-        if city_validate?(city,current_user)
+        if city_validate?(city,current_user_id)
           row_values = { name: name, city: city }
           if row_does_not_exist_in_the_db(Line, row_values)
             Line.create!(row_values)
@@ -72,7 +72,7 @@ module CsvUploads
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_lines.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Giros: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -84,15 +84,15 @@ module CsvUploads
   end
 
 
-  def self.validate_inspectors(file_inspectors,city)
+  def self.validate_inspectors(file_inspectors,city,current_user_id)
     puts '"********** INSPECTORES **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_inspectors)
-    if csv_empty?(xml_contents, "inspector") && !xml_contents.nil?
+    xml_contents =  load_file(file_inspectors,current_user_id)
+    if csv_empty?(xml_contents, "inspector",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv INSPECTORES".mb_chars)
       returned = false
     else
@@ -118,7 +118,7 @@ module CsvUploads
           returned = false
         end
       end
-       file_success.puts(" Número satisfactorio de registros creados para (#{file_inspectors.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+       file_success.puts(" Número satisfactorio de registros creados para Inspectores: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -132,15 +132,15 @@ module CsvUploads
 
 
 
-  def self.validate_requirements(file_requirements,current_user)
+  def self.validate_requirements(file_requirements,current_user_id)
     puts '"********** REQUISITOS **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_requirements)
-    if csv_empty?(xml_contents, "requirement") && !xml_contents.nil?
+    xml_contents =  load_file(file_requirements,current_user_id)
+    if csv_empty?(xml_contents, "requirement",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv REQUISITOS".mb_chars)
       returned = false
     else
@@ -152,7 +152,7 @@ module CsvUploads
         path = row.to_hash['path']
 
         row_values = { name: name, city: city, description: description, path: path }
-        if city_validate?(city,current_user)
+        if city_validate?(city,current_user_id)
           if row_does_not_exist_in_the_db(Requirement, row_values)
             Requirement.create!(row_values)
             number_of_successfully_created_rows += 1
@@ -164,7 +164,7 @@ module CsvUploads
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_requirements.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Requisitos: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
           returned = true
         end
@@ -177,15 +177,15 @@ module CsvUploads
   end
 
 
-  def self.validate_inspections(file_inspections,city)
+  def self.validate_inspections(file_inspections,city,current_user_id)
     puts '"********** INSPECCIONES **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_inspections)
-    if csv_empty?(xml_contents, "inspection") && !xml_contents.nil?
+    xml_contents =  load_file(file_inspections,current_user_id)
+    if csv_empty?(xml_contents, "inspection",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv INSPECCIONES".mb_chars)
       returned = false
     else
@@ -214,7 +214,7 @@ module CsvUploads
                 InspectionLine.create!(inspection_id: inspection_created.id, line_id: Line.where(name: giro, city_id: city).first.id)
                 number_of_successfully_created_giros += 1
               else
-                file_warnings("El giro: #{giro} no coincide con ninguno del dataset GIRO, es omitido".mb_chars)
+                file_warnings.puts("El giro: #{giro} no coincide con ninguno del dataset GIRO, es omitido".mb_chars)
               end
             end
               file_success.puts("#{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros}".mb_chars)
@@ -237,7 +237,7 @@ module CsvUploads
           returned = false
         end 
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_inspections.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Inspecciones: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -251,15 +251,15 @@ module CsvUploads
 
 
 
-  def self.validate_formation_steps(file_formation_steps,current_user)
+  def self.validate_formation_steps(file_formation_steps,current_user_id)
     puts '"********** TRAMITES DE APERTURA **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_formation_steps)
-    if csv_empty?(xml_contents, "formation_steps") && !xml_contents.nil?
+    xml_contents =  load_file(file_formation_steps,current_user_id)
+    if csv_empty?(xml_contents, "formation_steps",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv TRÁMITES DE APERTURA".mb_chars)
       returned =  false
     else
@@ -273,7 +273,7 @@ module CsvUploads
         type_of_procedure = row.to_hash['tramite']
         row_values = { name: name, city: city, description: description, path: path, type_formation_step: type, type_of_procedure:  type_of_procedure}
       
-        if city_validate?(city,current_user)
+        if city_validate?(city,current_user_id)
           if row_does_not_exist_in_the_db(FormationStep, row_values)
             FormationStep.create!(row_values)
             number_of_successfully_created_rows += 1
@@ -285,7 +285,7 @@ module CsvUploads
           returned =  false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_formation_steps.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Apertura: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned =  true
       end
@@ -300,15 +300,15 @@ module CsvUploads
 
 
 
-  def self.validate_procedures(file_procedures, city)
+  def self.validate_procedures(file_procedures, city,current_user_id)
     puts '"********** validate_procedures **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","r+")
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
 
-    xml_contents =  load_file(file_procedures)
-    if csv_empty?(xml_contents, "procedures") && !xml_contents.nil?
+    xml_contents =  load_file(file_procedures,current_user_id)
+    if csv_empty?(xml_contents, "procedures",current_user_id) && !xml_contents.nil?
       file_errors.puts("error al cargar csv TRÁMITES".mb_chars)
       returned = false
     else
@@ -360,7 +360,7 @@ module CsvUploads
           returned = false
         end 
       end
-      file_success.puts("Número satisfactorio de registros creados para (#{file_procedures.original_filename}): #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Número satisfactorio de registros creados para Tramites: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -375,16 +375,16 @@ module CsvUploads
 
 
 
-  def self.csv_empty?(file, name)
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
+  def self.csv_empty?(file, name, current_user_id)
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
 
     returned = false
     if CSV.new(file, headers: :first_row).to_a.empty?
-      file_errors.puts("El csv referente a #{file.class.name} están vacios".mb_chars)
+      file_errors.puts("El csv referente a #{name} están vacios".mb_chars)
       returned =  true
     else
       unless has_headers?(file,name)
-        file_errors.puts("El csv referente a #{file.class.name} no tienen las cabeceras correctas".mb_chars)
+        file_errors.puts("El csv referente a #{name} no tienen las cabeceras correctas".mb_chars)
         returned =  true
       else
         returned = false
@@ -404,34 +404,15 @@ module CsvUploads
 
 
 
-  def self.city_validate?(city, current_user)
-   city.present? && current_user.city_id == city.id
+  def self.city_validate?(city, current_user_id)
+    User.find(current_user_id).city_id == city.id
   end
-
-
-
-
-  def self.load_file(file)
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","r+")
-    xml_contents = nil
-    if file.respond_to?(:read)
-      xml_contents = file.read
-    elsif file.respond_to?(:path)
-      xml_contents = File.read(file.path)
-    else
-      file_errors.puts("El archivo #{file.class.name} está incorrecto: #{file.inspect}".mb_chars)
-    end
-
-    file_errors.close
-    return xml_contents
-  end
-
 
 
 
 
   def self.delete_all_data(city,current_user_id)
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","r+")
+    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
    
     inspector = Inspector.by_city(City.find(city))
     unless inspector.blank?
@@ -467,7 +448,23 @@ module CsvUploads
   end
 
 
-
+    def self.load_file(file,current_user_id)
+    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    xml_contents = nil
+    if file.respond_to?(:read)
+      xml_contents = file.read
+    elsif file.respond_to?(:path)
+      xml_contents = File.read(file.path)
+    else
+      #begin
+        xml_contents = File.read(file)
+      #rescue Exception => e
+       # file_errors.puts("El archivo #{file.class.name} está incorrecto: #{file.inspect}".mb_chars)
+      #end
+    end
+    file_errors.close
+    return xml_contents
+  end
 
 
   def self.has_headers?(file, name)
