@@ -6,10 +6,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Dependencias"
 
     xml_contents =  load_file(file_dependency,current_user_id)
-    if csv_empty?(xml_contents, "Dependency",current_user_id) && !xml_contents.nil?
-      file_errors.puts("Error al cargar el csv DEPENDENCIAS".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -22,14 +23,14 @@ module CsvUploads
             Dependency.create!(row_values)
             number_of_successfully_created_rows += 1
           else
-             file_warnings.puts("DATO REPETIDO  en DEPENDENCIAS es omitido #{row_values}".mb_chars)
+             file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Municipio incorrecto NO TIENES PERMISO".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para Dependencias: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -48,10 +49,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Giros"
 
     xml_contents =  load_file(file_lines,current_user_id)
-    if csv_empty?(xml_contents, "line",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv GIROS".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -65,14 +67,14 @@ module CsvUploads
             Line.create!(row_values)
             number_of_successfully_created_rows += 1
           else
-            file_warnings.puts("DATO REPETIDO en GIROS es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Municipio incorrecto NO TIENES PERMISO".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para Giros: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -90,10 +92,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Inspectores"
 
     xml_contents =  load_file(file_inspectors,current_user_id)
-    if csv_empty?(xml_contents, "inspector",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv INSPECTORES".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -111,14 +114,14 @@ module CsvUploads
             Inspector.create!(row_values)
             number_of_successfully_created_rows += 1
           else
-            file_warnings.puts("DATO REPETIDO en INSPECTORES es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Una o más dependencias no coinciden en INSPECTORES, porfavor revisalos para continuar".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned = false
         end
       end
-       file_success.puts(" Número satisfactorio de registros creados para Inspectores: #{number_of_successfully_created_rows}".mb_chars)
+       file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -138,10 +141,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Requerimientos"
 
     xml_contents =  load_file(file_requirements,current_user_id)
-    if csv_empty?(xml_contents, "requirement",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv REQUISITOS".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -157,14 +161,14 @@ module CsvUploads
             Requirement.create!(row_values)
             number_of_successfully_created_rows += 1
           else
-            file_warnings.puts("DATO REPETIDO en REQUERIMIENTOS es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Municipio incorrecto NO TIENES PERMISO".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned = false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para Requisitos: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
           returned = true
         end
@@ -183,10 +187,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Inspecciones"
 
     xml_contents =  load_file(file_inspections,current_user_id)
-    if csv_empty?(xml_contents, "inspection",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv INSPECCIONES".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -214,30 +219,30 @@ module CsvUploads
                 InspectionLine.create!(inspection_id: inspection_created.id, line_id: Line.where(name: giro, city_id: city).first.id)
                 number_of_successfully_created_giros += 1
               else
-                file_warnings.puts("El giro: #{giro} no coincide con ninguno del dataset GIRO, es omitido".mb_chars)
+                file_warnings.puts("Adverteincia@#{name_file}@El giro: #{giro} no coincide con ninguno del dataset GIROS, es omitido".mb_chars)
               end
             end
-              file_success.puts("#{inspection_created.name} tiene Giros: #{number_of_successfully_created_giros}".mb_chars)
+              file_success.puts("Éxito@#{name_file}@#{inspection_created.name} cuenta con: #{number_of_successfully_created_giros} GIROS".mb_chars)
               number_of_successfully_created_requerimientos = 0
               requerimientos.split('; ').each do |requisito|
                 unless Requirement.where(name: requisito, city_id: city).blank?
                   InspectionRequirement.create!(inspection_id: inspection_created.id, requirement_id: Requirement.where(name: requisito,city_id: city).first.id)
                   number_of_successfully_created_requerimientos += 1
                 else
-                  file_warnings.puts("El requisito: #{requisito} no coincide con ninguno del dataset Requisito, es omitido".mb_chars)
+                  file_warnings.puts("Adverteincia@#{name_file}@El requisito: #{requisito} no coincide con ninguno del dataset REQUERIMIENTOS, es omitido".mb_chars)
                 end
               end
-              file_success.puts("#{inspection_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}".mb_chars)
+              file_success.puts("Éxito@#{name_file}@#{inspection_created.name} cuenta con: #{number_of_successfully_created_requerimientos} REQUERIMIENTOS".mb_chars)
               number_of_successfully_created_rows  += 1
           else
-            file_warnings.puts("DATO REPETIDO en INSPECCIONES es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Una o más dependencias  en INSPECCIONES no coinciden, porfavor revisalos para continuar".mb_chars)
+          file_errors.puts("Error@#{name_file}@Una o más dependencias no existen en el dataset DEPENDENCIAS, porfavor revisalos y vuelve a hacer la carga.".mb_chars)
           returned = false
         end 
       end
-      file_success.puts("Número satisfactorio de registros creados para Inspecciones: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -257,10 +262,11 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Tramites de apertura"
 
     xml_contents =  load_file(file_formation_steps,current_user_id)
-    if csv_empty?(xml_contents, "formation_steps",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv TRÁMITES DE APERTURA".mb_chars)
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned =  false
     else
       number_of_successfully_created_rows = 0
@@ -278,14 +284,14 @@ module CsvUploads
             FormationStep.create!(row_values)
             number_of_successfully_created_rows += 1
           else
-            file_warnings.puts("DATO REPETIDO en TRÁMITES DE APERTURA es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Municipio incorrecto NO TIENES PERMISO".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned =  false
         end
       end
-      file_success.puts("Número satisfactorio de registros creados para Apertura: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned =  true
       end
@@ -309,7 +315,7 @@ module CsvUploads
 
     xml_contents =  load_file(file_procedures,current_user_id)
     if csv_empty?(xml_contents, "procedures",current_user_id) && !xml_contents.nil?
-      file_errors.puts("error al cargar csv TRÁMITES".mb_chars)
+      file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
       number_of_successfully_created_rows = 0
@@ -380,11 +386,11 @@ module CsvUploads
 
     returned = false
     if CSV.new(file, headers: :first_row).to_a.empty?
-      file_errors.puts("El csv referente a #{name} están vacios".mb_chars)
+      file_errors.puts("Error@#{name}@El csv está vacio".mb_chars)
       returned =  true
     else
       unless has_headers?(file,name)
-        file_errors.puts("El csv referente a #{name} no tienen las cabeceras correctas".mb_chars)
+        file_errors.puts("Error@#{name}@El csv no tienen las cabeceras correctas".mb_chars)
         returned =  true
       else
         returned = false
@@ -449,20 +455,14 @@ module CsvUploads
 
 
     def self.load_file(file,current_user_id)
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
     xml_contents = nil
     if file.respond_to?(:read)
       xml_contents = file.read
     elsif file.respond_to?(:path)
       xml_contents = File.read(file.path)
     else
-      #begin
         xml_contents = File.read(file)
-      #rescue Exception => e
-       # file_errors.puts("El archivo #{file.class.name} está incorrecto: #{file.inspect}".mb_chars)
-      #end
     end
-    file_errors.close
     return xml_contents
   end
 
@@ -470,26 +470,19 @@ module CsvUploads
   def self.has_headers?(file, name)
     headers = CSV.parse(file)
     case name
-      when 'Dependency'
-        puts '********** validando cabeceras dependencia **********'
+      when 'Dependencias'
         return headers[0].include?('nombre') && headers[0].include?('municipio')
-      when 'line'
-        '********** validando cabeceras giros **********'
+      when 'Giros'
         return headers[0].include?('nombre') && headers[0].include?('municipio') && headers[0].include?('descripcion')
-      when 'inspector'
-        '********** validando cabeceras inspectores **********'
+      when 'Inspectores'
         return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('vigencia') && headers[0].include?('materia') && headers[0].include?('supervisor') && headers[0].include?('contacto') && headers[0].include?('foto')
-      when 'requirement'
-        '********** validando cabeceras Requisitos **********'
+      when 'Requerimientos'
         return headers[0].include?('nombre') && headers[0].include?('municipio') && headers[0].include?('descripcion') && headers[0].include?('path')
-      when 'inspection'
-        '********** validando cabeceras inspectores **********'
+      when 'Inspecciones'
         return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('materia') && headers[0].include?('duracion') && headers[0].include?('norma') && headers[0].include?('antes') && headers[0].include?('durante') && headers[0].include?('despues') && headers[0].include?('sancion') && headers[0].include?('giros') && headers[0].include?('requerimientos')
-      when 'formation_steps'
-        '********** validando cabeceras tramites de apertura **********'
+      when 'Tramites de apertura'
         return headers[0].include?('municipio') && headers[0].include?('nombre') && headers[0].include?('descripcion') && headers[0].include?('path') && headers[0].include?('tipo') && headers[0].include?('tramite') 
       when 'procedures'
-        '********** validando cabeceras tramites **********'
         return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('duracion') && headers[0].include?('costo') && headers[0].include?('vigencia') && headers[0].include?('contacto') && headers[0].include?('tipo') && headers[0].include?('giros') && headers[0].include?('tramites') && headers[0].include?('categoria') && headers[0].include?('sare') 
       end  
     return false
