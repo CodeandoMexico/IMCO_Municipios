@@ -15,9 +15,14 @@ class LoadWorker
         CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
         CsvUploads.validate_formation_steps(file_formation_steps,id_user) &&
         CsvUploads.validate_procedures(file_procedures,id_city,id_user)
-         puts "************ Datasets cargados con éxito ************"
+
+        file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+        file_success.puts("Éxito@General@Datasets cargados con éxito.".mb_chars)
+        file_success.close
      else
-        puts "************ Datasets NO cargados por ERRORES ************"
+        file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+        file_errors.puts("Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
+        file_errors.close
         CsvUploads.delete_all_data(id_city,id_user)
      end
     
