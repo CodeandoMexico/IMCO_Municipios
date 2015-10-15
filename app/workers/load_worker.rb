@@ -9,13 +9,12 @@ class LoadWorker
 
     CsvUploads.delete_all_data(id_city,id_user)
    	 if CsvUploads.validate_dependencies(file_dependency,id_user) && 
-         CsvUploads.validate_lines(file_lines,id_user) && 
-         CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
-         CsvUploads.validate_requirements(file_requirements,id_user) && 
-         CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
-         CsvUploads.validate_formation_steps(file_formation_steps,id_user) &&
-         CsvUploads.validate_procedures(file_procedures,id_city,id_user)
-
+        CsvUploads.validate_lines(file_lines,id_user) && 
+        CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
+        CsvUploads.validate_requirements(file_requirements,id_user) && 
+        CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
+        CsvUploads.validate_formation_steps(file_formation_steps,id_user) &&
+        CsvUploads.validate_procedures(file_procedures,id_city,id_user)
          puts "************ Datasets cargados con éxito ************"
      else
         puts "************ Datasets NO cargados por ERRORES ************"
@@ -24,9 +23,7 @@ class LoadWorker
     
     @status.status = "terminado"
     if @status.save
-      puts '*******************Terminado*****************'
-    else
-      puts '*******************NO Terminado*****************'
+      puts '*******************Status Terminado*****************'
     end
 
   end 

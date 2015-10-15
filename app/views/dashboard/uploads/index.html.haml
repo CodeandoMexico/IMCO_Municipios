@@ -76,22 +76,86 @@
         Errores
   %div.tab-content
     %div{:id=>"menu1", :class=>"tab-pane in active"}
-      %h3
-        ="Correctos: "
-        -@success.each do |succe|
-          ="- #{succe}"
-          %BR
+      %p
+        %H3="Correctos: #{File.readlines(@file_success).size}"
+        %BR
+        %table{:style=>"width:100%",:border=>"1"}
+          %tr
+            %th.text-center-table
+              Número
+            %th.text-center-table
+              Dataset origen
+            %th.text-center-table
+              Descripción
+          -File.readlines(@file_success).each_with_index do |succe,index|
+            -succe_array = succe.split('@')
+            %tr
+              %td.table-first
+                .col-md-12
+                  .row
+                    .col-md-6
+                      %div.circle-green
+                        %i.fa.fa-check
+                    .col-md-6.padding-top-table
+                      ="#{index+1}"
+              %td.table-second
+                ="#{succe_array[1]}"
+              %td.table-third
+                ="#{succe_array[2]}"
+        %BR
     %div{:id=>"menu2", :class=>"tab-pane fade"}
-      %h3
-        ="Advertencias:"
       %p
-        -@warnings.each do |warning|
-          ="- #{warning}"
-          %BR
+        %H3="Advertencias: #{File.readlines(@file_warnings).size}"
+        %BR
+        %table{:style=>"width:100%",:border=>"1"}
+          %tr
+            %th.text-center-table
+              Número
+            %th.text-center-table
+              Dataset origen
+            %th.text-center-table
+              Descripción
+          -File.readlines(@file_warnings).each_with_index do |succe,index|
+            -succe_array = succe.split('@')
+            %tr
+              %td.table-first
+                .col-md-12
+                  .row
+                    .col-md-6
+                      %div.circle-yellow
+                        %i.fa.fa-exclamation
+                    .col-md-6.padding-top-table
+                      ="#{index+1}"
+              %td.table-second
+                ="#{succe_array[1]}"
+              %td.table-third
+                ="#{succe_array[2]}"
+        %BR
     %div{:id=>"menu3", :class=>"tab-pane fade"}
-      %h3
-        ="Errores:"
       %p
-        -@errors.each do |error|
-          ="- #{error}"
-          %BR
+        %H3="Errores: #{File.readlines(@file_errors).size}"
+        %BR
+        %table{:style=>"width:100%",:border=>"1"}
+          %tr
+            %th.text-center-table
+              Número
+            %th.text-center-table
+              Dataset origen
+            %th.text-center-table
+              Descripción
+          -File.readlines(@file_errors).each_with_index do |succe,index|
+            -succe_array = succe.split('@')
+            %tr
+              %td
+                .col-md-12
+                  .row
+                    .col-md-6
+                      %div.circle-red
+                        %i.fa.fa-times
+                    .col-md-6.padding-top-table
+                      ="#{index+1}"
+              %td
+                ="#{succe_array[1]}"
+              %td
+                ="#{succe_array[2]}"
+        %BR

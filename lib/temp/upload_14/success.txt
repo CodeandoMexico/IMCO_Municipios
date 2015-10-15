@@ -78,4 +78,3 @@
 Éxito@Tramites@FOMENTO AL AUTOEMPLEO cuenta con: 127 GIROS
 Éxito@Tramites@FOMENTO AL AUTOEMPLEO cuenta con: 0 REQUERIMIENTOS
 Éxito@Tramites@Número satisfactorio de registros creados: 31
-Éxito@Base de Datos@Borrada satisfactoriamente
