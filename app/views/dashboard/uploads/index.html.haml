@@ -63,7 +63,7 @@
 
 -if @logs
   %h2
-    Resultados de la carga de datos
+    ="Resultados de la carga de datos (#{@status.created_at.in_time_zone('America/Mexico_City')})"
   %ul.nav.nav-tabs
     %li.active
       %a{:data=>{:toggle=>"tab"}, :href=>"#menu1"}
