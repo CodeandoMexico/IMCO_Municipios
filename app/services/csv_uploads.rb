@@ -312,9 +312,10 @@ module CsvUploads
     file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
     file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
     returned = false
+    name_file = "Tramites"
 
     xml_contents =  load_file(file_procedures,current_user_id)
-    if csv_empty?(xml_contents, "procedures",current_user_id) && !xml_contents.nil?
+    if csv_empty?(xml_contents, name_file,current_user_id) && !xml_contents.nil?
       file_errors.puts("Error@#{name_file}@No se pudo leer el CSV".mb_chars)
       returned = false
     else
@@ -343,30 +344,31 @@ module CsvUploads
                 ProcedureLine.create(procedure_id: procedure_created.id, line_id: Line.where(name: giro, city_id: city).first.id)
                 number_of_successfully_created_giros += 1
               else
-                file_warnings.puts("El giro: #{giro} no coincide con ninguno del dataset GIRO es omitido".mb_chars)
+                file_warnings.puts("Adverteincia@#{name_file}@El giro: #{giro} no coincide con ninguno del dataset GIROS, es omitido".mb_chars)
               end
             end
-            file_success.puts("#{procedure_created.name} tiene Giros: #{number_of_successfully_created_giros}".mb_chars)
+            file_success.puts("Éxito@#{name_file}@#{procedure_created.name} cuenta con: #{number_of_successfully_created_giros} GIROS".mb_chars)
             number_of_successfully_created_requerimientos = 0
+           
             tramites.split('; ').each do |requisito|
               unless Requirement.where(name: requisito, city_id: city).blank?
                 ProcedureRequirement.create(procedure_id: procedure_created.id, requirement_id: Requirement.where(name: requisito, city_id: city).first.id)
                 number_of_successfully_created_requerimientos += 1
               else
-                file_warnings.puts("El requisito: #{requisito} no coincide con ninguno del dataset Requisito, es omitido".mb_chars)
+                file_warnings.puts("Adverteincia@#{name_file}@El requisito: #{requisito} no coincide con ninguno del dataset REQUERIMIENTOS, es omitido".mb_chars)
               end
             end
-            file_success.puts("#{procedure_created.name} tiene Requisitos: #{number_of_successfully_created_requerimientos}".mb_chars)
+            file_success.puts("Éxito@#{name_file}@#{procedure_created.name} cuenta con: #{number_of_successfully_created_requerimientos} REQUERIMIENTOS".mb_chars)
             number_of_successfully_created_rows +=  1
           else
-            file_warnings.puts("DATO REPETIDO en TRAMITES es omitido #{row_values}".mb_chars)
+            file_warnings.puts("Adverteincia@#{name_file}@#{row_values[:name]} ya existe, al ser repetido es omitido".mb_chars)
           end
         else
-          file_errors.puts("Una o más dependencias  en INSPECCIONES no coinciden, porfavor revisalos para continuar".mb_chars)
+          file_errors.puts("Error@#{name_file}@Municipio incorrecto NO TIENES PERMISO para crear o modificar otro municipio".mb_chars)
           returned = false
         end 
       end
-      file_success.puts("Número satisfactorio de registros creados para Tramites: #{number_of_successfully_created_rows}".mb_chars)
+      file_success.puts("Éxito@#{name_file}@Número satisfactorio de registros creados: #{number_of_successfully_created_rows}".mb_chars)
       if number_of_successfully_created_rows > 0
         returned = true
       end
@@ -449,7 +451,7 @@ module CsvUploads
 
     FormationStep.where(city_id: city).delete_all
 
-    file_success.puts("Base de datos borrada satisfactoriamente".mb_chars)
+    file_success.puts("Éxito@Base de Datos@Borrada satisfactoriamente".mb_chars)
     file_success.close
   end
 
@@ -482,7 +484,7 @@ module CsvUploads
         return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('materia') && headers[0].include?('duracion') && headers[0].include?('norma') && headers[0].include?('antes') && headers[0].include?('durante') && headers[0].include?('despues') && headers[0].include?('sancion') && headers[0].include?('giros') && headers[0].include?('requerimientos')
       when 'Tramites de apertura'
         return headers[0].include?('municipio') && headers[0].include?('nombre') && headers[0].include?('descripcion') && headers[0].include?('path') && headers[0].include?('tipo') && headers[0].include?('tramite') 
-      when 'procedures'
+      when 'Tramites'
         return headers[0].include?('dependencia') && headers[0].include?('nombre') && headers[0].include?('duracion') && headers[0].include?('costo') && headers[0].include?('vigencia') && headers[0].include?('contacto') && headers[0].include?('tipo') && headers[0].include?('giros') && headers[0].include?('tramites') && headers[0].include?('categoria') && headers[0].include?('sare') 
       end  
     return false
