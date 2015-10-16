@@ -63,10 +63,12 @@
             = radio_button_tag :rating, 'A', true
   .form-group
     .row.col-md-6.col-md-offset-2
-      .col-sm-4
-        = f.submit t('buttons.federal'), class: 'btn btn-success btn-lg outlineverde btn-block'
-      .col-sm-4
-        = f.submit t('buttons.estatal'), class: 'btn btn-success btn-lg outlineverde btn-block'
+      -if @city.has_federal_documentation
+        .col-sm-4
+          = f.submit t('buttons.federal'), class: 'btn btn-success btn-lg outlineverde btn-block'
+      -if @city.has_state_documentation
+        .col-sm-4
+          = f.submit t('buttons.estatal'), class: 'btn btn-success btn-lg outlineverde btn-block'
       .col-sm-4
         = f.submit t('buttons.municipal'), class: 'btn btn-success btn-lg outlineverde btn-block'
 

@@ -8,7 +8,7 @@ class LoadWorker
 
   if @status.status == "iniciado"
     id_city = fill_city_id(city)
-    
+    clean_files(current_user_id)
     CsvUploads.delete_all_data(id_city,id_user)
      if CsvUploads.validate_dependencies(file_dependency,id_user) && 
         CsvUploads.validate_lines(file_lines,id_user) && 
@@ -51,6 +51,12 @@ class LoadWorker
       else
        return city.id
      end
+   end
+
+   def clean_files(current_user_id)
+      file_errors = File.truncate("lib/temp/upload_#{current_user_id}/errors.txt",0)
+      file_success = File.truncate("lib/temp/upload_#{current_user_id}/success.txt",0)
+      file_warnings = File.truncate("lib/temp/upload_#{current_user_id}/warnings.txt",0)
    end
 
 end

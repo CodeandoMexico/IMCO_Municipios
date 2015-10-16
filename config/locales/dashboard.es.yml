@@ -75,6 +75,8 @@ es:
         construction: 'Normativa de construcción:'
         land: 'Normativa de uso de suelo:'
         business: 'Normativa establecimientos mercantiles:'
+        has_federal_documentation: ¿Quiéres mostrar los trámites de apertura Federales?
+        has_state_documentation: ¿Quiéres mostrar los trámites de apertura Estatales?
       edit:
         title: Editar datos
         correo: 'Correo:'
