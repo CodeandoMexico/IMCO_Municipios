@@ -47,7 +47,14 @@ class RemindersController < ApplicationController
   def update
     authorize @reminder
     respond_to do |format|
-      if @reminder.update(reminder_params)
+      if @reminder.update(
+        business_id: reminder_params[:business_id],
+        name: reminder_params[:name],
+        license: reminder_params[:license],
+        until_to: ordenate_date(reminder_params[:until_to]),
+        frequency: reminder_params[:frequency],
+        frequency_count: reminder_params[:frequency_count])
+
         format.html { redirect_to city_reminders_path(@city), notice:  'El recordatorio fue actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @reminder }
       else
@@ -75,11 +82,11 @@ def ordenate_date(date)
     fecha = date.split('/')
     puts fecha
     if fecha.length == 3
-      return (fecha[2]+"/"+fecha[1]+"/"+fecha[0]).to_date 
+      return (fecha[1]+"/"+fecha[0]+"/"+fecha[2]).to_date 
     elsif fecha.length == 1
           fecha = date.split('-')
         if fecha.length == 3
-          return (fecha[2]+"-"+fecha[0]+"-"+fecha[1]).to_date 
+          return (fecha[2]+"-"+fecha[1]+"-"+fecha[0]).to_date 
       end
     end
 end
