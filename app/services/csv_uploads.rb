@@ -222,7 +222,7 @@ module CsvUploads
                 file_warnings.puts("Adverteincia@#{name_file}@El giro: #{giro} no coincide con ninguno del dataset GIROS, es omitido".mb_chars)
               end
             end
-              file_success.puts("Éxito@#{name_file}@#La inspección: #{inspection_created.name} cuenta con: #{number_of_successfully_created_giros} GIROS".mb_chars)
+              file_success.puts("Éxito@#{name_file}@La inspección: #{inspection_created.name} cuenta con: #{number_of_successfully_created_giros} GIROS".mb_chars)
               number_of_successfully_created_requerimientos = 0
               requerimientos.split('; ').each do |requisito|
                 unless Requirement.where(name: requisito, city_id: city).blank?
