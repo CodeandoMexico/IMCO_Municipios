@@ -4,18 +4,20 @@ module Dashboard
     layout 'dashboard'
 
     require 'fileutils'
-    def index
-      unless @status.nil?
-        if @status.status == "terminado"
-          @logs = true
-          @file_success= "#{@root_path_dir}/success.txt"
-          @file_errors= "#{@root_path_dir}/errors.txt"
-          @file_warnings= "#{@root_path_dir}/warnings.txt"
-        elsif @status.status == "iniciado"
-          @dialog = true
-        end
+
+  def index
+    unless @status.nil?
+      if @status.status == "terminado"
+        @logs = true
+        @file_success= "#{@root_path_dir}/success.txt"
+        @file_errors= "#{@root_path_dir}/errors.txt"
+        @file_warnings= "#{@root_path_dir}/warnings.txt"
+
+      elsif @status.status == "iniciado"
+        @dialog = true
       end
     end
+  end
 
 
     def create

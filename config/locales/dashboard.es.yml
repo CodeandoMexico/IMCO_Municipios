@@ -32,7 +32,7 @@ es:
           download: Descargar
           upload: Subir
         titulo_modal: Estamos subiendo los datos.
-        contenido_modal: "Porfavor actualice la página cuantas veces guste, hasta que este diálogo desaparezca"
+        contenido_modal: "Porfavor actualice la página cuantas veces guste, hasta que este diálogo desaparezca, NO DEBERÍA TARDAR MÁS DE 5 MINUTOS. Los resultados aparecerán al final de la página."
     show:
       dependencias: Dependencias
       giros: Giros

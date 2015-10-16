@@ -161,8 +161,8 @@
         %BR
 
 %div.col-md-12.text-center.modal-dialog-center
-  .col-md-6.col-md-offset-3
-    #myModalDialog.modal.modal-dialog-center.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalDialogLabel", :role => "dialog", :tabindex => "-1"}
+  .col-md-6.col-md-offset-3.modal-dialog-center
+    #myModalDialog.modal.fade{"aria-hidden"=>"true", "aria-labelledby" => "myModalDialogLabel", :role => "dialog", :tabindex => "-1"}
       .modal-dialog-center
         .modal-content
           .modal-header
@@ -176,7 +176,10 @@
             = t('.contenido_modal')
 
 :javascript
-  $(document).ready(function(){
-    $('#myModalDialog').modal('show');
-  });
-   
+$(document).ready(function(){
+  var dialog = "#{@dialog}";
+  if(dialog=="true"){
+    $('#myModalDialog').modal('show'); 
+  }
+});
+  
