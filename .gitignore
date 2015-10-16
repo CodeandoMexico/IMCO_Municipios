@@ -46,3 +46,5 @@ deploy/data_bags/secrets/*
 deploy/nodes/*
 
 public/uploads/
+
+*.rdb
