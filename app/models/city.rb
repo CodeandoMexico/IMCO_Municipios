@@ -12,7 +12,6 @@ class City < ActiveRecord::Base
   mount_uploader :business_file, PdfUploader
 
 
-
   mount_uploader :dependency_file, CsvUploader
   mount_uploader :line_file, CsvUploader
   mount_uploader :formation_step_file, CsvUploader
