@@ -67,13 +67,13 @@
   %ul.nav.nav-tabs
     %li.active
       %a{:data=>{:toggle=>"tab"}, :href=>"#menu1"}
-        Correctos
+        =t('.ok')
     %li
       %a{:data=>{:toggle=>"tab"}, :href=>"#menu2"}
-        Advertencias
+        =t('.warnings')
     %li
       %a{:data=>{:toggle=>"tab"}, :href=>"#menu3"}
-        Errores
+        =t('.errors')
   %div.tab-content
     %div{:id=>"menu1", :class=>"tab-pane in active"}
       %p
@@ -81,11 +81,11 @@
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
-              Número
+              =t('.number')
             %th.text-center-table
-              Dataset origen
+              =t('.origin')
             %th.text-center-table
-              Descripción
+              =t('.description')
           -File.readlines(@file_success).each_with_index do |succe,index|
             -succe_array = succe.split('@')
             %tr
@@ -108,11 +108,11 @@
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
-              Número
+              =t('.number')
             %th.text-center-table
-              Dataset origen
+              =t('.origin')
             %th.text-center-table
-              Descripción
+              =t('.description')
           -File.readlines(@file_warnings).each_with_index do |succe,index|
             -succe_array = succe.split('@')
             %tr
@@ -135,11 +135,11 @@
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
-              Número
+              =t('.number')
             %th.text-center-table
-              Dataset origen
+              =t('.origin')
             %th.text-center-table
-              Descripción
+              =t('.description')
           -File.readlines(@file_errors).each_with_index do |succe,index|
             -succe_array = succe.split('@')
             %tr
@@ -171,6 +171,8 @@
               %div.progress-bar.progress-bar-striped.active{:role=>"progressbar",:aria=>{:valuenow=>"40", :valuemin=>"0", :valuemax=>"100"}, :style=>"width:100%"}
                 Cargando
             = t('.contenido_modal')
+          .modal-footer
+            =link_to t('.update'), dashboard_upload_index_path
 
 :javascript
 $(document).ready(function(){

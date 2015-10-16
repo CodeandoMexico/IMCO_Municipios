@@ -33,6 +33,13 @@ es:
           upload: Subir
         titulo_modal: Estamos subiendo los datos.
         contenido_modal: "Porfavor actualice la página cuantas veces guste, hasta que este diálogo desaparezca, NO DEBERÍA TARDAR MÁS DE 5 MINUTOS. Los resultados aparecerán al final de la página."
+        ok: correctos
+        warnings: Advertencia
+        errors: Errores
+        number: Número
+        origin: Dataset de origen
+        description: Descripción
+        update: Actualizar
     show:
       dependencias: Dependencias
       giros: Giros

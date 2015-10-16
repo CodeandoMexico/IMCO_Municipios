@@ -7,8 +7,9 @@ class LoadWorker
     id_city = fill_city_id(city)
     @status = Uploads.where(id_user: id_user).last
 
+  if @status.status == "iniciado"
     CsvUploads.delete_all_data(id_city,id_user)
-   	 if CsvUploads.validate_dependencies(file_dependency,id_user) && 
+     if CsvUploads.validate_dependencies(file_dependency,id_user) && 
         CsvUploads.validate_lines(file_lines,id_user) && 
         CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
         CsvUploads.validate_requirements(file_requirements,id_user) && 
@@ -25,6 +26,8 @@ class LoadWorker
         file_errors.close
         CsvUploads.delete_all_data(id_city,id_user)
      end
+  end
+    
     
     @status.status = "terminado"
     if @status.save
