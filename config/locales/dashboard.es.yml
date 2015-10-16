@@ -31,6 +31,8 @@ es:
         title: 
           download: Descargar
           upload: Subir
+        titulo_modal: Estamos subiendo los datos.
+        contenido_modal: "Porfavor actualice la página cuantas veces guste, hasta que este diálogo desaparezca"
     show:
       dependencias: Dependencias
       giros: Giros

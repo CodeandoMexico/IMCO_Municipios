@@ -159,3 +159,24 @@
               %td
                 ="#{succe_array[2]}"
         %BR
+
+%div.col-md-12.text-center.modal-dialog-center
+  .col-md-6.col-md-offset-3
+    #myModalDialog.modal.modal-dialog-center.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalDialogLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog-center
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#myModalLabel.modal-title.bg-primary-verde.texto-verde= t('.titulo_modal')
+          .modal-body
+            %div.progress
+              %div.progress-bar.progress-bar-striped.active{:role=>"progressbar",:aria=>{:valuenow=>"40", :valuemin=>"0", :valuemax=>"100"}, :style=>"width:100%"}
+                Cargando
+            = t('.contenido_modal')
+
+:javascript
+  $(document).ready(function(){
+    $('#myModalDialog').modal('show');
+  });
+   
