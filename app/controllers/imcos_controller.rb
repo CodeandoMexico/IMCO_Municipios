@@ -30,7 +30,7 @@ class ImcosController < ApplicationController
 private
 
 def load_cities
-  @cities = City.all.order(:name)
+  @cities = City.is_activated.order(:name)
 end
 
   

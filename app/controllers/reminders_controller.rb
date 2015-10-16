@@ -86,7 +86,7 @@ end
 
   def set_cities
     @city = City.find(params[:city_id])
-    @cities = City.all
+    @cities = City.is_activated
   end
 
   def set_reminder

@@ -6,7 +6,7 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to 'Mi Negocio México', dashboard_path , :class => 'navbar-brand'
+    = link_to "Mi Negocio México | #{City.find(current_user.city_id).name}", dashboard_path , :class => 'navbar-brand'
   %ul.nav.navbar-top-links.navbar-right
     %li.dropdown
       %a.dropdown-toggle{:data => {:toggle=>"dropdown"}, :href => "#"}

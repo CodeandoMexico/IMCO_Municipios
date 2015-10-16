@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   add_breadcrumb "Inicio", :root_path
 
   def show
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:id)
     add_breadcrumb @city.name 
   end
@@ -13,12 +13,12 @@ class CitiesController < ApplicationController
   end
 
   def about
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:city_id)
   end
 
   def aviso
-    @cities = City.all
+    @cities = City.is_activated
     set_city(:city_id)
   end
 
@@ -70,6 +70,7 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name, :contact_email, :privacy_file, :contact_phone,:regulations_path, :construction_file, :land_file, :business_file)
+      params.require(:city).permit(:name, :contact_email, :privacy_file, :contact_phone,:regulations_path, :construction_file, :land_file, :business_file,
+        :dependency_file, :line_file, :formation_step_file, :requirement_file, :procedure_file, :inspection_file, :inspector_file)
     end
   end

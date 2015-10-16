@@ -1,0 +1,81 @@
+Éxito@Base de Datos@Borrada satisfactoriamente
+Éxito@Dependencias@Número exitoso de DEPENDENCIAS creadas: 7
+Éxito@Giros@Número exitoso de GIROS creados: 131
+Éxito@Inspectores@Número exitoso de INSPECTORES creados: 4
+Éxito@Requerimientos@Número exitoso de REQUERIMIENTOS creados: 20
+Éxito@Inspecciones@La inspección: Notificaciones cuenta con: 126 GIROS
+Éxito@Inspecciones@La inspección: Notificaciones cuenta con: 1 REQUERIMIENTOS
+Éxito@Inspecciones@La inspección: Verificacion cuenta con: 126 GIROS
+Éxito@Inspecciones@La inspección: Verificacion cuenta con: 1 REQUERIMIENTOS
+Éxito@Inspecciones@La inspección: Acta de verificación "Medidas de Prevención" cuenta con: 126 GIROS
+Éxito@Inspecciones@La inspección: Acta de verificación "Medidas de Prevención" cuenta con: 1 REQUERIMIENTOS
+Éxito@Inspecciones@La inspección: Verificación Cedula Informativa de Zonifiación cuenta con: 126 GIROS
+Éxito@Inspecciones@La inspección: Verificación Cedula Informativa de Zonifiación cuenta con: 1 REQUERIMIENTOS
+Éxito@Inspecciones@La inspección: Verificación Licencia de Uso de Suelo cuenta con: 6 GIROS
+Éxito@Inspecciones@La inspección: Verificación Licencia de Uso de Suelo cuenta con: 1 REQUERIMIENTOS
+Éxito@Inspecciones@Número exitoso de INSPECCIONES creadas: 5
+Éxito@Trámites de apertura@Número exitoso de TRÁMITES DE APERTURA creados: 43
+Éxito@Trámites@El Trámite: Alta de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Alta de Licencias de Funcionamiento(persona moral) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Revalidación de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Revalidación de Licencias de Funcionamiento(persona moral) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Baja de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Baja de Licencias de Funcionamiento(persona moral) cuenta con: 6 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Domicilio de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Domicilio de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Suspensión de actividades temporales de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Suspensión de actividades temporales de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Reanudación de Actividades de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Reanudación de Actividades de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Propietario de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Propietario de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Aumento de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Aumento de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Disminución de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Disminución de Giro de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Denominación o razón de Licencias de Funcionamiento(persona moral) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Denominación o razón de Licencias de Funcionamiento(persona moral) cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Alta de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Alta de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Revalidación de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Revalidación de Licencias de Funcionamiento(persona física) cuenta con: 5 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Baja de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Baja de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Domicilio de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Domicilio de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Suspensión de Actividades temporales de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Suspensión de Actividades temporales de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Reanudación de Actividades de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Reanudación de Actividades de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Propietario de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Propietario de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de Giro de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de Giro de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Aumento de Griro de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Aumento de Griro de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Disminución de Giro de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Disminución de Giro de Licencias de Funcionamiento(persona física) cuenta con: 8 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cambio de denominación o razón de Licencias de Funcionamiento(persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cambio de denominación o razón de Licencias de Funcionamiento(persona física) cuenta con: 0 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  cuenta con: 7 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Alta de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) cuenta con: 6 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona moral)  cuenta con: 1 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Revalidación de Licencias(SARE) "SISTEMAS DE APERUTURA RAPIDA DE EMPRESAS" (persona física) cuenta con: 1 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Alta de Dictamen Automotriz de Licencias de Funcionamiento(persona moral) cuenta con: 2 GIROS
+Éxito@Trámites@El Trámite: Alta de Dictamen Automotriz de Licencias de Funcionamiento(persona moral) cuenta con: 5 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Visto Bueno Protección Civil cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Visto Bueno Protección Civil cuenta con: 1 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Cedula de Zonificación cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: Cedula de Zonificación cuenta con: 0 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: Licencia de Uso de Suelo cuenta con: 19 GIROS
+Éxito@Trámites@El Trámite: Licencia de Uso de Suelo cuenta con: 0 REQUERIMIENTOS
+Éxito@Trámites@El Trámite: FOMENTO AL AUTOEMPLEO cuenta con: 127 GIROS
+Éxito@Trámites@El Trámite: FOMENTO AL AUTOEMPLEO cuenta con: 0 REQUERIMIENTOS
+Éxito@Trámites@Número exitoso de TRÁMITES creados: 31
+Éxito@General@Datasets cargados con éxito.
