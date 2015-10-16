@@ -4,10 +4,11 @@ class LoadWorker
 
   def perform(current_user_id,city,file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures)
     id_user = fill_user_id(current_user_id)
-    id_city = fill_city_id(city)
     @status = Uploads.where(id_user: id_user).last
 
   if @status.status == "iniciado"
+    id_city = fill_city_id(city)
+    
     CsvUploads.delete_all_data(id_city,id_user)
      if CsvUploads.validate_dependencies(file_dependency,id_user) && 
         CsvUploads.validate_lines(file_lines,id_user) && 
