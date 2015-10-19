@@ -13,3 +13,37 @@
             %td
               = link_to  edit_dashboard_admin_path(@user) do
                 %i.fa.fa-pencil
+
+
+.row
+  .col-sm-12
+    %h1.page-header= t('titles.cities')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+        = link_to t('.new_cities'), new_dashboard_city_path, class: 'btn btn-sm btn-success'
+    .panel-body
+      - if @cities.any?
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %thead
+            %th #
+            %th= t('.name')
+            %th= t('.status')
+            %th= t('.actions')
+          %tbody
+            - @cities.each_with_index do |city, idx|
+              %tr
+                %td= idx + 1
+                %td= truncate(city.name, length: 70)
+                %td= city.activated ? "Sí" : "No"
+                %td
+                  = link_to edit_dashboard_city_path(city) do
+                    %i.fa.fa-pencil
+                  |
+                  = link_to dashboard_city_path(city), method: :delete, data: { confirm: t('form.confirmations.delete_city') } do
+                    %i.fa.fa-trash
+
+
+

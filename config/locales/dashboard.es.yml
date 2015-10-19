@@ -13,6 +13,7 @@ es:
       titulo: Panel de administración
       business: Empresas
       open_procedure: Trámites activos
+      acciones: Acciones
     uploads:
       index:
         titulo: Centro de datos
@@ -256,3 +257,17 @@ es:
       form:
         create_dependency: Guardar cambios
         name: Nombre
+    cities:
+      index:
+        datos_admin: Datos del Administrador
+        email: 'Correo:'
+        name: Nombre
+        actions: Acciones
+        new_cities: Nuevo municipio/delegación
+        status: Activado
+      new:
+        title: Nuevo Municipio/Delegación  
+      edit:
+        title: Editar Municipio/Delegación 
+      form:
+        create_cities: Guardar

@@ -69,6 +69,7 @@ es:
     reminder: Tus recordatorios
     new_reminder: Nuevo recordatorio
     edit_reminder: Editar recordatorio
+    cities: 'Municipios/Delegaciones'
   buttons:
     ok: Aceptar
     crea: Crear
@@ -134,6 +135,7 @@ es:
       delete_admin: ¿Estás seguro que deseas borrar este administrador?
       delete_reminder: ¿Estás seguro que deseas borrar este recordatorio?
       delete_bussines: ¿Estás seguro que deseas borrar este negocio?
+      delete_city: ¿Estás seguro que deseas borrar este municipio/delegación?
 
   devise:
     omniauth_callbacks:
