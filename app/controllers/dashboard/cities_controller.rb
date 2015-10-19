@@ -6,12 +6,20 @@ module Dashboard
     def update
     end
 
+    def index
+    end
+
+    def edit
+    end
+
 
 
     private
 
     def set_city
-      @city ||= City.find(current_user.city_id)
+      @cities = City.all
+      @user = current_user
+     # @city ||= City.find(current_user.city_id)
     end
         # Never trust parameters from the scary internet, only allow the white list through.
     def city_params

@@ -6,5 +6,5 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    - if current_user
+    - if current_user && !current_user.city_id.nil?
       = link_to "Mi Negocio #{City.find(current_user.city_id).name}", dashboard_path , :class => 'navbar-brand'

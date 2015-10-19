@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   post "cities/search"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
-
+  devise_for :users, :path_names => { :sign_in => "inicio_sesion", :sign_out => "salir", :sign_up => "registro" }, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
+ 
   match '/user_formation_steps', to: 'user_formation_steps#update', via: :post
   match '/user_procedures', to: 'user_procedures#update', via: :post
   match '/user_requirements', to: 'user_requirements#update', via: :post
@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :tramites, as: :procedures, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/procedures'
     resources :reportes, as: :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :negocios, as: :business, only: [:index, :show], controller: 'dashboard/business'
+    resources :administradores, as: :admins, only: [ :edit], :path_names => { :edit => "editar"}, controller: 'dashboard/admins'
     resources :municipio, as: :cities, controller: 'dashboard/cities' do
       resources :contactos, as: :contacts, only: [:index, :edit, :update], :path_names => { :edit => "editar" }, controller: 'dashboard/contacts'
     end
