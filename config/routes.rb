@@ -8,67 +8,70 @@ Rails.application.routes.draw do
   match '/user_procedures', to: 'user_procedures#update', via: :post
   match '/user_requirements', to: 'user_requirements#update', via: :post
 
-  resources :cities, only: [:show, :update, :edit] do
-    get 'about'
-    get 'aviso'
-    resources :inspections, only: [:index, :show] do
+  resources :municipio, as: :cities, only: [:show, :update, :edit] , :path_names => { :edit => "editar" }, controller: :cities do
+    get 'about', :path => "acercade"
+    get 'aviso', :path => "aviso"
+    resources :inspeccines, as: :inspections, only: [:index, :show], controller: :inspections do
       collection do
-        get 'download_csv_inspections'
-         get 'download_csv_inspections_show'
+        get 'download_csv_inspections', :path => "descargar_csv_inspecciones"
+        get 'download_csv_inspections_show', :path => "descargar_y_mostrar_csv_inspecciones"
       end
     end
-    resources :inspectors, only: [:index, :show] do
+    resources :inspectores, as: :inspectors, only: [:index, :show], controller: :inspectors do
       collection do
-        get 'download_csv_inspector'
+        get 'download_csv_inspector', :path => "descargar_csv_inspectores"
       end
     end
-    resources :procedure_lines, only: [:index,:show] do
+    resources :tramites, as: :procedure_lines, only: [:index,:show], controller: :procedure_lines do
       collection do
-        get 'download_csv_procedure_line'
-        get 'download_csv_requirements'
+        get 'download_csv_procedure_line', :path => "descargar_csv_tramites_por_giro"
+        get 'download_csv_requirements', :path => "descargar_csv_requisitos"
       end
     end
-    resources :formation_steps, only: [:index] do
+    resources :tramites_de_apertura, as: :formation_steps, only: [:index], controller: :formation_steps do
       collection do
-        get 'download_csv_formation_steps_municipal'
-        get 'download_csv_formation_steps_federal'
+        get 'download_csv_formation_steps_municipal', :path => "descargar_csv_tramites_de_apertura_municipal"
+        get 'download_csv_formation_steps_federal', :path => "descargar_csv_tramites_de_apertura_federal"
       end
     end
-    resources :complaints, only: [:new, :create, :edit, :update]
-    resources :reminders, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'reminders'
-    resources :users, only: :index do
+    resources :denuncias, as: :complaints, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar" }, controller: :complaints
+
+    resources :recordatorios, as: :reminders, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: :reminders
+
+    resources :usuarios, as: :users, only: :index , controller: :users do
       collection do
-        get 'download_csv_business'
+        get 'download_csv_business', :path => "descargar_csv_negocios"
       end
     end
   end
 
-  resource :dashboard, only: :show, controller: :dashboard do
+  resource :panel, as: :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
-    resources :upload, controller: 'dashboard/uploads'
-    resources :inspections, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspections'
-    resources :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/inspectors'
-    resources :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/formation_steps'
-    resources :lines, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/lines'
-    resources :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/dependencies'
-    resources :requirements, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/requirements'
-    resources :procedures, only: [:index, :new, :create, :edit, :update, :destroy], controller: 'dashboard/procedures'
-    resources :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
-    resources :business, only: [:index, :show], controller: 'dashboard/business'
-    resources :cities, controller: 'dashboard/cities' do
-      resources :contacts, only: [:index, :edit, :update], controller: 'dashboard/contacts'
+    resources :carga, as: :upload, controller: 'dashboard/uploads'
+    resources :inspecciones, as: :inspections, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspections'
+    resources :inspectores, as: :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspectors'
+    resources :tremites_de_apertura, as: :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/formation_steps'
+    resources :giros, as: :lines, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/lines'
+    resources :dependencias, as: :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/dependencies'
+    resources :requisitos, as: :requirements, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/requirements'
+    resources :tramites, as: :procedures, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/procedures'
+    resources :reportes, as: :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
+    resources :negocios, as: :business, only: [:index, :show], controller: 'dashboard/business'
+    resources :municipio, as: :cities, controller: 'dashboard/cities' do
+      resources :contactos, as: :contacts, only: [:index, :edit, :update], :path_names => { :edit => "editar" }, controller: 'dashboard/contacts'
     end
   end
 
-  resources :users, only: [:new, :create, :edit, :update] do
-    resources :business, controller: 'business'
+  resources :usuarios, as: :users, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar", :new => "nuevo" }, controller: :users do
+    resources :negocios, as: :business, controller: 'business'
   end
 
   resources :imcos do
     collection do
-      get 'change_business'
+      get 'change_business', :path => "cambiar_negocios"
     end
   end
+
   root 'imcos#index'
 
 end
