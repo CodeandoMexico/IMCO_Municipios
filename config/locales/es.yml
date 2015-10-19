@@ -22,7 +22,7 @@ es:
   tooltips:
     cierra: Los trámites que necesitas para cerrar un negocio
     construye: Todos los relativos a construcción
-    crece: Son apoyos ofrecidos por el municipio a empresas. Los apoyos pueden ser de distintos tipos, desde orientación y capacitación hasta apoyos monetarios o en especie.
+    crece: Son apoyos ofrecidos por el municipio/delegación a empresas. Los apoyos pueden ser de distintos tipos, desde orientación y capacitación hasta apoyos monetarios o en especie.
     administra: Los relativos a los movimientos que puedan realizarse con la licencia de funcionamiento y los trámites necesarios para publicitar el negocio y trámites que las empresas requieran con regularidad (como constancias de pago o impuestos)
     crea: Trámites necesarios para abrir un nuevo negocio
   correos:
@@ -34,11 +34,11 @@ es:
             motivo de %{razon}.
             En el negocio ubicado en %{domicilio}.
             Esta denuncia ha generado un número de folio: %{folio}. Por favor, conserva este número para poderdarle seguimiento a tu queja.
-            La denuncia de tu empresa ha sido enviada al municipio de %{city} correctamente. El municipio se pondrá en contacto contigo, en caso de que esto no suceda, puedes escribirnos a %{contacto}
+            La denuncia de tu empresa ha sido enviada al unicipio/delegación de %{city} correctamente. El municipio/delegación se pondrá en contacto contigo, en caso de que esto no suceda, puedes escribirnos a %{contacto}
       gracias: Gracias por utilizar Mi Negocio México.
     municipio:
       subject: Denuncia de inspección recibida
-      saludo: 'Municipio de %{city},'
+      saludo: 'Municipio/Delegación de %{city},'
       body: |
             Usted ha recibido este mensaje debido a que el negocio %{nombre} de la plataforma Mi Negocio México, 
             ha realizado una denuncia por el motivo de: %{razon}. 
@@ -94,7 +94,7 @@ es:
     inspectors: Inspectores
     floor_utilization: Uso de suelo
   footer:
-    municipio: Municipios
+    municipio: Municipio/Delegación
     acerca_de: Acerca de
     aviso: Avíso de privacidad
     desarrollado: Desarrollado por el
@@ -190,19 +190,19 @@ es:
         save_button: Guardar denuncia
         razon_denuncia_texto: ¿Cuál fue la razón?
         descripcion_denuncia: Explica la situación.
-        texto_explicativo: Aquí podrás realizar una denuncia sobre actos irregulares cometidos durante tu inspección o visita. Una vez concluida tu denuncia,  recibirás un correo electrónico de seguimiento de tu municipio.
+        texto_explicativo: Aquí podrás realizar una denuncia sobre actos irregulares cometidos durante tu inspección o visita. Una vez concluida tu denuncia,  recibirás un correo electrónico de seguimiento de tu municipio/delegación.
       created_successfully: Denuncia enviada correctamente, por favor revise su correo.
   inspections:
     index:
       title: Inspecciones
       search_inspections: Buscar inspección por nombre
-      no_inspections_available: No encontramos inspecciones en este municipio
+      no_inspections_available: No encontramos inspecciones en este municipio/delegación
       nombre: Nombre
       materia: Materia
       duracion: Duración
       complaint: Crear denuncia
       recordatorios: Recordatorios
-      no_inspections_selected_subtitle: Podrás ver todas las inspecciones que el municipio puede realizar a tu empresa, puedes denunciar una inspección irregular o puedes crear un recordatorio.
+      no_inspections_selected_subtitle: Podrás ver todas las inspecciones que el municipio/delegación puede realizar a tu empresa, puedes denunciar una inspección irregular o puedes crear un recordatorio.
       no_inspections_selected_instruction: Por favor selecciona el giro de tu empresa.
       no_inspections_selected_resultado: Resultado de la búsqueda.
       inspector: Conoce a tu inspector
@@ -224,8 +224,8 @@ es:
     index:
       title: Inspectores
       search_inspectors: Buscar inspector por nombre
-      no_inspectors_available: No encontramos inspectores en este municipio
-      no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el municipio para poder realizar una inspección a tu negocio.
+      no_inspectors_available: No encontramos inspectores en este municipio/delegación
+      no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el municipio/delegación para poder realizar una inspección a tu negocio.
       no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
       vigencia: Vigencia
@@ -253,20 +253,20 @@ es:
       texto_nuevo: ¿Cómo puedo crear mi negocio?
       texto_tramite: ¿Qué trámites tengo que realizar?
       texto_inspeccion: ¿Quién y cómo me inspeccionará?
-      texto_uso_suelo: Localiza negocios en el municipio
+      texto_uso_suelo: Localiza negocios en el municipio/delegación
       subtitulo: Selecciona una opción.
       titulo: Menú Mi Negocio México
   imcos:
     index:
       titulo_modal: Mi Negocio México
-      contenido_modal: 'Estamos trabajando con diversos municipios para poder darle más información de cómo puede abrir y mantener al día un negocio. Si tiene alguna duda, por favor escríbanos a contacto@minegociomexico.mx'
-      subtitulo: Elige tu municipio
+      contenido_modal: 'Estamos trabajando con diversos municipios/delegaciones para poder darle más información de cómo puede abrir y mantener al día un negocio. Si tiene alguna duda, por favor escríbanos a contacto@minegociomexico.mx'
+      subtitulo: Elige tu municipio/delegación
       salir: Salir
-      no_municipio: ¿No encuentras tu municipio? Haz
+      no_municipio: ¿No encuentras tu municipio/delegación? Haz
       click: clic aquí
       Aceptar: Aceptar
       iniciar_sesion: Iniciar sesión
-      texto_explicativo: Mi Negocio México es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio. También podrás consultar información sobre inspecciones, crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
+      texto_explicativo: Mi Negocio México es una herramienta que te ayudará a encontrar los trámites y requisitos que debes cumplir para abrir, operar y crecer un negocio en tu municipio/delegación. También podrás consultar información sobre inspecciones, crear alertas de las fechas en que debes renovar permisos, hacer denuncias y entender mejor las obligaciones del giro al que pertenece tu empresa.
   layouts:
     blanco:
       new: NUEVO NEGOCIO
@@ -282,7 +282,7 @@ es:
   business:
     form:
       edit_profile: Mi negocio
-      edit_profile_explicacion: Llena los datos con la información de tu negocio, así podrás  anunciarte, tener contacto directo con tu municipio, y aclar cualquier irregularidad sobre trámites y servicios de manera más rápida.
+      edit_profile_explicacion: Llena los datos con la información de tu negocio, así podrás  anunciarte, tener contacto directo con tu municipio/delegación, y aclar cualquier irregularidad sobre trámites y servicios de manera más rápida.
       name: Nombre*
       correo: Correo*
       business_name: Nombre del negocio*
@@ -291,7 +291,7 @@ es:
       operation_license_file: Licencia de operación (Archivo opcional)
       land_permission_file: Permiso de uso de suelo (Archivo opcional)
       save: Guardar
-      city_id: Municipio de tu negocio*
+      city_id: Municipio/Delegación de tu negocio*
       mapa: Ubicación del negocio
       line: Giro de tu negocio*
       phone: Teléfono
