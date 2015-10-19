@@ -14,6 +14,46 @@ module Dashboard
       @city = City.new
     end
 
+    def create
+      @city = City.new(city_params)
+
+      authorize @user
+
+      respond_to do |format|
+        if @city.save
+          format.html { redirect_to dashboard_cities_url, notice: 'El Municipio/Delegación fue creada satisfactoriamente.' }
+          format.json { render :show, status: :created, location: @city }
+        else
+          format.html { render :new }
+          format.json { render json: @city.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def update
+      authorize @user
+
+      respond_to do |format|
+        if @city.update(city_params)
+          format.html { redirect_to dashboard_cities_url, notice: 'El Municipio/Delegación fue actualizado satisfactoriamente.' }
+          format.json { render :show, status: :ok, location: @city }
+        else
+          format.html { render :edit }
+          format.json { render json: @city.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def destroy
+      authorize @user
+
+      @city.destroy
+      respond_to do |format|
+        format.html { redirect_to dashboard_cities_path, notice: 'El Municipio/Delegación fue borrado satisfactoriamente.' }
+        format.json { head :no_content }
+      end
+    end
+
 
 
     private

@@ -58,7 +58,7 @@ Rails.application.routes.draw do
     resources :reportes, as: :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :negocios, as: :business, only: [:index, :show], controller: 'dashboard/business'
     resources :administradores, as: :admins, only: [ :edit], :path_names => { :edit => "editar"}, controller: 'dashboard/admins'
-    resources :municipio, as: :cities, controller: 'dashboard/cities' do
+    resources :municipio, as: :cities, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/cities' do
       resources :contactos, as: :contacts, only: [:index, :edit, :update], :path_names => { :edit => "editar" }, controller: 'dashboard/contacts'
     end
   end
