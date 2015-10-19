@@ -2,10 +2,10 @@
     <div class="navbar-inner">
       <div class="container-fluid">
         <% if user_signed_in? %>
-          <p class="navbar-text pull-right navbar-custom"><a-verde class = "m"%><%= link_to "#{current_user}\t", edit_user_path(current_user) , data: { no_turbolink: true } %></a-verde> | <a-verde class = "m"%><%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%></a-verde>
+          <p class="navbar-text pull-right navbar-custom"><%= link_to "#{current_user}\t", edit_user_path(current_user) , data: { no_turbolink: true } %> | <%=link_to t('.salir'), destroy_user_session_path(:authenticity_token => form_authenticity_token()),:method => :delete, :class => 'a-verde'%>
           </p>
         <% else %>
-          <a-verde class = "m"%><%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%></a-verde>
+          <%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
         <% end %>
       </div>
     </div>

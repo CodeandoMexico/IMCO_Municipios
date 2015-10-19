@@ -1,16 +1,13 @@
 module Dashboard
   class CitiesController < ApplicationController
-    before_filter :set_city
+    before_filter :set_user
+    before_filter :set_city, only: [:edit, :update, :destroy]
     layout 'dashboard'
-
-    def update
-    end
 
     def index
     end
 
     def edit
-      @city = City.find(params[:id])
     end
 
     def new
@@ -22,14 +19,17 @@ module Dashboard
     private
 
     def set_city
+       @city = City.find(params[:id])
+    end
+
+    def set_user
       @cities = City.all
       @user = current_user
     end
 
 
     def city_params
-      params.require(:city).permit(:name, :contact_email, :privacy_file, :contact_phone,:regulations_path, :construction_file, :land_file, :business_file,
-        :dependency_file, :line_file, :formation_step_file, :requirement_file, :procedure_file, :inspection_file, :inspector_file)
+      params.require(:city).permit(:name, :latitude, :longitude, :activated)
     end
 
   end
