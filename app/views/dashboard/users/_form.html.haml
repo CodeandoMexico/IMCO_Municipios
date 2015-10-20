@@ -1,0 +1,16 @@
+= form_for [:dashboard, @user], html: { class: 'form-horizontal' } do |f|
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('.create_user'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('.name')
+              %td= f.text_field :email, class: 'form-control'
+            %tr
+              %td= t('.password')
+              %td= f.text_field :password, class: 'form-control'

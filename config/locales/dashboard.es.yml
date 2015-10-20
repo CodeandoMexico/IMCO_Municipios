@@ -13,6 +13,7 @@ es:
       titulo: Panel de administración
       business: Empresas
       open_procedure: Trámites activos
+      acciones: Acciones
     uploads:
       index:
         titulo: Centro de datos
@@ -60,15 +61,15 @@ es:
       load_datasets: Carga de datasets
     contacts:
       index:
-        all_profile: Contacto municipio %{city}
+        all_profile: Contacto municipio/delegación %{city}
         correo_admin: Correo de administradores
-        correo_municipio: Correo del Municipio
+        correo_municipio: Correo del municipio/delegación
         save: Guardar
         admins: Administrador
         email: Correo
         edit: Editar
-        correo_municipio: 'Correo municipal:'
-        phone_municipio: 'Teléfono municipal:'
+        correo_municipio: 'Correo municipio/delegación:'
+        phone_municipio: 'Teléfono municipio/delegación:'
         actualizar: Actualizar
         regulations_path: 'URL a normativa de inspectores:'
         aviso: 'Aviso de privasidad:'
@@ -82,6 +83,8 @@ es:
         correo: 'Correo:'
         password: 'Contraseña:'
         ok: Actualizar
+      new:
+        create: Crear
     reports:
       index:
         negocio: Negocio
@@ -151,7 +154,7 @@ es:
         name: Nombre
         dependency: Dependencia
         tipo: Tipo
-        municipio: Municipio
+        municipio: Municipio/Delegación
         tramite: Trámite
         actions: Acciones
         new_formation_step: Nuevo trámite apertura
@@ -170,7 +173,7 @@ es:
     lines:
       index:
         name: Nombre
-        municipio: Municipio
+        municipio: Municipio/Delegación
         actions: Acciones
         new_lines: Nuevo Giro
         no_lines_available: No hay giros disponibles.
@@ -185,7 +188,7 @@ es:
     requirements:
       index:
         name: Nombre
-        municipio: Municipio
+        municipio: Municipio/Delegación
         actions: Acciones
         new_requirements: Nuevo requerimiento
         no_requirements_available: No hay requerimientos disponibles.
@@ -245,7 +248,7 @@ es:
     dependencies:
       index:
         name: Nombre
-        municipio: Municipio
+        municipio: Municipio/Delegación
         actions: Acciones
         new_dependency: Nueva dependencia
         no_dependencies_available: No hay dependencias disponibles.
@@ -256,3 +259,20 @@ es:
       form:
         create_dependency: Guardar cambios
         name: Nombre
+    cities:
+      index:
+        datos_admin: Datos del Administrador
+        email: 'Correo:'
+        name: Nombre
+        actions: Acciones
+        new_cities: Nuevo municipio/delegación
+        status: Activado
+      new:
+        title: Nuevo Municipio/Delegación  
+      edit:
+        title: Editar Municipio/Delegación 
+        make_admin: Administradores de municipios
+        new_admin: Nuevo administrador
+        email: Correo
+      form:
+        create_cities: Guardar
