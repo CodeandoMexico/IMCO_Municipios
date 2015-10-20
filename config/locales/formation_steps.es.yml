@@ -28,8 +28,10 @@ es:
       validity: Vigencia
       type: Tipo
       cost: Costo
+      liga: ver
     federal_formation_steps:
       done: Hecho
       name: Nombre
       description: Descripción
       path: Recursos
+      liga: ver

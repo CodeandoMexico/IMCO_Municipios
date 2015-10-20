@@ -24,5 +24,5 @@
                   %input{ type: 'checkbox', 'ng-click'=> "procedures.redirect(\'#{new_user_path}\')"} &nbsp;
           %td.col-sm-4= formation.name
           %td.col-sm-6= formation.description
-          %td.col-sm-1= link_to t('.liga'), formation.path
+          %td.col-sm-1= link_to t('.liga'), formation.path, :target => "_blank"
 = link_to t('buttons.downloader'), download_csv_formation_steps_federal_city_formation_steps_path(@city,:lines => @line, :rating => @tipo, :commit =>@commit , format: :csv),:class => "btn btn-success btn-lg outlineverde"
