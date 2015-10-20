@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     resources :tramites, as: :procedures, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/procedures'
     resources :reportes, as: :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :negocios, as: :business, only: [:index, :show], controller: 'dashboard/business'
-    resources :administradores, as: :admins, only: [ :edit], :path_names => { :edit => "editar"}, controller: 'dashboard/admins'
+    resources :administradores, as: :admins, :path_names => { :edit => "editar"}, controller: 'dashboard/admins'
     resources :municipio, as: :cities, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/cities' do
       resources :contactos, as: :contacts, only: [:index, :edit, :update], :path_names => { :edit => "editar" }, controller: 'dashboard/contacts'
     end

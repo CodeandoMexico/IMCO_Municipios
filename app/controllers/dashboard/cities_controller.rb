@@ -8,6 +8,7 @@ module Dashboard
     end
 
     def edit
+      @admins = User.where(city_id: params[:id])
     end
 
     def new

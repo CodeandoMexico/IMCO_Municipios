@@ -269,5 +269,8 @@ es:
         title: Nuevo Municipio/Delegación  
       edit:
         title: Editar Municipio/Delegación 
+        make_admin: Administradores de municipios
+        new_admin: Nuevo administrador
+        email: Correo
       form:
         create_cities: Guardar
