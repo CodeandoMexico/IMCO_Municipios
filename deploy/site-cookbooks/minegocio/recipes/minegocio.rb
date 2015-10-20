@@ -34,14 +34,38 @@ end
 #    action :run
 #end
 
-#docker_container "minegocio_dbmigrate" do
+docker_container "minegocio_dbmigrate" do
+    image "minegocio"
+    tag "latest"
+    container_name "minegocio_dbmigrate"
+    env list_credentials
+    link ["minegociomx_db_1:postgres","redis:redis"]
+    entrypoint "rake"
+    command "db:migrate"
+    remove_automatically true
+    action :run
+end
+
+#docker_container "minegocio_task_super_user" do
 #    image "minegocio"
 #    tag "latest"
-#    container_name "minegocio_dbmigrate"
-#    env list_credentials
-#    link ["minegociomx_db_1:postgres","redis:redis"]
+#    container_name "minegocio_task_super_user"
+#    link ["minegociomx_db_1:postgres"]
 #    entrypoint "rake"
-#    command "db:migrate"
+#    env list_credentials
+#    command "admins:super_user"
+#    remove_automatically true
+#    action :run
+#end
+
+#docker_container "minegocio_task_business" do
+#    image "minegocio"
+#    tag "latest"
+#    container_name "minegocio_task_business"
+#    env list_credentials
+#    link ["minegociomx_db_1:postgres"]
+#    entrypoint "rake"
+#    command "business:load_business"
 #    remove_automatically true
 #    action :run
 #end
