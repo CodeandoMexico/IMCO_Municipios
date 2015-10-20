@@ -276,3 +276,7 @@ es:
         email: Correo
       form:
         create_cities: Guardar
+        name: Nombre
+        latitude: Latitude
+        longitude: Longitud
+        activated: Activar municipio al público

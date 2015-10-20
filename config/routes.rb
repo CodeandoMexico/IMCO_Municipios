@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :carga, as: :upload, controller: 'dashboard/uploads'
     resources :inspecciones, as: :inspections, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspections'
     resources :inspectores, as: :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspectors'
-    resources :tremites_de_apertura, as: :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/formation_steps'
+    resources :tremites_de_apertura, as: :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/formation_steps'
     resources :giros, as: :lines, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/lines'
     resources :dependencias, as: :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/dependencies'
     resources :requisitos, as: :requirements, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/requirements'
