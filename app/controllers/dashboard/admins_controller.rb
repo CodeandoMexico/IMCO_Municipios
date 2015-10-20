@@ -1,6 +1,6 @@
 module Dashboard
   class AdminsController < ApplicationController
-    before_filter :set_user, only: [:edit, :update, :destroy]
+    before_filter :set_user, only: [:edit, :update]
     layout 'dashboard'
 
     def index
@@ -8,6 +8,10 @@ module Dashboard
 
     def new
       @user = User.new
+      if params[:city_id]
+        $city_id = City.find(params[:city_id])
+      end
+      
     end
 
     def create
@@ -20,12 +24,14 @@ module Dashboard
 
     def create
       @user = User.new(user_params)
-      @user.city_id = City.find(params[:city_id])
+      puts '********************************'
+      puts $city_id.id
+      @user.city_id = $city_id.id
       @user.admin = true
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to edit_dashboard_admin_path(@city), notice: 'El adminsitrador fue creada satisfactoriamente.' }
+          format.html { redirect_to edit_dashboard_city_path(@user.city_id), notice: 'El adminsitrador fue creada satisfactoriamente.' }
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -38,11 +44,7 @@ module Dashboard
       puts '***************'
       respond_to do |format|
         if @user.update(user_params)
-          if @user.city_id.nil?
-            format.html { redirect_to dashboard_cities_path, notice: 'El adminsitrador fue actualizado satisfactoriamente.' }
-          else
-            format.html { redirect_to edit_dashboard_admin_path(@user.city_id), notice: 'El adminsitrador fue actualizado satisfactoriamente.' }
-          end
+          format.html { redirect_to dashboard_path, notice: 'El adminsitrador fue actualizado satisfactoriamente.' }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }
@@ -52,9 +54,11 @@ module Dashboard
     end
 
     def destroy
-      @user.destroy
+      id_user = params[:user_id]
+      id_city = User.find(id_user).city_id
+      User.find(id_user).destroy
       respond_to do |format|
-        format.html { redirect_to edit_dashboard_admin_path(@city), notice: 'El adminsitrador fue borrado satisfactoriamente.' }
+        format.html { redirect_to edit_dashboard_city_path(id_city), notice: 'El adminsitrador fue borrado satisfactoriamente.' }
         format.json { head :no_content }
       end
     end
@@ -64,7 +68,8 @@ module Dashboard
     def user_params
       params.require(:user).permit(
         :name,
-        :email
+        :email,
+        :password
         )
     end
 

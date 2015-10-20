@@ -16,5 +16,5 @@
               %td= t('.email')
               %td= admin.email
               %td
-                = link_to  edit_dashboard_admin_path(admin, :city_id => @city, :user_id => admin.id) do
-                  %i.fa.fa-pencil
+                = link_to dashboard_admin_path(admin.city_id,:user_id => admin.id), method: :delete, data: { confirm: t('form.confirmations.delete_admin') } do
+                  %i.fa.fa-trash

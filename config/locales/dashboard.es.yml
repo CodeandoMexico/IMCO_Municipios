@@ -83,6 +83,8 @@ es:
         correo: 'Correo:'
         password: 'Contraseña:'
         ok: Actualizar
+      new:
+        create: Crear
     reports:
       index:
         negocio: Negocio
