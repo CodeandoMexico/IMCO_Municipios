@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   post "cities/search"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
-
+  devise_for :users, :path_names => { :sign_in => "inicio_sesion", :sign_out => "salir", :sign_up => "registro" }, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
+ 
   match '/user_formation_steps', to: 'user_formation_steps#update', via: :post
   match '/user_procedures', to: 'user_procedures#update', via: :post
   match '/user_requirements', to: 'user_requirements#update', via: :post
@@ -50,14 +50,15 @@ Rails.application.routes.draw do
     resources :carga, as: :upload, controller: 'dashboard/uploads'
     resources :inspecciones, as: :inspections, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspections'
     resources :inspectores, as: :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspectors'
-    resources :tremites_de_apertura, as: :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/formation_steps'
+    resources :tremites_de_apertura, as: :formation_steps, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/formation_steps'
     resources :giros, as: :lines, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/lines'
     resources :dependencias, as: :dependencies, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/dependencies'
     resources :requisitos, as: :requirements, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/requirements'
     resources :tramites, as: :procedures, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/procedures'
     resources :reportes, as: :reports, only: [:index, :show, :destroy], controller: 'dashboard/reports'
     resources :negocios, as: :business, only: [:index, :show], controller: 'dashboard/business'
-    resources :municipio, as: :cities, controller: 'dashboard/cities' do
+    resources :administradores, as: :admins, :path_names => { :edit => "editar"}, controller: 'dashboard/admins'
+    resources :municipio, as: :cities, :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/cities' do
       resources :contactos, as: :contacts, only: [:index, :edit, :update], :path_names => { :edit => "editar" }, controller: 'dashboard/contacts'
     end
   end
@@ -73,5 +74,11 @@ Rails.application.routes.draw do
   end
 
   root 'imcos#index'
+
+  if Rails.env.production? || Rails.env.development?  
+    match '/404', to: 'errors#file_not_found', via: :all
+    match '/422', to: 'errors#unprocessable', via: :all
+    match '/500', to: 'errors#internal_server_error', via: :all
+  end
 
 end

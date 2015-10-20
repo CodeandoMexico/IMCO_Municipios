@@ -13,6 +13,7 @@ es:
       titulo: Panel de administración
       business: Empresas
       open_procedure: Trámites activos
+      acciones: Acciones
     uploads:
       index:
         titulo: Centro de datos
@@ -82,6 +83,8 @@ es:
         correo: 'Correo:'
         password: 'Contraseña:'
         ok: Actualizar
+      new:
+        create: Crear
     reports:
       index:
         negocio: Negocio
@@ -256,3 +259,24 @@ es:
       form:
         create_dependency: Guardar cambios
         name: Nombre
+    cities:
+      index:
+        datos_admin: Datos del Administrador
+        email: 'Correo:'
+        name: Nombre
+        actions: Acciones
+        new_cities: Nuevo municipio/delegación
+        status: Activado
+      new:
+        title: Nuevo Municipio/Delegación  
+      edit:
+        title: Editar Municipio/Delegación 
+        make_admin: Administradores de municipios
+        new_admin: Nuevo administrador
+        email: Correo
+      form:
+        create_cities: Guardar
+        name: Nombre
+        latitude: Latitude
+        longitude: Longitud
+        activated: Activar municipio al público

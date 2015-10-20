@@ -1,0 +1,20 @@
+%h2.text-center= t('.title')
+= render 'form'
+
+%h2= t('.make_admin')
+.row
+  .panel.panel-default
+    .panel-heading
+      &nbsp;
+      .pull-right
+        = link_to t('.new_admin'), new_dashboard_admin_path(:city_id => @city), class: 'btn btn-sm btn-success'
+    .panel-body
+      %table{ class:'table table-striped table-bordered table-hover' }
+        %tbody
+          -@admins.each do |admin|
+            %tr
+              %td= t('.email')
+              %td= admin.email
+              %td
+                = link_to dashboard_admin_path(admin.city_id,:user_id => admin.id), method: :delete, data: { confirm: t('form.confirmations.delete_admin') } do
+                  %i.fa.fa-trash

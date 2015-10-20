@@ -1,5 +1,5 @@
 - if @inspection.requirements.any?
-  %table.table.table-hover{ 'ng-controller'=> 'ProcedureCtrl as procedures'}
+  %table.table.master-detail.table-hover{ 'ng-controller'=> 'ProcedureCtrl as procedures'}
     %tr.texto-verde
       %th= t('shared.requirements.done')
       %th= t('shared.requirements.name')
@@ -25,6 +25,6 @@
 
         %td= requirement.name
         %td= requirement.description
-        %td= requirement.path
+        %td.col-sm-1= link_to t('.liga'), requirement.path, :target => "_blank"
 - else
   = render 'shared/empty_resource', message: t('.no_procedures_available')
