@@ -326,3 +326,8 @@ es:
         too_short: "is too short (minimum is {{count}} characters)"
         wrong_length: "is the wrong length (should be {{count}} characters)"
         record_invalid: "falla, record invaliudo"
+  error:
+    title_not_found: "Ruta no encontrada"
+    not_found: "Lo sentimos pero la Ruta ingresada no existe"
+    title_server_error: "Falla inesperada"
+    server_error: "Lo sentimos pero hubo una falla inesperada. Estamos trabajando en reparar esto."

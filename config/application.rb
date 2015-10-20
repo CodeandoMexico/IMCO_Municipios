@@ -43,5 +43,9 @@ module PruebaDB
 
     config.serve_static_assets = true
     config.assets.initialize_on_precompile = false
+
+    if Rails.env.production? || Rails.env.development?  
+      config.exceptions_app = self.routes
+    end
   end
 end
