@@ -29,6 +29,9 @@ docker_image "gliderlabs/logspout" do
     tag "v2"
 end
 
+docker_image "redis" do
+    tag "2"
+end
 #docker_container "postgres" do
 #    image "docker.io/postgres"
 #    tag "9.4"
