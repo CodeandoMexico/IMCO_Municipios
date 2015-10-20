@@ -24,6 +24,7 @@ build/
 ## Environment normalisation:
 /.bundle/
 /lib/bundler/man/
+/lib/temp/
 
 # for a library or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
@@ -46,3 +47,6 @@ deploy/data_bags/secrets/*
 deploy/nodes/*
 
 public/uploads/
+
+*.rdb
+

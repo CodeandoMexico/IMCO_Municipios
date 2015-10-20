@@ -19,7 +19,7 @@ module PruebaDB
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
-
+    config.encoding = "utf-8"
     # configure mailer
       config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
       config.action_mailer.smtp_settings = {
@@ -43,5 +43,9 @@ module PruebaDB
 
     config.serve_static_assets = true
     config.assets.initialize_on_precompile = false
+
+    if Rails.env.production? || Rails.env.development?  
+      config.exceptions_app = self.routes
+    end
   end
 end

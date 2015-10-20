@@ -1,4 +1,7 @@
 #heroku run rake admins:create
+#heroku run rake admins:cities
+#heroku run rake admins:new_city
+#heroku run rake admins:super_user
 namespace :admins do
 
  desc "beginning admins"
@@ -24,4 +27,35 @@ namespace :admins do
      User.create(email: 'raul@codeandomexico.org', password: 'codeandoimco', city_id: a.id, admin: true)
 
   end
+
+desc "beginning cities"
+ task :cities => :environment do |t,env|
+    #creando adminitradores cambiar al momento de subir
+    City.all.each do |city|
+        city.activated = true
+        if city.save
+            puts '.'
+        else
+            puts 'F'
+        end
+    end    
+  end
+
+
+desc "create city and first admin"
+ task :new_city => :environment do |t,env|
+    a = City.create(name: 'Municipio El Saurio')
+    puts '*** Municipio creado ***'
+    User.create(email: 'mike@gmail.com', password: 'codeandoimco', city_id: a.id, admin: true)
+    puts '*** Usuario creado ***'
+  end
+
+desc "create super user test"
+ task :super_user => :environment do |t,env|
+    #a = City.create(name: 'Municipio El Saurio')
+   # puts '*** Municipio creado ***'
+    User.create(email: 'supermike@gmail.com', password: 'codeandoimco', admin: true, is_super_user: true)
+    puts '*** Super Usuario creado ***'
+  end
+
 end

@@ -1,0 +1,16 @@
+= form_for  @user, :url => {:controller => 'dashboard/admins', :action=>'update'}, html: { class: 'form-container' } do |f|
+  .row
+    .panel.panel-default
+      .panel-heading
+        &nbsp;
+        .pull-right
+          = f.submit t('dashboard.contacts.edit.ok'), :class => 'btn btn-sm btn-success outlineverde'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td= t('dashboard.contacts.edit.correo')
+              %td= f.text_field :email, class: 'form-control'
+            %tr
+              %td= t('dashboard.contacts.edit.password')
+              %td= f.password_field :password, class: 'form-control'

@@ -18,7 +18,7 @@ es:
       terminado: terminado
       tengo_tramite: Ya tengo este trámite
       select_giro: Selecciona un giro
-      texto_explicativo_municipal: Este es el listado de trámites que debes realizar ante el municipio para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic en el nombre del trámite para consultar los requisitos.
+      texto_explicativo_municipal: Este es el listado de trámites que debes realizar ante el municipio/delegación para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic en el nombre del trámite para consultar los requisitos.
       texto_explicativo_federal: Estos son los principales trámites que debes realizar a nivel federal para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic “Liga” para consultar los requisitos.
       texto_explicativo_estatal: Estos son los principales trámites que debes realizar a nivel estatal para iniciar tu empresa. Puedes marcar la casilla de los trámites que ya tienes y hacer clic “Liga” para consultar los requisitos.
     city_formation_steps:
@@ -28,8 +28,10 @@ es:
       validity: Vigencia
       type: Tipo
       cost: Costo
+      liga: ver
     federal_formation_steps:
       done: Hecho
       name: Nombre
       description: Descripción
       path: Recursos
+      liga: ver

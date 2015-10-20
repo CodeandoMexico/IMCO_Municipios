@@ -15,6 +15,15 @@
             %tr
               %td= t('.phone_municipio')
               %td= f.text_field :contact_phone, class: 'form-control'
+      .panel-body
+        %table{ class:'table table-striped table-bordered table-hover' }
+          %tbody
+            %tr
+              %td=t('.has_federal_documentation')
+              %td= f.check_box(:has_federal_documentation,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'Sí', 'off-text'=>'No' })
+            %tr
+              %td=t('.has_state_documentation')
+              %td= f.check_box(:has_state_documentation,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'Sí', 'off-text'=>'No' })
 
   .h2= t('.archivos')
   .row
@@ -66,3 +75,9 @@
             %td
               = link_to edit_dashboard_city_contact_path(@city,@user) do
                 %i.fa.fa-pencil
+
+:javascript
+    
+$(document).ready(function(){
+  $('input:checkbox').bootstrapSwitch()
+});

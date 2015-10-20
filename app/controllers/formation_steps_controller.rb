@@ -15,7 +15,7 @@ class FormationStepsController < ApplicationController
     
     valores 
     
-    @cities = City.all
+    @cities = City.is_activated
     if user_signed_in?
       @tramites_realizados =  UserFormationStep.where(user_id: current_user.id, line_id: @line , type_user_formation_step: @tipo).all
 

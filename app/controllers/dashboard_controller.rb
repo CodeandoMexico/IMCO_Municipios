@@ -3,17 +3,32 @@ class DashboardController < ApplicationController
   layout 'dashboard'
 
   def show
-    business = Business.where(city_id: current_user.city_id) 
-    reminders = Reminders.where(business_id: business)
-    users = Business.where(city_id: current_user.city_id).pluck(:id).uniq
-    @dependencies = policy_scope(Dependency)
-    @lines = policy_scope(Line)
-    @formation_steps= policy_scope(FormationStep)
-    @requirements = policy_scope(Requirement)
-    @procedures = policy_scope(Procedure)
-    @inspections = policy_scope(Inspection)
-    @inspectors = policy_scope(Inspector)
-    @complaints = policy_scope(Complaint)
+    unless current_user.is_super_user
+      business = Business.where(city_id: current_user.city_id) 
+      reminders = Reminders.where(business_id: business)
+      users = Business.where(city_id: current_user.city_id).pluck(:id).uniq
+      @dependencies = policy_scope(Dependency)
+      @lines = policy_scope(Line)
+      @formation_steps= policy_scope(FormationStep)
+      @requirements = policy_scope(Requirement)
+      @procedures = policy_scope(Procedure)
+      @inspections = policy_scope(Inspection)
+      @inspectors = policy_scope(Inspector)
+      @complaints = policy_scope(Complaint)
+    else
+      business = Business.all
+      reminders = Reminders.all
+      users = Business.all.uniq
+      @dependencies = Dependency.all
+      @lines = Line.all
+      @formation_steps= FormationStep.all
+      @requirements = Requirement.all
+      @procedures = Procedure.all
+      @inspections = Inspection.all
+      @inspectors = Inspector.all
+      @complaints = Complaint.all
+    end
+    
 
     @kpi_data = [
       {
@@ -42,5 +57,5 @@ class DashboardController < ApplicationController
       }
     ]
   end
-
+  
 end

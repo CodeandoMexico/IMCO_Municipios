@@ -2,7 +2,7 @@
 
 namespace :city do
   task :migrate => :environment do
-    City.all.each_with_index do |city, index|
+    City.is_activated.each_with_index do |city, index|
       if city.id == 1
         replace_blank_coordinates_for(city,19.2650275, -98.8996125)
       elsif city.id == 2

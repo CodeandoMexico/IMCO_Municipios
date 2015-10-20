@@ -57,3 +57,61 @@
 .panel-gray a {
   color: $grey-footer;
 }
+.panel-footer {
+  padding:20px 15px !important;
+  background-color: whitesmoke;
+  border-top: 1px solid #dddddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+th,td {
+  text-align: left;
+  padding: 15px !important;
+}
+
+.circle-green
+{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  font-size:10px;
+  color:#fff;
+  line-height:30px;
+  text-align:center;
+  background:green;
+}
+.circle-red
+{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  font-size:10px;
+  color:#fff;
+  line-height:30px;
+  text-align:center;
+  background:red;
+}
+.circle-yellow
+{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  font-size:10px;
+  color:#fff;
+  line-height:30px;
+  text-align:center;
+  background:orange;
+}
+.padding-top-table{
+  padding-top: 8px;
+}
+.table-first{
+  width: 10% !important;
+}
+.table-second{
+  width: 18% !important;
+}
+.table-third{
+  width: 72% !important;
+}

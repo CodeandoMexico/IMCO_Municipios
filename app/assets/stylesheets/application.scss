@@ -304,6 +304,15 @@ texto-blanco{
   padding-left: 15px;
 }
 
+.padding-table{
+  margin: 15px !important;
+}
+
+.text-center-table{
+  text-align: center;
+  padding: 10px;
+}
+
 /*********************DROP DOWN****************************/
 .dropdown-menu {
   border: 1px solid$dark-green;
@@ -380,8 +389,9 @@ section{
 }
 
 .center-block{
-  /*padding-top: 10%;*/
+  padding-top: 2%;
 }
+
 .center-block-footer {
     display: block;
     margin-left: auto;

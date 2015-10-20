@@ -1,10 +1,12 @@
 <div class="col-lg-12 text-center">
 <%= render 'shared/navbar'%>
 
-	<%= image_tag "logo.png", class: "img-responsive center-block center-block-top"%>
+	<%= image_tag "logo.png", class: "img-responsive center-block"%>
 	<div class= "row">
-		<div class="col-md-8 col-md-offset-2 navbar-text-blanco-just">
-			<%=t('.texto_explicativo')%>
+		<div class="col-md-8 col-md-offset-2 navbar-text-blanco-just padding-text-top-landing">
+			<!--<div class="col-md-10 col-md-offset-1">-->
+				<%=t('.texto_explicativo')%>
+			<!--</div>-->
 		</div>
 	</div>	
 
@@ -26,6 +28,9 @@
 					</div>
 				<%end%>
 			<%end%>
+			<!--<div class="col-md-10 col-md-offset-1">
+				<%#= select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
+			</div>-->
 		</div>
 	</div>
 

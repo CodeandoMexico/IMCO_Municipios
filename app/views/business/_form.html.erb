@@ -198,8 +198,8 @@
     if(url.includes("#_=_")){
        url = url.replace("#_=_","");
     }
-    if(!url.includes("new") && !url.includes("edit")){
-       url += "/edit";
+    if(!url.includes("nuevo") && !url.includes("editar")){
+       url += "/editar";
     }
     window.url = url;
     $(".business_city_id").val(window.order).change(); //cambiamos la seleccion de city

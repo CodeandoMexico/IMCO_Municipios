@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908160743) do
+ActiveRecord::Schema.define(version: 20151019203652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,14 +47,24 @@ ActiveRecord::Schema.define(version: 20150908160743) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "contact_email"
-    t.decimal  "latitude",          precision: 10, scale: 6
-    t.decimal  "longitude",         precision: 10, scale: 6
+    t.decimal  "latitude",                  precision: 10, scale: 6
+    t.decimal  "longitude",                 precision: 10, scale: 6
     t.text     "privacy_file"
     t.text     "contact_phone"
     t.text     "regulations_path"
     t.text     "construction_file"
     t.text     "land_file"
     t.text     "business_file"
+    t.boolean  "activated",                                          default: false
+    t.string   "dependency_file"
+    t.string   "line_file"
+    t.string   "formation_step_file"
+    t.string   "requirement_file"
+    t.string   "procedure_file"
+    t.string   "inspection_file"
+    t.string   "inspector_file"
+    t.boolean  "has_federal_documentation",                          default: true
+    t.boolean  "has_state_documentation",                            default: true
   end
 
   create_table "complaints", force: true do |t|
@@ -194,6 +204,13 @@ ActiveRecord::Schema.define(version: 20150908160743) do
     t.integer  "city_id"
   end
 
+  create_table "uploads", force: true do |t|
+    t.integer  "id_user"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_formation_steps", force: true do |t|
     t.integer  "formation_step_id"
     t.integer  "business_id"
@@ -237,6 +254,7 @@ ActiveRecord::Schema.define(version: 20150908160743) do
     t.datetime "oauth_expires_at"
     t.string   "name"
     t.integer  "city_id"
+    t.boolean  "is_super_user",          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

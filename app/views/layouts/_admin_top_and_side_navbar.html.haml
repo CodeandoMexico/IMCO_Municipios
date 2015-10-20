@@ -6,7 +6,7 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to 'Mi Negocio México', dashboard_path , :class => 'navbar-brand'
+    =link_to (current_user && !current_user.city_id.nil?) ?  "Mi Negocio México | #{City.find(current_user.city_id).name}" : "Mi Negocio México", dashboard_path , :class => 'navbar-brand'
   %ul.nav.navbar-top-links.navbar-right
     %li.dropdown
       %a.dropdown-toggle{:data => {:toggle=>"dropdown"}, :href => "#"}
@@ -14,9 +14,10 @@
         %i.fa.fa-caret-down
       %ul.dropdown-menu.dropdown-user
         %li
-          = link_to dashboard_city_contacts_path(current_user.city_id) do
-            %i.fa.fa-user.fa-fw
-            = t('navbar.user_profile')
+          -if current_user && !current_user.city_id.nil?
+            =link_to dashboard_city_contacts_path(current_user.city_id) do
+              %i.fa.fa-user.fa-fw
+              = t('navbar.user_profile')
         %li
           = link_to destroy_user_session_path, method: :delete do
             %i.fa.fa-sign-out.fa-fw
@@ -30,57 +31,64 @@
           = link_to dashboard_path do
             %i.fa.fa-dashboard.fa-fw 
             = t('dashboard.menu.titulo')
+        -unless current_user.is_super_user
 
-        <!-- Bisiness -->
-        %li
-          = link_to dashboard_business_index_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.business')
-            
-        <!-- Complaints -->
-        %li
-          = link_to dashboard_reports_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.complaints')
+          <!-- Bisiness -->
+          %li
+            = link_to dashboard_business_index_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.business')
+              
+          <!-- Complaints -->
+          %li
+            = link_to dashboard_reports_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.complaints')
 
-        <!-- Dependencies -->
-        %li
-          = link_to dashboard_dependencies_path do
-            %i.fa.fa-database.fa-fw
-            = t('dashboard.menu.dependencies')
+          <!-- Dependencies -->
+          %li
+            = link_to dashboard_dependencies_path do
+              %i.fa.fa-database.fa-fw
+              = t('dashboard.menu.dependencies')
 
-        <!-- Lines of work -->
-        %li
-          = link_to dashboard_lines_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.lines')
+          <!-- Lines of work -->
+          %li
+            = link_to dashboard_lines_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.lines')
 
-        <!-- Formation Steps -->
-        %li
-          = link_to dashboard_formation_steps_path do
-            %i.fa.fa-database.fa-fw
-            = t('dashboard.menu.formation_steps')
+          <!-- Formation Steps -->
+          %li
+            = link_to dashboard_formation_steps_path do
+              %i.fa.fa-database.fa-fw
+              = t('dashboard.menu.formation_steps')
 
-        <!-- Requirements -->
-        %li
-          = link_to dashboard_requirements_path do
-            %i.fa.fa-database.fa-fw
-            = t('dashboard.menu.requirements')
+          <!-- Requirements -->
+          %li
+            = link_to dashboard_requirements_path do
+              %i.fa.fa-database.fa-fw
+              = t('dashboard.menu.requirements')
 
-        <!-- Procedures -->
-        %li
-          = link_to dashboard_procedures_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.procedures')
+          <!-- Procedures -->
+          %li
+            = link_to dashboard_procedures_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.procedures')
 
-        <!-- Inspections -->
-        %li
-          = link_to dashboard_inspections_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.inspections')
+          <!-- Inspections -->
+          %li
+            = link_to dashboard_inspections_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.inspections')
 
-        <!-- Inspectors -->
-        %li
-          = link_to dashboard_inspectors_path do
-            %i.fa.fa-database.fa-fw 
-            = t('dashboard.menu.inspectors')
+          <!-- Inspectors -->
+          %li
+            = link_to dashboard_inspectors_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.inspectors')
+        -else
+          <!-- municipios -->
+          %li
+            = link_to dashboard_cities_path do
+              %i.fa.fa-database.fa-fw 
+              = t('dashboard.menu.acciones')

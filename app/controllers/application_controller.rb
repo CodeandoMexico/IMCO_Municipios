@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
           client.login_as_owner do |owner|
            user = owner.get("/api/v1/users/current")['user']
           end
-        rescue SocketError 
+        rescue Exception => e
           puts "Sin conexión -UserVoice-" 
         end 
       end

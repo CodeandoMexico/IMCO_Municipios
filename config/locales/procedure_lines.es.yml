@@ -30,3 +30,5 @@ es:
       business_line: "Giro de negocio: "
       line_procedure: "Trámites: "
       nueva_busqueda: Nueva búsqueda
+    requirements:
+      liga: ver
