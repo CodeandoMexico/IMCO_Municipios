@@ -66,7 +66,7 @@ module Dashboard
       unless Uploads.where(id_user: current_user.id).blank?
         @status = Uploads.where(id_user: current_user).last
         if @status.created_at < Time.now - 15.minutes
-          @status.delete_all
+          @status.delete
         end
       end
       @dialog = false
