@@ -1,4 +1,4 @@
-if Rails.env.production? ||  Rails.env.development?
+if Rails.env.production? || Rails.env.development?
   def docker_redis_url
     if ENV['REDIS_PORT_6379_TCP_ADDR'] and ENV['REDIS_PORT_6379_TCP_PORT']
       return "redis://#{ENV['REDIS_PORT_6379_TCP_ADDR']}:#{ENV['REDIS_PORT_6379_TCP_PORT']}/0"

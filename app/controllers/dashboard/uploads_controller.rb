@@ -34,7 +34,7 @@ module Dashboard
             unless @status.nil?
               @status.delete
             end
-            @status = Uploads.create(id_user: current_user.id,status: "creado")
+            
             make_files
 
             if @status.status == "iniciado"
@@ -78,8 +78,6 @@ module Dashboard
     end
 
     def make_files
-      @status.status = 'iniciado'
-      if @status.save
         delete_files
         Dir::mkdir("#{@root_path_dir}")
         f = File.open("#{@root_path_dir}/success.txt","w+")
@@ -89,7 +87,11 @@ module Dashboard
         f = File.open("#{@root_path_dir}/warnings.txt","w+")
         f.close
         puts '*************************** Archivos creados ***************************'
-      end
+        @status = Uploads.create(id_user: current_user.id,status: "creado")
+        @status.status = 'iniciado'
+        if @status.save
+          puts '*************************** status creado ***************************'
+        end
     end
 
     def delete_files

@@ -15,6 +15,8 @@ ADD docker/00_app_env.conf /etc/nginx/conf.d/
 ADD docker/minegocio-env.conf /etc/nginx/main.d/
 ADD docker/database.yml /home/app/minegocio/config/database.yml
 
+VOLUME ["/home/app/minegocio/lib/temp"]
+
 USER root
 RUN bundle install
 RUN rm -f /etc/service/nginx/down
@@ -23,7 +25,5 @@ RUN chown -R app:app /home/app/minegocio
 RUN ln -sf /proc/self/fd /dev/
 
 RUN whenever --update-crontab && crontab -l
-
-VOLUME ["/home/app/minegocio/lib/temp"]
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp
