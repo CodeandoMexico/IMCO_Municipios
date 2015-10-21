@@ -54,9 +54,12 @@ class LoadWorker
    end
 
    def clean_files(current_user_id)
-      file_errors = File.truncate("lib/temp/upload_#{current_user_id}/errors.txt",0)
-      file_success = File.truncate("lib/temp/upload_#{current_user_id}/success.txt",0)
-      file_warnings = File.truncate("lib/temp/upload_#{current_user_id}/warnings.txt",0)
+      begin
+        file_errors = File.truncate("lib/temp/upload_#{current_user_id}/errors.txt",0)
+        file_success = File.truncate("lib/temp/upload_#{current_user_id}/success.txt",0)
+        file_warnings = File.truncate("lib/temp/upload_#{current_user_id}/warnings.txt",0)
+      rescue
+      end    
    end
 
 end
