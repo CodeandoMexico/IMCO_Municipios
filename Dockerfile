@@ -21,7 +21,7 @@ USER root
 RUN bundle install
 RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
-RUN chown -R app:app /home/app/minegocio
+RUN chown -R app:app /home/app/minegocio /home/app/minegocio/lib/tem
 RUN ln -sf /proc/self/fd /dev/
 
 RUN whenever --update-crontab && crontab -l
