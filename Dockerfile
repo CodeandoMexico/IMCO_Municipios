@@ -24,7 +24,7 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN chown -R app:app /home/app/minegocio /home/app/minegocio/lib/temp
 RUN ln -sf /proc/self/fd /dev/
 
-RUN apt-get update && apt-get install redis-server libhiredis-dev
+RUN apt-get update && apt-get install -y redis-server libhiredis-dev
 ADD docker/redis/redis /etc/service/redis/run
 ADD docker/redis/redis.conf /etc/redis/redis.conf
 ADD docker/sidekiq /etc/service/sidekiq/run
