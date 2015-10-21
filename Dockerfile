@@ -24,4 +24,6 @@ RUN ln -sf /proc/self/fd /dev/
 
 RUN whenever --update-crontab && crontab -l
 
+VOLUME ["/home/app/minegocio/lib/temp"]
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp
