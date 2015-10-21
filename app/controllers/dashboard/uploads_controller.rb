@@ -65,6 +65,9 @@ module Dashboard
     def set_status
       unless Uploads.where(id_user: current_user.id).blank?
         @status = Uploads.where(id_user: current_user).last
+        if @status.created_at < Time.now - 15.minutes
+          @status.delete_all
+        end
       end
       @dialog = false
       @logs = false
