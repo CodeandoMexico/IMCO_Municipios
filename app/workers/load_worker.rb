@@ -2,6 +2,26 @@ class LoadWorker
 
   include Sidekiq::Worker
 
+  Sidekiq.configure_server do |config|
+    if docker_redis_url
+      config.redis = { url: docker_redis_url, size: 3 }
+      puts docker_redis_url
+    else
+      config.redis = { url: ENV["REDISCLOUD_URL"], size: 3 }
+      puts "no jalo la configuracion de docker"
+    end
+  end
+
+  Sidekiq.configure_client do |config|
+    if docker_redis_url
+      config.redis = { url: docker_redis_url, size: 3 }
+      puts docker_redis_url
+    else
+      config.redis = { size: 3 }
+      puts "cliente con opcion predeterminada"
+    end
+  end
+
   def perform(current_user_id,city,file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures)
     id_user = fill_user_id(current_user_id)
     @status = Uploads.where(id_user: id_user).last
