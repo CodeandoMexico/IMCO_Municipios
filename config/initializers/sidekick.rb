@@ -1,4 +1,3 @@
-if Rails.env.production?
   def docker_redis_url
     if ENV['REDIS_PORT_6379_TCP_ADDR'] and ENV['REDIS_PORT_6379_TCP_PORT']
       return "redis://#{ENV['REDIS_PORT_6379_TCP_ADDR']}:#{ENV['REDIS_PORT_6379_TCP_PORT']}/0"
@@ -28,4 +27,3 @@ if Rails.env.production?
       config.redis = { size: 3 }
     end
   end
-end
