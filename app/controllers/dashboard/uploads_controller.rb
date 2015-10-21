@@ -34,7 +34,7 @@ module Dashboard
             unless @status.nil?
               @status.delete
             end
-            @status = Uploads.create(id_user: current_user.id,status: "creado")
+            
             make_files
 
             if @status.status == "iniciado"
@@ -65,7 +65,7 @@ module Dashboard
     def set_status
       unless Uploads.where(id_user: current_user.id).blank?
         @status = Uploads.where(id_user: current_user).last
-        if @status.created_at < Time.now - 15.minutes
+        if @status.created_at.utc < Time.now.utc - 15.minutes
           @status.delete
         end
       end
@@ -92,6 +92,7 @@ module Dashboard
         f = File.open("#{@root_path_dir}/warnings.txt","w+")
         f.close
         puts '*************************** Archivos creados ***************************'
+        @status = Uploads.create(id_user: current_user.id,status: "creado")
       end
     end
 
