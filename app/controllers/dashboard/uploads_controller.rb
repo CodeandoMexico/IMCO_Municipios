@@ -56,7 +56,7 @@ module Dashboard
     def set_city
       @city = City.find(current_user.city_id)
       @user_id = current_user.id
-      @root_path_dir = "lib/temp/upload_#{@user_id}"
+      @root_path_dir = "#{ENV['UPLOAD_PATH']}/upload_#{@user_id}"
       @success = []
       @errors = []
       @warnings = []
