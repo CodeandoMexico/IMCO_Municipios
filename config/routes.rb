@@ -45,6 +45,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :aprende, as: :learns, controller: :learns do
+
+  end
+
   resource :panel, as: :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
     resources :carga, as: :upload, controller: 'dashboard/uploads'
@@ -67,8 +71,10 @@ Rails.application.routes.draw do
     resources :negocios, as: :business, controller: 'business'
   end
 
+
+
   resources :imcos do
-    collection do
+     collection do
       get 'change_business', :path => "cambiar_negocios"
     end
   end
