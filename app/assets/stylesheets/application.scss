@@ -670,3 +670,20 @@ espacio{
   background-color: #ffffff !important;
   border-top: 1px solid #777777;
 }
+
+#image {
+    z-index: 9;
+    text-align: center;
+    border: 1px solid blue;
+    margin-left: 15px;
+}
+#play {
+    background: url('http://cdn1.iconfinder.com/data/icons/iconslandplayer/PNG/64x64/CircleBlue/Play1Pressed.png') center center no-repeat;
+   margin: -183px 10px 0 0;
+    height: 140px;
+    position: relative;
+    z-index: 10;
+}
+.padding-video{
+  padding-top: 100px;
+}

@@ -7,6 +7,12 @@
             .col-xs-12.text-center
               = content_tag :div, k.name
               %hr.white
-              = image_tag "http://res.cloudinary.com/demo/image/vimeo/#{k.video_id}.jpg", class: "img-responsive"
+              %div.row
+                %div.col-sm-12
+                  = image_tag "http://res.cloudinary.com/demo/image/vimeo/#{k.video_id}.jpg", class: "img-responsive",:id=>"image"
+                  %div
+                    %div.col-xs-12
+                      %div{:id=>"play"}
               %hr.white
               = content_tag :div,truncate(k.description, length: 70) , class: 'huge text-left'
+
