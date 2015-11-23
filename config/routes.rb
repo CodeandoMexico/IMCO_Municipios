@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
   resource :panel, as: :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
+    resources :aprende, as: :learns, controller: 'dashboard/learns'
     resources :carga, as: :upload, controller: 'dashboard/uploads'
     resources :inspecciones, as: :inspections, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspections'
     resources :inspectores, as: :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspectors'
