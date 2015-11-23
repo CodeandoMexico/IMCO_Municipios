@@ -1,0 +1,10 @@
+%a-verde
+  = render_breadcrumbs separator: ' / ', class: 'a-verde texto-verde'
+
+.row.text-center.texto-verde
+  %h1= t('.title')
+  %p= t('.subtitle')
+
+%div.row.form-container.panel-heading
+  = render "shared/kpi", kpis: pretty_kpi_data(@kpi_data)
+
