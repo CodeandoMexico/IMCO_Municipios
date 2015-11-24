@@ -56,7 +56,7 @@ module Dashboard
     def set_city
       @city = City.find(current_user.city_id)
       @user_id = current_user.id
-      @root_path_dir = "lib/temp/upload_#{@user_id}"
+      @root_path_dir = "#{ENV['UPLOAD_PATH']}/upload_#{@user_id}"
       @success = []
       @errors = []
       @warnings = []
@@ -81,8 +81,6 @@ module Dashboard
     end
 
     def make_files
-      @status.status = 'iniciado'
-      if @status.save
         delete_files
         Dir::mkdir("#{@root_path_dir}")
         f = File.open("#{@root_path_dir}/success.txt","w+")
@@ -93,7 +91,10 @@ module Dashboard
         f.close
         puts '*************************** Archivos creados ***************************'
         @status = Uploads.create(id_user: current_user.id,status: "creado")
-      end
+        @status.status = 'iniciado'
+        if @status.save
+          puts '*************************** status creado ***************************'
+        end
     end
 
     def delete_files
