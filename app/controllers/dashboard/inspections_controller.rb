@@ -16,7 +16,7 @@ module Dashboard
       @inspection = Inspection.new
       @dependency = Dependency.where(city_id: current_user.city_id)
       @lines = Line.where(city_id: current_user.city_id)
-        @requirements = Requirement.where(city_id: current_user.city_id)
+      @requirements = Requirement.where(city_id: current_user.city_id)
     end
 
     def edit

@@ -1,0 +1,19 @@
+.row
+  - @learns.each_with_index do |k, index|
+    .col-lg-4.col-md-6
+      = content_tag :div, class: "panel #{k[:panel]} gray" do
+        .panel-heading
+          .row
+            .col-xs-12.text-center
+              = content_tag :div, k.name
+              %hr.white
+              %div.row
+                %div.col-sm-12
+                  = image_tag "http://res.cloudinary.com/demo/image/vimeo/#{k.video_id}.jpg", class: "img-responsive",:id=>"image"
+                  %div
+                    %div.col-xs-12
+                      = link_to learn_path(k) do
+                        %div{:id=>"play"}
+              %hr.white
+              = content_tag :div,truncate(k.description, length: 70) , class: 'huge text-left'
+

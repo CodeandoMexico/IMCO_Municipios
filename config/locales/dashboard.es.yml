@@ -14,6 +14,24 @@ es:
       business: Empresas
       open_procedure: Trámites activos
       acciones: Acciones
+    learns:
+      form:
+        name: Nombre
+        description: Descripción
+        video: Video
+        for_admin: Para administradores
+        create_learn: Guardar
+      edit:
+        title: Editar
+      new:
+        title: Nuevo
+      index:
+        name: Nombre
+        descripcion: Descripción
+        video: Id video
+        for_admin: Para administradores
+        actions: Acciones
+        new_learn: Nuevo video
     uploads:
       index:
         titulo: Centro de datos
@@ -52,7 +70,7 @@ es:
       denuncia: Denuncias
       complaints_message: Denuncias totales
       users_total: Empresarios registrados
-      business_total: Empresas registras
+      business_total: Empresas registradas
       business_news: Empresas nuevas
       reminders_total: Recordatorios totales
       reminders_uniq: Usuarios con recordatorios
