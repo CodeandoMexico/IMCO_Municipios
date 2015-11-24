@@ -49,4 +49,5 @@ deploy/nodes/*
 public/uploads/
 
 *.rdb
+.idea/*
 
