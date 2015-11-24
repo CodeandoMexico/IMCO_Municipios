@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         get 'download_csv_formation_steps_federal', :path => "descargar_csv_tramites_de_apertura_federal"
       end
     end
-    resources :denuncias, as: :complaints, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar" }, controller: :complaints
+    resources :denuncias, as: :complaints, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar" ,:new => "nuevo" }, controller: :complaints
 
     resources :recordatorios, as: :reminders, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: :reminders
 
