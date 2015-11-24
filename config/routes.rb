@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :municipio, as: :cities, only: [:show, :update, :edit] , :path_names => { :edit => "editar" }, controller: :cities do
     get 'about', :path => "acercade"
     get 'aviso', :path => "aviso"
-    resources :inspeccines, as: :inspections, only: [:index, :show], controller: :inspections do
+    resources :inspecciones, as: :inspections, only: [:index, :show], controller: :inspections do
       collection do
         get 'download_csv_inspections', :path => "descargar_csv_inspecciones"
         get 'download_csv_inspections_show', :path => "descargar_y_mostrar_csv_inspecciones"
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         get 'download_csv_formation_steps_federal', :path => "descargar_csv_tramites_de_apertura_federal"
       end
     end
-    resources :denuncias, as: :complaints, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar" }, controller: :complaints
+    resources :denuncias, as: :complaints, only: [:new, :create, :edit, :update], :path_names => { :edit => "editar" ,:new => "nuevo" }, controller: :complaints
 
     resources :recordatorios, as: :reminders, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: :reminders
 
@@ -45,8 +45,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :aprende, as: :learns, controller: :learns
+
   resource :panel, as: :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
+    resources :aprende, as: :learns, controller: 'dashboard/learns', :path_names => { :edit => "editar", :new => "nuevo" }
     resources :carga, as: :upload, controller: 'dashboard/uploads'
     resources :inspecciones, as: :inspections, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspections'
     resources :inspectores, as: :inspectors, only: [:index, :new, :create, :edit, :update, :destroy], :path_names => { :edit => "editar", :new => "nuevo" }, controller: 'dashboard/inspectors'
@@ -67,8 +70,10 @@ Rails.application.routes.draw do
     resources :negocios, as: :business, controller: 'business'
   end
 
+
+
   resources :imcos do
-    collection do
+     collection do
       get 'change_business', :path => "cambiar_negocios"
     end
   end

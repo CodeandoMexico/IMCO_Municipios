@@ -18,11 +18,11 @@ class LoadWorker
         CsvUploads.validate_formation_steps(file_formation_steps,id_user) &&
         CsvUploads.validate_procedures(file_procedures,id_city,id_user)
 
-        file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+        file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
         file_success.puts("Éxito@General@Datasets cargados con éxito.".mb_chars)
         file_success.close
      else
-        file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+        file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
         file_errors.puts("Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
         file_errors.close
         CsvUploads.delete_all_data(id_city,id_user)
@@ -54,9 +54,12 @@ class LoadWorker
    end
 
    def clean_files(current_user_id)
-      file_errors = File.truncate("lib/temp/upload_#{current_user_id}/errors.txt",0)
-      file_success = File.truncate("lib/temp/upload_#{current_user_id}/success.txt",0)
-      file_warnings = File.truncate("lib/temp/upload_#{current_user_id}/warnings.txt",0)
+      begin
+        file_errors = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt",0)
+        file_success = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt",0)
+        file_warnings = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt",0)
+      rescue
+      end    
    end
 
 end

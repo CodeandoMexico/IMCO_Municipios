@@ -2,7 +2,7 @@ Chef::Resource::DockerContainer.send(:include, Creds::Helper)
 
 git '/var/minegocio' do
     repository "https://github.com/civica-digital/mi-negocio-mx.git"
-    revision "master"
+    revision "deploy-redis"
     action :sync
 end
 
@@ -34,25 +34,25 @@ end
 #    action :run
 #end
 
-docker_container "minegocio_dbmigrate" do
-    image "minegocio"
-    tag "latest"
-    container_name "minegocio_dbmigrate"
-    env list_credentials
-    link ["minegociomx_db_1:postgres","redis:redis"]
-    entrypoint "rake"
-    command "db:migrate"
-    remove_automatically true
-    action :run
-end
+#docker_container "minegocio_dbmigrate" do
+#    image "minegocio"
+#    tag "latest"
+#    container_name "minegocio_dbmigrate"
+#    env list_credentials
+#    link ["minegociomx_db_1:postgres","redis:redis"]
+#    entrypoint "rake"
+#    command "db:migrate"
+#    remove_automatically true
+#    action :run
+#end
 
 #docker_container "minegocio_task_super_user" do
 #    image "minegocio"
 #    tag "latest"
 #    container_name "minegocio_task_super_user"
 #    link ["minegociomx_db_1:postgres"]
-#    entrypoint "rake"
 #    env list_credentials
+#    entrypoint "rake"
 #    command "admins:super_user"
 #    remove_automatically true
 #    action :run
@@ -70,6 +70,8 @@ end
 #    action :run
 #end
 
+
+
 docker_container "minegocio_app" do
     image "minegocio"
     tag "latest"
@@ -82,13 +84,16 @@ docker_container "minegocio_app" do
     action :run
 end
 
+
 docker_container "sidekiq" do
     image "minegocio"
     container_name "sidekiq"
     link ["minegociomx_db_1:postgres", "redis:redis"]
-    volume ['/var/minegocio:rw']
-    env list_creds
+ #   volume ['/var/minegocio:rw']
+    volume_from ["minegocio_app"]
+    env list_credentials
     detach true
     entrypoint "sidekiq"
     action :run
 end
+

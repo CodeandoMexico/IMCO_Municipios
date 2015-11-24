@@ -2,9 +2,9 @@ module CsvUploads
 
   def self.validate_dependencies(file_dependency,current_user_id)
     puts '"********** DEPENDENCIAS "**********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Dependencias"
 
@@ -45,9 +45,9 @@ module CsvUploads
 
   def self.validate_lines(file_lines,current_user_id)
     puts '"********** GIROS "**********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Giros"
 
@@ -88,9 +88,9 @@ module CsvUploads
 
   def self.validate_inspectors(file_inspectors,city,current_user_id)
     puts '"********** INSPECTORES **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Inspectores"
 
@@ -137,9 +137,9 @@ module CsvUploads
 
   def self.validate_requirements(file_requirements,current_user_id)
     puts '"********** REQUISITOS **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Requerimientos"
 
@@ -183,9 +183,9 @@ module CsvUploads
 
   def self.validate_inspections(file_inspections,city,current_user_id)
     puts '"********** INSPECCIONES **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Inspecciones"
 
@@ -258,9 +258,9 @@ module CsvUploads
 
   def self.validate_formation_steps(file_formation_steps,current_user_id)
     puts '"********** TRAMITES DE APERTURA **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Trámites de apertura"
 
@@ -308,9 +308,9 @@ module CsvUploads
 
   def self.validate_procedures(file_procedures, city,current_user_id)
     puts '"********** validate_procedures **********'
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
-    file_warnings = File.open("lib/temp/upload_#{current_user_id}/warnings.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
+    file_warnings = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt","a")
     returned = false
     name_file = "Trámites"
 
@@ -384,7 +384,7 @@ module CsvUploads
 
 
   def self.csv_empty?(file, name, current_user_id)
-    file_errors = File.open("lib/temp/upload_#{current_user_id}/errors.txt","a")
+    file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
 
     returned = false
     if CSV.new(file, headers: :first_row).to_a.empty?
@@ -420,7 +420,7 @@ module CsvUploads
 
 
   def self.delete_all_data(city,current_user_id)
-    file_success = File.open("lib/temp/upload_#{current_user_id}/success.txt","a")
+    file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
    
     inspector = Inspector.by_city(City.find(city))
     unless inspector.blank?
