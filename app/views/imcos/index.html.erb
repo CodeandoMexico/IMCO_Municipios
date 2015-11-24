@@ -8,8 +8,17 @@
 				<%=t('.texto_explicativo')%>
 			<!--</div>-->
 		</div>
-	</div>	
-
+	</div>
+	<%unless @new_cities.blank?%>	
+		<div class="col-md-12">
+			<div class="alert alert-success col-md-6 col-md-offset-3">
+			Incorporados recientemente:
+			<%@new_cities.each_with_index do |city, index|%>
+					<%="#{city.name}#{index == @new_cities.size - 1 ? ' ' : ','}"%>
+			<%end%>
+			</div>
+		</div>
+	<%end%>
 
 	<div class="navbar-text-blanco">
 		<h3><%=t('.subtitulo')%></h3>

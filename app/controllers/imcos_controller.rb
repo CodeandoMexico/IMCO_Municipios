@@ -19,6 +19,8 @@ class ImcosController < ApplicationController
       end
     end
    @twitter_app= "miNegocioMexico"
+
+   @new_cities = @cities.where("created_at >= ?", 2.week.ago.utc)
   end
 
   def change_business
