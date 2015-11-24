@@ -118,6 +118,10 @@ class ApplicationController < ActionController::Base
     Business.where(user_id: current_user)
   end
 
+  def current_is_admin?
+    !current_user.nil? && current_user.admin?
+  end
+
   private
   def admin_is_logged_in?
     authenticate_user! && current_user.admin?

@@ -15,7 +15,7 @@
             %th= t('.name')
             %th= t('.descripcion')
             %th= t('.video_id')
-            %th= t('.category')
+            %th= t('.for_admin')
             %th= t('.actions')
           %tbody
             - @learns.each_with_index do |learn, idx|
@@ -24,7 +24,7 @@
                 %td= truncate(learn.name, length: 70)
                 %td= truncate(learn.description, length: 70)
                 %td= truncate(learn.video_id, length: 70)
-                %td= truncate(learn.category, length: 70)
+                %td= learn.for_admin
                 %td
                   = link_to edit_dashboard_learn_path(learn) do
                     %i.fa.fa-pencil

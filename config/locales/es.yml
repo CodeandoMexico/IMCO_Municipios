@@ -70,6 +70,7 @@ es:
     new_reminder: Nuevo recordatorio
     edit_reminder: Editar recordatorio
     cities: 'Municipios/Delegaciones'
+    learns: "Aprende"
   buttons:
     ok: Aceptar
     crea: Crear
@@ -258,6 +259,10 @@ es:
       texto_uso_suelo: Localiza negocios en el municipio/delegación
       subtitulo: Selecciona una opción.
       titulo: Menú Mi Negocio México
+  learns:
+    index:
+      title: Aprende
+      subtitle: Estos videos te permitiran conocer todas las partes de MiNegocioMéxico
   imcos:
     index:
       titulo_modal: Mi Negocio México

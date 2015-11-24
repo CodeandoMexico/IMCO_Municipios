@@ -2,8 +2,8 @@ class LearnsController < ApplicationController
   add_breadcrumb "Inicio", :root_path
 
   def index
-    add_breadcrumb "Aprende" 
-    @learns = Learn.order(:category)
+    add_breadcrumb "Aprende"
+    @learns = Learn.where(for_admin: current_is_admin?)
   end
 
   def show

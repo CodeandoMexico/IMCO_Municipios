@@ -14,6 +14,24 @@ es:
       business: Empresas
       open_procedure: Trámites activos
       acciones: Acciones
+    learns:
+      form:
+        name: Nombre
+        description: Descripción
+        video: Video
+        for_admin: Para administradores
+        create_learn: Guardar
+      edit:
+        title: Editar
+      new:
+        title: Nuevo
+      index:
+        name: Nombre
+        descripcion: Descripción
+        video: Id video
+        for_admin: Para administradores
+        actions: Acciones
+        new_learn: Nuevo video
     uploads:
       index:
         titulo: Centro de datos

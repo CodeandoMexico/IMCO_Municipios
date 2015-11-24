@@ -64,7 +64,7 @@ module Dashboard
 	end
 
 	 def learn_params
-      params.require(:learn).permit(:name, :description, :video_id, :category)
+      params.require(:learn).permit(:name, :description, :video_id, :for_admin)
     end
 
 	end

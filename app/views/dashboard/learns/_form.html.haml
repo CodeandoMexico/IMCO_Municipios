@@ -18,5 +18,10 @@
               %td= t('.video_id')
               %td= f.text_field :video_id, class: 'form-control'
             %tr
-              %td= t('.category')
-              %td= f.text_field :category, class: 'form-control'
+              %td= t('.for_admin')
+              %td= f.check_box(:for_admin,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'Sí', 'off-text'=>'No' })
+
+:javascript
+  $(document).ready(function(){
+    $('input:checkbox').bootstrapSwitch()
+  });
