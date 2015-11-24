@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :municipio, as: :cities, only: [:show, :update, :edit] , :path_names => { :edit => "editar" }, controller: :cities do
     get 'about', :path => "acercade"
     get 'aviso', :path => "aviso"
-    resources :inspeccines, as: :inspections, only: [:index, :show], controller: :inspections do
+    resources :inspecciones, as: :inspections, only: [:index, :show], controller: :inspections do
       collection do
         get 'download_csv_inspections', :path => "descargar_csv_inspecciones"
         get 'download_csv_inspections_show', :path => "descargar_y_mostrar_csv_inspecciones"
