@@ -45,9 +45,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :aprende, as: :learns, controller: :learns do
-
-  end
+  resources :aprende, as: :learns, controller: :learns
 
   resource :panel, as: :dashboard, only: :show, controller: :dashboard do
     get 'aviso'
