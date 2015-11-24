@@ -1,9 +1,7 @@
-//$(".button_to_send").removeClass("inactive");
-
+$(".button_to_send").removeClass("inactive");
 document.getElementById("shared_twitter").setAttribute("data-title", "Me encantaría ver a mi municipio en miNegocioMéxico y así, mejorar mi negocio <%=@twitter_gov%>");
 
+$('#shared_twitter').trigger("updated");
+$('#boton_twitter').trigger("updated");
 
-$('#shared_twitter').load(document.URL +  ' #shared_twitter');
-
-
-alert("<%=@twitter_gov%>");
+//alert("<%=@twitter_gov%>");
