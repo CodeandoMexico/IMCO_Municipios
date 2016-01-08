@@ -65,7 +65,7 @@
 					</div>
 					<div class="col-md-2 ">
 						<div id="shared_twitter" class="social-share-button"  data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-twitter-title="Unete a miNegocioMéxico" data-desc="" >
-							<a id="boton_twitter" class="btn btn-success btn-lg outlineverde-not-padding half-width button_to_send inactive" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
+							<a id="boton_twitter" class="btn btn-success btn-lg outlineverde-not-padding half-width button_to_send hidden" data-site="twitter" href="#" onclick="SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
 						</div>
 					</div>
 				</div>
@@ -114,7 +114,7 @@ function activeSend(){
            type:'GET', 
            url: window.url,
            success: function(){
-          // 	$(".button_to_send").removeClass("inactive");
+          	//$(".button_to_send").removeClass("inactive");
            },
           error: function(){
           }, 
