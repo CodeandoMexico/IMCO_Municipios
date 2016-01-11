@@ -282,7 +282,9 @@ es:
       inspectors: INSPECTORES
   shared:
     navbar:
-      iniciar_sesion: Iniciar sesión
+      iniciar_sesion: "Iniciar sesión"
+      learnng: "Centro de aprendizaje"
+      pipe: " | "
       salir: Salir
     carrusel_inspections:
       obtener_aqui: Obtener aquí
