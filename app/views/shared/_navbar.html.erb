@@ -6,9 +6,9 @@
           </p>
         <% else %>
             <div class="row pull-right">
-                <%= link_to t('.learnng'), new_user_path, :class => 'navbar-text  navbar-custom manita'%>
+                <%= link_to t('.learnng'), learns_path, :class => 'navbar-text  navbar-custom manita'%>
                 <%= label_tag t('.pipe'), nil, :class => 'navbar-text  navbar-custom navbar-text-blanco-just'%>
-                <%= link_to t('.iniciar_sesion'), learns_path, :class => 'navbar-text pull-right navbar-custom manita'%>
+                <%= link_to t('.iniciar_sesion'), new_user_path, :class => 'navbar-text pull-right navbar-custom manita'%>
             </div>
         <% end %>
       </div>
