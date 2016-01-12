@@ -42,7 +42,7 @@ NUMBER_OF_MAILS = 0
 
   User.where(admin:  true).each do |user|
     if user.current_sign_in_at.to_s < (Date.today-30.day).to_s
-      ComplaintMailer.send_to_not_current_city(reminder).deliver
+      ComplaintMailer.send_to_not_current_city(user).deliver
       puts "Se envia mail de recordatorio por inactividad a #{user.email}"
     end
   end
