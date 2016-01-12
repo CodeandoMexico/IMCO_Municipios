@@ -28,4 +28,10 @@ class ComplaintMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Recupera contraseña Mi Negocio')
   end
 
+  #cuando el administrador tenga mas de un mes sin conectarse a miNegocio
+  def send_to_not_current_city(user)
+    @user = user
+    mail(to: @user.email, subject: 'Recordatorio de inactividad')
+  end
+
 end

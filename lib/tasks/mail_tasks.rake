@@ -38,7 +38,14 @@ NUMBER_OF_MAILS = 0
     end
   end
     puts '*********TASK********************'
-    puts "NUMBER_OF_MAILS: #{NUMBER_OF_MAILS}, TIME: #{Time.now}"
-end
+    puts "NUMBER_OF_MAILS RECORDATORIOS: #{NUMBER_OF_MAILS}, TIME: #{Time.now}"
 
+  User.where(admin:  true).each do |user|
+    if user.current_sign_in_at.to_s < (Date.today-30.day).to_s
+      ComplaintMailer.send_to_not_current_city(reminder).deliver
+      puts "Se envia mail de recordatorio por inactividad a #{user.email}"
+    end
+  end
+
+end
 end
