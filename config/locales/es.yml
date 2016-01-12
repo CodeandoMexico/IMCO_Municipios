@@ -50,6 +50,7 @@ es:
     recordatorio:
       subject: Notificación de MiNegocioMx
       saludo: Hola,
+      inactividad: "Este correo es para recordarte que llevas más de 30 días sin entrar a MiNegocioMéxico, es importante que des seguimiento a los usuarios y mantengas actualizados los datos de tu municipio."
       body: |
             Tu documento %{nombre} y folio %{folio} expirará el día %{fecha}.
 
