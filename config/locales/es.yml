@@ -50,7 +50,8 @@ es:
     recordatorio:
       subject: Notificación de MiNegocioMx
       saludo: Hola,
-      inactividad_html: 'Este correo es para recordarte que llevas más de 30 días sin entrar a <a href="http://www.minegociomexico.mx" target="_blank" >MiNegocioMéxico</a>, es importante que des seguimiento a los usuarios y mantengas actualizados los datos de tu municipio.'
+      inactividad_html: 'Hemos detectado un periodo de inactividad en la plataforma de administración de tu municipio. Te recordamos que mantener actualizada la plataforma <a href="http://www.minegociomexico.mx" target="_blank" >MiNegocioMéxico</a> te da la posibilidad de ofrecer mejores servicios, saber cuáles son los nuevos empresarios que se han registrado en el municipio y si se ha reportado alguna queja.<BR><BR>En MiNegocioMexico.mx puedes editar los trámites y procedimientos vigentes, así como la identidad de los inspectores y verificadores autorizados por el municipio, esta información es consultada por los usuarios de la página y su actualización es muy importante.<BR><BR>Si tienes problemas para acceder a tu panel de administración o cualquier otra duda, puedes contactarnos en el correo: contacto@minegociomexico.mx<BR><BR>¡Gracias!'
+      inactividad_saludo: 'El equipo de MiNegocioMexico.mx'
       body: |
             Tu documento %{nombre} y folio %{folio} expirará el día %{fecha}.
 
