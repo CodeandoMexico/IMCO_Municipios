@@ -26,6 +26,7 @@
             <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogContact"><%="#{t('footer.contacto')} #{@city.name}"%></a>
         </li> 
       <%end%>
+       | <li class="text-center"><%=link_to t('footer.learning'), learns_path %></li>
 </ul>
 </div>
 </footer>
@@ -63,7 +64,6 @@
             <%= link_to t('footer.regulation'), @city.regulations_path , :target => "_blank", :class =>"texto-verde" %> 
             </BR>
           <%end%>
-        
         <%end%>
       </div>
     </div>

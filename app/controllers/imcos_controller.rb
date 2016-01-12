@@ -18,7 +18,7 @@ class ImcosController < ApplicationController
         format.js  {render :layout => true}
       end
     end
-   @twitter_app= "miNegocioMexico"
+   @twitter_app= "imcomx"
 
    @new_cities = @cities.where("created_at >= ?", 2.week.ago.utc)
   end

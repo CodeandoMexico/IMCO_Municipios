@@ -674,12 +674,13 @@ espacio{
 #image {
     z-index: 9;
     text-align: center;
-    border: 1px solid blue;
+    border: 1px solid green;
     margin-left: 15px;
+
 }
 #play {
-    background: url('http://cdn1.iconfinder.com/data/icons/iconslandplayer/PNG/64x64/CircleBlue/Play1Pressed.png') center center no-repeat;
-   margin: -183px 10px 0 0;
+    background: url(image_path('play.svg')) no-repeat center center scroll;
+    margin: -183px 10px 0 0;
     height: 140px;
     position: relative;
     z-index: 10;
