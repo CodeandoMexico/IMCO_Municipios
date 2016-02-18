@@ -25,25 +25,26 @@
 	<!--Seccion Temporal!-->
 	<div class="row text-center ">
 		<div class="col-md-8 col-md-offset-2">
-			<%@cities.each_with_index do |city, index|%>
-				<%if index==0 || index==3%>
-						<div class="row">
-					<%end%>
-				<div class="col-md-4 margin-bottom-button"><%= link_to city.name, city_path(city.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
-				</div>
-				<%if index==2 || index==5%>
-					</div>
-				<%end%>
-			<%end%>
-			<!--<div class="col-md-10 col-md-offset-1">
-				<%#= select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
-			</div>-->
+			<%#@cities.each_with_index do |city, index|%>
+				<%#if index==0 || index==3%>
+						<!--<div class="row">-->
+					<%#end%>
+				<!--<div class="col-md-4 margin-bottom-button">-->
+          <%# link_to city.name, city_path(city.id),  :class => 'btn btn-success btn-lg outline full-width margin-bottom-button' %>
+				<!--</div>-->
+				<%#if index==2 || index==5%>
+					<!--</div>-->
+				<%#end%>
+			<%#end%>
+			<div class="col-md-10 col-md-offset-1">
+				<%= select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select' }%>
+			</div>
 		</div>
 	</div>
 
   <div class="row col-md-12">
   	<div class="navbar-text-blanco">
-  		<%=t('.no_municipio')%> <a-verde class = "m" href="" data-toggle="modal" data-target="#myModalDialog"> <%=t('.click')%></a-verde>
+  		<%=t('.no_municipio')%> <a-verde class = "m" href="" data-toggle="modal" data-target="#myModalShare"> <%=t('.click')%></a-verde>
   	</div>
   </div>
 
