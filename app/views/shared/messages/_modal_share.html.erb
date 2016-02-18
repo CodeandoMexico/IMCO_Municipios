@@ -32,3 +32,24 @@
   		</div>
   	</div>
   </div>
+
+<script type='text/javascript'>
+function activeSend(){
+  document.getElementById("shared_twitter").removeAttribute("data-title");
+  window.order = $("#state_cat_twitter option:selected").val();
+    var url = window.location.href;
+    if(url.includes("#_=_")){
+       url = url.replace("#_=_","");
+    }
+    window.url = url;
+    $.ajax({
+           type:'GET', 
+           url: window.url,
+           success: function(){
+           },
+          error: function(){
+          }, 
+           data: $.param({ pagetime: {state_id: window.order}})
+      });
+}  
+</script>
