@@ -16,7 +16,7 @@
   %div.row.col-md-12
     %div.col-md-8.col-md-offset-2
       %div.col-md-10.col-md-offset-1
-        = select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select'}	
+        = select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select',:onchange => "window.location.replace('/municipio/'+this.value);"}
 	
   %div.row.col-md-12
     %div.navbar-text-blanco
