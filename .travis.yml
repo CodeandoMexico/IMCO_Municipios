@@ -11,10 +11,9 @@ matrix:
 notifications:
   email:
     recipients:
-      - mikesaurio@gmail.com
+      - mikesaurio@civica.digital
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
-set :bundle_flags, "--quiet --no-cache" 

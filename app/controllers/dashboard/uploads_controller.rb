@@ -100,7 +100,7 @@ module Dashboard
     def delete_files
       if Dir.exist?("#{@root_path_dir}")
         FileUtils.rm_rf("#{@root_path_dir}")
-        puts '*************************** borre el directorio #{@root_path_dir} ***************************'
+        puts "*************************** borre el directorio #{@root_path_dir} ***************************"
       else
         puts '*************************** No existe el directorio Nada que borrar***************************'
       end
