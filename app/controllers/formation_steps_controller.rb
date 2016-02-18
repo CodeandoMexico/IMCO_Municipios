@@ -8,6 +8,8 @@ class FormationStepsController < ApplicationController
   def index
     set_city(:city_id)
     @tipo = 'AF'
+
+    @lines_for_city = Line.where(city_id: @city)
     
     unless current_business.nil?
       @line = current_business.line_id
@@ -41,6 +43,8 @@ class FormationStepsController < ApplicationController
 
  def get_values
   @tipo = params[:rating]
+  puts '************'
+  puts @tipo
   valida_parametros
   @commit = params[:commit]
   if params[:commit] == 'Federales'
@@ -55,6 +59,7 @@ class FormationStepsController < ApplicationController
     @formation_steps = FormationStep.by_city(@city).where(type_of_procedure: 'Estatal')
     @tramite = 'estatales'
   end
+
 
 end
 
@@ -78,6 +83,8 @@ end
 def valida_parametros
   if @line.nil? || @line.empty?
     redirect_to city_formation_steps_path(@city),  error:  "Debes seleccionar un giro."
+  else
+       @line_name = Line.find(@line).name
   end
 end
 

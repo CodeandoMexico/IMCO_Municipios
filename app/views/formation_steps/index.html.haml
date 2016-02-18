@@ -8,15 +8,15 @@
   - else
     %div.row.texto-verde
       %div.col-md-8.col-md-offset-2.texto-justificado
-        = "#{t('.no_formation_steps_selected_resultado')} #{Line.find(@line).name} para personas #{type(@tipo)}, trámites #{@tramite}."
+        = "#{t('.no_formation_steps_selected_resultado')} #{@line_name} para personas #{type(@tipo)}, trámites #{@tramite}."
     %br 
     %div.row.texto-gris
       %div.col-md-8.col-md-offset-2.texto-justificado
         -if @tramite == 'federales'
           =t('.texto_explicativo_federal')
-        -if @tramite == 'municipales'
+        -elsif @tramite == 'municipales'
           =t('.texto_explicativo_municipal')
-        -if @tramite == 'estatales'
+        -elsif @tramite == 'estatales'
           =t('.texto_explicativo_estatal')
     %br      
 
@@ -25,42 +25,23 @@
   .form-group
     %label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_select_name')
     .col-sm-10
-      = f.select :lines, Line.where(city_id: @city).map { |u| [u.name, u.id] },{ include_blank: true, selected: @line},{ class: 'chosen-select' }
+      = f.select :lines, @lines_for_city.map { |u| [u.name, u.id] },{ include_blank: true, selected: @line},{ class: 'chosen-select' }
   .form-group
     %label.col-sm-2.control-label.texto-verde-wrap= t('.formation_steps_radio_name')
 
     .col-sm-10
       .btn-group.btn-toggle{ 'data-toggle'=> "buttons" }
-        - if @tipo == 'AF'
-          %label.btn.btn-default.active.texto-gris
-            = t('.radio_fisica')
-            = radio_button_tag :rating, 'AF',true
-          %label.btn.btn-default.texto-gris
-            = t('.radio_moral')
-            = radio_button_tag :rating, 'AM'
-          %label.btn.btn-default.texto-gris
-            = t('.radio_ambas')
-            = radio_button_tag :rating, 'A'
-        - elsif @tipo == 'AM'
-          %label.btn.btn-default.texto-gris
-            = t('.radio_fisica')
-            = radio_button_tag :rating, 'AF'
-          %label.btn.btn-default.active.texto-gris
-            = t('.radio_moral')
-            = radio_button_tag :rating, 'AM', true
-          %label.btn.btn-default.texto-gris
-            = t('.radio_ambas')
-            = radio_button_tag :rating, 'A'
-        -else
-          %label.btn.btn-default.texto-gris
-            = t('.radio_fisica')
-            = radio_button_tag :rating, 'AF'
-          %label.btn.btn-default.texto-gris
-            = t('.radio_fisica')
-            = radio_button_tag :rating, 'AM'
-          %label.btn.btn-default.active.texto-gris
-            = t('.radio_ambas')
-            = radio_button_tag :rating, 'A', true
+        %label.btn.btn-default.texto-gris{:class => ("active" if @tipo == 'AF')}
+          = t('.radio_fisica')
+          = radio_button_tag :rating, 'AF', @tipo == 'AF'? true : false
+        %label.btn.btn-default.texto-gris{:class => ("active" if @tipo == 'AM')}
+          = t('.radio_moral')
+          = radio_button_tag :rating, 'AM', @tipo == 'AM'? true : false
+        %label.btn.btn-default.texto-gris{:class => ("active" if @tipo == 'A')}
+          = t('.radio_ambas')
+          = radio_button_tag :rating, 'A',@tipo == 'A'? true : false
+
+       
   .form-group
     .row.col-md-6.col-md-offset-2
       -if @city.has_federal_documentation

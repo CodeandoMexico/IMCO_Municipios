@@ -10,17 +10,20 @@ class ImcosController < ApplicationController
         redirect_to city_path(current_business.city_id)
       end
     end
-   @states = CatTwitter.order(:state)
-   @twitter_gov = nil
+
+    @states = CatTwitter.order(:state)
+    @twitter_gov = nil
+    
     unless params[:pagetime].blank?
       @twitter_gov = CatTwitter.find(params[:pagetime][:state_id]).twitter
       respond_to do |format|
         format.js  {render :layout => true}
       end
     end
+   
    @twitter_app= "imcomx"
-
    @new_cities = @cities.where("created_at >= ?", 2.week.ago.utc)
+  
   end
 
   def change_business
