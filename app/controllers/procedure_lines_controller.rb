@@ -12,6 +12,8 @@ class ProcedureLinesController < ApplicationController
     @id_del_giro = "0"
     @tipo  = 'A'
 
+    @lines_for_city = Line.where(city_id: @city)
+
     unless current_business.nil?
       @line = current_business.line_id
     end
@@ -124,6 +126,8 @@ def valida_giro
   if @line.nil? || @line.empty?
     redirect_to city_procedure_lines_path(@city), error: 'Debes seleccionar un giro.'
     return "OK"
+  else
+    @line_name = Line.find(@line).name
   end
   return nil
 end
