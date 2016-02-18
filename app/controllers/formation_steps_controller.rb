@@ -43,8 +43,6 @@ class FormationStepsController < ApplicationController
 
  def get_values
   @tipo = params[:rating]
-  puts '************'
-  puts @tipo
   valida_parametros
   @commit = params[:commit]
   if params[:commit] == 'Federales'

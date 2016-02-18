@@ -56,10 +56,8 @@
 .row{ 'ng-controller'=> 'ProcedureCtrl as procedures'}
   - if @line.present?
     - if @formation_steps.present?
-      -# Federal And Estatal formation steps
       = render 'federal_formation_steps'
     - elsif @procedure_lines.present?
-      -# City procedures
       = render 'city_formation_steps'
     -else
       = render 'shared/empty_resource', message: t('procedure_lines.index.no_procedure_lines_available')
