@@ -1,32 +1,29 @@
-    <a-verde > <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %></a-verde >
-    <div class="row text-center texto-verde">
-      <%= content_tag :h1,t('.title') %>
-      <%if @line.nil?%>
-      <p><%=t('.no_inspections_selected_subtitle')%></p>
+<a-verde >
+  <%= render_breadcrumbs :separator => ' / ',:class => 'a-verde texto-verde' %>
+</a-verde >
+<div class="row text-center texto-verde">
+  <%= content_tag :h1,t('.title') %>
+  <%if @line.nil?%>
+    <p><%=t('.no_inspections_selected_subtitle')%></p>
+  <%else%>
+    <p><%=t('.no_inspections_selected_resultado')%> <%=" #{Line.find(@line).name}"%> </p>
+  <%end%>
+</div>
+<div class="row">
+  <div class="text-left col-xs-6">
+    <%= link_to t('.inspector'), city_inspectors_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
+  </div>
+  <div class="text-right col-xs-6">
+    <%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-danger btn-md outlinerojo text-right' %>
+    <%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>      
+  </div>
+</div>
+</br>
 
-      <%else%>
-      <p><%=t('.no_inspections_selected_resultado')%> <%=" #{Line.find(@line).name}"%> </p>
-      <%end%>
-
-      <!-- <hr class="small"> -->
-    </div>
-
-    <div class="row">
-      <div class="text-left col-xs-6">
-      <%= link_to t('.inspector'), city_inspectors_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
-      </div>
-      <div class="text-right col-xs-6">
-        <%= link_to t('.complaint'), new_city_complaint_path(@city), class: 'btn btn-danger btn-md outlinerojo text-right' %>
-        <%= link_to t('.recordatorios'), city_reminders_path(@city), class: 'btn btn-success btn-md outlineverde text-right' %>
-        
-      </div>
-    </div>
-  </br>
-  <%= form_for :get, html: { method: :get, class: 'form-horizontal' }, url: { controller: :inspections, action: :index } do |f| %>
+<%= form_for :get, html: { method: :get, class: 'form-horizontal' }, url: { controller: :inspections, action: :index } do |f| %>
   <div class="col-md-12">
     <div class="col-md-8 col-md-offset-1 text-center texto-verde-wrap">
       <div class="row text-left">
-
         <div class="form-group">
           <label class="col-xs-6 col-sm-3 texto-margin-top text-right">Giro del negocio:</label>
           <div class="col-md-offset-3">
@@ -49,34 +46,12 @@
       </div>
     </div>
   </div>
+<% end %>
+
+
+<div class="col-md-12">
+  <% if @inspections.present? %>
+    <%= render 'inspection_show'%>
+    <%= link_to t('buttons.downloader'), download_csv_inspections_city_inspections_path(@city,:lines => @line,format: :csv),:class => "btn btn-success btn-lg outlineverde"%>
   <% end %>
-  <div class="col-md-12">
-    <% if @inspections.present? %>
-    <div class="table__card">
-      <div class="deck">
-        <div class="table__card">
-         <ul>
-           <li class="table--row">
-             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.nombre')%> </div>
-             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.materia')%> </div>
-             <div class="col-xs-6 col-sm-4 texto-verde-wrap text-center"><%=t('.duracion')%> </div>
-           </li>
-           <% @inspections.each do |inspection| %>
-             <% if inspection.inspection_lines.count > 0 %>
-               <%= link_to city_inspection_path(@city, inspection) do %>
-               <li class="table--row">
-                <div class="col-xs-6 col-sm-4"><p class="text-left texto-negro" ><%= inspection.name %></p></div>
-                <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.matter %></p></div>
-                <div class="col-xs-6 col-sm-4"><p class="text-center texto-negro"><%= inspection.duration %></p></div>
-                <!-- <hr class="small"> -->
-              </li>
-              <% end %>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <%= link_to t('buttons.downloader'), download_csv_inspections_city_inspections_path(@city,:lines => @line,format: :csv),:class => "btn btn-success btn-lg outlineverde"%>
-        <% end %>
 </div>

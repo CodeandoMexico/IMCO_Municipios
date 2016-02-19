@@ -106,7 +106,7 @@ es:
     minegocio: Mi Negocio México - 2015.
     contacto: hola@minegocio.mx
     url_imco: http://www.imco.com.mx
-    estandar: Estándar de datos
+    estandar: Estándares
     url_estandar: http://estandares.datamx.io/law/555e3c26cc1f420d00ec17bc
     usaid: "USAID"
     url_usaid: "http://www.usaid.gov/"
@@ -119,7 +119,7 @@ es:
     construction: Norma de construcción.
     business: Norma de establecimientos mercantiles.
     land: Norma de uso de suelo.
-    contacto: Contacta a 
+    contacto: Contacto 
     normas: Normativas 
   search:
     buscar: Buscar
