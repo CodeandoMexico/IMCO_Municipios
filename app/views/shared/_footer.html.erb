@@ -18,12 +18,12 @@
       <li class="text-center"><%= link_to t('footer.estandar'),  t('footer.url_estandar') , :target => "_blank" %></li>
       <%if @city.construction_file != "" || @city.business_file != "" || @city.land_file != ""|| @city.regulations_path != ""%>
        | <li class="text-center">
-            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogNormas"><%="#{t('footer.normas')} #{@city.name}"%></a>
+            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogNormas"><%="#{t('footer.normas')}"%></a>
         </li> 
       <%end%>
       <%unless @city.contact_email.nil? || @city.contact_phone.nil?%>
         | <li class="text-center">
-            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogContact"><%="#{t('footer.contacto')} #{@city.name}"%></a>
+            <a class = "a" href="" data-toggle="modal" data-target="#myModalDialogContact"><%="#{t('footer.contacto')}"%></a>
         </li> 
       <%end%>
        | <li class="text-center"><%=link_to t('footer.learning'), learns_path %></li>

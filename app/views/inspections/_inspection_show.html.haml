@@ -1,0 +1,12 @@
+%table.table.table-hover.master-detail
+  %tr.texto-verde
+    %th.col-md-1
+    %th.col-md-4= t('.nombre')
+    %th.col-md-3= t('.materia')
+    %th.col-md-4= t('.duracion')
+    - @inspections.each_with_index do |inspection,index|
+      %tr
+        %td.col-sm-1= index+1
+        %td.col-sm-4= link_to inspection.name, city_inspection_path(@city, inspection),:class=> "a-verde"
+        %td.col-sm-3= inspection.matter
+        %td.col-sm-4= inspection.duration

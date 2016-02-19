@@ -1,0 +1,37 @@
+%div.col-lg-12.text-center
+  = render 'shared/navbar'
+	
+  = image_tag "logo.png", class: "img-responsive center-block"
+
+  %div.row.col-md-12
+    %div.col-md-8.col-md-offset-2.navbar-text-blanco-just.padding-text-top-landing
+      =t('.texto_explicativo')
+  
+  %div.row.col-md-12
+    = render 'shared/messages/new_cities'
+  
+  %div.navbar-text-blanco
+    %h3=t('.subtitulo')
+
+  %div.row.col-md-12
+    %div.col-md-8.col-md-offset-2
+      %div.col-md-10.col-md-offset-1
+        = select :city,:city, @cities.map { |u| [u.name, u.id] },{ include_blank: true }, { class: 'chosen-select',:onchange => "window.location.replace('/municipio/'+this.value);"}
+	
+  %div.row.col-md-12
+    %div.navbar-text-blanco
+      =t('.no_municipio') 
+      %a{'href' => '#', 'data-toggle' => 'modal','data-target'=>"#myModalShare"}
+        %a-verde.m=t('.click')
+
+  
+  =render 'shared/messages/modal_share'
+
+:javascript
+  (function(d, s, id) {
+  	var js, fjs = d.getElementsByTagName(s)[0];
+  	if (d.getElementById(id)) return;
+  	js = d.createElement(s); js.id = id;
+  	js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=1499379517003281&version=v2.0";
+  	fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));

@@ -1,0 +1,55 @@
+  <div class="modal fade" id="myModalShare" tabindex="-1" role="dialog" aria-labelledby="myModalDialogLabel" aria-hidden="true">
+  	<div class="modal-dialog-center">
+  		<div class="modal-content" >
+  			<div class="modal-header">
+  				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<h4 class="modal-title bg-primary-verde texto-verde" id="myModalLabel"><%=t('imcos.index.titulo_modal')%></h4>
+  			</div>
+  			<div class="modal-body">
+  				<%=t('imcos.index.contenido_modal')%>
+  				<hr>
+  				<%=t('social_share_button.texto_municipio')%>
+  				<div class="row margin-modal">
+  					<div class="col-md-10">
+  					<%=select_tag "state_cat_twitter", options_from_collection_for_select(@states, "id", :state_and_town),{ class: 'chosen-select',include_blank: true,:onchange=>"activeSend()"}%>
+  					</div>
+  					<div class="col-md-2 ">
+  						<div id="shared_twitter" class="social-share-button"  data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-twitter-title="Unete a miNegocioMéxico" data-desc="" >
+  							<a id="boton_twitter" class="btn btn-success btn-lg outlineverde-not-padding half-width button_to_send hidden" data-site="twitter" href="#" onclick="SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
+  						</div>
+  					</div>
+  				</div>
+  				<hr>
+  				<%=t('social_share_button.texto')%>
+  				<div class="social-share-button" data-title="Todo para abrir, mantener y cuidar MiNegocio" data-img="" data-url="http://minegociomexico.mx" data-via="<%=@twitter_app%>" data-desc= ""  >
+  					<a class="btn btn-social-icon border-tw btn-twitter" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow"><i class="fa fa-twitter"></i></a>
+
+  					<a class="btn btn-social-icon btn-face border-face" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Facebook"><i class="fa fa-facebook"></i></a>
+
+  					<a class="btn btn-social-icon border-gmas btn-google-plus" data-site="google_plus" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="G+"><i class="fa fa-google-plus"></i></a>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+
+<script type='text/javascript'>
+function activeSend(){
+  document.getElementById("shared_twitter").removeAttribute("data-title");
+  window.order = $("#state_cat_twitter option:selected").val();
+    var url = window.location.href;
+    if(url.includes("#_=_")){
+       url = url.replace("#_=_","");
+    }
+    window.url = url;
+    $.ajax({
+           type:'GET', 
+           url: window.url,
+           success: function(){
+           },
+          error: function(){
+          }, 
+           data: $.param({ pagetime: {state_id: window.order}})
+      });
+}  
+</script>

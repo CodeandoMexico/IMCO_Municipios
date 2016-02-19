@@ -42,7 +42,8 @@
             = procedure.validity
           %td.col-sm-2
             = procedure.long
-
+            
+-if @number_of_procedure != 0
   = link_to t('buttons.downloader'), download_csv_procedure_line_city_procedure_lines_path(@city,:lines => @line, :rating => @tipo, :commit =>@commit, :etapa => @etapa , format: :csv),:class => "btn btn-success btn-lg outlineverde"
--if(@number_of_procedure == 0)
+-else
   = render 'shared/empty_resource', message: t('procedure_lines.index.no_procedure_lines_available')

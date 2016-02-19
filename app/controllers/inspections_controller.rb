@@ -7,6 +7,7 @@ class InspectionsController < ApplicationController
   add_breadcrumb "Inicio", :root_path
   def index
     @cities = City.is_activated
+    @lines_for_city = Line.where(city_id: @city)
     add_breadcrumb @city.name ,city_path(@city)
     add_breadcrumb "Inspecciones"
   end
@@ -79,7 +80,9 @@ end
     if @line.nil? || @line.empty?
       redirect_to city_inspections_path(@city), error:  'Debes seleccionar un giro.' 
      return "OK"
-  end
+     else
+       @line_name = Line.find(@line).name
+    end
   return nil
 end
 
