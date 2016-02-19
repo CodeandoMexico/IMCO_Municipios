@@ -234,10 +234,10 @@ es:
       no_inspectors_selected_subtitle: Podrás ver a los inspectores autorizados por el municipio/delegación para poder realizar una inspección a tu negocio.
       no_inspectors_selected_resultado: Resultado de la búsqueda.
     show:
-      vigencia: Vigencia
-      Materia: Materia
-      supervisor: Supervisor
-      Contacto: Contacto
+      vigencia: "Vigencia:"
+      materia: "Materia:"
+      supervisor: "Supervisor:"
+      contacto: "Contacto:"
       nombre: Nombre
       foto: Foto
   dependencies:

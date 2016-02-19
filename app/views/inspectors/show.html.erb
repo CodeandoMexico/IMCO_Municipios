@@ -11,26 +11,27 @@
   <h3 class="title texto-verde"><%= @inspector.name %></h3>
   <div style="border: 1px solid white;background-color: white;">
     <div class="thumbnail" style="margin-left:auto;margin-right:auto;width:305px;height:305px;">
-      <%= image_tag @inspector.photo_url || "missing-image.gif" %>
+      <%= image_tag @inspector.photo_url || "missing-image.gif", :class=>"img-inspector-show" %>
     </div>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td class="texto-verde-wrap"><%= t('.vigencia') %></td>
-          <td class ="bg-primary-negro"><%= @inspector.validity %></td>
-        </tr>
-        <tr>
-          <td class="texto-verde-wrap"><%= t('.materia') %></td>
-          <td class ="bg-primary-negro"><%= @inspector.matter %></td>
-        </tr>
-        <tr>
-          <td class="texto-verde-wrap"><%= t('.supervisor') %></td>
-          <td class ="bg-primary-negro"><%= @inspector.supervisor %></td>
-        </tr>
-        <tr>
-          <td class="texto-verde-wrap"><%= t('.contacto') %></td>
-          <td class ="bg-primary-negro"><%= @inspector.contact %></td>
-        </tr>
-    </table>
+    <div class="col-md-12">
+      <div class="col-md-4 texto-verde-wrap text-right"><%= t('.vigencia') %></div>
+      <div class ="col-md-8 bg-primary-negro text-left"><%= @inspector.validity %></div>
+    </div>
+    
+    <div class="col-md-12">
+      <div class="col-md-4 texto-verde-wrap text-right"><%= t('.materia') %></div>
+      <div class ="col-md-8 bg-primary-negro text-left"><%= @inspector.matter %></div>
+    </div>
+    
+    <div class="col-md-12">
+      <div class="col-md-4 texto-verde-wrap text-right"><%= t('.supervisor') %></div>
+      <div class ="col-md-8 bg-primary-negro text-left"><%= @inspector.supervisor %></div>
+    </div>
+    
+    <div class="col-md-12">
+      <div class="col-md-4 texto-verde-wrap text-right"><%= t('.contacto') %></div>
+      <div class ="col-md-8 bg-primary-negro text-left"><%= @inspector.contact %></div>
+    </div>
+
   </div>
 </div>
