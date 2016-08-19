@@ -24,11 +24,8 @@ module Dashboard
 
     def create
       @user = User.new(user_params)
-      puts '********************************'
-      puts $city_id.id
       @user.city_id = $city_id.id
       @user.admin = true
-
       respond_to do |format|
         if @user.save
           format.html { redirect_to edit_dashboard_city_path(@user.city_id), notice: 'El adminsitrador fue creada satisfactoriamente.' }
@@ -41,7 +38,6 @@ module Dashboard
     end
 
     def update
-      puts '***************'
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to dashboard_path, notice: 'El adminsitrador fue actualizado satisfactoriamente.' }
