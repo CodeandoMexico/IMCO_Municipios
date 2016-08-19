@@ -23,7 +23,7 @@ module Dashboard
 
     def create
       @line = Line.new(line_params)
-      @line.city = current_user.city_id
+      @line.city_id = current_user.city_id
       authorize @line
 
       respond_to do |format|

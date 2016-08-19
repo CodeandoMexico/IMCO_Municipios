@@ -7,9 +7,9 @@
 
   Sidekiq.configure_server do |config|
     if docker_redis_url
-      config.redis = { url: docker_redis_url, size: 3 }
+      config.redis = { url: docker_redis_url, size: 27 }
     else
-      config.redis = { url: ENV["REDISCLOUD_URL"], size: 3 }
+      config.redis = { url: ENV["REDISCLOUD_URL"], size: 27 }
     end
 
 
@@ -22,8 +22,8 @@
 
   Sidekiq.configure_client do |config|
     if docker_redis_url
-      config.redis = { url: docker_redis_url, size: 3 }
+      config.redis = { url: docker_redis_url, size: 27 }
     else
-      config.redis = { size: 3 }
+      config.redis = { size: 27 }
     end
   end

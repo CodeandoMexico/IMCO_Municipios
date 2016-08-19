@@ -23,7 +23,7 @@ module Dashboard
 
     def create
       @requirement = Requirement.new(requirement_params)
-      @requirement.city = current_user.city_id
+      @requirement.city_id = current_user.city_id
       authorize @requirement
 
       respond_to do |format|

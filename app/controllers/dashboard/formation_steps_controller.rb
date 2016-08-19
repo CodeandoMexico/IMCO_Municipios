@@ -25,7 +25,7 @@ module Dashboard
 
     def create
       @formation_step = FormationStep.new(formation_steps_params)
-      @formation_step.city = current_user.city_id
+      @formation_step.city_id = current_user.city_id
       authorize @formation_step
 
       respond_to do |format|

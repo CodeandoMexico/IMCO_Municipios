@@ -57,7 +57,7 @@ end
 
 
 def create
-  @user = User.create(email: :email, password: :password, city_id: current_user.city, admin: true)
+  @user = User.create(email: :email, password: :password, city_id: current_user.city_id, admin: true)
   if @user.save?
     redirect_to edit_user_path, notice: t('flash.users.updated')
   else

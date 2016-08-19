@@ -22,7 +22,7 @@ module Dashboard
 
     def create
       @dependency = Dependency.new(dependency_params)
-      @dependency.city = current_user.city_id
+      @dependency.city_id = current_user.city_id
       authorize @dependency
 
       respond_to do |format|

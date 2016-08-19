@@ -7,7 +7,7 @@ module Dashboard
 
   def index
     unless @status.nil?
-      if @status.status == "terminado"
+      if @status.status == "terminado" 
         @logs = true
         @file_success= "#{@root_path_dir}/success.txt"
         @file_errors= "#{@root_path_dir}/errors.txt"
