@@ -7,7 +7,7 @@ module Dashboard
     end
 
     def new
-      @user = User.new
+      
       if params[:city_id]
         $city_id = City.find(params[:city_id])
       end
@@ -24,8 +24,11 @@ module Dashboard
 
     def create
       @user = User.new(user_params)
-      @user.city_id = $city_id.id
+      unless $city_id.nil?
+        @user.city_id = $city_id.id
+      end
       @user.admin = true
+
       respond_to do |format|
         if @user.save
           format.html { redirect_to edit_dashboard_city_path(@user.city_id), notice: 'El adminsitrador fue creada satisfactoriamente.' }
