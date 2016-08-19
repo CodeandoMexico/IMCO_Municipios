@@ -7,7 +7,7 @@ module Dashboard
     end
 
     def new
-      
+      @user = User.new
       if params[:city_id]
         $city_id = City.find(params[:city_id])
       end
