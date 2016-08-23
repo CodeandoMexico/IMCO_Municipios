@@ -67,6 +67,9 @@ gem 'social-share-button', '~> 0.1.6'
 
 gem 'sidekiq' #para trabajos en background
 
+#db Mongo
+gem 'mongoid', '~> 5.1.0'
+
 group :development, :test do
   # Load env variables
   gem 'figaro'

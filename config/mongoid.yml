@@ -1,0 +1,29 @@
+development:
+  clients:
+    default:
+      database: minegocio_mongo_development
+      hosts:
+        - localhost:27017
+      options:
+
+  options:
+
+test:
+  clients:
+    default:
+      database: minegocio_mongo_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+
+      #uri: <%= ENV['MONGOHQ_URL'] %>
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %> #'mongodb://[username]:[password]@ds043497.mongolab.com:43497/[database]' 
+      options: 
+    

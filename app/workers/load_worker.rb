@@ -8,23 +8,20 @@ class LoadWorker
 
   if @status.status == "iniciado"
     id_city = fill_city_id(city)
-    clean_files(current_user_id)
+    clean_files(id_city)
     CsvUploads.delete_all_data(id_city,id_user)
-     if CsvUploads.validate_dependencies(file_dependency,id_user) && 
-        CsvUploads.validate_lines(file_lines,id_user) && 
+     if CsvUploads.validate_dependencies(id_city,file_dependency,id_user) && 
+        CsvUploads.validate_lines(id_city,file_lines,id_user) && 
         CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
-        CsvUploads.validate_requirements(file_requirements,id_user) && 
+        CsvUploads.validate_requirements(id_city,file_requirements,id_user) && 
         CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
-        CsvUploads.validate_formation_steps(file_formation_steps,id_user) &&
-        CsvUploads.validate_procedures(file_procedures,id_city,id_user)
+        CsvUploads.validate_formation_steps(id_city,file_formation_steps,id_user) &&
+        CsvUploads.validate_procedures(id_city,file_procedures,id_city,id_user)
 
-        file_success = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt","a")
-        file_success.puts("Éxito@General@Datasets cargados con éxito.".mb_chars)
-        file_success.close
+        Datum.create(id_town: id_city,type: "success", value: "Éxito@General@Datasets cargados con éxito.".mb_chars)
+
      else
-        file_errors = File.open("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt","a")
-        file_errors.puts("Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
-        file_errors.close
+        Datum.create(id_town: id_city, type: "errors", value: "Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
         CsvUploads.delete_all_data(id_city,id_user)
      end
   end
@@ -53,11 +50,9 @@ class LoadWorker
      end
    end
 
-   def clean_files(current_user_id)
+   def clean_files(id_city)
       begin
-        file_errors = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/errors.txt",0)
-        file_success = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/success.txt",0)
-        file_warnings = File.truncate("#{ENV['UPLOAD_PATH']}/upload_#{current_user_id}/warnings.txt",0)
+        Datum.where(id_town: id_city).delete_all
       rescue
       end    
    end

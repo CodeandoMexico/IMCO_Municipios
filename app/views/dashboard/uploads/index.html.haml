@@ -79,7 +79,7 @@
   %div.tab-content
     %div{:id=>"menu1", :class=>"tab-pane in active"}
       %p
-        %H3="Correctos: #{File.readlines(@file_success).size}"
+        %H3="Correctos: #{@success_datum.count}"
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
@@ -88,8 +88,8 @@
               =t('.origin')
             %th.text-center-table
               =t('.description')
-          -File.readlines(@file_success).each_with_index do |succe,index|
-            -succe_array = succe.split('@')
+          -@success_datum.each_with_index do |succe,index|
+            -succe_array = succe.value.split('@')
             %tr
               %td.table-first
                 .col-md-12
@@ -106,7 +106,7 @@
         %BR
     %div{:id=>"menu2", :class=>"tab-pane fade"}
       %p
-        %H3="Advertencias: #{File.readlines(@file_warnings).size}"
+        %H3="Advertencias: #{@warnings_datum.count}"
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
@@ -115,8 +115,8 @@
               =t('.origin')
             %th.text-center-table
               =t('.description')
-          -File.readlines(@file_warnings).each_with_index do |succe,index|
-            -succe_array = succe.split('@')
+          -@warnings_datum.each_with_index do |warn,index|
+            -warn_array = warn.value.split('@')
             %tr
               %td.table-first
                 .col-md-12
@@ -127,13 +127,13 @@
                     .col-md-6.padding-top-table
                       ="#{index+1}"
               %td.table-second
-                ="#{succe_array[1]}"
+                ="#{warn_array[1]}"
               %td.table-third
-                ="#{succe_array[2]}"
+                ="#{warn_array[2]}"
         %BR
     %div{:id=>"menu3", :class=>"tab-pane fade"}
       %p
-        %H3="Errores: #{File.readlines(@file_errors).size}"
+        %H3="Errores: #{@errors_datum.count}"
         %table{:style=>"width:100%",:border=>"1"}
           %tr
             %th.text-center-table
@@ -142,8 +142,8 @@
               =t('.origin')
             %th.text-center-table
               =t('.description')
-          -File.readlines(@file_errors).each_with_index do |succe,index|
-            -succe_array = succe.split('@')
+          -@errors_datum.each_with_index do |err,index|
+            -err_array = err.value.split('@')
             %tr
               %td
                 .col-md-12
@@ -154,9 +154,9 @@
                     .col-md-6.padding-top-table
                       ="#{index+1}"
               %td
-                ="#{succe_array[1]}"
+                ="#{err_array[1]}"
               %td
-                ="#{succe_array[2]}"
+                ="#{err_array[2]}"
         %BR
 
 %div.col-md-12.text-center.modal-dialog-center

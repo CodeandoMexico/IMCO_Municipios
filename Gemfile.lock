@@ -46,6 +46,7 @@ GEM
       sass (>= 3.2.19)
     bootstrap-switch-rails (3.0.2)
     breadcrumbs_on_rails (2.3.1)
+    bson (4.0.4)
     builder (3.2.2)
     capybara (2.6.0)
       addressable
@@ -255,6 +256,13 @@ GEM
     mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    mongo (2.2.4)
+      bson (~> 4.0)
+    mongoid (5.1.2)
+      activemodel (~> 4.0)
+      mongo (~> 2.1)
+      origin (~> 2.2)
+      tzinfo (>= 0.3.37)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -280,6 +288,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    origin (2.2.0)
     orm_adapter (0.5.0)
     pg (0.18.4)
     polyglot (0.3.5)
@@ -427,6 +436,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mini_magick
+  mongoid (~> 5.1.0)
   omniauth-facebook
   omniauth-linkedin
   pg

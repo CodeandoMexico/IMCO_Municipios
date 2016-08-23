@@ -9,9 +9,9 @@ module Dashboard
     unless @status.nil?
       if @status.status == "terminado" 
         @logs = true
-        @file_success= "#{@root_path_dir}/success.txt"
-        @file_errors= "#{@root_path_dir}/errors.txt"
-        @file_warnings= "#{@root_path_dir}/warnings.txt"
+        @success_datum = Datum.where(id_town: current_user.city_id, type: "success")
+        @errors_datum= Datum.where(id_town: current_user.city_id, type: "errors")
+        @warnings_datum= Datum.where(id_town: current_user.city_id, type: "warnings")
 
       elsif @status.status == "iniciado"
         @dialog = true
@@ -30,14 +30,14 @@ module Dashboard
         file_formation_steps = params[:post][:formation_step_file]
         file_procedures = params[:post][:procedure_file]
           if validate_params(file_dependency, file_lines, file_inspectors, file_requirements, file_inspections, file_formation_steps, file_procedures) 
-                 
             unless @status.nil?
               @status.delete
             end
             
-            make_files
+            delete_files
 
             if @status.status == "iniciado"
+              @status.status == "terminado"
               LoadWorker.perform_async(@user_id,@city.id,file_dependency.tempfile.path, file_lines.tempfile.path, file_inspectors.tempfile.path, file_requirements.tempfile.path, file_inspections.tempfile.path, file_formation_steps.tempfile.path, file_procedures.tempfile.path)
               redirect_to dashboard_upload_index_path,  notice:  "Espere porfavor estamos subiendo los cambios"
             end
@@ -56,7 +56,6 @@ module Dashboard
     def set_city
       @city = City.find(current_user.city_id)
       @user_id = current_user.id
-      @root_path_dir = "#{ENV['UPLOAD_PATH']}/upload_#{@user_id}"
       @success = []
       @errors = []
       @warnings = []
@@ -64,7 +63,7 @@ module Dashboard
 
     def set_status
       unless Uploads.where(id_user: current_user.id).blank?
-        @status = Uploads.where(id_user: current_user).last
+        @status = Uploads.where(id_user: current_user).first
         if @status.created_at.utc < Time.now.utc - 15.minutes
           @status.delete
         end
@@ -80,30 +79,13 @@ module Dashboard
         return true
     end
 
-    def make_files
-        delete_files
-        Dir::mkdir("#{@root_path_dir}")
-        f = File.open("#{@root_path_dir}/success.txt","w+")
-        f.close
-        f = File.open("#{@root_path_dir}/errors.txt","w+")
-        f.close
-        f = File.open("#{@root_path_dir}/warnings.txt","w+")
-        f.close
-        puts '*************************** Archivos creados ***************************'
-        @status = Uploads.create(id_user: current_user.id,status: "creado")
+    def delete_files
+        Datum.where(id_town: current_user.city_id).delete_all
+        @status = Uploads.where(id_user: current_user.id).first_or_create
         @status.status = 'iniciado'
         if @status.save
           puts '*************************** status creado ***************************'
         end
-    end
-
-    def delete_files
-      if Dir.exist?("#{@root_path_dir}")
-        FileUtils.rm_rf("#{@root_path_dir}")
-        puts "*************************** borre el directorio #{@root_path_dir} ***************************"
-      else
-        puts '*************************** No existe el directorio Nada que borrar***************************'
-      end
     end
 
   end
