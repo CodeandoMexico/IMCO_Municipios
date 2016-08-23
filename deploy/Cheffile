@@ -1,5 +1,0 @@
-site "https://supermarket.getchef.com/api/v1"
-
-
-cookbook "git", "~> 4.3.3"
-cookbook "docker", '~> 0.40.3'

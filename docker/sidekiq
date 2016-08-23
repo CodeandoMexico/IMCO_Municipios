@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /sbin/setuser app sidekiq -r /home/app/minegocio >>/var/log/sidekiq.log 2>&1
