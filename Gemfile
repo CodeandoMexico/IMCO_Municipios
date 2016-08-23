@@ -65,7 +65,7 @@ gem 'whenever', :require => false
 gem 'social-share-button', '~> 0.1.6'
 
 
-gem 'sidekiq' #para trabajos en background
+gem 'sidekiq' #para trabajos en background\
 
 #db Mongo
 gem 'mongoid', '~> 5.1.0'
@@ -95,7 +95,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  #gem 'unicorn'
   gem 'rails_12factor'
 end
 
