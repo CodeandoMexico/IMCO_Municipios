@@ -42,10 +42,6 @@ config/database.yml
 # Cloud 9
 /.c9/
 
-#deploy
-deploy/data_bags/secrets/*
-deploy/nodes/*
-
 public/uploads/
 
 *.rdb
