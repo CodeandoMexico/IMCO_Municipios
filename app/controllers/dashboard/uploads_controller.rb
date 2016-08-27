@@ -34,10 +34,7 @@ module Dashboard
               @status.delete
             end
             
-            delete_files
-
-            if @status.status == "iniciado"
-              @status.status == "terminado"
+            if @status.update(status:'iniciado')
               LoadWorker.perform_async(@user_id,@city.id,file_dependency.tempfile.path, file_lines.tempfile.path, file_inspectors.tempfile.path, file_requirements.tempfile.path, file_inspections.tempfile.path, file_formation_steps.tempfile.path, file_procedures.tempfile.path)
               redirect_to dashboard_upload_index_path,  notice:  "Espere porfavor estamos subiendo los cambios"
             end
@@ -62,8 +59,7 @@ module Dashboard
     end
 
     def set_status
-      unless Uploads.where(id_user: current_user.id).blank?
-        @status = Uploads.where(id_user: current_user).first
+      @status = Uploads.where(id_user: @user_id).first_or_create
         if @status.created_at.utc < Time.now.utc - 15.minutes
           @status.delete
         end
@@ -77,15 +73,6 @@ module Dashboard
         return false
       end
         return true
-    end
-
-    def delete_files
-        Datum.where(id_town: current_user.city_id).delete_all
-        @status = Uploads.where(id_user: current_user.id).first_or_create
-        @status.status = 'iniciado'
-        if @status.save
-          puts '*************************** status creado ***************************'
-        end
     end
 
   end

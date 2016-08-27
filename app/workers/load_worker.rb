@@ -6,29 +6,27 @@ class LoadWorker
     id_user = fill_user_id(current_user_id)
     @status = Uploads.where(id_user: id_user).last
 
-  if @status.status == "iniciado"
-    id_city = fill_city_id(city)
-    clean_files(id_city)
-    CsvUploads.delete_all_data(id_city,id_user)
-     if CsvUploads.validate_dependencies(id_city,file_dependency,id_user) && 
-        CsvUploads.validate_lines(id_city,file_lines,id_user) && 
-        CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
-        CsvUploads.validate_requirements(id_city,file_requirements,id_user) && 
-        CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
-        CsvUploads.validate_formation_steps(id_city,file_formation_steps,id_user) &&
-        CsvUploads.validate_procedures(id_city,file_procedures,id_city,id_user)
+    if @status.status == "iniciado"
+      id_city = fill_city_id(city)
+      clean_files(id_city)
+      CsvUploads.delete_all_data(id_city,id_user)
+       if CsvUploads.validate_dependencies(id_city,file_dependency,id_user) && 
+          CsvUploads.validate_lines(id_city,file_lines,id_user) && 
+          CsvUploads.validate_inspectors(file_inspectors,id_city,id_user) && 
+          CsvUploads.validate_requirements(id_city,file_requirements,id_user) && 
+          CsvUploads.validate_inspections(file_inspections,id_city,id_user) && 
+          CsvUploads.validate_formation_steps(id_city,file_formation_steps,id_user) &&
+          CsvUploads.validate_procedures(id_city,file_procedures,id_city,id_user)
 
-        Datum.create(id_town: id_city,type: "success", value: "Éxito@General@Datasets cargados con éxito.".mb_chars)
+          Datum.create(id_town: id_city,type: "success", value: "Éxito@General@Datasets cargados con éxito.".mb_chars)
 
-     else
-        Datum.create(id_town: id_city, type: "errors", value: "Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
-        CsvUploads.delete_all_data(id_city,id_user)
-     end
-  end
-    
-    
-    @status.status = "terminado"
-    if @status.save
+       else
+          Datum.create(id_town: id_city, type: "errors", value: "Error@General@Fallo con los datasets, porfavor revisalos e intenta de nuevo.".mb_chars)
+          CsvUploads.delete_all_data(id_city,id_user)
+       end
+    end
+      
+    if @status.update(status:'terminado')
       puts '*******************Status Terminado*****************'
     end
 
